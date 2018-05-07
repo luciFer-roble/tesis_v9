@@ -13,4 +13,12 @@ class Empresa extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+    public function convenio(){
+        return $this->hasOne('App\Convenio');
+    }
+
+    public function tutore(){
+        return $this->hasMany('App\TutorE');
+    }
+
 }

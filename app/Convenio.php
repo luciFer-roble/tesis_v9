@@ -11,4 +11,8 @@ class Convenio extends Model
     protected $primaryKey = 'idconvenio';
     public $timestamps = false;
     protected $guarded = [];
+
+    public function empresa(){
+        return $this->belongsTo('App\Empresa', 'idempresa', 'idempresa');
+    }
 }

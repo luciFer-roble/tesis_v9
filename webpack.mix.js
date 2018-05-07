@@ -12,4 +12,19 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .scripts(//tema
+        [
+            //admin lte
+            './node_modules/admin-lte/build/js/AdminLTE.js',
+            //dependencias
+            './node_modules/jquery/dist/jquery.js',
+            "./node_modules/popper.js/dist/umd/popper.js",
+            './node_modules/bootstrap/dist/js/bootstrap.js',
+            './node_modules/moment/moment.js',
+            './node_modules/moment/locale/es.js',
+
+        ],
+        './public/js/vendor.js'
+    )
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .webpackConfig({ devtool: "source-map" });

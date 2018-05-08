@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
     <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
@@ -14,27 +15,37 @@
             </ol>
             </nav>
             <div class="row">
-            <form method="POST" action="../empresas">
+            <form method="POST" action="../tutores">
 
                 {{ csrf_field() }}
+
+                <div class="formgroup" width="100">
+                    <label for="empresa">Empresa:</label>
+                    <select id="empresa" name="empresa" class="form-control">
+                        @foreach($empresas as $empresa)
+                            <option value="{{ $empresa->idempresa }}">{{ $empresa->nombreempresa }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="formgroup" width="100">
                     <label for="nombre">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre">
                 </div>
 
                 <div class="formgroup">
-                    <label for="direccion">Direccion:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
                 </div>
 
                 <div class="formgroup">
-                    <label for="sector">Sector:</label>
-                    <input type="text" class="form-control" id="sector" name="sector">
+                    <label for="celular">Celular:</label>
+                    <input type="text" class="form-control" id="celular" name="celular">
                 </div>
 
                 <div class="formgroup">
-                    <label for="telefono">Telefono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono">
+                    <label for="correo">Correo:</label>
+                    <input type="text" class="form-control" id="correo" name="correo">
                 </div>
                 <hr>
                 <div class="form-group">

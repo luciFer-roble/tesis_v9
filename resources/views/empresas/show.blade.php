@@ -1,16 +1,17 @@
 @extends('layouts.master')
+@section('titulo')
+    <h1 class="m-0 text-dark">Empresa</h1>
+@endsection
+@section('nav')
+    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+    <li class="breadcrumb-item active">Empresas</li>
+@endsection
 
 @section('content')
     <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Inicio</a>
-                </li>
-                <li class="breadcrumb-item active">Empresas</li>
-            </ol>
+
             <div class="row">
                 <div class="col-12">
                     <form>

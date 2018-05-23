@@ -5,12 +5,7 @@
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Inicio</a>
-                </li>
-                <li class="breadcrumb-item active">Empresas</li>
-            </ol>
+
             <div class="row">
                 <div class="col-12">
                     <form>

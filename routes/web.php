@@ -35,5 +35,8 @@ Route::get('/tutores/create', 'TutorEsController@create');
 Route::get('/tutores/{empresa}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');
 Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
+
+Route::get('/tutores/{empresa}/create', 'TutorEsController@createfrom');
+Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');
 Route::put('/tutores/{tutore}', 'TutorEsController@update');
 Route::delete('/tutores/{empresa}', 'TutorEsController@destroy');

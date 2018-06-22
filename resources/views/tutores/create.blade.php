@@ -14,15 +14,19 @@
         <div class="container-fluid">
 
             <div class="row">
-            <form method="POST" action="../tutores">
+            <form method="POST" action="/tutores">
 
                 {{ csrf_field() }}
 
                 <div class="formgroup" width="100">
                     <label for="empresa">Empresa:</label>
                     <select id="empresa" name="empresa" class="form-control">
-                        @foreach($empresas as $empresa)
-                            <option value="{{ $empresa->idempresa }}">{{ $empresa->nombreempresa }}</option>
+                        @foreach($empresas as $emp)
+                            <option value="{{ $emp->idempresa }}"
+                                    @if($emp->idempresa == $empresa->idempresa)
+                                    selected
+                                    @endif
+                            >{{ $emp->nombreempresa }}</option>
                         @endforeach
                     </select>
                 </div>

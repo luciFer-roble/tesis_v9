@@ -14,12 +14,22 @@ class TutorEsController extends Controller
         return view('tutores.index', compact('tutores'));
     }
 
+    public function indexfrom(Empresa $empresa)
+    {
+        $tutores = TutorE::all()->where('idempresa', '=' , $empresa->idempresa );
+        return view('tutores.index', compact('tutores'));
+    }
+
     public function create()
     {
         $empresas =Empresa::all();
         return view('tutores.create')->with(compact('empresas'));
     }
-
+    public function createfrom(Empresa $empresa)
+    {
+        $empresas =Empresa::all();
+        return view('tutores.create')->with(compact('empresa', 'empresas'));
+    }
     public function store(Request $request)
     {
         $rules = array(

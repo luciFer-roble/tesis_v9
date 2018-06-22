@@ -41,6 +41,12 @@
                 <hr>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a  class="btn btn-primary" href="{{ URL::to('tutores/' . $empresa->idempresa . '/create') }}">
+                        Anadir Tutor
+                    </a>
+                    <a  class="btn btn-primary" href="{{ URL::to('tutores/' . $empresa->idempresa . '/list') }}">
+                        Tutores
+                    </a>
                 </div>
             </orm>
 

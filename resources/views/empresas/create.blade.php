@@ -13,7 +13,7 @@
         <div class="container-fluid">
 
             <div class="row">
-            <form method="POST" action="../empresas">
+            <form method="POST" action="/empresas">
 
                 {{ csrf_field() }}
                 <div class="formgroup" width="100">

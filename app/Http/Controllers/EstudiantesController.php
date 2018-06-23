@@ -3,21 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Carrera;
+use App\Escuela;
 use App\Estudiante;
+use App\Facultad;
+use App\Sede;
 use Illuminate\Http\Request;
 
 class EstudiantesController extends Controller
 {
     public function index()
     {
-        $estudantes = Estudiante::all();
-        return view('estudiantes.index', compact('estudantes'));
+        $estudiantes = Estudiante::all();
+        return view('estudiantes.index', compact('estudiantes'));
     }
 
     public function create()
     {
         $carreras =Carrera::all();
-        return view('estudiantes.create')->with(compact('carreras'));
+        $escuelas =Escuela::all();
+        $facultades =Facultad::all();
+        $sedes =Sede::all();
+        return view('estudiantes.create')->with(compact('carreras', 'escuelas', 'facultades', 'sedes'));
     }
 
     public function store(Request $request)

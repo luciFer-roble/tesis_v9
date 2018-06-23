@@ -40,3 +40,11 @@ Route::get('/tutores/{empresa}/create', 'TutorEsController@createfrom');
 Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');
 Route::put('/tutores/{tutore}', 'TutorEsController@update');
 Route::delete('/tutores/{empresa}', 'TutorEsController@destroy');
+
+Route::get('/estudiantes', 'EstudiantesController@index');
+Route::get('/estudiantes/create', 'EstudiantesController@create');
+Route::get('/estudiantes/{estudiante}', 'EstudiantesController@show');
+Route::post('/estudiantes', 'EstudiantesController@store');
+Route::get('/estudiantes/{estudiante}/edit', 'EstudiantesController@edit');
+Route::put('/estudiantes/{estudiante}', 'EstudiantesController@update');
+Route::delete('/estudiantes/{estudiante}', 'EstudiantesController@destroy');

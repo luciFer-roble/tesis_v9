@@ -36,6 +36,9 @@ Route::get('/tutores/{empresa}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');
 Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
 
+
+Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
+
 Route::get('/tutores/{empresa}/create', 'TutorEsController@createfrom');
 Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');
 Route::put('/tutores/{tutore}', 'TutorEsController@update');

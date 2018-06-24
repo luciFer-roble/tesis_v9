@@ -14,7 +14,11 @@ class EstudiantesController extends Controller
     public function index()
     {
         $estudiantes = Estudiante::all();
-        return view('estudiantes.index', compact('estudiantes'));
+        $carreras =Carrera::all();
+        $escuelas =Escuela::all();
+        $facultades =Facultad::all();
+        $sedes =Sede::all();
+        return view('estudiantes.index', compact('estudiantes', 'carreras', 'escuelas', 'facultades', 'sedes'));
     }
 
     public function create()

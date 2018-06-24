@@ -42,47 +42,80 @@
                                         <th>Facultad</th>
                                         <th>Escuela</th>
                                         <th>Carrera</th>
-                                        <td></td>
+                                        <td colspan="3"></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($estudiantes as $estudiante)
                                         <tr>
-                                            <td>{{ $estudiante->cedulaestudiante }}</td>
-                                            <td>{{ $estudiante->nombre1estudiante }}</td>
-                                            <td>{{ $estudiante->nombre2estudiante }}</td>
-                                            <td>{{ $estudiante->apellido1estudiante }}</td>
-                                            <td>{{ $estudiante->apellido2estudiante }}</td>
-                                            <td>{{ $estudiante->tipoestudiante }}</td>
-                                            <td>{{ $estudiante->celularestudiante }}</td>
-                                            <td>{{ $estudiante->correoestudiante }}</td>
-                                            <td>{{ $estudiante->fechanacimientoestudiante }}</td>
-                                            <td>{{ $estudiante->generoestudiante }}</td>
-                                            <td>{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
-                                            <td>{{ $estudiante->carrera->escuela->nombreescuela }}</td>
-                                            <td>{{ $estudiante->carrera->nombrecarrera }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->cedulaestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->nombre1estudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->nombre2estudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->apellido1estudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->apellido2estudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->tipoestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->fechanacimientoestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->generoestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->carrera->escuela->nombreescuela }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
                                             <td>
-
-
-
-
-                                                    <div class="col-sm1">
-                                                        {{ Form::open(array('url' => 'estudiantes/' . $estudiante->idestudiante, 'class' => '')) }}
-
                                                         <a  class="btn btn-link" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
 
-                                                            <i class="fa fa-fw fa-pencil-alt"></i>
-
-                                                        {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                        {{ Form::close() }}
-                                                    </div>
-
-
+                                                            <i class="fa fa-fw fa-pencil-alt"></i></a>
                                             </td>
+                                            <td>{{ Form::open(array('url' => 'estudiantes/' . $estudiante->idestudiante, 'class' => '')) }}
+                                                {{ Form::hidden('_method', 'DELETE') }}
+                                                <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                {{ Form::close() }}</td>
+                                            <td>
+                                                <a  class="btn btn-link" href="{{ URL::to('estasignaturas/' . $estudiante->carrera->idcarrera . '/create/' . $estudiante->idestudiante) }}">
+
+                                                    <i class="fa fa-fw fa-clipboard-list"></i></a></td>
                                         </tr>
                                     @endforeach
+                                        <form method="POST" action="/estudiantes">
+
+                                            {{ csrf_field() }}
+                                        <tr>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="cedula" name="cedula"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="nombre1" name="nombre1"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="nombre2" name="nombre2"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="apellido1" name="apellido1"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="apellido2" name="apellido2"></td>
+                                            <td class="p-0 m-0"><select id="tipo" name="tipo" class="form-control">
+                                                <option value="regular">Regular</option>
+                                                <option value="semi">Semi-Presencial</option>
+                                                <option value="distancia">Distancia</option>
+                                            </select></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="celular" name="celular"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="correo" name="correo"></td>
+                                            <td class="p-0 m-0"><input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento"></td>
+                                            <td class="p-0 m-0"><select id="genero" name="genero" class="form-control">
+                                                <option value="0">Masculino</option>
+                                                <option value="1">Femenino</option>
+                                            </select></td>
+                                            <td class="p-0 m-0"><select id="facultad" name="facultad" class="form-control">
+                                                @foreach($facultades as $facultad)
+                                                    <option value="{{ $facultad->idfacultad }}">{{ $facultad->nombrefacultad }}</option>
+                                                @endforeach
+                                            </select></td>
+                                            <td class="p-0 m-0"><select id="escuela" name="escuela" class="form-control">
+                                                @foreach($escuelas as $escuela)
+                                                    <option value="{{ $escuela->idescuela }}">{{ $escuela->nombreescuela }}</option>
+                                                @endforeach
+                                            </select></td>
+                                            <td class="p-0 m-0"><select id="carrera" name="carrera" class="form-control">
+                                                @foreach($carreras as $carrera)
+                                                    <option value="{{ (string)$carrera->idcarrera }}">{{ $carrera->nombrecarrera }}</option>
+                                                @endforeach
+                                            </select></td>
+                                            <td class="p-0 m-0" colspan="3"><button type="submit" class="btn btn-primary btn-block">Insertar</button></td>
+                                        </tr>
+                                        </form>
                                     </tbody>
                                 </table>
                             </div>

@@ -24,4 +24,8 @@ class Carrera extends Model
     public function coordinador(){
         return $this->hasOne('App\Coordinador');
     }
+
+    public function malla(){
+        return $this->hasMany('App\Malla');
+    }
 }

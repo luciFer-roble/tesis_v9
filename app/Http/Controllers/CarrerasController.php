@@ -32,6 +32,7 @@ class CarrerasController extends Controller
 
         // store
         Carrera::create([
+            'idcarrera'       => request('id'),
             'idescuela'       => request('escuela'),
             'nombrecarrera'       => request('nombre'),
             'descripcioncarrera'      => request('descripcion')

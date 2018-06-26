@@ -12,6 +12,7 @@ class Facultad extends Model
     protected $primaryKey = 'idfacultad';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function escuela(){
         return $this->hasMany('App\Escuela');

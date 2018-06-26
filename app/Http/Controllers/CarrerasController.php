@@ -13,7 +13,16 @@ class CarrerasController extends Controller
         $carreras = Carrera::all();
         return view('carreras.index', compact('carreras'));
     }
-
+    public function indexfrom(Escuela $escuela)
+    {
+        $carreras = Carrera::all()->where('idescuela', '=' , $escuela->idescuela );
+        return view('carreras.index', compact('carreras'));
+    }
+    public function createfrom(Escuela $escuela)
+    {
+        $escuelas =Escuela::all();
+        return view('carreras.create')->with(compact('escuela', 'escuelas'));
+    }
     public function create()
     {
         $escuelas =Escuela::all();

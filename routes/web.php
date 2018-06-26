@@ -37,6 +37,16 @@ Route::post('/carreras', 'CarrerasController@store');
 Route::get('/carreras/{carrera}/edit', 'CarrerasController@edit');
 Route::put('/carreras/{carrera}', 'CarrerasController@update');
 Route::delete('/carreras/{carrera}', 'CarrerasController@destroy');
+Route::get('/carreras/{escuela}/create', 'CarrerasController@createfrom');
+Route::get('/carreras/{escuela}/list', 'CarrerasController@indexfrom');
+
+Route::get('/escuelas', 'EscuelasController@index');
+Route::get('/escuelas/create', 'EscuelasController@create');
+Route::get('/escuelas/{escuela}', 'EscuelasController@show');
+Route::post('/escuelas', 'EscuelasController@store');
+Route::get('/escuelas/{escuela}/edit', 'EscuelasController@edit');
+Route::put('/escuelas/{escuela}', 'EscuelasController@update');
+Route::delete('/escuelas/{escuela}', 'EscuelasController@destroy');
 
 Route::get('/tutores', 'TutorEsController@index');
 Route::get('/tutores/create', 'TutorEsController@create');

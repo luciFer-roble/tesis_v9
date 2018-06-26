@@ -48,3 +48,8 @@ Vue.component(
     'Example',
     require('./Components/Example.vue')
 );
+Vue.component('prueba', require('./components/Prueba.vue'));
+
+const app = new Vue({
+    el: '#app'
+});

@@ -30,6 +30,14 @@ Route::get('/empresas/{empresa}/edit', 'EmpresasController@edit');
 Route::put('/empresas/{empresa}', 'EmpresasController@update');
 Route::delete('/empresas/{empresa}', 'EmpresasController@destroy');
 
+Route::get('/carreras', 'CarrerasController@index');
+Route::get('/carreras/create', 'CarrerasController@create');
+Route::get('/carreras/{carrera}', 'CarrerasController@show');
+Route::post('/carreras', 'CarrerasController@store');
+Route::get('/carreras/{carrera}/edit', 'CarrerasController@edit');
+Route::put('/carreras/{carrera}', 'CarrerasController@update');
+Route::delete('/carreras/{carrera}', 'CarrerasController@destroy');
+
 Route::get('/tutores', 'TutorEsController@index');
 Route::get('/tutores/create', 'TutorEsController@create');
 Route::get('/tutores/{empresa}', 'TutorEsController@show');

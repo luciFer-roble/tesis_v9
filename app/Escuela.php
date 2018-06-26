@@ -12,6 +12,7 @@ class Escuela extends Model
     protected $primaryKey = 'idescuela';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function profesor(){
         return $this->hasMany('App\Profesor');

@@ -44,3 +44,7 @@
     });
 })(jQuery); // End of use strict
 
+Vue.component(
+    'Example',
+    require('./Components/Example.vue')
+);

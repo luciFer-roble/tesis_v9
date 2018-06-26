@@ -8,8 +8,8 @@
     <li class="breadcrumb-item active">Asignaturas</li>
 @endsection
 @section('content')
-    <div class="" >
-
+    <div id="app" >
+        <Example></Example>
         <div class="col-lg-12">
 
             <div class="">
@@ -97,4 +97,7 @@
 
         </div>
     </div>
+    <script>
+
+    </script>
 @stop

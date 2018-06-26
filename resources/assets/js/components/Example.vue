@@ -15,9 +15,10 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
         }
-    }
+    })
 </script>

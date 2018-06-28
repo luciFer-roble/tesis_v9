@@ -3,8 +3,8 @@
     <h1 class="m-0 text-dark">Nueva Empresa</h1>
     @endsection
 @section('nav')
-<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-<li class="breadcrumb-item"><a href="#">Empresas</a></li>
+<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+<li class="breadcrumb-item"><a href="/empresas">Empresas</a></li>
 <li class="breadcrumb-item active">Nueva</li>
     @endsection
 @section('content')

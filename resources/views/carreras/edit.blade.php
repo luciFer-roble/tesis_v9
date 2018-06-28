@@ -3,18 +3,14 @@
     <h1 class="m-0 text-dark">Editar Carreras</h1>
 @endsection
 @section('nav')
-    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="#">Carreras</a></li>
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="/carreras">Carreras</a></li>
     <li class="breadcrumb-item active">Editar</li>
 @endsection
 @section('content')
     <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
-
-
-
-
 
             {{Form::open( ['method'=>"PUT", 'url'=>array("/carreras", $carrera->idcarrera)]) }}
 

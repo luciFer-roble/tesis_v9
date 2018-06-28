@@ -1,4 +1,8 @@
 @extends('layouts.master')
+@section('nav')
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item">Tutores</li>
+@endsection
 
 @section('content')
     <div class="my-4 w-100" id="myChart" width="50%" height="380">
@@ -8,21 +12,15 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form>
-                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-                            <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'tutores/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
                         <div class="card-header">
-                            <h1>TUTORES</h1></div>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-2">
+                                <h1>TUTORES</h1></div>
+                                <input type="button" onClick="location.href = 'tutores/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
 

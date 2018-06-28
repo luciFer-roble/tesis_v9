@@ -3,8 +3,8 @@
     <h1 class="m-0 text-dark">Nuevo Sede</h1>
     @endsection
 @section('nav')
-<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-<li class="breadcrumb-item"><a href="#">Sedes</a></li>
+<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+<li class="breadcrumb-item"><a href="/sedes">Sedes</a></li>
 <li class="breadcrumb-item active">Nuevo</li>
     @endsection
 @section('content')
@@ -12,7 +12,6 @@
 
         <div class="container-fluid">
 
-            <div class="row">
             <form method="POST" action="/sedes">
 
                 {{ csrf_field() }}
@@ -30,7 +29,7 @@
                     <input type="text" class="form-control" id="descripcion" name="descripcion">
                 </div>
 
-                <div class="col-lg-6" width="100">
+                <div class="form-group" width="100">
                     <label for="universidad">Universidad:</label>
                         <select id="universidad" name="universidad" class="form-control">
                             @if (empty($universidad))
@@ -54,7 +53,7 @@
                 </div>
             </form>
                 @include('layouts.errors')
-            </div>
+
 
 
         </div>

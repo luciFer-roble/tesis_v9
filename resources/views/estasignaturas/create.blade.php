@@ -9,7 +9,6 @@
 @endsection
 @section('content')
     <div id="app" >
-        <Example></Example>
         <div class="col-lg-12">
 
             <div class="">
@@ -22,70 +21,13 @@
                         </div>
 
                         <div class="col-lg-3" width="100">
-                            <select id="asignatura1" name="asignatura1" class="form-control">
-                                <option>--Seleccione--</option>
-                                @foreach($asignaturas as $asignatura)
-                                    <option value="{{ $asignatura->idasignatura }}">{{ $asignatura->nombreasignatura }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3" width="100">
-                            <label for="asignatura2">Asignatura 2:</label>
-                        </div>
 
-                        <div class="col-lg-3" width="100">
-                            <select id="asignatura2" name="asignatura2" class="form-control">
-                                <option>--Seleccione--</option>
-                                @foreach($asignaturas as $asignatura)
-                                    <option value="{{ $asignatura->idasignatura }}">{{ $asignatura->nombreasignatura }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3" width="100">
-                            <label for="asignatura3">Asignatura 3:</label>
-                        </div>
+                            <listarasignatura codigo="{{ $idcarrera }}">
 
-                        <div class="col-lg-3" width="100">
-                            <select id="asignatura3" name="asignatura3" class="form-control">
-                                <option>--Seleccione--</option>
-                                @foreach($asignaturas as $asignatura)
-                                    <option value="{{ $asignatura->idasignatura }}">{{ $asignatura->nombreasignatura }}</option>
-                                @endforeach
-                            </select>
+                            </listarasignatura>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3" width="100">
-                            <label for="asignatura4">Asignatura 4:</label>
-                        </div>
 
-                        <div class="col-lg-3" width="100">
-                            <select id="asignatura4" name="asignatura4" class="form-control">
-                                <option>--Seleccione--</option>
-                                @foreach($asignaturas as $asignatura)
-                                    <option value="{{ $asignatura->idasignatura }}">{{ $asignatura->nombreasignatura }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3" width="100">
-                            <label for="asignatura5">Asignatura 5:</label>
-                        </div>
-
-                        <div class="col-lg-3" width="100">
-                            <select id="asignatura5" name="asignatura5" class="form-control">
-                                <option>--Seleccione--</option>
-                                @foreach($asignaturas as $asignatura)
-                                    <option value="{{ $asignatura->idasignatura }}">{{ $asignatura->nombreasignatura }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
                     <hr>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Guardar</button>

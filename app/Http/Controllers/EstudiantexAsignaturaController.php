@@ -16,9 +16,17 @@ class EstudiantexAsignaturaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function roba(Request $carrera)
     {
-        //
+        $asignaturas = DB::table('carrera')
+            ->join('mallascurricular', 'carrera.idcarrera', '=', 'mallascurricular.idcarrera')
+            ->join('nivel', 'mallascurricular.idmalla', '=', 'nivel.idmalla')
+            ->join('asignatura', 'nivel.idnivel', '=', 'asignatura.idnivel')
+            ->select('asignatura.idasignatura',  'asignatura.nombreasignatura')
+            ->where('carrera.idcarrera', '=', $carrera->idcarrera)
+            ->get();
+        return $asignaturas;
+
     }
 
     /**
@@ -28,14 +36,8 @@ class EstudiantexAsignaturaController extends Controller
      */
     public function create(Carrera $carrera, Estudiante $estudiante)
     {
-        $asignaturas = DB::table('carrera')
-            ->join('mallascurricular', 'carrera.idcarrera', '=', 'mallascurricular.idcarrera')
-            ->join('nivel', 'mallascurricular.idmalla', '=', 'nivel.idmalla')
-            ->join('asignatura', 'nivel.idnivel', '=', 'asignatura.idnivel')
-            ->select('asignatura.idasignatura',  'asignatura.nombreasignatura')
-            ->where('carrera.idcarrera', '=', $carrera->idcarrera)
-            ->get();
-        return view('estasignaturas.create')->with(compact('asignaturas', 'estudiante'));
+
+        return view('estasignaturas.create',['idcarrera'=>$carrera->idcarrera, 'estudiante'=>$estudiante]);
     }
 
     /**

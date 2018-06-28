@@ -1,4 +1,5 @@
-(function($) {
+
+/**(function($) {
     "use strict"; // Start of use strict
     // Configure tooltips for collapsed side navigation
     $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
@@ -43,13 +44,11 @@
         event.preventDefault();
     });
 })(jQuery); // End of use strict
+**/
+require('./bootstrap');
+window.Vue= require('vue');
 
-Vue.component(
-    'Example',
-    require('./Components/Example.vue')
-);
-Vue.component('prueba', require('./components/Prueba.vue'));
-
+Vue.component('listarasignatura', require('./components/listarasignatura.vue'));
 const app = new Vue({
     el: '#app'
 });

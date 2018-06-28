@@ -21,13 +21,19 @@
                 <div class="formgroup" width="100">
                     <label for="empresa">Empresa:</label>
                     <select id="empresa" name="empresa" class="form-control">
-                        @foreach($empresas as $emp)
-                            <option value="{{ $emp->idempresa }}"
-                                    @if($emp->idempresa == $empresa->idempresa)
-                                    selected
-                                    @endif
-                            >{{ $emp->nombreempresa }}</option>
-                        @endforeach
+                        @if (empty($empresa))
+                            @foreach($empresas as $empresa)
+                                <option value="{{ (string)$empresa->idempresa }}">{{ $empresa->nombreempresa }}</option>
+                            @endforeach
+                        @else
+                            @foreach($empresas as $emp)
+                                <option value="{{ $emp->idempresa }}"
+                                        @if($emp->idempresa == $empresa->idempresa)
+                                        selected
+                                        @endif
+                                >{{ $emp->nombreempresa }}</option>
+                            @endforeach
+                        @endif
                     </select>
                 </div>
 

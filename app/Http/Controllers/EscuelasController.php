@@ -19,7 +19,16 @@ class EscuelasController extends Controller
         $facultades =Facultad::all();
         return view('escuelas.create')->with(compact('facultades'));
     }
-
+    public function indexfrom(Facultad $facultad)
+    {
+        $escuelas = Escuela::all()->where('idfacultad', '=' , $facultad->idfacultad );
+        return view('escuelas.index', compact('escuelas'));
+    }
+    public function createfrom(Facultad $facultad)
+    {
+        $facultades =Facultad::all();
+        return view('escuelas.create')->with(compact('facultad', 'facultades'));
+    }
     public function store(Request $request)
     {
         $rules = array(
@@ -39,6 +48,7 @@ class EscuelasController extends Controller
 
         // store
         Escuela::create([
+            'idescuela'       => request('id'),
             'idfacultad'       => request('facultad'),
             'nombreescuela'       => request('nombre'),
             'descripcionescuela'      => request('descripcion'),

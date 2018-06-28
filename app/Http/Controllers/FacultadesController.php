@@ -20,6 +20,16 @@ class FacultadesController extends Controller
         return view('facultades.create')->with(compact('sedes'));
     }
 
+    public function indexfrom(Sede $sede)
+    {
+        $facultades = Facultad::all()->where('idsede', '=' , $sede->idsede );
+        return view('facultades.index', compact('facultades'));
+    }
+    public function createfrom(Sede $sede)
+    {
+        $sedes =Sede::all();
+        return view('facultades.create')->with(compact('sede', 'sedes'));
+    }
     public function store(Request $request)
     {
         $rules = array(
@@ -34,6 +44,7 @@ class FacultadesController extends Controller
 
         // store
         Facultad::create([
+            'idfacultad'       => request('id'),
             'idsede'       => request('sede'),
             'nombrefacultad'      => request('nombre'),
             'misionfacultad'       => request('mision'),

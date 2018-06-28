@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('titulo')
-    <h1 class="m-0 text-dark">Nueva Carrera</h1>
+    <h1 class="m-0 text-dark">Nueva Facultad</h1>
     @endsection
 @section('nav')
 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-<li class="breadcrumb-item"><a href="#">Carreras</a></li>
+<li class="breadcrumb-item"><a href="#">Facultades</a></li>
 <li class="breadcrumb-item active">Nueva</li>
     @endsection
 @section('content')
@@ -13,7 +13,7 @@
         <div class="container-fluid">
 
             <div class="row">
-            <form method="POST" action="/carreras">
+            <form method="POST" action="/facultades">
 
                 {{ csrf_field() }}
                 <div class="formgroup" width="100">
@@ -29,20 +29,29 @@
                     <label for="descripcion">Descripcion:</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion">
                 </div>
+                <div class="formgroup">
+                    <label for="mision">Mision:</label>
+                    <input type="text" class="form-control" id="mision" name="mision">
+                </div>
+
+                <div class="formgroup">
+                    <label for="vision">Vision:</label>
+                    <input type="text" class="form-control" id="vision" name="vision">
+                </div>
                 <div class="col-lg-6" width="100">
-                    <label for="escuela">Escuela:</label>
-                        <select id="escuela" name="escuela" class="form-control">
-                            @if (empty($escuela))
-                                @foreach($escuelas as $escuela)
-                                    <option value="{{ (string)$escuela->idescuela }}">{{ $escuela->nombreescuela }}</option>
+                    <label for="sede">Sede:</label>
+                        <select id="sede" name="sede" class="form-control">
+                            @if (empty($sede))
+                                @foreach($sedes as $sede)
+                                    <option value="{{ (string)$sede->idsede }}">{{ $sede->nombresede }}</option>
                                 @endforeach
                             @else
-                                @foreach($escuelas as $esc)
-                                    <option value="{{ $esc->idescuela }}"
-                                            @if($esc->idescuela == $escuela->idescuela)
-                                            selected
-                                            @endif
-                                    >{{ $esc->nombreescuela }}</option>
+                                @foreach($sedes as $sed)
+                                    <option value="{{ $sed->idsede }}"
+                                                @if($sed->idsede == $sede->idsede)
+                                                    selected
+                                                @endif
+                                    >{{ $sed->nombresede }}</option>
                                 @endforeach
                             @endif
                         </select>

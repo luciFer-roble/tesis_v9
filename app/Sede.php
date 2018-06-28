@@ -12,6 +12,7 @@ class Sede extends Model
     protected $primaryKey = 'idsede';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function convenio(){
         return $this->hasMany('App\Convenio');

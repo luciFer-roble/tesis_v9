@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="formgroup">
-                    <label for="modalidad">Modalida:</label>
+                    <label for="modalidad">Modalidad:</label>
                     <input type="text" class="form-control" id="modalidad" name="modalidad">
                 </div>
 
@@ -66,11 +66,24 @@
                 </div>
 
                 <div class="col-lg-6" width="100">
-                    <label for="escuela">Facultad:</label>
+                    <label for="facultad">Facultad:</label>
                     <select id="facultad" name="facultad" class="form-control">
-                        @foreach($facultades as $facultad)
-                            <option value="{{(string)$facultad->idfacultad }}">{{ $facultad->nombrefacultad }}</option>
-                        @endforeach
+                        @if (empty($facultad))
+                            @foreach($facultades as $facultad)
+                                <option value="{{ (string)$facultad->idfacultad }}">{{ $facultad->nombrefacultad }}</option>
+                            @endforeach
+                        @else
+                            @foreach($facultades as $fac)
+                                <option value="{{ $fac->idfacultad }}"
+
+                                           @if($fac->idfacultad == $facultad->idfacultad)
+                                            selected
+                                            @endif
+
+
+                                >{{ $fac->nombrefacultad }}</option>
+                            @endforeach
+                        @endif
                     </select>
                 </div>
                 <hr>

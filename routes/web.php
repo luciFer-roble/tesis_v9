@@ -32,7 +32,7 @@ Route::delete('/empresas/{empresa}', 'EmpresasController@destroy');
 
 Route::get('/carreras', 'CarrerasController@index');
 Route::get('/carreras/create', 'CarrerasController@create');
-Route::get('/carreras/{carrera}', 'CarrerasController@show');
+Route::get('/carreras/{escuela}', 'CarrerasController@show');
 Route::post('/carreras', 'CarrerasController@store');
 Route::get('/carreras/{carrera}/edit', 'CarrerasController@edit');
 Route::put('/carreras/{carrera}', 'CarrerasController@update');
@@ -47,6 +47,28 @@ Route::post('/escuelas', 'EscuelasController@store');
 Route::get('/escuelas/{escuela}/edit', 'EscuelasController@edit');
 Route::put('/escuelas/{escuela}', 'EscuelasController@update');
 Route::delete('/escuelas/{escuela}', 'EscuelasController@destroy');
+Route::get('/escuelas/{facultad}/create', 'EscuelasController@createfrom');
+Route::get('/escuelas/{facultad}/list', 'EscuelasController@indexfrom');
+
+Route::get('/facultades', 'FacultadesController@index');
+Route::get('/facultades/create', 'FacultadesController@create');
+Route::get('/facultades/{sede}', 'FacultadesController@show');
+Route::post('/facultades', 'FacultadesController@store');
+Route::get('/facultades/{facultad}/edit', 'FacultadesController@edit');
+Route::put('/facultades/{facultad}', 'FacultadesController@update');
+Route::delete('/facultades/{facultad}', 'FacultadesController@destroy');
+Route::get('/facultades/{sede}/create', 'FacultadesController@createfrom');
+Route::get('/facultades/{sede}/list', 'FacultadesController@indexfrom');
+
+Route::get('/sedes', 'SedesController@index');
+Route::get('/sedes/create', 'SedesController@create');
+Route::get('/sedes/{sede}', 'SedesController@show');
+Route::post('/sedes', 'SedesController@store');
+Route::get('/sedes/{sede}/edit', 'SedesController@edit');
+Route::put('/sedes/{sede}', 'SedesController@update');
+Route::delete('/sedes/{sede}', 'SedesController@destroy');
+Route::get('/sedes/{universidad}/create', 'SedesController@createfrom');
+Route::get('/sedes/{universidad}/list', 'SedesController@indexfrom');
 
 Route::get('/tutores', 'TutorEsController@index');
 Route::get('/tutores/create', 'TutorEsController@create');

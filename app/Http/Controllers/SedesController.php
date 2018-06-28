@@ -19,7 +19,16 @@ class SedesController extends Controller
         $universidades =Universidad::all();
         return view('sedes.create')->with(compact('universidades'));
     }
-
+    public function indexfrom(Universidad $universidad)
+    {
+        $sedes = Sede::all()->where('iduniversidad', '=' , $universidad->iduniversidad );
+        return view('sedes.index', compact('sedes'));
+    }
+    public function createfrom(Universidad $universidad)
+    {
+        $universidades =Universidad::all();
+        return view('sedes.create')->with(compact('universidad', 'universidades'));
+    }
     public function store(Request $request)
     {
         $rules = array(
@@ -32,6 +41,7 @@ class SedesController extends Controller
 
         // store
         Sede::create([
+            'idsede'       => request('id'),
             'iduniversidad'       => request('universidad'),
             'nombresede'      => request('nombre'),
             'descripcionsede'      => request('descripcion')

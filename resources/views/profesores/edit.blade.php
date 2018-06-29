@@ -15,11 +15,12 @@
             {{Form::open( ['method'=>"PUT", 'url'=>array("/profesores", $profesor->idprofesor)]) }}
 
             {{ csrf_field() }}
-            <div class="formgroup" width="100">
+            <div class="row">
+                <div class="col-lg-6" width="100">
                 <label for="id">Id:</label>
                 <input type="text" class="form-control" id="id" name="id" value="{{ $profesor->idprofesor }}">
             </div>
-            <div class="formgroup" width="100">
+                <div class="col-lg-6" width="100">
                 <label for="escuela">Escuela:</label>
                 <select id="escuela" name="escuela" class="form-control">
                     @foreach($escuelas as $escuela)
@@ -31,33 +32,36 @@
                     @endforeach
                 </select>
             </div>
-            <div class="formgroup" width="100">
+            </div>
+            <div class="row">
+                <div class="col-lg-6" width="100">
                 <label for="nombre1">Primer Nombre:</label>
                 <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{ $profesor->nombre1profesor }}">
             </div>
-            <div class="formgroup" width="100">
+                <div class="col-lg-6" width="100">
                 <label for="nombre2">Segundo Nombre:</label>
                 <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{ $profesor->nombre2profesor }}">
             </div>
-
-            <div class="formgroup" width="100">
+            </div>
+            <div class="row">
+                <div class="col-lg-6" width="100">
                 <label for="apellido1">Apellido Paterno:</label>
                 <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{ $profesor->apellido1profesor }}">
             </div>
-            <div class="formgroup" width="100">
+                <div class="col-lg-6" width="100">
                 <label for="apellido2">Apellido Materno:</label>
                 <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{ $profesor->apellido2profesor }}">
             </div>
-
-            <div class="formgroup">
+            </div>
+            <div class="formgroup" style="width: 49.5%" >
                 <label for="correo">Correo:</label>
                 <input type="text" class="form-control" id="correo" name="correo" value="{{ $profesor->correoprofesor }}">
             </div>
-            <div class="formgroup">
+            <div class="formgroup" style="width: 49.5%" >
                 <label for="celular">Celular:</label>
                 <input type="text" class="form-control" id="celular" name="celular" value="{{ $profesor->celularprofesor }}">
             </div>
-            <div class="formgroup">
+            <div class="formgroup" style="width: 49.5%" >
                 <label for="oficina">Oficina:</label>
                 <input type="text" class="form-control" id="oficina" name="oficina" value="{{ $profesor->oficinaprofesor }}">
             </div>

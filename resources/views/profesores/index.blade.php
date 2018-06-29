@@ -53,7 +53,7 @@
                                             <td class="p-1 m-0">{{ $profesor->correoprofesor }}</td>
                                             <td class="p-1 m-0">{{ $profesor->celularprofesor }}</td>
                                             <td class="p-1 m-0">{{ $profesor->oficinaprofesor }}</td>
-                                            <td class="p-1 m-0">{{ $profesor->carrera->escuela->nombreescuela }}</td>
+                                            <td class="p-1 m-0">{{ $profesor->escuela->nombreescuela }}</td>
                                             <td>
                                                 <a  class="btn btn-link" href="{{ URL::to('profesores/' . $profesor->idprofesor . '/edit') }}">
 

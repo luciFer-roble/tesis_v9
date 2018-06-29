@@ -91,3 +91,11 @@ Route::post('/estudiantes', 'EstudiantesController@store');
 Route::get('/estudiantes/{estudiante}/edit', 'EstudiantesController@edit');
 Route::put('/estudiantes/{estudiante}', 'EstudiantesController@update');
 Route::delete('/estudiantes/{estudiante}', 'EstudiantesController@destroy');
+
+Route::get('/practicas', 'PracticasController@index');
+Route::get('/practicas/create', 'PracticasController@create');
+Route::get('/practicas/{practica}', 'PracticasController@show');
+Route::post('/practicas', 'PracticasController@store');
+Route::get('/practicas/{practica}/edit', 'PracticasController@edit');
+Route::put('/practicas/{practica}', 'PracticasController@update');
+Route::delete('/practicas/{practica}', 'PracticasController@destroy');

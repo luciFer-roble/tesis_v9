@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Profesor extends Model
 {
@@ -11,6 +12,7 @@ class Profesor extends Model
     protected $primaryKey = 'idprofesor';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function practica(){
         return $this->hasMany('App\Practica');

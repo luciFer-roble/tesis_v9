@@ -12,6 +12,7 @@ class Profesor extends Model
     protected $primaryKey = 'idprofesor';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function practica(){
         return $this->hasMany('App\Practica');

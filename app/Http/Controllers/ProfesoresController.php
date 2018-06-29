@@ -11,7 +11,8 @@ class ProfesoresController extends Controller
     public function index()
     {
         $profesores = Profesor::all();
-        return view('profesores.index', compact('profesores'));
+        $escuelas = Escuela::all();
+        return view('profesores.index', compact('profesores','escuelas'));
     }
 
     public function create()
@@ -37,6 +38,7 @@ class ProfesoresController extends Controller
 
         // store
         Profesor::create([
+            'idprofesor'       => request('id'),
             'idescuela'       => request('escuela'),
             'nombre1profesor'      => request('nombre1'),
             'nombre2profesor'      => request('nombre2'),

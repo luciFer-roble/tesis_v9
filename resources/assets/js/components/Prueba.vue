@@ -1,45 +1,16 @@
 <template>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-12">
-
-                <div class="panel panel-default">
-
-                    <div class="panel-heading">My Assigments</div>
-
-
-
-                    <div class="panel-body">
-
-                        holaaaaaaaaaaa
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+    <div>
+        {{ message}}
     </div>
-
 </template>
-
-
-
 <script>
-
     export default {
-
-        mounted() {
-
-
-
+        data() {
+              return{
+                  message:'hola'
+              };
+        },
+        methods:{
         }
-
     }
-
 </script>

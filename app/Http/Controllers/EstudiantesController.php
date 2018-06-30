@@ -80,7 +80,10 @@ class EstudiantesController extends Controller
     public function edit(Estudiante $estudiante)
     {
         $carreras =Carrera::all();
-        return view('estudiantes.edit')->with(compact('estudiante', 'carreras'));
+        $escuelas =Escuela::all();
+        $facultades =Facultad::all();
+        $sedes =Sede::all();
+        return view('estudiantes.edit')->with(compact('estudiante', 'carreras', 'escuelas', 'facultades', 'sedes'));
     }
 
 
@@ -103,7 +106,7 @@ class EstudiantesController extends Controller
 
 
         // store
-        Escuela::updateOrCreate(['idestudiante'  => $id], [
+        Estudiante::updateOrCreate(['idestudiante'  => $id], [
             'idcarrera'       => request('carrera'),
             'cedulaestudiante'       => request('cedula'),
             'nombre1estudiante'      => request('nombre1'),

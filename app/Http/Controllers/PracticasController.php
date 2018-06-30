@@ -36,7 +36,6 @@ class PracticasController extends Controller
             'tutore'    => 'required',
             'descripcion'    => 'required',
             'inicio'    => 'required',
-            'fin'    => 'required',
             'tipo'    => 'required',
             'salario'    => 'required'
         );
@@ -47,11 +46,10 @@ class PracticasController extends Controller
         Practica::create([
             'idestudiante'       => request('estudiante'),
             'idprofesor'      => request('profesor'),
-            'idempresa'       => request('empresa'),
             'idtutore'      => request('tutore'),
             'descripcionpractica'      => request('descripcion'),
-            'iniciopractica'      => request('inicio'),
-            'finpractica'      => request('fin'),
+            'fechainiciopractica'      => request('inicio'),
+            'fechafinpractica'      => request('fin'),
             'tipopractica'      => request('tipo'),
             'salariopractica'      => request('salario')
         ]);
@@ -85,11 +83,8 @@ class PracticasController extends Controller
         $rules = array(
             'estudiante'       => 'required',
             'profesor'       => 'required',
-            'empresa'       => 'required',
             'tutore'    => 'required',
-            'descripcion'    => 'required',
             'inicio'    => 'required',
-            'fin'    => 'required',
             'tipo'    => 'required',
             'salario'    => 'required'
         );
@@ -100,11 +95,10 @@ class PracticasController extends Controller
         Practica::updateOrCreate(['idpractica'  => $id], [
             'idestudiante'       => request('estudiante'),
             'idprofesor'      => request('profesor'),
-            'idempresa'       => request('empresa'),
             'idtutore'      => request('tutore'),
             'descripcionpractica'      => request('descripcion'),
-            'iniciopractica'      => request('inicio'),
-            'finpractica'      => request('fin'),
+            'fechainiciopractica'      => request('inicio'),
+            'fechafinpractica'      => request('fin'),
             'tipopractica'      => request('tipo'),
             'salariopractica'      => request('salario')
         ]);

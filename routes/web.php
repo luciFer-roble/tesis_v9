@@ -48,8 +48,16 @@ Route::post('/profesores', 'ProfesoresController@store');
 Route::get('/profesores/{profesor}/edit', 'ProfesoresController@edit');
 Route::put('/profesores/{profesor}', 'ProfesoresController@update');
 Route::delete('/profesores/{profesor}', 'ProfesoresController@destroy');
-Route::get('/profesores/{escuela}/create', 'ProfesoresController@createfrom');
-Route::get('/profesores/{escuela}/list', 'ProfesoresController@indexfrom');
+
+Route::get('/coordinadores', 'CoordinadoresController@index');
+Route::get('/coordinadores/create', 'CoordinadoresController@create');
+Route::get('/coordinadores/{coordinador}', 'CoordinadoresController@show');
+Route::post('/coordinadores', 'CoordinadoresController@store');
+Route::get('/coordinadores/{coordinador}/edit', 'CoordinadoresController@edit');
+Route::put('/coordinadores/{coordinador}', 'CoordinadoresController@update');
+Route::delete('/coordinadores/{coordinador}', 'CoordinadoresController@destroy');
+Route::get('/coordinadores/{escuela}/create', 'CoordinadoresController@createfrom');
+Route::get('/coordinadores/{escuela}/list', 'CoordinadoresController@indexfrom');
 
 Route::get('/escuelas', 'EscuelasController@index');
 Route::get('/escuelas/create', 'EscuelasController@create');
@@ -105,7 +113,7 @@ Route::delete('/estudiantes/{estudiante}', 'EstudiantesController@destroy');
 
 Route::get('/practicas', 'PracticasController@index');
 Route::get('/practicas/create', 'PracticasController@create');
-Route::get('/practicas/{practica}', 'PracticasController@show');
+Route::get('/practicas/{practica}', 'Pract/.asController@show');
 Route::post('/practicas', 'PracticasController@store');
 Route::get('/practicas/{practica}/edit', 'PracticasController@edit');
 Route::put('/practicas/{practica}', 'PracticasController@update');

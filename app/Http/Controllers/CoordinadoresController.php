@@ -50,7 +50,7 @@ class CoordinadoresController extends Controller
 
     public function show(Coordinador $coordinador)
     {
-        return view('coordinador.show')->with('coordinador', $coordinador);
+        return view('coordinadores.show')->with('coordinador', $coordinador);
 
     }
 

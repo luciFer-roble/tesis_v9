@@ -8,16 +8,15 @@
     <li class="breadcrumb-item active">Nuevo</li>
 @endsection
 @section('content')
-    <div class="" >
 
-        <div class="col-lg-12">
+    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
-            <div class="">
+        <div class="container-fluid">
                 <form method="POST" action="/profesores">
 
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-lg-6" width="200">
+                        <div class="col-lg-6" width="100">
                             <label for="id">Id:</label>
                             <input type="text" class="form-control" id="id" name="id">
                         </div>
@@ -89,5 +88,4 @@
 
 
         </div>
-    </div>
 @stop

@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
-
         <div class="container-fluid">
             <!-- Breadcrumbs-->
 
@@ -20,8 +18,8 @@
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
                                     <h1>COORDINADORES</h1></div>
-                                    <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
-                                </div>
+                                <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-secondary" value="NUEVA"></input>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -83,6 +81,6 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 @stop

@@ -34,15 +34,11 @@ to get the desired effect
     @include('layouts.contentTitle')
         <!-- Main content -->
         <div class="content">
-            <div class="card">
 
-                <div class="card-body">
 
                     @yield('content')
 
-                </div>
 
-            </div>
         </div>
     <!-- /.content-wrapper -->
     </div>

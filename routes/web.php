@@ -53,11 +53,11 @@ Route::get('/coordinadores', 'CoordinadoresController@index');
 Route::get('/coordinadores/create', 'CoordinadoresController@create');
 Route::get('/coordinadores/{coordinador}', 'CoordinadoresController@show');
 Route::post('/coordinadores', 'CoordinadoresController@store');
-Route::get('/coordinadores/{coordinador}/edit', 'CoordinadoresController@edit');
+Route::get('/coordinadores/{coordinador}/change', 'CoordinadoresController@change');
 Route::put('/coordinadores/{coordinador}', 'CoordinadoresController@update');
 Route::delete('/coordinadores/{coordinador}', 'CoordinadoresController@destroy');
-Route::get('/coordinadores/{escuela}/create', 'CoordinadoresController@createfrom');
-Route::get('/coordinadores/{escuela}/list', 'CoordinadoresController@indexfrom');
+Route::get('/coordinadores/{carrera}/create', 'CoordinadoresController@createfrom');
+//Route::get('/coordinadores/{carrera}/list', 'CoordinadoresController@indexfrom');
 
 Route::get('/escuelas', 'EscuelasController@index');
 Route::get('/escuelas/create', 'EscuelasController@create');

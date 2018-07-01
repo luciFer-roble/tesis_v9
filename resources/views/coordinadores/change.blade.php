@@ -1,55 +1,131 @@
 @extends('layouts.master')
 @section('titulo')
-    <h1 class="m-0 text-dark">Editar Carreras</h1>
+    <h1 class="m-0 text-dark">Cambiar Coordinador de Carrera</h1>
 @endsection
 @section('nav')
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/carreras">Carreras</a></li>
-    <li class="breadcrumb-item active">Editar</li>
+    <li class="breadcrumb-item"><a href="/coordinadores">Coordinadores</a></li>
+    <li class="breadcrumb-item active">Cambiar</li>
 @endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
-
-            {{Form::open( ['method'=>"PUT", 'url'=>array("/carreras", $carrera->idcarrera)]) }}
-
-                {{ csrf_field() }}
-                <div class="formgroup" width="100">
-                    <label for="id">Id:</label>
-                    <input type="text" class="form-control" id="id" name="id" value="{{ $carrera->idcarrera }}">
+        <div class="row">
+            <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Coordinador Actual</h3>
                 </div>
-                <div class="formgroup" width="100">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $carrera->nombrecarrera }}">
-                </div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Carrera</th>
+                    <td colspan="2"> {{ $coordinador->carrera->nombrecarrera }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td colspan="2">{{ $coordinador->profesor->nombre1profesor }}</td>
 
-                <div class="formgroup">
-                    <label for="descripcion">Descripcion:</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ $carrera->descripcioncarrera }}">
-                </div>
-                <div class="formgroup" width="100">
-                    <label for="escuela">Escuela:</label>
-                    <select id="escuela" name="escuela" class="form-control">
-                        @foreach($escuelas as $escuela)
-                            <option value="{{ $escuela->idescuela }}"
-                                    @if($escuela->idescuela == $carrera->idescuela)
-                                    selected
-                                    @endif
-                            >{{ $escuela->nombreescuela }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                </tr>
+                <tr>
+                    <th>Fecha de Inicio</th>
+                    <td colspan="2">{{ $coordinador->fechainiciocoordinador }}</td>
 
-                <hr>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </tr>
+                <tr>
+                    <th>Fecha de Fin</th>
+                    {{Form::open( ['method'=>"PUT", 'url'=>array("/coordinadores", $coordinador->idcoordinador)])}}
+                    <td>
+                        <input type="text" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
+                    </td>
+                    <td>
+                        <input type="hidden" class="form-control" id="activo" name="activo" value="false">
 
+                            <button type="submit" class="btn btn-primary">Cambiar</button>
+
+
+                        {{ Form::close() }}
+                    </td>
+
+                </tr>
+
+                        </table>
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div class="row">
+            <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Nuevo Coordinador</h3>
+                </div>
+                <form method="POST" action="/coordinadores">
+                    <table class="table table-bordered">
 
+                    {{ csrf_field() }}
+                        <tr>
+                            <th for="carrera">Carrera:</th>
+                            <td>
+                                <input type="text" class="form-control" id="nombrecarrera" name="nombrecarrera" value="{{ $coordinador->carrera->nombrecarrera }}"disabled>
+                            </td>
+                               <input type="hidden" class="form-control" id="carrera" name="carrera" value="{{ $coordinador->carrera->idcarrera }}">
+
+                        </tr>
+                        <tr>
+                            <th for="profesor">Profesor:</th>
+                            <td><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
+                                @if (empty($profesor))
+                                    @foreach($profesores as $profesor)
+                                        <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombre1profesor }}</option>
+                                    @endforeach
+                                @else
+                                    @foreach($profesores as $prof)
+                                        <option value="{{ $prof->idprofesor }}"
+                                                @if($prof->idprofesor == $profesor->idprofesor)
+                                                selected
+                                                @endif
+                                        >{{ $prof->nombre1profesor }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            </td>
+                        </tr>
+
+                    <tr>
+                            <th for="inicio">Fecha de Inicio:</th>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <input type="text" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                            <th for="fin">Fecha de Fin:</th>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
+                                <input id="fin" name="fin" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                            </div>
+                        </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+
+                    </div>
+                </form>
+            </div>
+            </div>
+            </div>
             @include('layouts.errors')
 
         </div>
-    </div>
+
 @stop

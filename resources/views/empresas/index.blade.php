@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -16,11 +15,13 @@
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
                         <div class="card-header">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
+                            <h1>EMPRESAS</h1></div>
                             <div class="btn-group mr-2">
-                                <h1>EMPRESAS</h1></div>
-                                <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-secondary" value="NUEVA"></input>
+                                <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
                             </div>
+                        </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -81,6 +82,6 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 @stop

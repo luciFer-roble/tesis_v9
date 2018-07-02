@@ -8,72 +8,78 @@
     <li class="breadcrumb-item active">Editar</li>
 @endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
-
-        <div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
 
             {{Form::open( ['method'=>"PUT", 'url'=>array("/profesores", $profesor->idprofesor)]) }}
 
             {{ csrf_field() }}
-            <div class="row">
-                <div class="col-lg-6" width="100">
-                <label for="id">Id:</label>
-                <input type="text" class="form-control" id="id" name="id" value="{{ $profesor->idprofesor }}">
-            </div>
-                <div class="col-lg-6" width="100">
-                <label for="escuela">Escuela:</label>
-                <select id="escuela" name="escuela" class="form-control">
-                    @foreach($escuelas as $escuela)
-                        <option value="{{ $escuela->idescuela }}"
-                                @if($escuela->idescuela == $profesor->idescuela)
-                                selected
-                                @endif
-                        >{{ $escuela->nombreescuela }}</option>
-                    @endforeach
-                </select>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6" width="100">
-                <label for="nombre1">Primer Nombre:</label>
-                <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{ $profesor->nombre1profesor }}">
-            </div>
-                <div class="col-lg-6" width="100">
-                <label for="nombre2">Segundo Nombre:</label>
-                <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{ $profesor->nombre2profesor }}">
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6" width="100">
-                <label for="apellido1">Apellido Paterno:</label>
-                <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{ $profesor->apellido1profesor }}">
-            </div>
-                <div class="col-lg-6" width="100">
-                <label for="apellido2">Apellido Materno:</label>
-                <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{ $profesor->apellido2profesor }}">
-            </div>
-            </div>
-            <div class="formgroup" style="width: 49.5%" >
-                <label for="correo">Correo:</label>
-                <input type="text" class="form-control" id="correo" name="correo" value="{{ $profesor->correoprofesor }}">
-            </div>
-            <div class="formgroup" style="width: 49.5%" >
-                <label for="celular">Celular:</label>
-                <input type="text" class="form-control" id="celular" name="celular" value="{{ $profesor->celularprofesor }}">
-            </div>
-            <div class="formgroup" style="width: 49.5%" >
-                <label for="oficina">Oficina:</label>
-                <input type="text" class="form-control" id="oficina" name="oficina" value="{{ $profesor->oficinaprofesor }}">
-            </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6" width="100">
+                                <label for="id">Id:</label>
+                                <input type="text" class="form-control" id="id" name="id" value="{{ $profesor->idprofesor }}">
+                            </div>
+                            <div class="col-lg-6" width="100">
+                                <label for="escuela">Escuela:</label>
+                                <select id="escuela" name="escuela" class="form-control">
+                                    @foreach($escuelas as $escuela)
+                                        <option value="{{ $escuela->idescuela }}"
+                                                @if($escuela->idescuela == $profesor->idescuela)
+                                                selected
+                                                @endif
+                                        >{{ $escuela->nombreescuela }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6" width="100">
+                                <label for="nombre1">Primer Nombre:</label>
+                                <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{ $profesor->nombre1profesor }}">
+                            </div>
+                            <div class="col-lg-6" width="100">
+                                <label for="nombre2">Segundo Nombre:</label>
+                                <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{ $profesor->nombre2profesor }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6" width="100">
+                                <label for="apellido1">Apellido Paterno:</label>
+                                <input type="text" class="form-control" id="apellido1" name="apellido1" value="{{ $profesor->apellido1profesor }}">
+                            </div>
+                            <div class="col-lg-6" width="100">
+                                <label for="apellido2">Apellido Materno:</label>
+                                <input type="text" class="form-control" id="apellido2" name="apellido2" value="{{ $profesor->apellido2profesor }}">
+                            </div>
+                        </div>
+                        <div class="formgroup" style="width: 49.5%" >
+                            <label for="correo">Correo:</label>
+                            <input type="text" class="form-control" id="correo" name="correo" value="{{ $profesor->correoprofesor }}">
+                        </div>
+                        <div class="formgroup" style="width: 49.5%" >
+                            <label for="celular">Celular:</label>
+                            <input type="text" class="form-control" id="celular" name="celular" value="{{ $profesor->celularprofesor }}">
+                        </div>
+                        <div class="formgroup" style="width: 49.5%" >
+                            <label for="oficina">Oficina:</label>
+                            <input type="text" class="form-control" id="oficina" name="oficina" value="{{ $profesor->oficinaprofesor }}">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
 
-            <hr>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
 
-            </div>
             </form>
 
             @include('layouts.errors')
+                </div>
+            </div>
 
         </div>
     </div>

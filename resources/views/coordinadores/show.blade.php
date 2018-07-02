@@ -23,7 +23,7 @@
 
                             <div class="row">
                                 <div class="jumbotron text-center">
-                                    <h2>{{ $coordinador->profesor->nombre1profesor }}</h2>
+                                    <h2>{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</h2>
                                     <p>
                                         <strong>Carrera:</strong> {{ $coordinador->carrera->nombrecarrera }}<br>
                                         <strong>Correo:</strong> {{ $coordinador->profesor->correoprofesor }}<br>

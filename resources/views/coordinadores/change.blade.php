@@ -78,7 +78,7 @@
                                 <td><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
                                         @if (empty($profesor))
                                             @foreach($profesores as $profesor)
-                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombre1profesor }}</option>
+                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</option>
                                             @endforeach
                                         @else
                                             @foreach($profesores as $prof)

@@ -48,7 +48,6 @@ to get the desired effect
     @include('layouts.footer')
 </div>
 <script src="{{mix('js/vendor.js')}}"></script>
-<script src="{{mix('js/app.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

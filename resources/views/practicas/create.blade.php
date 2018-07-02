@@ -36,13 +36,6 @@
                             </select>
                         </div>
 
-                        <div class="col-lg-6" width="100%">
-                        </div>
-                        <div class="col-lg-1" ><span class="float-right">
-                            <button width='100%' class="btn btn-primary">ACTIVIDADES</button></span>
-                        </div>
-                        <div class="col-lg-1" width="100%">
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4" width="100">
@@ -64,14 +57,6 @@
                                 </div>
                             </div>
 
-                        </div>
-
-                        <div class="col-lg-6" width="100%">
-                        </div>
-                        <div class="col-lg-1" width="100"><span class="float-right">
-                            <button  width='100%' class="btn btn-primary">DOCUMENTOS</button></span>
-                        </div>
-                        <div class="col-lg-1" width="100%">
                         </div>
 
                     </div>

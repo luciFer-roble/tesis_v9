@@ -14,12 +14,14 @@
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
                         <div class="card-header">
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
 
                             <div class="btn-toolbar mb-2 mb-md-0">
+                                <h1>COORDINADORES</h1></div>
                                 <div class="btn-group mr-2">
-                                    <h1>COORDINADORES</h1></div>
-                                <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-secondary" value="NUEVA"></input>
+                                <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
                             </div>
+                        </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

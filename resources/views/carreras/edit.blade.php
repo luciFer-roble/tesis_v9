@@ -8,13 +8,16 @@
     <li class="breadcrumb-item active">Editar</li>
 @endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
 
             {{Form::open( ['method'=>"PUT", 'url'=>array("/carreras", $carrera->idcarrera)]) }}
 
                 {{ csrf_field() }}
+                <div class="card-body">
                 <div class="formgroup" width="100">
                     <label for="id">Id:</label>
                     <input type="text" class="form-control" id="id" name="id" value="{{ $carrera->idcarrera }}">
@@ -40,16 +43,21 @@
                         @endforeach
                     </select>
                 </div>
+                </div>
+                <div class="card-footer">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
 
-                <hr>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
 
                 </div>
-            </form>
+
+                            </form>
 
             @include('layouts.errors')
 
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 @stop

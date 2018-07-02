@@ -18,7 +18,8 @@ class CoordinadoresController extends Controller
 
     public function create()
     {
-        $carreras =Carrera::all();
+        $carrerasutilizadas = Coordinador::pluck('idcarrera')->all();
+        $carreras = Carrera::whereNotIn('idcarrera', $carrerasutilizadas)->select('idcarrera','nombrecarrera')->get();
         $profesores = Profesor::all();
         return view('coordinadores.create')->with(compact('carreras', 'profesores'));
     }

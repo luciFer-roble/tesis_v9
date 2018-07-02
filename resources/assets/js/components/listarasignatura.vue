@@ -3,9 +3,6 @@
 <select  class="form-control" v-model="seleccionado" >
  <option :key="item.idasignatura" v-for="item in lista2" :value="item.idasignatura">{{item.nombreasignatura}}</option>
   </select>
-    <button type="button" v-on:click="cargardatos" >
-        cargar
-    </button>
   </div>
 
 </template>

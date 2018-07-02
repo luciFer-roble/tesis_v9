@@ -19,7 +19,7 @@
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <h1>COORDINADORES</h1></div>
                                 <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                <input type="button" onClick="location.href = 'coordinadores/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                             </div>
                         </div>
                         </div>
@@ -30,7 +30,6 @@
                                     <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Apellido</th>
                                         <th>Carrera</th>
                                         <th>Fecha Inicio</th>
                                         <th>Fecha Fin</th>
@@ -41,8 +40,7 @@
                                     <tbody>
                                     @foreach($coordinadores as $coordinador)
                                         <tr>
-                                            <td>{{ $coordinador->profesor->nombre1profesor }}</td>
-                                            <td>{{ $coordinador->profesor->apellido1profesor }}</td>
+                                            <td>{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</td>
                                             <td>{{ $coordinador->carrera->nombrecarrera }}</td>
                                             <td>{{ $coordinador->fechainiciocoordinador }}</td>
                                             <td>{{ $coordinador->fechafincoordinador }}</td>

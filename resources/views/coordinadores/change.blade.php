@@ -12,7 +12,7 @@
         <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-            <div class="card">
+            <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title">Coordinador Actual</h3>
                 </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="row">
             <div class="col-12">
-            <div class="card">
+            <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">Nuevo Coordinador</h3>
                 </div>
@@ -66,16 +66,16 @@
                         <div class="card-body">
                             <table class="table table-bordered">
                             <tr>
-                                <th for="carrera">Carrera:</th>
-                                <td>
+                                <th for="carrera">Carrera</th>
+                                <td colspan="2">
                                     <input type="text" class="form-control" id="nombrecarrera" name="nombrecarrera" value="{{ $coordinador->carrera->nombrecarrera }}"disabled>
                                 </td>
                                 <input type="hidden" class="form-control" id="carrera" name="carrera" value="{{ $coordinador->carrera->idcarrera }}">
 
                             </tr>
                             <tr>
-                                <th for="profesor">Profesor:</th>
-                                <td><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
+                                <th for="profesor">Profesor</th>
+                                <td colspan="2"><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
                                         @if (empty($profesor))
                                             @foreach($profesores as $profesor)
                                                 <option value="{{ (string)$profesor->idprofesor }}">{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</option>
@@ -94,8 +94,8 @@
                             </tr>
 
                             <tr>
-                                <th for="inicio">Fecha de Inicio:</th>
-                                <td>
+                                <th for="inicio">Fecha de Inicio</th>
+                                <td colspan="2">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -106,8 +106,8 @@
                             </tr>
 
                             <tr>
-                                <th for="fin">Fecha de Fin:</th>
-                                <td>
+                                <th for="fin">Fecha de Fin</th>
+                                <td colspan="2">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-calendar"></i></span>

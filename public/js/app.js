@@ -963,14 +963,13 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(41);
 
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 
 /**(function($) {
     "use strict"; // Start of use strict
@@ -1019,9 +1018,9 @@ module.exports = __webpack_require__(42);
 })(jQuery); // End of use strict
 **/
 __webpack_require__(11);
-window.Vue = __webpack_require__(35);
+window.Vue = __webpack_require__(34);
 
-Vue.component('listarasignatura', __webpack_require__(38));
+Vue.component('listarasignatura', __webpack_require__(37));
 var app = new Vue({
     el: '#app'
 });
@@ -21632,8 +21631,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 34 */,
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32596,10 +32594,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(36).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(35).setImmediate))
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -32655,7 +32653,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(37);
+__webpack_require__(36);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -32669,7 +32667,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -32862,15 +32860,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(39)
+var normalizeComponent = __webpack_require__(38)
 /* script */
-var __vue_script__ = __webpack_require__(40)
+var __vue_script__ = __webpack_require__(39)
 /* template */
-var __vue_template__ = __webpack_require__(41)
+var __vue_template__ = __webpack_require__(40)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -32909,7 +32907,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -33018,11 +33016,25 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33039,7 +33051,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             lista2: [],
-            seleccionado: ''
+            seleccionado: '',
+            rows: [{
+                title: 'Asignatura',
+                description: ''
+            }]
         };
     },
     methods: {
@@ -33053,6 +33069,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.lista2 = response.data;
                 console.log(_this.lista2[0].nombreasignatura);
             });
+        },
+        addrow: function addrow(e) {
+            e.preventDefault();
+            var elem = document.createElement('tr');
+            this.rows.push({
+                title: "Asignatura",
+                description: ""
+            });
         }
     },
     created: function created() {
@@ -33061,49 +33085,102 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("table", { attrs: { width: "100%" } }, [
     _c(
-      "select",
-      {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.seleccionado,
-            expression: "seleccionado"
-          }
-        ],
-        staticClass: "form-control",
-        on: {
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.seleccionado = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          }
-        }
-      },
-      _vm._l(_vm.lista2, function(item) {
-        return _c(
-          "option",
-          { key: item.idasignatura, domProps: { value: item.idasignatura } },
-          [_vm._v(_vm._s(item.nombreasignatura))]
-        )
-      })
+      "tbody",
+      [
+        _c("tr", [
+          _c("td", [
+            _c("span", { staticClass: "float-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-info",
+                  on: { click: _vm.addrow }
+                },
+                [_vm._v("Add")]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.rows, function(row, index) {
+          return _c("tr", { staticClass: "d-flex" }, [
+            _c("td", { staticClass: "col-6" }, [
+              _c(
+                "label",
+                {
+                  model: {
+                    value: row.title,
+                    callback: function($$v) {
+                      _vm.$set(row, "title", $$v)
+                    },
+                    expression: "row.title"
+                  }
+                },
+                [_vm._v(_vm._s(row.title))]
+              )
+            ]),
+            _vm._v(" "),
+            _c("td", { staticClass: "col-6" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: row.description,
+                      expression: "row.description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          row,
+                          "description",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      },
+                      _vm.addrow
+                    ]
+                  }
+                },
+                _vm._l(_vm.lista2, function(item) {
+                  return _c(
+                    "option",
+                    {
+                      key: item.idasignatura,
+                      domProps: { value: item.idasignatura }
+                    },
+                    [_vm._v(_vm._s(item.nombreasignatura))]
+                  )
+                })
+              )
+            ])
+          ])
+        })
+      ],
+      2
     )
   ])
 }
@@ -33118,7 +33195,7 @@ if (false) {
 }
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

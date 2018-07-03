@@ -11,21 +11,15 @@
     <div id="app" >
         <div class="col-lg-12">
 
-            <div class="">
+            <div class="row">
                 <form method="POST" action="/estasignaturas">
 
                     {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-lg-3" width="100">
-                            <label for="asignatura1">Asignatura 1:</label>
-                        </div>
-
-                        <div class="col-lg-3" width="100">
+                    <div class="col-lg-12">
 
                             <listarasignatura codigo="{{ $idcarrera }}">
 
                             </listarasignatura>
-                        </div>
                     </div>
 
                     <hr>

@@ -47,7 +47,8 @@
                         <div class="col-lg-6" width="100%">
                         </div>
                         <div class="col-lg-1" ><span class="float-right" width="100%">
-                            <button width='100%' class="btn btn-info btn-lg btn-block">SEGUIMIENTO</button></span>
+                                <a href="/actividades/{{ $practica->idpractica .'/list'}}"  class="btn btn-info btn-lg btn-block">SEGUIMIENTO</a>
+                            </span>
                         </div>
                         <div class="col-lg-1" width="100%">
                         </div>

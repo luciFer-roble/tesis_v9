@@ -38,7 +38,7 @@
                             <td>
                                 <input  style="width: 50%;display: inline" type="text" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
 
-                                <input style="display: inline" type="hidden" class="form-control" id="activo" name="activo" value="false">
+                                <input  type="hidden" class="form-control" id="activo" name="activo" value="false">
 
                                 <button type="submit" class="btn btn-sm btn-outline-secondary">Cambiar</button>
 

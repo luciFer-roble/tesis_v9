@@ -48,7 +48,23 @@ class EstudiantexAsignaturaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            'estudiante'       => 'required',
+            'asignatura'       => 'required'
+        );
+        $this->validate(request(), $rules);
+
+
+        // store
+        EstudiantexAsignatura::create([
+            'idasignatura'       => request('asignatura'),
+            'idestudiante'       => request('estudiante'),
+            'cursandosino'      => 'true'
+        ]);
+
+
+        // redirect
+        return redirect('tutores');
     }
 
     /**

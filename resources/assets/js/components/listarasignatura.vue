@@ -2,11 +2,6 @@
 <table width="100%">
  <tbody>
  <tr>
-  <td>
-<span class="float-right">
-   <button class="btn btn-outline-info" @click="addrow">Add</button>
-</span>
-  </td>
  </tr>
  <tr v-for="(row, index) in rows" class="d-flex">
   <td class="col-6">

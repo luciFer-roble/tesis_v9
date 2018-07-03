@@ -33039,11 +33039,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['codigo'],
@@ -33096,20 +33091,7 @@ var render = function() {
     _c(
       "tbody",
       [
-        _c("tr", [
-          _c("td", [
-            _c("span", { staticClass: "float-right" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-info",
-                  on: { click: _vm.addrow }
-                },
-                [_vm._v("Add")]
-              )
-            ])
-          ])
-        ]),
+        _c("tr"),
         _vm._v(" "),
         _vm._l(_vm.rows, function(row, index) {
           return _c("tr", { staticClass: "d-flex" }, [

@@ -17,7 +17,7 @@
                     {{ csrf_field() }}
                     <div class="col-lg-12">
 
-                            <listarasignatura codigo="{{ $idcarrera }}">
+                            <listarasignatura codigo="{{ $idcarrera }} " estudiante="{{ $estudiante->idestudiante }}">
 
                             </listarasignatura>
                     </div>

@@ -33041,7 +33041,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['codigo'],
+    props: ['codigo', 'estudiante'],
     name: 'fer',
     data: function data() {
         return {
@@ -33071,6 +33071,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.rows.push({
                 title: "Asignatura",
                 description: ""
+            });
+
+            axios.post('/estasignaturas', {
+                estudiante: this.estudiante,
+                asignatura: this.seleccionado
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
             });
         }
     },
@@ -33119,8 +33128,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: row.description,
-                      expression: "row.description"
+                      value: _vm.seleccionado,
+                      expression: "seleccionado"
                     }
                   ],
                   staticClass: "form-control",
@@ -33135,13 +33144,9 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.$set(
-                          row,
-                          "description",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
+                        _vm.seleccionado = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
                       },
                       _vm.addrow
                     ]

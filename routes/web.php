@@ -97,6 +97,7 @@ Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
 
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
+Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');
 
 Route::get('/tutores/{empresa}/create', 'TutorEsController@createfrom');
 Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');

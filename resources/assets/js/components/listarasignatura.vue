@@ -8,8 +8,8 @@
     <label v-model="row.title">{{ row.title }}</label>
   </td>
   <td class="col-6">
-  <select  class="form-control" v-model="row.description" @change="addrow">
-   <option :key="item.idasignatura" v-for="item in lista2" :value="item.idasignatura">{{item.nombreasignatura}}</option>
+  <select  class="form-control" v-model="seleccionado" @change="addrow">
+   <option  :key="item.idasignatura" v-for="item in lista2" :value="item.idasignatura">{{item.nombreasignatura}}</option>
   </select>
   </td>
  </tr>
@@ -18,7 +18,7 @@
 </template>
 <script>
     export default{
-        props:['codigo'],
+        props:['codigo', 'estudiante'],
         name:'fer',
         data:()=>({
             lista2:[],
@@ -46,6 +46,17 @@
                     title: "Asignatura",
                     description: ""
                 });
+
+                axios.post('/estasignaturas', {
+                    estudiante: this.estudiante,
+                    asignatura: this.seleccionado
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
 
             }
         },

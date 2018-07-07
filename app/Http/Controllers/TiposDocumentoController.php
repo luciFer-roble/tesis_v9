@@ -62,7 +62,7 @@ class TiposDocumentoController extends Controller
 
 
         // store
-        Profesor::updateOrCreate(['idtipodocumento'  => $id], [
+        TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
             'descripciontipodocumento'      => request('descripcion')
         ]);
 

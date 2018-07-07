@@ -12,7 +12,6 @@ class Carrera extends Model
     protected $primaryKey = 'idcarrera';
     public $timestamps = false;
     protected $guarded = [];
-    public $incrementing = false;
 
     public function escuela(){
         return $this->belongsTo('App\Escuela', 'idescuela', 'idescuela');

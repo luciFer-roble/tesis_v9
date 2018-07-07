@@ -95,6 +95,13 @@ Route::get('/tutores/{empresa}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');
 Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
 
+Route::get('/tiposdocumento', 'TiposDocumentoController@index');
+Route::get('/tiposdocumento/create', 'TiposDocumentoController@create');
+Route::get('/tiposdocumento/{tipodocumento}', 'TiposDocumentoController@show');
+Route::post('/tiposdocumento', 'TiposDocumentoController@store');
+Route::get('/tiposdocumento/{tipodocumento}/edit', 'TiposDocumentoController@edit');
+Route::put('/tiposdocumento/{tipodocumento}', 'TiposDocumentoController@update');
+Route::delete('/tiposdocumento/{tipodocumento}', 'TiposDocumentoController@destroy');
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
 Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');

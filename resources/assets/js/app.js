@@ -49,6 +49,8 @@ require('./bootstrap');
 window.Vue= require('vue');
 
 Vue.component('listarasignatura', require('./components/listarasignatura.vue'));
+Vue.component('actividad', require('./components/actividad.vue'));
+Vue.component('actividad-vacia', require('./components/actividad-vacia.vue'));
 const app = new Vue({
     el: '#app'
 });

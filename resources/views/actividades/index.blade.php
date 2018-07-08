@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" value="{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}" readonly>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="app">
                             <div class="table-responsive">
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -37,25 +37,24 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        $cont =0;
+                                    ?>
                                     @foreach($actividades as $actividad)
-                                        <form method="POST" action="/actividades"></form>
-                                        <tr>
-                                            <td>
-                                                <input class="form-control" type="date" name="fecha" id="fecha" value="{{ $actividad->fechaactividad }}">
-                                            </td>
-                                            <td class="p-0 m-0">
-                                                <textarea class="form-control " name="descripcion" id="descripcion" cols="30" >{{ $actividad->descripcionactividad  }}</textarea>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                                <input class="form-control custom-checkbox " type="checkbox">
-                                            </td>
-                                            <td>
-                                                <input class="form-control" type="text">
-                                            </td>
+                                        <tr is="actividad" practica="{{ $practica->idpractica }}" :actividad="{{ $actividad }}" >
+
                                         </tr>
+                                        <?php
+                                            $cont++;
+                                        ?>
                                     @endforeach
+                                    @if($cont < 5)
+                                    @for($cont; $cont < 5; $cont++)
+                                        <tr is="actividad-vacia" practica="{{ $practica->idpractica }}"  >
+
+                                        </tr>
+                                    @endfor
+                                    @endif
 
                                     </tbody>
                                     <div>

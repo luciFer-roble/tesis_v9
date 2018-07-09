@@ -108,7 +108,9 @@
                                                 <li class="page-item {{ $actividades->nextPageUrl()==null ? 'disabled' : '' }}">
                                                     <a class="page-link" href="{{ $actividades->nextPageUrl() ?? '#' }}">Siguiente</a>
                                                 </li>
-
+                                                <li class="page-item">
+                                                    <a class="page-link" href="/actividades/{{ $practica->idpractica }}/{{ ($actividades->total())/5 }}">Nueva</a>
+                                                </li>
 
                                             </ul>
                                         </nav>

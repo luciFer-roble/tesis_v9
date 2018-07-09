@@ -17,5 +17,8 @@ class TipoDocumento extends Model
     public function documentop(){
         return $this->hasMany('App\DocumentoP');
     }
+    public function formato(){
+        return $this->hasMany('App\Formato');
+    }
 
 }

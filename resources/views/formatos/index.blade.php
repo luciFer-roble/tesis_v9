@@ -38,11 +38,11 @@
                                     </thead>
                                     <tbody>
                                     @foreach($formatos as $formato)
-                               {{--         <tr>
+                                      <tr>
                                             <td>{{ $formato->idtipodocumento }}</td>
                                             <td>{{ $formato->tipodocumento->descripciontipodocumento }}</td>
                                             <td>{{ $formato->archivoformato }}</td>
-                                            <td>--}}
+                                            <td>
 
 
 

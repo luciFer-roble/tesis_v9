@@ -13,5 +13,8 @@ class Formato extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+    public function tipodocumento(){
+        return $this->belongsTo('App\TipoDocumento', 'idtipodocumento', 'idtipodocumento');
+    }
 
 }

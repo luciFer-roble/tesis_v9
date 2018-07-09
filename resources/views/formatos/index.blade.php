@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('nav')
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-    <li class="breadcrumb-item">Tipos de Documentos</li>
+    <li class="breadcrumb-item">Formatos</li>
 @endsection
 
 @section('content')
@@ -17,9 +17,9 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
-                            <h1>TIPOS DE DOCUMENTOS</h1></div>
+                            <h1>FORMATOS</h1></div>
                             <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'tiposdocumento/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
+                                <input type="button" onClick="location.href = 'formatos/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                             </div>
                         </div>
                         </div>
@@ -31,26 +31,28 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Descripcion</th>
+                                        <th>Archivo</th>
                                         <td></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($tiposdocumento as $tipodocumento)
-                                        <tr>
-                                            <td>{{ $tipodocumento->idtipodocumento }}</td>
-                                            <td>{{ $tipodocumento->descripciontipodocumento }}</td>
-                                            <td>
+                                    @foreach($formatos as $formato)
+                               {{--         <tr>
+                                            <td>{{ $formato->idtipodocumento }}</td>
+                                            <td>{{ $formato->tipodocumento->descripciontipodocumento }}</td>
+                                            <td>{{ $formato->archivoformato }}</td>
+                                            <td>--}}
 
 
 
                                                 <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                                                <a class="btn btn-small btn-success" href="{{ URL::to('tiposdocumento/' . $tipodocumento->idtipodocumento) }}">ver
+                                                <a class="btn btn-small btn-success" href="{{ URL::to('formatos/' . $formato->idformato) }}">ver
                                                 </a>-->
                                                 <div class="row">
                                                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                                                     <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('tiposdocumento/' . $tipodocumento->idtipodocumento . '/edit') }}">
+                                                <a  class="btn btn-link" href="{{ URL::to('formatos/' . $formato->idformato . '/edit') }}">
 
                                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                                 </a></div>
@@ -58,7 +60,7 @@
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                 <!-- we will add this later since its a little more complicated than the other two buttons -->
                                                     <div class="col-sm1">
-                                                {{ Form::open(array('url' => 'tiposdocumento/' . $tipodocumento->idtipodocumento, 'class' => '')) }}
+                                                {{ Form::open(array('url' => 'formatos/' . $formato->idformato, 'class' => '')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
                                                     <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                 {{ Form::close() }}

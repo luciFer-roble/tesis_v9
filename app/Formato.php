@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Formato extends Model
 {
@@ -11,4 +12,6 @@ class Formato extends Model
     protected $primaryKey = 'idformato';
     public $timestamps = false;
     protected $guarded = [];
+
+
 }

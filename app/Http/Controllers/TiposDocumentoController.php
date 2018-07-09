@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Formato;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class TiposDocumentoController extends Controller
     public function index()
     {
         $tiposdocumento = TipoDocumento::all();
-        return view('tiposdocumento.index', compact('tiposdocumento'));
+        $formatos = Formato::all();
+        return view('tiposdocumento.index', compact('tiposdocumento','formatos'));
     }
 
     public function create()
@@ -22,7 +24,8 @@ class TiposDocumentoController extends Controller
     {
         $rules = array(
             'id'       => 'required',
-            'descripcion'       => 'required'
+            'descripcion'       => 'required',
+            'archivo'       => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -31,6 +34,10 @@ class TiposDocumentoController extends Controller
         TipoDocumento::create([
             'idtipodocumento'       => request('id'),
             'descripciontipodocumento'      => request('descripcion')
+        ]);
+        Formato::create([
+        'idtipodocumento'       => request('id'),
+        'archivoformato'      => request('archivo')
         ]);
 
 
@@ -47,9 +54,9 @@ class TiposDocumentoController extends Controller
     }
 
 
-    public function edit(TipoDocumento $tipodocumento)
+    public function edit(Formato $formato)
     {
-        return view('tiposdocumento.edit')->with(compact('tipodocumento'));
+        return view('tiposdocumento.edit')->with(compact('formato'));
     }
 
 
@@ -65,6 +72,9 @@ class TiposDocumentoController extends Controller
         TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
             'descripciontipodocumento'      => request('descripcion')
         ]);
+        Formato::updateOrCreate(['idtipodocumento'  => $id], [
+        'archivoformato'      => request('archivo')
+         ]);
 
 
         // redirect

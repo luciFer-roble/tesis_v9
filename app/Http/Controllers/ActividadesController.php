@@ -10,13 +10,13 @@ class ActividadesController extends Controller
 {
     public function index(Practica $practica)
     {
-        $actividades = Actividad::where('idpractica', '=' , $practica->idpractica )->paginate(5);
+        $actividades = Actividad::where('idpractica', '=' , $practica->idpractica )->orderBy('idactividad')->paginate(5);
         return view('actividades.index', compact('practica', 'actividades'));
     }
     public function store($practica, $total)
     {
 
-
+        echo $total; exit();
         // store
         for ($i = 0; $i < 5; $i++){
 
@@ -30,5 +30,20 @@ class ActividadesController extends Controller
         // redirect
         return redirect('actividades/'.$practica.'/list?page='.($total+1));
 
+    }
+    public function update(Request $request, $id)
+    {
+
+
+        // store
+        Actividad::updateOrCreate(['idactividad'  => $id], [
+            'descripcionactividad'       => request('descripcion'),
+            'fechaactividad'       => request('fecha'),
+            'comentarioactividad'      => request('comentario')
+        ]);
+
+
+        // redirect
+        return 'hola';
     }
 }

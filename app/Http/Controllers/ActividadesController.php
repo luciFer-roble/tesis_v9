@@ -16,7 +16,6 @@ class ActividadesController extends Controller
     public function store($practica, $total)
     {
 
-        echo $total; exit();
         // store
         for ($i = 0; $i < 5; $i++){
 
@@ -39,7 +38,9 @@ class ActividadesController extends Controller
         Actividad::updateOrCreate(['idactividad'  => $id], [
             'descripcionactividad'       => request('descripcion'),
             'fechaactividad'       => request('fecha'),
-            'comentarioactividad'      => request('comentario')
+            'comentarioactividad'      => request('comentario'),
+            'estadoactividad'      => request('estado')
+
         ]);
 
 

@@ -8,9 +8,12 @@
         </td>
         <td>
         </td>
-        <td>
-            <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check">
-        </td>
+        <td><div class="form-check">
+            <label>
+                <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check" @change="insertar">
+
+            </label>
+        </div></td>
         <td>
             <input class="form-control" type="text" name="comentario" id="comentario" v-model="comentario" @blur="insertar" :disabled="check">
         </td>
@@ -36,7 +39,8 @@
                 axios.put('/actividades/'+this.actividad.idactividad, {
                     fecha: this.fecha,
                     descripcion: this.descripcion,
-                    comentario: this.comentario
+                    comentario: this.comentario,
+                    estado: this.check
                 })
                     .then(function (response) {
                         console.log(response);
@@ -56,3 +60,6 @@
         }
     }
 </script>
+<style>
+
+</style>

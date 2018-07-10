@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Formato;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FormatosController extends Controller
 {
     public function index()
     {
-        $tiposdocumento = TipoDocumento::all();
-        $formatos = Formato::all();
+        $tiposdocumento = TipoDocumento::orderby('idtipodocumento')->get();
+        $formatos = Formato::orderby('idformato')->get();
         return view('formatos.index', compact('tiposdocumento','formatos'));
     }
 
@@ -71,10 +72,13 @@ class FormatosController extends Controller
         // store
         TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
             'descripciontipodocumento'      => request('descripcion')
-        ]);
+        ]);/*
         Formato::updateOrCreate(['idtipodocumento'  => $id], [
             'archivoformato'      => request('archivo')
-        ]);
+        ]);*/
+        DB::table('formato')
+            ->where('idtipodocumento', $id)
+            ->update(['archivoformato' => request('archivo')]);
 
 
         // redirect

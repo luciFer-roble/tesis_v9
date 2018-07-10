@@ -100,7 +100,7 @@ Route::get('/formatos/create', 'FormatosController@create');
 Route::get('/formatos/{formato}', 'FormatosController@show');
 Route::post('/formatos', 'FormatosController@store');
 Route::get('/formatos/{formato}/edit', 'FormatosController@edit');
-Route::put('/formatos/{formato}', 'FormatosController@update');
+Route::put('/formatos/{tipodocumento}', 'FormatosController@update');
 Route::delete('/formatos/{formato}', 'FormatosController@destroy');
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');

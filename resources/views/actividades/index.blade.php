@@ -37,24 +37,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                        $cont =0;
-                                    ?>
                                     @foreach($actividades as $actividad)
                                         <tr is="actividad" practica="{{ $practica->idpractica }}" :actividad="{{ $actividad }}" >
 
                                         </tr>
-                                        <?php
-                                            $cont++;
-                                        ?>
                                     @endforeach
-                                    @if($cont < 5)
-                                    @for($cont; $cont < 5; $cont++)
-                                        <tr is="actividad-vacia" practica="{{ $practica->idpractica }}"  >
-
-                                        </tr>
-                                    @endfor
-                                    @endif
 
                                     </tbody>
                                     <div>

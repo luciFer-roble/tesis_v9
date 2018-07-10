@@ -56,7 +56,7 @@ class FormatosController extends Controller
 
     public function edit(Formato $formato)
     {
-        return view('formatos.edit')->with(compact('formato'));
+        return view('formatos.edit')->with(compact('formato','tipodocumento'));
     }
 
 

@@ -13,7 +13,7 @@
             <div class="col-12">
                 <div class="card">
 
-            {{Form::open( ['method'=>"PUT", 'url'=>array("/formatos", $formato->idformato)]) }}
+            {{Form::open( ['method'=>"PUT", 'url'=>array("/formatos", $formato->idtipodocumento)]) }}
 
                 {{ csrf_field() }}
                     <div class="card-body">

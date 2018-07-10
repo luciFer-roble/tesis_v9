@@ -47,6 +47,22 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'usuarios' => [
+            'driver' => 'local',
+            'root' => storage_path('app/usuarios'),
+        ],
+        'proyectos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/proyectos'),
+        ],
+        'comentarios' => [
+            'driver' => 'local',
+            'root' => storage_path('app/comentarios'),
+        ],
+        'organizaciones' => [
+            'driver' => 'local',
+            'root' => storage_path('app/organizaciones'),
+        ],
 
         'public' => [
             'driver' => 'local',

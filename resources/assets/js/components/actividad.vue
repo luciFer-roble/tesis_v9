@@ -29,7 +29,7 @@
             fecha: '',
             descripcion: '',
             comentario: '',
-            check: false
+            check: ''
         }),
         methods:{
             insertar:function () {
@@ -52,6 +52,7 @@
             this.fecha = this.actividad.fechaactividad;
             this.descripcion = this.actividad.descripcionactividad;
             this.comentario = this.actividad.comentarioactividad;
+            this.check = this.actividad.estadoactividad;
         }
     }
 </script>

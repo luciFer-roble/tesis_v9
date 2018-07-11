@@ -34721,10 +34721,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -34833,8 +34829,6 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("td"),
-    _vm._v(" "),
     _c("td", [
       _c("div", { staticClass: "form-check" }, [
         _c("label", [
@@ -34881,44 +34875,6 @@ var render = function() {
           })
         ])
       ])
-    ]),
-    _c("td", [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.check,
-            expression: "check"
-          }
-        ],
-        staticClass: "form-control custom-checkbox ",
-        attrs: { type: "checkbox", disabled: _vm.check },
-        domProps: {
-          checked: Array.isArray(_vm.check)
-            ? _vm._i(_vm.check, null) > -1
-            : _vm.check
-        },
-        on: {
-          change: function($event) {
-            var $$a = _vm.check,
-              $$el = $event.target,
-              $$c = $$el.checked ? true : false
-            if (Array.isArray($$a)) {
-              var $$v = null,
-                $$i = _vm._i($$a, $$v)
-              if ($$el.checked) {
-                $$i < 0 && (_vm.check = $$a.concat([$$v]))
-              } else {
-                $$i > -1 &&
-                  (_vm.check = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-              }
-            } else {
-              _vm.check = $$c
-            }
-          }
-        }
-      })
     ]),
     _vm._v(" "),
     _c("td", [

@@ -6,16 +6,12 @@
         <td class="p-0 m-0">
             <textarea class="form-control " name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check"></textarea>
         </td>
-        <td>
-        </td>
         <td><div class="form-check">
             <label>
                 <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check" @change="insertar">
 
             </label>
-        </div></td><td>
-            <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check">
-        </td>
+        </div></td>
         <td>
             <input class="form-control" type="text" name="comentario" id="comentario" v-model="comentario" @blur="insertar" :disabled="check">
         </td>

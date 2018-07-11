@@ -30,7 +30,6 @@
                                     <tr>
                                         <th>FECHA</th>
                                         <th>DESCRIPCION DE ACTIVIDADES</th>
-                                        <th></th>
                                         <th>CONTROL</th>
                                         <th>COMENTARIO</th>
 

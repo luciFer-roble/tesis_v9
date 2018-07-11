@@ -1072,7 +1072,11 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
+<<<<<<< HEAD
+module.exports = __webpack_require__(56);
+=======
 module.exports = __webpack_require__(47);
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 
 /***/ }),
@@ -1130,9 +1134,15 @@ __webpack_require__(12);
 window.Vue = __webpack_require__(35);
 
 Vue.component('listarasignatura', __webpack_require__(38));
+<<<<<<< HEAD
+Vue.component('noticias', __webpack_require__(41));
+Vue.component('actividad', __webpack_require__(50));
+Vue.component('actividad-vacia', __webpack_require__(53));
+=======
 Vue.component('noticias', __webpack_require__(58));
 Vue.component('actividad', __webpack_require__(41));
 Vue.component('actividad-vacia', __webpack_require__(44));
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 var app = new Vue({
     el: '#app'
 });
@@ -33197,7 +33207,11 @@ var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
+<<<<<<< HEAD
+var __vue_template__ = __webpack_require__(49)
+=======
 var __vue_template__ = __webpack_require__(43)
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33264,6 +33278,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+<<<<<<< HEAD
+// load the styles
+var content = __webpack_require__(43);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(45)("b8d8f310", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-578d1136\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./noticias.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-578d1136\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./noticias.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+=======
 /* harmony default export */ __webpack_exports__["default"] = ({
 
     props: {
@@ -33301,6 +33336,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.check = this.actividad.estadoactividad;
     }
 });
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 /***/ }),
 /* 43 */
@@ -33466,6 +33502,10 @@ if (false) {
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+// module
+exports.push([module.i, "\na{\n    cursor: pointer;\n}\na .del{\n    cursor: -webkit-grab;\n    cursor: grab;\n}\n.vue-map {\n    background: #fff;\n}\n.pac{\n    padding:10px 14px !important;\n    width: 60%;\n}\na[href^=\"http://maps.google.com/maps\"]{display:none !important\n}\na[href^=\"https://maps.google.com/maps\"]{display:none !important\n}\n.gmnoprint a, .gmnoprint span, .gm-style-cc {\n    display:none;\n}\n.pac-item{\n    cursor:pointer;\n}\n.gm-style-iw + div{\n    display: none;\n}\n.gm-style-iw{\n    padding-left: 9px;\n}\n", "", {"version":3,"sources":["C:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AAi6BA;IACA,gBAAA;CACA;AACA;IACA,qBAAA;IAAA,aAAA;CACA;AACA;IACA,iBAAA;CACA;AACA;IACA,6BAAA;IACA,WAAA;CACA;AACA,uCAAA,uBAAA;CAAA;AACA,wCAAA,uBAAA;CAAA;AAEA;IACA,aAAA;CACA;AACA;IACA,eAAA;CACA;AACA;IACA,cAAA;CACA;AACA;IACA,kBAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div class=\"m-wizard m-wizard--3 m-wizard--success m-wizard--step-first\" id=\"m_wizard\">\r\n        <div class=\"m-portlet__padding-x\">\r\n            <div class=\"m-alert m-alert--icon alert animated fadeIn\" :class=\"mensaje.clase\" role=\"alert\">\r\n                <div class=\"m-alert__icon\">\r\n                    <i :class=\"mensaje.icono\"></i>\r\n                </div>\r\n                <div class=\"m-alert__text\">\r\n                    <span v-html=\"mensaje.texto\"></span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"row m-row--no-padding\">\r\n            <div class=\"col-xl-3 col-lg-12\">\r\n                <div class=\"m-wizard__head\">\r\n                    <div class=\"m-wizard__progress\">\r\n                        <div class=\"progress\">\r\n                            <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\" :style=\"'width:'+avance+'%'\"></div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"m-wizard__nav\">\r\n                        <div class=\"m-wizard__steps\">\r\n                            <div class=\"m-wizard__step\" v-for=\"(item, index) in lista\" v-bind:class=\"[pasos.actual===index+1?'m-wizard__step--current':(pasos.actual>index+1? 'm-wizard__step--done' :'')]\">\r\n                                <div class=\"m-wizard__step-info\">\r\n                                    <a class=\"m-wizard__step-number\">\r\n                                        <span>\r\n                                            <span>\r\n                                                {{index+1}}\r\n                                            </span>\r\n                                        </span>\r\n                                    </a>\r\n                                    <div class=\"m-wizard__step-line\">\r\n                                        <span></span>\r\n                                    </div>\r\n                                    <div class=\"m-wizard__step-label\">\r\n                                        {{item.title}}\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-xl-9 col-lg-12\" v-if=\"!procesando\">\r\n                <div class=\"m-wizard__form\">\r\n                    <div class=\"m-form m-form--label-align-left- m-form--state-\">\r\n                        <div class=\"m-portlet__body m-portlet__body--no-padding\">\r\n                            <form class=\"m-wizard__form-step\" v-bind:class=\"pasos.actual===1?'m-wizard__form-step--current':''\" novalidate=\"novalidate\" v-on:submit.prevent=\"validar\" >\r\n                                <div class=\"m-form__section m-form__section--first\">\r\n                                    <div class=\"m-form__heading\">\r\n                                        <h3 class=\"m-form__heading-title\">{{lista[pasos.actual-1].title}}</h3>\r\n                                    </div>\r\n                                    <div class=\"m-form__section\">\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Nombre de proyecto:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <input class=\"form-control m-input\" placeholder=\"Vinculación UNOS\" type=\"text\" v-validate=\"'required'\" v-model=\"titulo\" name=\"nombre proyecto\" maxlength=\"500\"/>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('nombre proyecto')\">{{ errors.first('nombre proyecto') }}</span>\r\n                                            </div>\r\n                                        </div>\r\n\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\">Objetivo general:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <textarea  rows=\"3\" v-model=\"obgeneral\" class=\"form-control m-input\" maxlength=\"500\"></textarea>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\">Descripción general:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <textarea  rows=\"3\" v-model=\"descripcion\" class=\"form-control m-input\" maxlength=\"500\"></textarea>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\">Beneficiarios directos:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <div class=\"input-group bootstrap-touchspin\">\r\n                                                    <input class=\"form-control m-input bootstrap-touchspin-vertical-btn\" placeholder=\"1000\" type=\"text\" v-validate=\"'numeric|min_value:1'\" v-model=\"benedirectos\" name=\"beneficiarios\"/>\r\n                                                    <span class=\"input-group-btn-vertical\">\r\n                                                        <button class=\"btn btn-secondary bootstrap-touchspin-up\" type=\"button\" v-on:click=\"benedirectos++\"><i class=\"la la-plus\"></i></button>\r\n                                                        <button class=\"btn btn-secondary bootstrap-touchspin-down\" type=\"button\" v-on:click=\"benedirectos--\"><i class=\"la la-minus\"></i></button>\r\n                                                    </span>\r\n                                                </div>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('beneficiarios')\">{{errors.first('beneficiarios')}}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Fecha de inicio/Fecha de fin:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <input class=\"form-control m-input fechas\" placeholder=\"dd/mm/aaaa - dd/mm/aaaa\" type=\"text\" v-validate=\"'required'\" name=\"fechas\"/>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('fechas')\" id=\"fecha_val\">{{ errors.first('fechas') }}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Estado de proyecto:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"estado\" name=\"estado\" title=\"Elija el estado\">\r\n                                                    <option v-for=\"item in listaEstados\" :value=\"item.id\">{{item.name}}</option>\r\n                                                </select>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('estado')\">{{ errors.first('estado') }}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Se requiere:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"requiere\" name=\"requerimiento\" title=\"Elija\" multiple>\r\n                                                    <option v-for=\"item in listaReq\" :value=\"item.id\">{{item.name}}</option>\r\n                                                </select>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('requerimiento')\">{{errors.first('requerimiento')}}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\" v-if=\"reqOsc\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\" data-toggle=\"m-popover\" data-placement=\"top\" data-content=\"Si requiere de OSCs para su proyecto\" ><span class=\"text-danger\">*</span>Áreas de trabajo:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"atrabajo\" name=\"áreas de trabajo\" title=\"OSCs\" multiple>\r\n                                                    <option v-for=\"item in listaAtrabajo\" :value=\"item.id\">{{item.name}}</option>\r\n                                                </select>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('áreas de trabajo')\">{{errors.first('áreas de trabajo')}}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                        <div class=\"form-group m-form__group row\" v-if=\"reqIes\">\r\n                                            <label class=\"col-xl-3 col-lg-3 col-form-label\" data-toggle=\"m-popover\" data-placement=\"top\" data-content=\"Si requiere de Universidades para su proyecto\" ><span class=\"text-danger\">*</span>Clasificación de carreras:</label>\r\n                                            <div class=\"col-xl-9 col-lg-9\">\r\n                                                <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"carreras\" name=\"carreras\" title=\"IES\" multiple>\r\n                                                    <option v-for=\"item in listaCarreras\" :value=\"item.id\">{{item.name}}</option>\r\n                                                </select>\r\n                                                <span class=\"m-form__help text-danger\" v-show=\"errors.has('carreras')\">{{errors.first('carreras')}}</span>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n\r\n                                </div>\r\n                            </form>\r\n                            <form class=\"m-wizard__form-step\" v-if=\"pasos.actual===2\" v-bind:class=\"pasos.actual===2?'m-wizard__form-step--current':''\" novalidate=\"novalidate\" v-on:submit.prevent=\"validar\">\r\n                                <div class=\"m-form__section m-form__section--first\">\r\n                                    <div class=\"m-form__heading\">\r\n                                        <h3 class=\"m-form__heading-title\">{{lista[pasos.actual-1].title}}</h3>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Área de interés</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"ainteres\" name=\"área\" title=\"Elija una área\">\r\n                                                <option v-for=\"item in listaAreas\" :value=\"item.id\">{{item.name}}</option>\r\n                                            </select>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('área')\">{{ errors.first('área') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\" v-if=\"ainteres>=1\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>País</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"pais\" name=\"país\"  data-live-search=\"true\" title=\"Elija país\" >\r\n                                                <option v-for=\"item in listaPaises\" :value=\"item.id\">{{item.name}}</option>\r\n                                            </select>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('país')\">{{ errors.first('país') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\" v-if=\"ainteres>=2\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Provincia</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"provincia\" name=\"provincia\"  data-live-search=\"true\" title=\"Elija provincia\" >\r\n                                                <option v-for=\"item in listaProvincias\" :value=\"item.id\">{{item.name}}</option>\r\n                                            </select>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('provincia')\">{{ errors.first('provincia') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\" v-if=\"ainteres>=3\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Cantón</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"canton\" name=\"cantón\"  data-live-search=\"true\" title=\"Elija cantón\">\r\n                                                <option v-for=\"item in listaCantones\" :value=\"item.id\">{{item.name}}</option>\r\n                                            </select>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('cantón')\">{{ errors.first('cantón') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\" v-if=\"ainteres>=4\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Parroquia</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <select class=\"form-control m-input m_selectpicker\" v-validate=\"'required'\" v-model=\"parroquia\" name=\"parroquia\"  data-live-search=\"true\" title=\"Elija parroquia\" >\r\n                                                <option v-for=\"item in listaParroquias\" :value=\"item.id\">{{item.name}}</option>\r\n                                            </select>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('parroquia')\">{{ errors.first('parroquia') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\">\r\n                                        <label class=\"col-xl-3 col-lg-3 col-form-label\"><span class=\"text-danger\">*</span>Población</label>\r\n                                        <div class=\"col-xl-9 col-lg-9\">\r\n                                            <input class=\"form-control m-input\" placeholder=\"Puembo\" type=\"text\" v-model=\"poblacion\" v-validate=\"'required'\" name=\"nombre población\" maxlength=\"200\"/>\r\n                                            <span class=\"m-form__help text-danger\" v-show=\"errors.has('nombre población')\">{{ errors.first('nombre población') }}</span>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group m-form__group row\">\r\n                                        <a class=\"badge badge-success badge-pill\" v-for=\"(item,index) in lugares\" :key=\"item.id\" style=\"color: white\">{{item.label}}\r\n                                            <span><a type=\"button\" data-dismiss=\"modal\" class=\"text-danger del\" v-on:click=\"eliminarLugar(index)\">x</a></span>\r\n                                        </a>\r\n                                    </div>\r\n                                    <div class=\"embed-responsive embed-responsive-4by3\">\r\n                                        <gmap-map\r\n                                                :center=\"centro\"\r\n                                                :zoom=\"acercamiento\"\r\n                                                class=\"embed-responsive-item\"\r\n                                                :options=\"configuracionMap\"\r\n                                                @click=\"clicMapa\">\r\n                                            <gmap-info-window :options=\"info\" :opened=\"true\" :position=\"cordenadas\">\r\n                                                <div class=\"text-center\">\r\n                                                    <button type=\"button\" class=\"btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent\" v-on:click=\"agregarLugar\">Agregar</button>\r\n                                                </div>\r\n                                            </gmap-info-window>\r\n                                            <gmap-marker  :key=\"index+1\" v-for=\"(m,index) in lugares\" :position=\"m\" :clickable=\"false\" :draggable=\"false\" :label=\"m.label\"/>\r\n                                            <gmap-marker\r\n                                                    :key=\"0\"\r\n                                                    :position=\"cordenadas\"\r\n                                                    :clickable=\"true\"\r\n                                                    :draggable=\"true\"\r\n                                                    @dragend=\"clicMapa\"\r\n                                                    color=\"green\"\r\n                                            />\r\n                                        </gmap-map>\r\n                                    </div>\r\n                                </div>\r\n                            </form>\r\n                            <div class=\"m-wizard__form-step\" v-bind:class=\"pasos.actual===3?'m-wizard__form-step--current':''\">\r\n                                <div class=\"m-form__section m-form__section--first\">\r\n                                    <div class=\"m-form__heading\">\r\n                                        <h3 class=\"m-form__heading-title\">{{lista[pasos.actual-1].title}}</h3>\r\n                                    </div>\r\n                                    <div class=\"row\">\r\n                                        <label class=\"m-option col-md-1 col-sm-1\" v-for=\"item in listaArchivos\">\r\n                                            <span class=\"m-option__label\">\r\n                                                <span class=\"m-option__head\">\r\n                                                    <span class=\"m-option__title text-center\">\r\n                                                        <h1 class=\"fiv-cla\" :class=\"'fiv-icon-'+item.ext\"></h1>\r\n                                                        <br>\r\n                                                        <small class=\"text-muted\">{{item.name}}</small>\r\n                                                    </span>\r\n                                                </span>\r\n                                                <span class=\"m-option__body\">\r\n                                                    <div class=\"m-btn-group m-btn-group--pill btn-group btn-group-sm\">\r\n                                                        <button type=\"button\" class=\"m-btn btn btn-danger\" v-on:click=\"eliminarArchivo(item)\">\r\n                                                            <i class=\"la la-remove\"></i>\r\n                                                        </button>\r\n                                                        <button type=\"button\" class=\"m-btn btn btn-success\" v-on:click=\"descargarArchivo(item.file,item.name)\">\r\n                                                            <i class=\"la la la-download\"></i>\r\n                                                        </button>\r\n                                                    </div>\r\n                                                </span>\r\n                                            </span>\r\n                                        </label>\r\n                                    </div>\r\n                                    <vue-dropzone  id=\"documentos\" :options=\"dropzoneOptions\" ref=\"archivos\" v-on:vdropzone-success=\"cargarArchivos\" v-on:vdropzone-error=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" />\r\n                                </div>\r\n                            </div>\r\n                            <div class=\"m-wizard__form-step\" v-bind:class=\"pasos.actual===4?'m-wizard__form-step--current':''\">\r\n                                <div class=\"m-accordion m-accordion--default\" id=\"m_accordion_1\" role=\"tablist\">\r\n                                    <div class=\"m-accordion__item active\">\r\n                                        <div class=\"m-accordion__item-head\" role=\"tab\" id=\"m_accordion_1_item_1_head\" data-toggle=\"collapse\" href=\"#m_accordion_1_item_1_body\" aria-expanded=\"  false\">\r\n                                            <span class=\"m-accordion__item-icon\">1</span>\r\n                                            <span class=\"m-accordion__item-title\">{{lista[0].title}}</span>\r\n                                            <span class=\"m-accordion__item-mode\"></span>\r\n                                        </div>\r\n                                        <div class=\"m-accordion__item-body collapse show\" id=\"m_accordion_1_item_1_body\" role=\"tabpanel\" aria-labelledby=\"m_accordion_1_item_1_head\" data-parent=\"#m_accordion_1\">\r\n                                            <div class=\"tab-content active  m--padding-30\">\r\n                                                <div class=\"m-form__section m-form__section--first\">\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Nombre de proyecto:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\">\r\n                                                                {{titulo}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Estado:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\" v-if=\"estado>0\">\r\n                                                                {{buscar(listaEstados,estado)}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Objetivo general:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\" style=\"white-space: pre-line\">\r\n                                                                {{obgeneral}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Descripción general:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\" style=\"white-space: pre-line\">\r\n                                                                {{descripcion}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Beneficiarios directos:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\">\r\n                                                                {{benedirectos}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Fecha de inicio:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\">\r\n                                                                {{fdeinicio}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                    <div class=\"form-group m-form__group m-form__group--sm row\">\r\n                                                        <label class=\"col-xl-4 col-lg-4 col-form-label\">Fecha de finalización:</label>\r\n                                                        <div class=\"col-xl-8 col-lg-8\">\r\n                                                            <span class=\"m-form__control-static\">\r\n                                                                {{fdefin}}\r\n                                                            </span>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"m-accordion__item\">\r\n                                        <div class=\"m-accordion__item-head collapsed\" role=\"tab\" id=\"m_accordion_1_item_2_head\" data-toggle=\"collapse\" href=\"#m_accordion_1_item_2_body\" aria-expanded=\"    false\">\r\n                                            <span class=\"m-accordion__item-icon\">2</span>\r\n                                            <span class=\"m-accordion__item-title\">{{lista[1].title}}</span>\r\n                                            <span class=\"m-accordion__item-mode\"></span>\r\n                                        </div>\r\n                                        <div class=\"m-accordion__item-body collapse\" id=\"m_accordion_1_item_2_body\" role=\"tabpanel\" aria-labelledby=\"m_accordion_1_item_2_head\" data-parent=\"#m_accordion_1\">\r\n                                            <div class=\"tab-content  m--padding-30\">\r\n                                                <div class=\"m-form__section m-form__section--first\">\r\n                                                    <div class=\"m-widget1\" v-if=\"ainteres>0\">\r\n                                                        <h4>{{buscar(listaAreas,ainteres)}}</h4>\r\n                                                        <div class=\"m-widget1__item\" v-for=\"item in lugares\">\r\n                                                            <div class=\"row m-row--no-padding align-items-center\">\r\n                                                                <div class=\"col\">\r\n                                                                    <h3 class=\"m-widget1__title\">{{item.label}}</h3>\r\n                                                                    <span class=\"m-widget1__desc\">{{item.name}}</span>\r\n                                                                </div>\r\n                                                                <div class=\"col m--align-right\">\r\n                                                                    <img :src=\"actual+'/api/google?lat='+item.lat+'&lng='+item.lng\"  class=\"img-fluid\"/>\r\n                                                                </div>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"m-accordion__item\">\r\n                                        <div class=\"m-accordion__item-head collapsed\" role=\"tab\" id=\"m_accordion_1_item_3_head\" data-toggle=\"collapse\" href=\"#m_accordion_1_item_3_body\" aria-expanded=\"    false\">\r\n                                            <span class=\"m-accordion__item-icon\">3</span>\r\n                                            <span class=\"m-accordion__item-title\">{{lista[2].title}} <span>{{listaArchivos.lengh}}</span></span>\r\n                                            <span class=\"m-accordion__item-mode\"></span>\r\n                                        </div>\r\n                                        <div class=\"m-accordion__item-body collapse\" id=\"m_accordion_1_item_3_body\" role=\"tabpanel\" aria-labelledby=\"m_accordion_1_item_3_head\" data-parent=\"#m_accordion_1\">\r\n                                            <div class=\"tab-content  m--padding-30\">\r\n                                                <div class=\"m-form__section m-form__section--first\">\r\n                                                    <div class=\"m-widget4\">\r\n                                                        <div class=\"m-widget4__item\" v-for=\"item in listaArchivos\">\r\n                                                            <div class=\"m-widget4__img m-widget4__img--icon\">\r\n                                                                <h1 class=\"fiv-cla\" :class=\"'fiv-icon-'+item.ext\"></h1>\r\n                                                            </div>\r\n                                                            <div class=\"m-widget4__info\">\r\n                                                                <span class=\"m-widget4__text\">\r\n                                                                    {{item.name}}\r\n                                                                </span>\r\n                                                            </div>\r\n                                                            <div class=\"m-widget4__ext\">\r\n                                                                <a class=\"m-widget4__icon\" v-on:click=\"descargarArchivo(item.file,item.name)\" v-if=\"ver\">\r\n                                                                    <i class=\"la la-download\"></i>\r\n                                                                </a>\r\n                                                            </div>\r\n                                                        </div>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"m-separator m-separator--dashed m-separator--lg\"></div>\r\n                                <div class=\"form-group m-form__group m-form__group--sm row\" v-if=\"ver\">\r\n                                    <div class=\"col-xl-12\">\r\n                                        <div class=\"m-checkbox-inline\">\r\n                                            <label class=\"m-checkbox m-checkbox--solid m-checkbox--brand\">\r\n                                                <input name=\"accept\" :value=\"true\" type=\"checkbox\" v-model=\"checkVar\">\r\n                                                La información es correcta?\r\n                                                <span></span>\r\n                                            </label>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"m-portlet__foot m-portlet__foot--fit m--margin-top-40\" v-if=\"ver\">\r\n                            <div class=\"m-form__actions\">\r\n                                <div class=\"row\">\r\n                                    <div class=\"col-lg-6 m--align-left\">\r\n                                        <button type=\"button\" class=\"btn btn-secondary m-btn m-btn--custom m-btn--icon\" v-if=\"pasos.actual>1\" v-on:click=\"pasos.actual--\">\r\n                                            <span>\r\n                                                <i class=\"la la-arrow-left\"></i>\r\n                                                <span>\r\n                                                    Atrás\r\n                                                </span>\r\n                                            </span>\r\n                                        </button>\r\n                                    </div>\r\n                                    <div class=\"col-lg-6 m--align-right\">\r\n                                        <button type=\"button\" class=\"btn btn-primary m-btn m-btn--custom m-btn--icon\" v-if=\"pasos.actual===pasos.total\" v-on:click=\"validar\">\r\n                                            <span>\r\n                                                <i class=\"la la-check\"></i>\r\n                                                <span>\r\n                                                    Enviar\r\n                                                </span>\r\n                                            </span>\r\n                                        </button>\r\n                                        <button type=\"button\" class=\"btn btn-success m-btn m-btn--custom m-btn--icon\" v-else v-on:click=\"validar\">\r\n                                            <span>\r\n                                                <span>\r\n                                                    Siguiente\r\n                                                </span>\r\n                                                <i class=\"la la-arrow-right\"></i>\r\n                                            </span>\r\n                                        </button>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"col-xl-9 col-lg-12\" v-else>\r\n                <div class=\"text-center\">\r\n                    <br><br><br>\r\n                    <div class=\"m-loader m-loader--lg\" style=\"width: 30px; display: inline-block;\"></div>\r\n                    <p>Procesando</p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n\r\n    import * as VueGoogleMaps from 'vue2-google-maps';\r\n    Vue.component('gmap-autocomplete', VueGoogleMaps.Autocomplete);\r\n    Vue.use(VueGoogleMaps, {\r\n        load: {\r\n            key: 'AIzaSyDAsLUo8OIp0moXk6DH4sV192TRyl2V2NE',\r\n            libraries: 'places',\r\n            language: 'es'\r\n        }\r\n    });\r\n\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    import VeeValidate,{Validator} from 'vee-validate';\r\n    import es from 'vee-validate/dist/locale/es';\r\n    Validator.localize('es',es);\r\n    Vue.use(VeeValidate);\r\n    export default {\r\n        name: \"nuevo\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone\r\n        },\r\n        data: () => ({\r\n            pasos: {\r\n                actual:1,\r\n                total:5\r\n            },\r\n            ver:true,\r\n            procesando:false,\r\n            lista:{},\r\n            mensaje:{\r\n                clase:'alert-info',\r\n                texto:'Complete el formulario',\r\n                icono:'la la-info-circle'\r\n            },\r\n            dropzoneOptions: {\r\n                url:'/upload',\r\n                maxFiles:10,\r\n                maxFilesize: 5,\r\n                addRemoveLinks: true,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: \"<h1><i class='fa fa-cloud-upload'></i><br>Arrastre o suba archivos.</h1>\",\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"No se admite este tipo de archivo.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"Solo se admiten 10 archivos.\",\r\n                dictRemoveFile:'X',\r\n            },\r\n\r\n            titulo:'',\r\n            obgeneral:'',\r\n            obespecificos:'',\r\n            finicio:'',\r\n            ffin:'',\r\n            descripcion:'',\r\n            benedirectos:'',\r\n            beneindirectos:'',\r\n            atrabajo:[],\r\n            carreras:[],\r\n            requiere:[],\r\n            ainteres:null,\r\n            pais:null,\r\n            provincia:null,\r\n            canton:null,\r\n            parroquia:null,\r\n            estado:null,\r\n            lugares:[],\r\n            poblacion:'',\r\n            pa:'',\r\n            checkVar:false,\r\n\r\n            cordenadas: {lat:-1.831239, lng:-78.18340599999999},\r\n            buscado:null,\r\n            googlePlace:'',\r\n            intentos:false,\r\n            centro:{},\r\n            info:{\r\n                pixelOffset:{\r\n                    width:0,\r\n                    height:-35\r\n                }\r\n            },\r\n\r\n            listaArchivos:[],\r\n\r\n            listaAtrabajo:[],\r\n            listaCarreras:[],\r\n            listaEstados:[],\r\n            listaAreas:{},\r\n            listaPaises:{},\r\n            listaProvincias:{},\r\n            listaCantones:{},\r\n            listaParroquias:{},\r\n            listaReq:[{id:1,name:'OSC'},{id:2,name:'IES'},{id:3,name:'No requiere'}],\r\n\r\n            place:null,\r\n            acercamiento:6,\r\n            configuracionMap:{\r\n                mapTypeControl:false,\r\n                mapTypeControlOptions:false,\r\n                streetViewControl:false,\r\n\r\n            },\r\n        }),\r\n        props:['con'],\r\n        computed:{\r\n            avance:function(){\r\n                return ((this.pasos.actual*100)/this.pasos.total).toFixed(2);\r\n            },\r\n            reqOsc:function(){\r\n                return this.requiere.find(function (element) {\r\n                    return element === 1;\r\n                });\r\n            },\r\n            reqIes:function(){\r\n                return this.requiere.find(function(element) {\r\n                    return element === 2;\r\n                });\r\n            },\r\n            fdeinicio:function(){\r\n                return moment(moment(this.finicio,'YYYY/MM/DD')).format('dddd Do MMMM YYYY');\r\n            },\r\n            fdefin:function(){\r\n                return moment(moment(this.ffin,'YYYY/MM/DD')).format('dddd Do MMMM YYYY');\r\n            },\r\n            actual:function(){\r\n                return window.location.origin;\r\n            }\r\n        },\r\n        watch:{\r\n            ainteres:function(){\r\n                this.lugares=[];\r\n                this.poblacion='';\r\n                this.pais=null;\r\n                this.provincia=null;\r\n                this.canton=null;\r\n                this.parroquia=null;\r\n            },\r\n            pais:function(codigo){\r\n                if(codigo!==null){\r\n                    this.pa=this.buscar(this.listaPaises,codigo);\r\n                    this.buscarPalabra(this.pa);\r\n                    this.acercamiento=4;\r\n                    if(this.ainteres>=2){\r\n                        axios({\r\n                            method: 'POST',\r\n                            url: this.con+'/areas/2/'+codigo,\r\n                        }).then((response) => {\r\n                            this.listaProvincias=response.data;\r\n                        });\r\n                    }\r\n                }\r\n            },\r\n            provincia:function(codigo){\r\n                if(codigo!==null){\r\n                    this.buscarPalabra(this.buscar(this.listaProvincias,codigo)+', '+this.pa);\r\n                    this.acercamiento=10;\r\n                    if(this.ainteres>=3){\r\n                        axios({\r\n                            method: 'POST',\r\n                            url: this.con+'/areas/3/'+codigo,\r\n                        }).then((response) => {\r\n                            this.listaCantones=response.data;\r\n                        });\r\n                    }\r\n                }\r\n            },\r\n            canton:function(codigo){\r\n                if(codigo!==null){\r\n                    this.buscarPalabra(this.buscar(this.listaCantones,codigo)+', '+this.pa);\r\n                    this.acercamiento=13;\r\n                    if(this.ainteres>=4){\r\n                        axios({\r\n                            method: 'POST',\r\n                            url: this.con+'/areas/4/'+codigo,\r\n                        }).then((response) => {\r\n                            this.listaParroquias=response.data;\r\n                        });\r\n                    }\r\n                }\r\n            },\r\n            'pasos.actual':function(val){\r\n                switch (val){\r\n                    case 1:\r\n                        this.mensaje={\r\n                            clase:'alert-info',\r\n                            texto:'Complete el formulario de '+this.lista[0].title,\r\n                            icono:'la la-info-circle'\r\n                        };\r\n                        let vm=this;\r\n                        $('input[name=\"fechas\"]').daterangepicker({\r\n                                autoApply: true,\r\n                                locale: {\r\n                                    format: \"MM/DD/YYYY\",\r\n                                    separator: \" - \",\r\n                                    applyLabel: \"Aplicar\",\r\n                                    cancelLabel: \"Cancelar\",\r\n                                    fromLabel: \"Desde\",\r\n                                    toLabel: \"a\",\r\n                                },\r\n                                drops: \"up\"\r\n                            },\r\n                            function(start, end, label) {\r\n                                toastr.info(moment(start.format('YYYY/MM/DD'), \"YYYY/MM/DD\").fromNow(), \"Fecha de inicio\");\r\n                                vm.finicio=start.format('YYYY/MM/DD');\r\n                                vm.ffin=end.format('YYYY/MM/DD');\r\n                            }\r\n                        );\r\n                        break;\r\n                    case 2:\r\n                        this.mensaje={\r\n                            clase:'alert-info',\r\n                            texto:'Complete el formulario de '+this.lista[1].title,\r\n                            icono:'la la-info-circle'\r\n                        };\r\n                        break;\r\n                    case 3:\r\n                        this.cargarArchivos();\r\n                        this.$refs.archivos.removeAllFiles();\r\n                        this.mensaje={\r\n                            clase:'alert-success',\r\n                            texto:'Se admiten '+this.dropzoneOptions.maxFiles+' archivos de '+this.dropzoneOptions.maxFilesize+' MB máximo.',\r\n                            icono:'la la-cloud-upload'\r\n                        };\r\n                        break;\r\n\r\n                    case 4:\r\n                        this.mensaje={\r\n                            clase:'alert-success',\r\n                            texto:'Compruebe la información ingresada.',\r\n                            icono:'la la-thumbs-up'\r\n                        };\r\n                        break;\r\n                }\r\n            }\r\n        },\r\n        methods:{\r\n            clicMapa:function(e){\r\n                this.cordenadas.lat=e.latLng.lat();\r\n                this.cordenadas.lng=e.latLng.lng();\r\n                this.intentos=false;\r\n            },\r\n            agregarLugar:function(){\r\n                this.$validator.validateAll().then((result) => {\r\n                    if(result){\r\n                        let a = new Object();\r\n                        a.lat=this.cordenadas.lat;\r\n                        a.lng=this.cordenadas.lng;\r\n                        a.label=this.poblacion;\r\n                        switch (this.ainteres) {\r\n                            case 1:\r\n                                a.lugar = this.pais;\r\n                                a.name=this.buscar(this.listaPaises,this.pais);\r\n                                break;\r\n                            case 2:\r\n                                a.lugar = this.provincia;\r\n                                a.name=this.buscar(this.listaProvincias,this.provincia);\r\n                                break;\r\n                            case 3:\r\n                                a.lugar = this.canton;\r\n                                a.name=this.buscar(this.listaCantones,this.canton);\r\n                                break;\r\n                            case 4:\r\n                                a.lugar = this.parroquia;\r\n                                a.name=this.buscar(this.listaParroquias,this.parroquia);\r\n                                break;\r\n                        }\r\n                        this.lugares.push(a);\r\n                        toastr.info(\"Se agregó a \"+this.poblacion, \"Lugares\");\r\n                        this.poblacion='';\r\n                        this.cordenadas.lng=this.cordenadas.lng-0.0001;\r\n                        this.cordenadas.lat=this.cordenadas.lat+0.0001;\r\n                    }else{\r\n                        toastr.error(\"Complete el formulario.\", \"Error\");\r\n                    }\r\n                });\r\n            },\r\n            eliminarLugar:function(index){\r\n                this.lugares.splice(index, 1)\r\n            },\r\n            buscarPalabra:function(palabra){\r\n                let geocoder = new google.maps.Geocoder();\r\n                geocoder.geocode({'address': palabra}, (results, status) => {\r\n                    if (status === 'OK') {\r\n                        this.cordenadas.lat = results[0].geometry.location.lat();\r\n                        this.cordenadas.lng = results[0].geometry.location.lng();\r\n                        this.centro.lat=results[0].geometry.location.lat();\r\n                        this.centro.lng=results[0].geometry.location.lng();\r\n                        this.intentos=false;\r\n                    }\r\n                });\r\n            },\r\n            buscar:function(vector,id){\r\n                let item = vector.find(item => item.id === id);\r\n                return item.name;\r\n            },\r\n            cargarCarreras:function(){\r\n                axios({\r\n                    method: 'POST',\r\n                    url: this.con+'/carreras',\r\n                }).then((response) => {\r\n                    this.listaCarreras=response.data;\r\n                });\r\n            },\r\n            cargarTrabajos:function(){\r\n                axios({\r\n                    method: 'POST',\r\n                    url: this.con+'/trabajo',\r\n                }).then((response) => {\r\n                    this.listaAtrabajo=response.data;\r\n                });\r\n            },\r\n            cargarAreas:function(){\r\n                axios({\r\n                    method: 'POST',\r\n                    url: this.con+'/areas',\r\n                }).then((response) => {\r\n                    this.listaAreas=response.data;\r\n                });\r\n            },\r\n            cargarPaises:function(){\r\n                axios({\r\n                    method: 'POST',\r\n                    url: this.con+'/areas/1',\r\n                }).then((response) => {\r\n                    this.listaPaises=response.data;\r\n                });\r\n            },\r\n            cargarEstados:function(){\r\n                axios({\r\n                    method: 'POST',\r\n                    url: this.con+'/estado',\r\n                }).then((response) => {\r\n                    this.listaEstados=response.data;\r\n                });\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: this.con+'/upload',\r\n                }).then((response) => {\r\n                    this.listaArchivos=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href=this.con+'/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: this.con+'/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            validar:function(){\r\n                this.errors.clear();\r\n                this.mensaje={\r\n                    clase:'alert-info',\r\n                    texto:'Complete el formulario.',\r\n                    icono:'la la-info-circle'\r\n                };\r\n                switch (this.pasos.actual){\r\n                    case 1:\r\n                        this.$validator.validateAll().then((result) => {\r\n                            if(result)\r\n                                this.pasos.actual++;\r\n                        });\r\n                        break;\r\n                    case 2:\r\n                        if(this.lugares.length>0){\r\n                            this.pasos.actual++;\r\n                        }else{\r\n                            toastr.error(\"Debe elegir mínimo un lugar.\", \"Error\");\r\n                            this.mensaje={\r\n                                clase:'alert-danger',\r\n                                texto:'Elija el área de interés, posteriormente marque en el mapa las zonas del proyecto.',\r\n                                icono:'la la-ban'\r\n                            };\r\n                        }\r\n                        break;\r\n                    case 3:\r\n                        this.pasos.actual++;\r\n                        break;\r\n                    case 4:\r\n                        if(this.checkVar)\r\n                            this.enviar();\r\n                        else\r\n                            toastr.error(\"Marque la información es correcta.\", \"Error\");\r\n                        break;\r\n                }\r\n            },\r\n            enviar:function(){\r\n                toastr.info(\"Se esta procesando la información.\", \"Información\");\r\n                this.procesando=true;\r\n                axios({\r\n                    method: 'POST',\r\n                    url:window.location.href,\r\n                    params: {\r\n                        'proyecto':this.titulo,\r\n                        'estado':this.estado,\r\n                        'objetivo_general':this.obgeneral,\r\n                        'descripcion':this.descripcion,\r\n                        'beneficiarios':this.benedirectos,\r\n                        'areas':this.atrabajo,\r\n                        'carreras':this.carreras,\r\n                        'lugares':this.lugares,\r\n                        'fecha_inicio':this.finicio,\r\n                        'fecha_fin':this.ffin,\r\n                        'interes':this.ainteres,\r\n                    },\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        this.ver=false;\r\n                        this.mensaje={\r\n                            clase:'alert-success',\r\n                            texto:response.data.mensaje,\r\n                            icono:'la la-check'\r\n                        };\r\n                    }else{\r\n                        this.mensaje={\r\n                            clase:'alert-danger',\r\n                            texto:response.data.mensaje,\r\n                            icono:'la la-ban'\r\n                        };\r\n                        this.checkVar=false;\r\n                    }\r\n                    this.procesando=false;\r\n                }).catch((error) => {\r\n                    this.procesando=false;\r\n                    this.checkVar=false;\r\n                    this.mensaje={\r\n                        clase:'alert-danger',\r\n                        texto:'Ha ocurrido un error vuelva a intentar.',\r\n                        icono:'la la-ban'\r\n                    };\r\n                });\r\n            },\r\n        },\r\n        created(){\r\n            this.centro={lat:-1.831239, lng:-78.18340599999999};\r\n            this.lista=[{title:\"Proyecto\"},{title:\"Lugares\"},{title:\"Archivos\"},{title:\"Confirmar\"}];\r\n            this.pasos.total=this.lista.length;\r\n            this.dropzoneOptions.url=this.con+'/upload';\r\n            this.cargarCarreras();\r\n            this.cargarTrabajos();\r\n            this.cargarAreas();\r\n            this.cargarPaises();\r\n            this.cargarEstados();\r\n        },\r\n        updated(){\r\n            $('.m_selectpicker').selectpicker('refresh');\r\n        },\r\n        mounted(){\r\n            let vm=this;\r\n            $('input[name=\"fechas\"]').daterangepicker({\r\n                    autoApply: true,\r\n                    locale: {\r\n                        format: \"MM/DD/YYYY\",\r\n                        separator: \" - \",\r\n                        applyLabel: \"Aplicar\",\r\n                        cancelLabel: \"Cancelar\",\r\n                        fromLabel: \"Desde\",\r\n                        toLabel: \"a\",\r\n                    },\r\n                    drops: \"up\"\r\n                },\r\n                function(start, end, label) {\r\n                    toastr.info(moment(start.format('YYYY/MM/DD'), \"YYYY/MM/DD\").fromNow(), \"Fecha de inicio\");\r\n                    vm.finicio=start.format('YYYY/MM/DD');\r\n                    vm.ffin=end.format('YYYY/MM/DD');\r\n                    $('#fecha_val').hide();\r\n                }\r\n            );\r\n            $('input[name=\"fechas\"]').val('');\r\n        }\r\n    }\r\n</script>\r\n<style>\r\n    a{\r\n        cursor: pointer;\r\n    }\r\n    a .del{\r\n        cursor: grab;\r\n    }\r\n    .vue-map {\r\n        background: #fff;\r\n    }\r\n    .pac{\r\n        padding:10px 14px !important;\r\n        width: 60%;\r\n    }\r\n    a[href^=\"http://maps.google.com/maps\"]{display:none !important}\r\n    a[href^=\"https://maps.google.com/maps\"]{display:none !important}\r\n\r\n    .gmnoprint a, .gmnoprint span, .gm-style-cc {\r\n        display:none;\r\n    }\r\n    .pac-item{\r\n        cursor:pointer;\r\n    }\r\n    .gm-style-iw + div{\r\n        display: none;\r\n    }\r\n    .gm-style-iw{\r\n        padding-left: 9px;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+=======
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -33489,6 +33529,7 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources\\assets\\js\\components\\actividad-vacia.vue"
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 /* hot reload */
 if (false) {(function () {
@@ -34101,10 +34142,327 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
+throw new Error("Cannot find module \"vue2-google-maps\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone__ = __webpack_require__(48);
+=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_infinite_loading__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_infinite_loading___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_infinite_loading__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone__ = __webpack_require__(66);
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue2_dropzone__);
+throw new Error("Cannot find module \"vee-validate\"");
+throw new Error("Cannot find module \"vee-validate/dist/locale/es\"");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -34240,617 +34598,3296 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+Vue.component('gmap-autocomplete', __WEBPACK_IMPORTED_MODULE_0_vue2_google_maps__["Autocomplete"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue2_google_maps__, {
+    load: {
+        key: 'AIzaSyDAsLUo8OIp0moXk6DH4sV192TRyl2V2NE',
+        libraries: 'places',
+        language: 'es'
+    }
+});
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_2_vee_validate__["Validator"].localize('es', __WEBPACK_IMPORTED_MODULE_3_vee_validate_dist_locale_es___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vee_validate___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "noticias",
+    name: "nuevo",
     components: {
-        vueDropzone: __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone___default.a,
-        InfiniteLoading: __WEBPACK_IMPORTED_MODULE_0_vue_infinite_loading___default.a
+        vueDropzone: __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone___default.a
     },
     data: function data() {
         return {
-            subidas: [],
-            comentario: '',
-            noticias: [],
-
+            pasos: {
+                actual: 1,
+                total: 5
+            },
+            ver: true,
+            procesando: false,
+            lista: {},
+            mensaje: {
+                clase: 'alert-info',
+                texto: 'Complete el formulario',
+                icono: 'la la-info-circle'
+            },
             dropzoneOptions: {
-                url: '/consulta/upload',
-                maxFiles: 30,
+                url: '/upload',
+                maxFiles: 10,
                 maxFilesize: 5,
+                addRemoveLinks: true,
                 headers: { "X-CSRF-TOKEN": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },
                 uploadMultiple: true,
-                dictDefaultMessage: '<i class="la la-photo"></i>',
-                previewTemplate: '<i><i/>',
-                acceptedFiles: 'image/*',
+                dictDefaultMessage: "<h1><i class='fa fa-cloud-upload'></i><br>Arrastre o suba archivos.</h1>",
                 dictFallbackMessage: "Su navegador no soporta este componente.",
                 dictFileTooBig: "El archivo es muy grande.",
-                dictInvalidFileType: "Solo se admiten imágenes.",
+                dictInvalidFileType: "No se admite este tipo de archivo.",
                 dictResponseError: "Error al enviar el archivo.",
-                dictMaxFilesExceeded: "A superado el límite de imágenes."
+                dictMaxFilesExceeded: "Solo se admiten 10 archivos.",
+                dictRemoveFile: 'X'
             },
-            pagina: 0,
 
-            proyectoSele: null,
-            tiempo: 1
+            titulo: '',
+            obgeneral: '',
+            obespecificos: '',
+            finicio: '',
+            ffin: '',
+            descripcion: '',
+            benedirectos: '',
+            beneindirectos: '',
+            atrabajo: [],
+            carreras: [],
+            requiere: [],
+            ainteres: null,
+            pais: null,
+            provincia: null,
+            canton: null,
+            parroquia: null,
+            estado: null,
+            lugares: [],
+            poblacion: '',
+            pa: '',
+            checkVar: false,
+
+            cordenadas: { lat: -1.831239, lng: -78.18340599999999 },
+            buscado: null,
+            googlePlace: '',
+            intentos: false,
+            centro: {},
+            info: {
+                pixelOffset: {
+                    width: 0,
+                    height: -35
+                }
+            },
+
+            listaArchivos: [],
+
+            listaAtrabajo: [],
+            listaCarreras: [],
+            listaEstados: [],
+            listaAreas: {},
+            listaPaises: {},
+            listaProvincias: {},
+            listaCantones: {},
+            listaParroquias: {},
+            listaReq: [{ id: 1, name: 'OSC' }, { id: 2, name: 'IES' }, { id: 3, name: 'No requiere' }],
+
+            place: null,
+            acercamiento: 6,
+            configuracionMap: {
+                mapTypeControl: false,
+                mapTypeControlOptions: false,
+                streetViewControl: false
+
+            }
         };
     },
-    methods: {
-        cargarProyecto: function cargarProyecto(codigo) {
-            this.tiempo = moment();
-            this.proyectoSele = codigo;
+    props: ['con'],
+    computed: {
+        avance: function avance() {
+            return (this.pasos.actual * 100 / this.pasos.total).toFixed(2);
         },
+        reqOsc: function reqOsc() {
+            return this.requiere.find(function (element) {
+                return element === 1;
+            });
+        },
+        reqIes: function reqIes() {
+            return this.requiere.find(function (element) {
+                return element === 2;
+            });
+        },
+        fdeinicio: function fdeinicio() {
+            return moment(moment(this.finicio, 'YYYY/MM/DD')).format('dddd Do MMMM YYYY');
+        },
+        fdefin: function fdefin() {
+            return moment(moment(this.ffin, 'YYYY/MM/DD')).format('dddd Do MMMM YYYY');
+        },
+        actual: function actual() {
+            return window.location.origin;
+        }
+    },
+    watch: {
+        ainteres: function ainteres() {
+            this.lugares = [];
+            this.poblacion = '';
+            this.pais = null;
+            this.provincia = null;
+            this.canton = null;
+            this.parroquia = null;
+        },
+        pais: function pais(codigo) {
+            var _this = this;
 
-        parsearArchivo: function parsearArchivo(archivo) {
-            return '/consulta/imagen?nombre=' + archivo + '&p=' + moment();
+            if (codigo !== null) {
+                this.pa = this.buscar(this.listaPaises, codigo);
+                this.buscarPalabra(this.pa);
+                this.acercamiento = 4;
+                if (this.ainteres >= 2) {
+                    axios({
+                        method: 'POST',
+                        url: this.con + '/areas/2/' + codigo
+                    }).then(function (response) {
+                        _this.listaProvincias = response.data;
+                    });
+                }
+            }
+        },
+        provincia: function provincia(codigo) {
+            var _this2 = this;
+
+            if (codigo !== null) {
+                this.buscarPalabra(this.buscar(this.listaProvincias, codigo) + ', ' + this.pa);
+                this.acercamiento = 10;
+                if (this.ainteres >= 3) {
+                    axios({
+                        method: 'POST',
+                        url: this.con + '/areas/3/' + codigo
+                    }).then(function (response) {
+                        _this2.listaCantones = response.data;
+                    });
+                }
+            }
+        },
+        canton: function canton(codigo) {
+            var _this3 = this;
+
+            if (codigo !== null) {
+                this.buscarPalabra(this.buscar(this.listaCantones, codigo) + ', ' + this.pa);
+                this.acercamiento = 13;
+                if (this.ainteres >= 4) {
+                    axios({
+                        method: 'POST',
+                        url: this.con + '/areas/4/' + codigo
+                    }).then(function (response) {
+                        _this3.listaParroquias = response.data;
+                    });
+                }
+            }
+        },
+        'pasos.actual': function pasosActual(val) {
+            switch (val) {
+                case 1:
+                    this.mensaje = {
+                        clase: 'alert-info',
+                        texto: 'Complete el formulario de ' + this.lista[0].title,
+                        icono: 'la la-info-circle'
+                    };
+                    var vm = this;
+                    $('input[name="fechas"]').daterangepicker({
+                        autoApply: true,
+                        locale: {
+                            format: "MM/DD/YYYY",
+                            separator: " - ",
+                            applyLabel: "Aplicar",
+                            cancelLabel: "Cancelar",
+                            fromLabel: "Desde",
+                            toLabel: "a"
+                        },
+                        drops: "up"
+                    }, function (start, end, label) {
+                        toastr.info(moment(start.format('YYYY/MM/DD'), "YYYY/MM/DD").fromNow(), "Fecha de inicio");
+                        vm.finicio = start.format('YYYY/MM/DD');
+                        vm.ffin = end.format('YYYY/MM/DD');
+                    });
+                    break;
+                case 2:
+                    this.mensaje = {
+                        clase: 'alert-info',
+                        texto: 'Complete el formulario de ' + this.lista[1].title,
+                        icono: 'la la-info-circle'
+                    };
+                    break;
+                case 3:
+                    this.cargarArchivos();
+                    this.$refs.archivos.removeAllFiles();
+                    this.mensaje = {
+                        clase: 'alert-success',
+                        texto: 'Se admiten ' + this.dropzoneOptions.maxFiles + ' archivos de ' + this.dropzoneOptions.maxFilesize + ' MB máximo.',
+                        icono: 'la la-cloud-upload'
+                    };
+                    break;
+
+                case 4:
+                    this.mensaje = {
+                        clase: 'alert-success',
+                        texto: 'Compruebe la información ingresada.',
+                        icono: 'la la-thumbs-up'
+                    };
+                    break;
+            }
+        }
+    },
+    methods: {
+        clicMapa: function clicMapa(e) {
+            this.cordenadas.lat = e.latLng.lat();
+            this.cordenadas.lng = e.latLng.lng();
+            this.intentos = false;
+        },
+        agregarLugar: function agregarLugar() {
+            var _this4 = this;
+
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    var a = new Object();
+                    a.lat = _this4.cordenadas.lat;
+                    a.lng = _this4.cordenadas.lng;
+                    a.label = _this4.poblacion;
+                    switch (_this4.ainteres) {
+                        case 1:
+                            a.lugar = _this4.pais;
+                            a.name = _this4.buscar(_this4.listaPaises, _this4.pais);
+                            break;
+                        case 2:
+                            a.lugar = _this4.provincia;
+                            a.name = _this4.buscar(_this4.listaProvincias, _this4.provincia);
+                            break;
+                        case 3:
+                            a.lugar = _this4.canton;
+                            a.name = _this4.buscar(_this4.listaCantones, _this4.canton);
+                            break;
+                        case 4:
+                            a.lugar = _this4.parroquia;
+                            a.name = _this4.buscar(_this4.listaParroquias, _this4.parroquia);
+                            break;
+                    }
+                    _this4.lugares.push(a);
+                    toastr.info("Se agregó a " + _this4.poblacion, "Lugares");
+                    _this4.poblacion = '';
+                    _this4.cordenadas.lng = _this4.cordenadas.lng - 0.0001;
+                    _this4.cordenadas.lat = _this4.cordenadas.lat + 0.0001;
+                } else {
+                    toastr.error("Complete el formulario.", "Error");
+                }
+            });
+        },
+        eliminarLugar: function eliminarLugar(index) {
+            this.lugares.splice(index, 1);
+        },
+        buscarPalabra: function buscarPalabra(palabra) {
+            var _this5 = this;
+
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': palabra }, function (results, status) {
+                if (status === 'OK') {
+                    _this5.cordenadas.lat = results[0].geometry.location.lat();
+                    _this5.cordenadas.lng = results[0].geometry.location.lng();
+                    _this5.centro.lat = results[0].geometry.location.lat();
+                    _this5.centro.lng = results[0].geometry.location.lng();
+                    _this5.intentos = false;
+                }
+            });
+        },
+        buscar: function buscar(vector, id) {
+            var item = vector.find(function (item) {
+                return item.id === id;
+            });
+            return item.name;
+        },
+        cargarCarreras: function cargarCarreras() {
+            var _this6 = this;
+
+            axios({
+                method: 'POST',
+                url: this.con + '/carreras'
+            }).then(function (response) {
+                _this6.listaCarreras = response.data;
+            });
+        },
+        cargarTrabajos: function cargarTrabajos() {
+            var _this7 = this;
+
+            axios({
+                method: 'POST',
+                url: this.con + '/trabajo'
+            }).then(function (response) {
+                _this7.listaAtrabajo = response.data;
+            });
+        },
+        cargarAreas: function cargarAreas() {
+            var _this8 = this;
+
+            axios({
+                method: 'POST',
+                url: this.con + '/areas'
+            }).then(function (response) {
+                _this8.listaAreas = response.data;
+            });
+        },
+        cargarPaises: function cargarPaises() {
+            var _this9 = this;
+
+            axios({
+                method: 'POST',
+                url: this.con + '/areas/1'
+            }).then(function (response) {
+                _this9.listaPaises = response.data;
+            });
+        },
+        cargarEstados: function cargarEstados() {
+            var _this10 = this;
+
+            axios({
+                method: 'POST',
+                url: this.con + '/estado'
+            }).then(function (response) {
+                _this10.listaEstados = response.data;
+            });
         },
         cargarArchivos: function cargarArchivos() {
-            var _this = this;
+            var _this11 = this;
 
             axios({
                 method: 'OPTIONS',
-                url: '/consulta/upload'
+                url: this.con + '/upload'
             }).then(function (response) {
-                _this.subidas = response.data;
+                _this11.listaArchivos = response.data;
             });
         },
         descargarArchivo: function descargarArchivo(archivo, nombre) {
             //window.open(this.con+'/upload?nombre='+archivo,"_blank");
-            window.location.href = '/consulta/upload?nombre=' + archivo;
+            window.location.href = this.con + '/upload?nombre=' + archivo;
             toastr.info("Se descargo " + nombre, "Éxito");
         },
         eliminarArchivo: function eliminarArchivo(archivo) {
-            var _this2 = this;
+            var _this12 = this;
 
             axios({
                 method: 'DELETE',
-                url: '/consulta/upload',
+                url: this.con + '/upload',
                 params: {
                     'nombre': archivo.file
                 }
             }).then(function (response) {
                 toastr.info("Se eliminó " + archivo.name, "Éxito");
-                _this2.cargarArchivos();
+                _this12.cargarArchivos();
             });
         },
-        errores: function errores(file, meesage, xhr) {
-            toastr.error(meesage, "Error");
-        },
-        enviar: function enviar() {
-            var _this3 = this;
+        validar: function validar() {
+            var _this13 = this;
 
-            if (this.comentario.length > 10) {
-                axios({
-                    method: 'POST',
-                    url: window.location.href,
-                    params: {
-                        'comentario': this.comentario
-                    }
-                }).then(function (response) {
-                    if (response.data.val) {
-                        toastr.info("Se publicó su comentario", "Éxito");
-                        _this3.cargarPrimerasNoticias();
-                        _this3.comentario = '';
-                        _this3.cargarArchivos();
+            this.errors.clear();
+            this.mensaje = {
+                clase: 'alert-info',
+                texto: 'Complete el formulario.',
+                icono: 'la la-info-circle'
+            };
+            switch (this.pasos.actual) {
+                case 1:
+                    this.$validator.validateAll().then(function (result) {
+                        if (result) _this13.pasos.actual++;
+                    });
+                    break;
+                case 2:
+                    if (this.lugares.length > 0) {
+                        this.pasos.actual++;
                     } else {
-                        toastr.error("Ha ocurrido un error vuelva a intentar", "Error");
+                        toastr.error("Debe elegir mínimo un lugar.", "Error");
+                        this.mensaje = {
+                            clase: 'alert-danger',
+                            texto: 'Elija el área de interés, posteriormente marque en el mapa las zonas del proyecto.',
+                            icono: 'la la-ban'
+                        };
                     }
-                });
-            } else {
-                toastr.error("El texto no puede estar vacío", "Error");
+                    break;
+                case 3:
+                    this.pasos.actual++;
+                    break;
+                case 4:
+                    if (this.checkVar) this.enviar();else toastr.error("Marque la información es correcta.", "Error");
+                    break;
             }
         },
-        enviarHijo: function enviarHijo(comentario) {
-            var _this4 = this;
+        enviar: function enviar() {
+            var _this14 = this;
 
+            toastr.info("Se esta procesando la información.", "Información");
+            this.procesando = true;
             axios({
                 method: 'POST',
                 url: window.location.href,
                 params: {
-                    'comentario': comentario.texto,
-                    'id': comentario.code,
-                    'p': comentario.p
+                    'proyecto': this.titulo,
+                    'estado': this.estado,
+                    'objetivo_general': this.obgeneral,
+                    'descripcion': this.descripcion,
+                    'beneficiarios': this.benedirectos,
+                    'areas': this.atrabajo,
+                    'carreras': this.carreras,
+                    'lugares': this.lugares,
+                    'fecha_inicio': this.finicio,
+                    'fecha_fin': this.ffin,
+                    'interes': this.ainteres
                 }
             }).then(function (response) {
                 if (response.data.val) {
-                    comentario.texto = '';
-                    comentario.hijos++;
-                    if (comentario.mostrando) _this4.cargarHijos(comentario);
+                    _this14.ver = false;
+                    _this14.mensaje = {
+                        clase: 'alert-success',
+                        texto: response.data.mensaje,
+                        icono: 'la la-check'
+                    };
                 } else {
-                    toastr.error("Ha ocurrido un error vuelva a intentar", "Error");
+                    _this14.mensaje = {
+                        clase: 'alert-danger',
+                        texto: response.data.mensaje,
+                        icono: 'la la-ban'
+                    };
+                    _this14.checkVar = false;
                 }
-            });
-        },
-        mostrarComentarios: function mostrarComentarios(comentario) {
-            if (!comentario.mostrando) {
-                //Object.assign(comentario, {'mostrando':true});
-                comentario.mostrando = true;
-                this.cargarHijos(comentario);
-            }
-        },
-        cargarHijos: function cargarHijos(comentario) {
-            var parametro = comentario.code ? comentario.code : comentario.p;
-            axios({
-                method: 'OPTIONS',
-                url: window.location.href + '/' + parametro
-            }).then(function (response) {
-                Object.assign(comentario, { 'listaHijos': response.data });
-            });
-        },
-        cargarPrimerasNoticias: function cargarPrimerasNoticias() {
-            var _this5 = this;
-
-            axios.options(window.location.href).then(function (response) {
-                _this5.noticias = response.data;
+                _this14.procesando = false;
             }).catch(function (error) {
-                if (error.status === 500) _this5.cargarPrimerasNoticias();
-            });
-        },
-        cargarMasNoticias: function cargarMasNoticias($state) {
-            var _this6 = this;
-
-            var pagina = this.noticias.length / 5 + 1;
-            pagina = pagina.toFixed(0);
-
-            if (pagina === this.pagina) pagina++;
-            axios.options(window.location.href, {
-                params: {
-                    page: pagina
-                }
-            }).then(function (response) {
-                if (response.data.length) {
-                    _this6.noticias = _this6.noticias.concat(response.data);
-                    _this6.pagina = pagina;
-                    $state.loaded();
-                    /*
-                    if (this.noticias.length===response.data) {
-                        $state.complete();
-                    }*/
-                } else {
-                    $state.complete();
-                }
-            }).catch(function (error) {
-                if (error.status === 500) _this6.cargarMasNoticias();
-            });
-        },
-        renderizarId: function renderizarId(id) {
-            lightGallery(document.getElementById(id), {
-                download: false
-            });
-        },
-        enviarLike: function enviarLike(comentario) {
-            axios({
-                method: 'PUT',
-                url: window.location.href,
-                params: {
-                    'id': comentario.code
-                }
-            }).then(function (response) {
-                if (response.data.val) {
-                    comentario.meLike = response.data.like;
-                    if (response.data.like) comentario.likes++;else comentario.likes--;
-                } else {
-                    toastr.error("Ha ocurrido un error vuelva a intentar", "Error");
-                }
+                _this14.procesando = false;
+                _this14.checkVar = false;
+                _this14.mensaje = {
+                    clase: 'alert-danger',
+                    texto: 'Ha ocurrido un error vuelva a intentar.',
+                    icono: 'la la-ban'
+                };
             });
         }
     },
-    mounted: function mounted() {
-        $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');
-        this.cargarArchivos();
+    created: function created() {
+        this.centro = { lat: -1.831239, lng: -78.18340599999999 };
+        this.lista = [{ title: "Proyecto" }, { title: "Lugares" }, { title: "Archivos" }, { title: "Confirmar" }];
+        this.pasos.total = this.lista.length;
+        this.dropzoneOptions.url = this.con + '/upload';
+        this.cargarCarreras();
+        this.cargarTrabajos();
+        this.cargarAreas();
+        this.cargarPaises();
+        this.cargarEstados();
     },
     updated: function updated() {
-        this.renderizarId('mis-fotos');
+        $('.m_selectpicker').selectpicker('refresh');
+    },
+    mounted: function mounted() {
+        var vm = this;
+        $('input[name="fechas"]').daterangepicker({
+            autoApply: true,
+            locale: {
+                format: "MM/DD/YYYY",
+                separator: " - ",
+                applyLabel: "Aplicar",
+                cancelLabel: "Cancelar",
+                fromLabel: "Desde",
+                toLabel: "a"
+            },
+            drops: "up"
+        }, function (start, end, label) {
+            toastr.info(moment(start.format('YYYY/MM/DD'), "YYYY/MM/DD").fromNow(), "Fecha de inicio");
+            vm.finicio = start.format('YYYY/MM/DD');
+            vm.ffin = end.format('YYYY/MM/DD');
+            $('#fecha_val').hide();
+        });
+        $('input[name="fechas"]').val('');
     }
 });
 
 /***/ }),
+<<<<<<< HEAD
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define(t):e.vue2Dropzone=t()}(this,function(){"use strict";var n={getSignedURL:function(o,s){var a={filePath:o.name,contentType:o.type};return new Promise(function(e,t){var n=new FormData,r=new XMLHttpRequest,i="function"==typeof s.signingURL?s.signingURL(o):s.signingURL;r.open("POST",i),r.onload=function(){200==r.status?e(JSON.parse(r.response)):t(r.statusText)},r.onerror=function(e){console.error("Network Error : Could not send request to AWS (Maybe CORS errors)"),t(e)},Object.entries(s.headers||{}).forEach(function(e){var t=e[0],i=e[1];r.setRequestHeader(t,i)}),a=Object.assign(a,s.params||{}),Object.entries(a).forEach(function(e){var t=e[0],i=e[1];n.append(t,i)}),r.send(n)})},sendFile:function(t,e,i){var n=i?this.setResponseHandler:this.sendS3Handler;return this.getSignedURL(t,e).then(function(e){return n(e,t)}).catch(function(e){return e})},setResponseHandler:function(e,t){t.s3Signature=e.signature,t.s3Url=e.postEndpoint},sendS3Handler:function(e,t){var o=new FormData,i=e.signature;return Object.keys(i).forEach(function(e){o.append(e,i[e])}),o.append("file",t),new Promise(function(i,n){var r=new XMLHttpRequest;r.open("POST",e.postEndpoint),r.onload=function(){if(201==r.status){var e=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[0].innerHTML;i({success:!0,message:e})}else{var t=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[0].innerHTML;n({success:!1,message:t+". Request is marked as resolved when returns as status 201"})}},r.onerror=function(e){var t=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[1].innerHTML;n({success:!1,message:t})},r.send(o)})}};var e,t=(function(e){var t=function(){function n(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,i){return t&&n(e.prototype,t),i&&n(e,i),e}}();function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var i=function(){function e(){l(this,e)}return t(e,[{key:"on",value:function(e,t){return this._callbacks=this._callbacks||{},this._callbacks[e]||(this._callbacks[e]=[]),this._callbacks[e].push(t),this}},{key:"emit",value:function(e){this._callbacks=this._callbacks||{};var t=this._callbacks[e];if(t){for(var i=arguments.length,n=Array(1<i?i-1:0),r=1;r<i;r++)n[r-1]=arguments[r];for(var o=0,s=s=t;;){if(o>=s.length)break;s[o++].apply(this,n)}}return this}},{key:"off",value:function(e,t){if(!this._callbacks||0===arguments.length)return this._callbacks={},this;var i=this._callbacks[e];if(!i)return this;if(1===arguments.length)return delete this._callbacks[e],this;for(var n=0;n<i.length;n++){if(i[n]===t){i.splice(n,1);break}}return this}}]),e}(),r=function(e){function b(e,t){l(this,b);var i,n=a(this,(b.__proto__||Object.getPrototypeOf(b)).call(this)),r=void 0;if(n.element=e,n.version=b.version,n.defaultOptions.previewTemplate=n.defaultOptions.previewTemplate.replace(/\n*/g,""),n.clickableElements=[],n.listeners=[],n.files=[],"string"==typeof n.element&&(n.element=document.querySelector(n.element)),!n.element||null==n.element.nodeType)throw new Error("Invalid dropzone element.");if(n.element.dropzone)throw new Error("Dropzone already attached.");b.instances.push(n),n.element.dropzone=n;var o,s=null!=(i=b.optionsForElement(n.element))?i:{};if(n.options=b.extend({},n.defaultOptions,s,null!=t?t:{}),n.options.forceFallback||!b.isBrowserSupported())return o=n.options.fallback.call(n),a(n,o);if(null==n.options.url&&(n.options.url=n.element.getAttribute("action")),!n.options.url)throw new Error("No URL provided.");if(n.options.acceptedFiles&&n.options.acceptedMimeTypes)throw new Error("You can't provide both 'acceptedFiles' and 'acceptedMimeTypes'. 'acceptedMimeTypes' is deprecated.");if(n.options.uploadMultiple&&n.options.chunking)throw new Error("You cannot set both: uploadMultiple and chunking.");return n.options.acceptedMimeTypes&&(n.options.acceptedFiles=n.options.acceptedMimeTypes,delete n.options.acceptedMimeTypes),null!=n.options.renameFilename&&(n.options.renameFile=function(e){return n.options.renameFilename.call(n,e.name,e)}),n.options.method=n.options.method.toUpperCase(),(r=n.getExistingFallback())&&r.parentNode&&r.parentNode.removeChild(r),!1!==n.options.previewsContainer&&(n.options.previewsContainer?n.previewsContainer=b.getElement(n.options.previewsContainer,"previewsContainer"):n.previewsContainer=n.element),n.options.clickable&&(!0===n.options.clickable?n.clickableElements=[n.element]:n.clickableElements=b.getElements(n.options.clickable,"clickable")),n.init(),n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(b,i),t(b,null,[{key:"initClass",value:function(){this.prototype.Emitter=i,this.prototype.events=["drop","dragstart","dragend","dragenter","dragover","dragleave","addedfile","addedfiles","removedfile","thumbnail","error","errormultiple","processing","processingmultiple","uploadprogress","totaluploadprogress","sending","sendingmultiple","success","successmultiple","canceled","canceledmultiple","complete","completemultiple","reset","maxfilesexceeded","maxfilesreached","queuecomplete"],this.prototype.defaultOptions={url:null,method:"post",withCredentials:!1,timeout:3e4,parallelUploads:2,uploadMultiple:!1,chunking:!1,forceChunking:!1,chunkSize:2e6,parallelChunkUploads:!1,retryChunks:!1,retryChunksLimit:3,maxFilesize:256,paramName:"file",createImageThumbnails:!0,maxThumbnailFilesize:10,thumbnailWidth:120,thumbnailHeight:120,thumbnailMethod:"crop",resizeWidth:null,resizeHeight:null,resizeMimeType:null,resizeQuality:.8,resizeMethod:"contain",filesizeBase:1e3,maxFiles:null,headers:null,clickable:!0,ignoreHiddenFiles:!0,acceptedFiles:null,acceptedMimeTypes:null,autoProcessQueue:!0,autoQueue:!0,addRemoveLinks:!1,previewsContainer:null,hiddenInputContainer:"body",capture:null,renameFilename:null,renameFile:null,forceFallback:!1,dictDefaultMessage:"Drop files here to upload",dictFallbackMessage:"Your browser does not support drag'n'drop file uploads.",dictFallbackText:"Please use the fallback form below to upload your files like in the olden days.",dictFileTooBig:"File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",dictInvalidFileType:"You can't upload files of this type.",dictResponseError:"Server responded with {{statusCode}} code.",dictCancelUpload:"Cancel upload",dictUploadCanceled:"Upload canceled.",dictCancelUploadConfirmation:"Are you sure you want to cancel this upload?",dictRemoveFile:"Remove file",dictRemoveFileConfirmation:null,dictMaxFilesExceeded:"You can not upload any more files.",dictFileSizeUnits:{tb:"TB",gb:"GB",mb:"MB",kb:"KB",b:"b"},init:function(){},params:function(e,t,i){if(i)return{dzuuid:i.file.upload.uuid,dzchunkindex:i.index,dztotalfilesize:i.file.size,dzchunksize:this.options.chunkSize,dztotalchunkcount:i.file.upload.totalChunkCount,dzchunkbyteoffset:i.index*this.options.chunkSize}},accept:function(e,t){return t()},chunksUploaded:function(e,t){t()},fallback:function(){var e=void 0;this.element.className=this.element.className+" dz-browser-not-supported";for(var t=0,i=i=this.element.getElementsByTagName("div");;){if(t>=i.length)break;var n=i[t++];if(/(^| )dz-message($| )/.test(n.className)){(e=n).className="dz-message";break}}e||(e=b.createElement('<div class="dz-message"><span></span></div>'),this.element.appendChild(e));var r=e.getElementsByTagName("span")[0];return r&&(null!=r.textContent?r.textContent=this.options.dictFallbackMessage:null!=r.innerText&&(r.innerText=this.options.dictFallbackMessage)),this.element.appendChild(this.getFallbackForm())},resize:function(e,t,i,n){var r={srcX:0,srcY:0,srcWidth:e.width,srcHeight:e.height},o=e.width/e.height;null==t&&null==i?(t=r.srcWidth,i=r.srcHeight):null==t?t=i*o:null==i&&(i=t/o);var s=(t=Math.min(t,r.srcWidth))/(i=Math.min(i,r.srcHeight));if(r.srcWidth>t||r.srcHeight>i)if("crop"===n)s<o?(r.srcHeight=e.height,r.srcWidth=r.srcHeight*s):(r.srcWidth=e.width,r.srcHeight=r.srcWidth/s);else{if("contain"!==n)throw new Error("Unknown resizeMethod '"+n+"'");s<o?i=t/o:t=i*o}return r.srcX=(e.width-r.srcWidth)/2,r.srcY=(e.height-r.srcHeight)/2,r.trgWidth=t,r.trgHeight=i,r},transformFile:function(e,t){return(this.options.resizeWidth||this.options.resizeHeight)&&e.type.match(/image.*/)?this.resizeImage(e,this.options.resizeWidth,this.options.resizeHeight,this.options.resizeMethod,t):t(e)},previewTemplate:'<div class="dz-preview dz-file-preview">\n  <div class="dz-image"><img data-dz-thumbnail /></div>\n  <div class="dz-details">\n    <div class="dz-size"><span data-dz-size></span></div>\n    <div class="dz-filename"><span data-dz-name></span></div>\n  </div>\n  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\n  <div class="dz-error-message"><span data-dz-errormessage></span></div>\n  <div class="dz-success-mark">\n    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">\n      <title>Check</title>\n      <defs></defs>\n      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">\n        <path d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>\n      </g>\n    </svg>\n  </div>\n  <div class="dz-error-mark">\n    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">\n      <title>Error</title>\n      <defs></defs>\n      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">\n        <g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474" stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">\n          <path d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" sketch:type="MSShapeGroup"></path>\n        </g>\n      </g>\n    </svg>\n  </div>\n</div>',drop:function(e){return this.element.classList.remove("dz-drag-hover")},dragstart:function(e){},dragend:function(e){return this.element.classList.remove("dz-drag-hover")},dragenter:function(e){return this.element.classList.add("dz-drag-hover")},dragover:function(e){return this.element.classList.add("dz-drag-hover")},dragleave:function(e){return this.element.classList.remove("dz-drag-hover")},paste:function(e){},reset:function(){return this.element.classList.remove("dz-started")},addedfile:function(t){var i=this;if(this.element===this.previewsContainer&&this.element.classList.add("dz-started"),this.previewsContainer){t.previewElement=b.createElement(this.options.previewTemplate.trim()),t.previewTemplate=t.previewElement,this.previewsContainer.appendChild(t.previewElement);for(var e=0,n=n=t.previewElement.querySelectorAll("[data-dz-name]");;){if(e>=n.length)break;var r=n[e++];r.textContent=t.name}for(var o=0,s=s=t.previewElement.querySelectorAll("[data-dz-size]");!(o>=s.length);)(r=s[o++]).innerHTML=this.filesize(t.size);this.options.addRemoveLinks&&(t._removeLink=b.createElement('<a class="dz-remove" href="javascript:undefined;" data-dz-remove>'+this.options.dictRemoveFile+"</a>"),t.previewElement.appendChild(t._removeLink));for(var a=function(e){return e.preventDefault(),e.stopPropagation(),t.status===b.UPLOADING?b.confirm(i.options.dictCancelUploadConfirmation,function(){return i.removeFile(t)}):i.options.dictRemoveFileConfirmation?b.confirm(i.options.dictRemoveFileConfirmation,function(){return i.removeFile(t)}):i.removeFile(t)},l=0,u=u=t.previewElement.querySelectorAll("[data-dz-remove]");;){if(l>=u.length)break;u[l++].addEventListener("click",a)}}},removedfile:function(e){return null!=e.previewElement&&null!=e.previewElement.parentNode&&e.previewElement.parentNode.removeChild(e.previewElement),this._updateMaxFilesReachedClass()},thumbnail:function(e,t){if(e.previewElement){e.previewElement.classList.remove("dz-file-preview");for(var i=0,n=n=e.previewElement.querySelectorAll("[data-dz-thumbnail]");;){if(i>=n.length)break;var r=n[i++];r.alt=e.name,r.src=t}return setTimeout(function(){return e.previewElement.classList.add("dz-image-preview")},1)}},error:function(e,t){if(e.previewElement){e.previewElement.classList.add("dz-error"),"String"!=typeof t&&t.error&&(t=t.error);for(var i=0,n=n=e.previewElement.querySelectorAll("[data-dz-errormessage]");;){if(i>=n.length)break;n[i++].textContent=t}}},errormultiple:function(){},processing:function(e){if(e.previewElement&&(e.previewElement.classList.add("dz-processing"),e._removeLink))return e._removeLink.textContent=this.options.dictCancelUpload},processingmultiple:function(){},uploadprogress:function(e,t,i){if(e.previewElement)for(var n=0,r=r=e.previewElement.querySelectorAll("[data-dz-uploadprogress]");;){if(n>=r.length)break;var o=r[n++];"PROGRESS"===o.nodeName?o.value=t:o.style.width=t+"%"}},totaluploadprogress:function(){},sending:function(){},sendingmultiple:function(){},success:function(e){if(e.previewElement)return e.previewElement.classList.add("dz-success")},successmultiple:function(){},canceled:function(e){return this.emit("error",e,this.options.dictUploadCanceled)},canceledmultiple:function(){},complete:function(e){if(e._removeLink&&(e._removeLink.textContent=this.options.dictRemoveFile),e.previewElement)return e.previewElement.classList.add("dz-complete")},completemultiple:function(){},maxfilesexceeded:function(){},maxfilesreached:function(){},queuecomplete:function(){},addedfiles:function(){}},this.prototype._thumbnailQueue=[],this.prototype._processingThumbnail=!1}},{key:"extend",value:function(e){for(var t=arguments.length,i=Array(1<t?t-1:0),n=1;n<t;n++)i[n-1]=arguments[n];for(var r=0,o=o=i;;){if(r>=o.length)break;var s=o[r++];for(var a in s){var l=s[a];e[a]=l}}return e}}]),t(b,[{key:"getAcceptedFiles",value:function(){return this.files.filter(function(e){return e.accepted}).map(function(e){return e})}},{key:"getRejectedFiles",value:function(){return this.files.filter(function(e){return!e.accepted}).map(function(e){return e})}},{key:"getFilesWithStatus",value:function(t){return this.files.filter(function(e){return e.status===t}).map(function(e){return e})}},{key:"getQueuedFiles",value:function(){return this.getFilesWithStatus(b.QUEUED)}},{key:"getUploadingFiles",value:function(){return this.getFilesWithStatus(b.UPLOADING)}},{key:"getAddedFiles",value:function(){return this.getFilesWithStatus(b.ADDED)}},{key:"getActiveFiles",value:function(){return this.files.filter(function(e){return e.status===b.UPLOADING||e.status===b.QUEUED}).map(function(e){return e})}},{key:"init",value:function(){var o=this;if("form"===this.element.tagName&&this.element.setAttribute("enctype","multipart/form-data"),this.element.classList.contains("dropzone")&&!this.element.querySelector(".dz-message")&&this.element.appendChild(b.createElement('<div class="dz-default dz-message"><span>'+this.options.dictDefaultMessage+"</span></div>")),this.clickableElements.length){!function r(){return o.hiddenFileInput&&o.hiddenFileInput.parentNode.removeChild(o.hiddenFileInput),o.hiddenFileInput=document.createElement("input"),o.hiddenFileInput.setAttribute("type","file"),(null===o.options.maxFiles||1<o.options.maxFiles)&&o.hiddenFileInput.setAttribute("multiple","multiple"),o.hiddenFileInput.className="dz-hidden-input",null!==o.options.acceptedFiles&&o.hiddenFileInput.setAttribute("accept",o.options.acceptedFiles),null!==o.options.capture&&o.hiddenFileInput.setAttribute("capture",o.options.capture),o.hiddenFileInput.style.visibility="hidden",o.hiddenFileInput.style.position="absolute",o.hiddenFileInput.style.top="0",o.hiddenFileInput.style.left="0",o.hiddenFileInput.style.height="0",o.hiddenFileInput.style.width="0",document.querySelector(o.options.hiddenInputContainer).appendChild(o.hiddenFileInput),o.hiddenFileInput.addEventListener("change",function(){var e=o.hiddenFileInput.files;if(e.length)for(var t=0,i=i=e;!(t>=i.length);){var n=i[t++];o.addFile(n)}return o.emit("addedfiles",e),r()})}()}this.URL=null!==window.URL?window.URL:window.webkitURL;for(var e=0,t=t=this.events;;){if(e>=t.length)break;var i=t[e++];this.on(i,this.options[i])}this.on("uploadprogress",function(){return o.updateTotalUploadProgress()}),this.on("removedfile",function(){return o.updateTotalUploadProgress()}),this.on("canceled",function(e){return o.emit("complete",e)}),this.on("complete",function(e){if(0===o.getAddedFiles().length&&0===o.getUploadingFiles().length&&0===o.getQueuedFiles().length)return setTimeout(function(){return o.emit("queuecomplete")},0)});var n=function(e){return e.stopPropagation(),e.preventDefault?e.preventDefault():e.returnValue=!1};return this.listeners=[{element:this.element,events:{dragstart:function(e){return o.emit("dragstart",e)},dragenter:function(e){return n(e),o.emit("dragenter",e)},dragover:function(e){var t=void 0;try{t=e.dataTransfer.effectAllowed}catch(e){}return e.dataTransfer.dropEffect="move"===t||"linkMove"===t?"move":"copy",n(e),o.emit("dragover",e)},dragleave:function(e){return o.emit("dragleave",e)},drop:function(e){return n(e),o.drop(e)},dragend:function(e){return o.emit("dragend",e)}}}],this.clickableElements.forEach(function(t){return o.listeners.push({element:t,events:{click:function(e){return(t!==o.element||e.target===o.element||b.elementInside(e.target,o.element.querySelector(".dz-message")))&&o.hiddenFileInput.click(),!0}}})}),this.enable(),this.options.init.call(this)}},{key:"destroy",value:function(){return this.disable(),this.removeAllFiles(!0),(null!=this.hiddenFileInput?this.hiddenFileInput.parentNode:void 0)&&(this.hiddenFileInput.parentNode.removeChild(this.hiddenFileInput),this.hiddenFileInput=null),delete this.element.dropzone,b.instances.splice(b.instances.indexOf(this),1)}},{key:"updateTotalUploadProgress",value:function(){var e=void 0,t=0,i=0;if(this.getActiveFiles().length){for(var n=0,r=r=this.getActiveFiles();;){if(n>=r.length)break;var o=r[n++];t+=o.upload.bytesSent,i+=o.upload.total}e=100*t/i}else e=100;return this.emit("totaluploadprogress",e,i,t)}},{key:"_getParamName",value:function(e){return"function"==typeof this.options.paramName?this.options.paramName(e):this.options.paramName+(this.options.uploadMultiple?"["+e+"]":"")}},{key:"_renameFile",value:function(e){return"function"!=typeof this.options.renameFile?e.name:this.options.renameFile(e)}},{key:"getFallbackForm",value:function(){var e,t=void 0;if(e=this.getExistingFallback())return e;var i='<div class="dz-fallback">';this.options.dictFallbackText&&(i+="<p>"+this.options.dictFallbackText+"</p>"),i+='<input type="file" name="'+this._getParamName(0)+'" '+(this.options.uploadMultiple?'multiple="multiple"':void 0)+' /><input type="submit" value="Upload!"></div>';var n=b.createElement(i);return"FORM"!==this.element.tagName?(t=b.createElement('<form action="'+this.options.url+'" enctype="multipart/form-data" method="'+this.options.method+'"></form>')).appendChild(n):(this.element.setAttribute("enctype","multipart/form-data"),this.element.setAttribute("method",this.options.method)),null!=t?t:n}},{key:"getExistingFallback",value:function(){for(var e=function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];if(/(^| )fallback($| )/.test(n.className))return n}},t=["div","form"],i=0;i<t.length;i++){var n,r=t[i];if(n=e(this.element.getElementsByTagName(r)))return n}}},{key:"setupEventListeners",value:function(){return this.listeners.map(function(n){return function(){var e=[];for(var t in n.events){var i=n.events[t];e.push(n.element.addEventListener(t,i,!1))}return e}()})}},{key:"removeEventListeners",value:function(){return this.listeners.map(function(n){return function(){var e=[];for(var t in n.events){var i=n.events[t];e.push(n.element.removeEventListener(t,i,!1))}return e}()})}},{key:"disable",value:function(){var t=this;return this.clickableElements.forEach(function(e){return e.classList.remove("dz-clickable")}),this.removeEventListeners(),this.disabled=!0,this.files.map(function(e){return t.cancelUpload(e)})}},{key:"enable",value:function(){return delete this.disabled,this.clickableElements.forEach(function(e){return e.classList.add("dz-clickable")}),this.setupEventListeners()}},{key:"filesize",value:function(e){var t=0,i="b";if(0<e){for(var n=["tb","gb","mb","kb","b"],r=0;r<n.length;r++){var o=n[r];if(Math.pow(this.options.filesizeBase,4-r)/10<=e){t=e/Math.pow(this.options.filesizeBase,4-r),i=o;break}}t=Math.round(10*t)/10}return"<strong>"+t+"</strong> "+this.options.dictFileSizeUnits[i]}},{key:"_updateMaxFilesReachedClass",value:function(){return null!=this.options.maxFiles&&this.getAcceptedFiles().length>=this.options.maxFiles?(this.getAcceptedFiles().length===this.options.maxFiles&&this.emit("maxfilesreached",this.files),this.element.classList.add("dz-max-files-reached")):this.element.classList.remove("dz-max-files-reached")}},{key:"drop",value:function(e){if(e.dataTransfer){this.emit("drop",e);for(var t=[],i=0;i<e.dataTransfer.files.length;i++)t[i]=e.dataTransfer.files[i];if(this.emit("addedfiles",t),t.length){var n=e.dataTransfer.items;n&&n.length&&null!=n[0].webkitGetAsEntry?this._addFilesFromItems(n):this.handleFiles(t)}}}},{key:"paste",value:function(e){if(null!=(t=null!=e?e.clipboardData:void 0,i=function(e){return e.items},null!=t?i(t):void 0)){var t,i;this.emit("paste",e);var n=e.clipboardData.items;return n.length?this._addFilesFromItems(n):void 0}}},{key:"handleFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];this.addFile(n)}}},{key:"_addFilesFromItems",value:function(o){var s=this;return function(){for(var e=[],t=0,i=i=o;;){if(t>=i.length)break;var n,r=i[t++];null!=r.webkitGetAsEntry&&(n=r.webkitGetAsEntry())?n.isFile?e.push(s.addFile(r.getAsFile())):n.isDirectory?e.push(s._addFilesFromDirectory(n,n.name)):e.push(void 0):null!=r.getAsFile&&(null==r.kind||"file"===r.kind)?e.push(s.addFile(r.getAsFile())):e.push(void 0)}return e}()}},{key:"_addFilesFromDirectory",value:function(e,o){var s=this,t=e.createReader(),i=function(t){return e=console,i="log",n=function(e){return e.log(t)},null!=e&&"function"==typeof e[i]?n(e,i):void 0;var e,i,n};return function r(){return t.readEntries(function(e){if(0<e.length){for(var t=0,i=i=e;!(t>=i.length);){var n=i[t++];n.isFile?n.file(function(e){if(!s.options.ignoreHiddenFiles||"."!==e.name.substring(0,1))return e.fullPath=o+"/"+e.name,s.addFile(e)}):n.isDirectory&&s._addFilesFromDirectory(n,o+"/"+n.name)}r()}return null},i)}()}},{key:"accept",value:function(e,t){return e.size>1024*this.options.maxFilesize*1024?t(this.options.dictFileTooBig.replace("{{filesize}}",Math.round(e.size/1024/10.24)/100).replace("{{maxFilesize}}",this.options.maxFilesize)):b.isValidFile(e,this.options.acceptedFiles)?null!=this.options.maxFiles&&this.getAcceptedFiles().length>=this.options.maxFiles?(t(this.options.dictMaxFilesExceeded.replace("{{maxFiles}}",this.options.maxFiles)),this.emit("maxfilesexceeded",e)):this.options.accept.call(this,e,t):t(this.options.dictInvalidFileType)}},{key:"addFile",value:function(t){var i=this;return t.upload={uuid:b.uuidv4(),progress:0,total:t.size,bytesSent:0,filename:this._renameFile(t),chunked:this.options.chunking&&(this.options.forceChunking||t.size>this.options.chunkSize),totalChunkCount:Math.ceil(t.size/this.options.chunkSize)},this.files.push(t),t.status=b.ADDED,this.emit("addedfile",t),this._enqueueThumbnail(t),this.accept(t,function(e){return e?(t.accepted=!1,i._errorProcessing([t],e)):(t.accepted=!0,i.options.autoQueue&&i.enqueueFile(t)),i._updateMaxFilesReachedClass()})}},{key:"enqueueFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];this.enqueueFile(n)}return null}},{key:"enqueueFile",value:function(e){var t=this;if(e.status!==b.ADDED||!0!==e.accepted)throw new Error("This file can't be queued because it has already been processed or was rejected.");if(e.status=b.QUEUED,this.options.autoProcessQueue)return setTimeout(function(){return t.processQueue()},0)}},{key:"_enqueueThumbnail",value:function(e){var t=this;if(this.options.createImageThumbnails&&e.type.match(/image.*/)&&e.size<=1024*this.options.maxThumbnailFilesize*1024)return this._thumbnailQueue.push(e),setTimeout(function(){return t._processThumbnailQueue()},0)}},{key:"_processThumbnailQueue",value:function(){var t=this;if(!this._processingThumbnail&&0!==this._thumbnailQueue.length){this._processingThumbnail=!0;var i=this._thumbnailQueue.shift();return this.createThumbnail(i,this.options.thumbnailWidth,this.options.thumbnailHeight,this.options.thumbnailMethod,!0,function(e){return t.emit("thumbnail",i,e),t._processingThumbnail=!1,t._processThumbnailQueue()})}}},{key:"removeFile",value:function(e){if(e.status===b.UPLOADING&&this.cancelUpload(e),this.files=n(this.files,e),this.emit("removedfile",e),0===this.files.length)return this.emit("reset")}},{key:"removeAllFiles",value:function(e){null==e&&(e=!1);for(var t=0,i=i=this.files.slice();;){if(t>=i.length)break;var n=i[t++];(n.status!==b.UPLOADING||e)&&this.removeFile(n)}return null}},{key:"resizeImage",value:function(r,e,t,i,o){var s=this;return this.createThumbnail(r,e,t,i,!1,function(e,t){if(null==t)return o(r);var i=s.options.resizeMimeType;null==i&&(i=r.type);var n=t.toDataURL(i,s.options.resizeQuality);return"image/jpeg"!==i&&"image/jpg"!==i||(n=u.restore(r.dataURL,n)),o(b.dataURItoBlob(n))})}},{key:"createThumbnail",value:function(e,t,i,n,r,o){var s=this,a=new FileReader;return a.onload=function(){if(e.dataURL=a.result,"image/svg+xml"!==e.type)return s.createThumbnailFromUrl(e,t,i,n,r,o);null!=o&&o(a.result)},a.readAsDataURL(e)}},{key:"createThumbnailFromUrl",value:function(o,s,a,l,t,u,e){var d=this,c=document.createElement("img");return e&&(c.crossOrigin=e),c.onload=function(){var e=function(e){return e(1)};return"undefined"!=typeof EXIF&&null!==EXIF&&t&&(e=function(e){return EXIF.getData(c,function(){return e(EXIF.getTag(this,"Orientation"))})}),e(function(e){o.width=c.width,o.height=c.height;var t=d.options.resize.call(d,o,s,a,l),i=document.createElement("canvas"),n=i.getContext("2d");switch(i.width=t.trgWidth,i.height=t.trgHeight,4<e&&(i.width=t.trgHeight,i.height=t.trgWidth),e){case 2:n.translate(i.width,0),n.scale(-1,1);break;case 3:n.translate(i.width,i.height),n.rotate(Math.PI);break;case 4:n.translate(0,i.height),n.scale(1,-1);break;case 5:n.rotate(.5*Math.PI),n.scale(1,-1);break;case 6:n.rotate(.5*Math.PI),n.translate(0,-i.height);break;case 7:n.rotate(.5*Math.PI),n.translate(i.width,-i.height),n.scale(-1,1);break;case 8:n.rotate(-.5*Math.PI),n.translate(-i.width,0)}p(n,c,null!=t.srcX?t.srcX:0,null!=t.srcY?t.srcY:0,t.srcWidth,t.srcHeight,null!=t.trgX?t.trgX:0,null!=t.trgY?t.trgY:0,t.trgWidth,t.trgHeight);var r=i.toDataURL("image/png");if(null!=u)return u(r,i)})},null!=u&&(c.onerror=u),c.src=o.dataURL}},{key:"processQueue",value:function(){var e=this.options.parallelUploads,t=this.getUploadingFiles().length,i=t;if(!(e<=t)){var n=this.getQueuedFiles();if(0<n.length){if(this.options.uploadMultiple)return this.processFiles(n.slice(0,e-t));for(;i<e;){if(!n.length)return;this.processFile(n.shift()),i++}}}}},{key:"processFile",value:function(e){return this.processFiles([e])}},{key:"processFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];n.processing=!0,n.status=b.UPLOADING,this.emit("processing",n)}return this.options.uploadMultiple&&this.emit("processingmultiple",e),this.uploadFiles(e)}},{key:"_getFilesWithXhr",value:function(t){return this.files.filter(function(e){return e.xhr===t}).map(function(e){return e})}},{key:"cancelUpload",value:function(e){if(e.status===b.UPLOADING){for(var t=this._getFilesWithXhr(e.xhr),i=0,n=n=t;;){if(i>=n.length)break;n[i++].status=b.CANCELED}void 0!==e.xhr&&e.xhr.abort();for(var r=0,o=o=t;;){if(r>=o.length)break;var s=o[r++];this.emit("canceled",s)}this.options.uploadMultiple&&this.emit("canceledmultiple",t)}else e.status!==b.ADDED&&e.status!==b.QUEUED||(e.status=b.CANCELED,this.emit("canceled",e),this.options.uploadMultiple&&this.emit("canceledmultiple",[e]));if(this.options.autoProcessQueue)return this.processQueue()}},{key:"resolveOption",value:function(e){if("function"==typeof e){for(var t=arguments.length,i=Array(1<t?t-1:0),n=1;n<t;n++)i[n-1]=arguments[n];return e.apply(this,i)}return e}},{key:"uploadFile",value:function(e){return this.uploadFiles([e])}},{key:"uploadFiles",value:function(a){var l=this;this._transformFiles(a,function(e){if(a[0].upload.chunked){var r=a[0],o=e[0];r.upload.chunks=[];var n=function(){for(var e=0;void 0!==r.upload.chunks[e];)e++;if(!(e>=r.upload.totalChunkCount)){0;var t=e*l.options.chunkSize,i=Math.min(t+l.options.chunkSize,r.size),n={name:l._getParamName(0),data:o.webkitSlice?o.webkitSlice(t,i):o.slice(t,i),filename:r.upload.filename,chunkIndex:e};r.upload.chunks[e]={file:r,index:e,dataBlock:n,status:b.UPLOADING,progress:0,retries:0},l._uploadData(a,[n])}};if(r.upload.finishedChunkUpload=function(e){var t=!0;e.status=b.SUCCESS,e.dataBlock=null;for(var i=0;i<r.upload.totalChunkCount;i++){if(void 0===r.upload.chunks[i])return n();r.upload.chunks[i].status!==b.SUCCESS&&(t=!1)}t&&l.options.chunksUploaded(r,function(){l._finished(a,"",null)})},l.options.parallelChunkUploads)for(var t=0;t<r.upload.totalChunkCount;t++)n();else n()}else{for(var i=[],s=0;s<a.length;s++)i[s]={name:l._getParamName(s),data:e[s],filename:a[s].upload.filename};l._uploadData(a,i)}})}},{key:"_getChunk",value:function(e,t){for(var i=0;i<e.upload.totalChunkCount;i++)if(void 0!==e.upload.chunks[i]&&e.upload.chunks[i].xhr===t)return e.upload.chunks[i]}},{key:"_uploadData",value:function(t,e){for(var i=this,n=new XMLHttpRequest,r=0,o=o=t;;){if(r>=o.length)break;o[r++].xhr=n}t[0].upload.chunked&&(t[0].upload.chunks[e[0].chunkIndex].xhr=n);var s=this.resolveOption(this.options.method,t),a=this.resolveOption(this.options.url,t);n.open(s,a,!0),n.timeout=this.resolveOption(this.options.timeout,t),n.withCredentials=!!this.options.withCredentials,n.onload=function(e){i._finishedUploading(t,n,e)},n.onerror=function(){i._handleUploadError(t,n)},(null!=n.upload?n.upload:n).onprogress=function(e){return i._updateFilesUploadProgress(t,n,e)};var l={Accept:"application/json","Cache-Control":"no-cache","X-Requested-With":"XMLHttpRequest"};for(var u in this.options.headers&&b.extend(l,this.options.headers),l){var d=l[u];d&&n.setRequestHeader(u,d)}var c=new FormData;if(this.options.params){var p=this.options.params;for(var h in"function"==typeof p&&(p=p.call(this,t,n,t[0].upload.chunked?this._getChunk(t[0],n):null)),p){var f=p[h];c.append(h,f)}}for(var m=0,v=v=t;;){if(m>=v.length)break;var g=v[m++];this.emit("sending",g,n,c)}this.options.uploadMultiple&&this.emit("sendingmultiple",t,n,c),this._addFormElementData(c);for(var k=0;k<e.length;k++){var y=e[k];c.append(y.name,y.data,y.filename)}this.submitRequest(n,c,t)}},{key:"_transformFiles",value:function(i,n){for(var e=this,r=[],o=0,t=function(t){e.options.transformFile.call(e,i[t],function(e){r[t]=e,++o===i.length&&n(r)})},s=0;s<i.length;s++)t(s)}},{key:"_addFormElementData",value:function(e){if("FORM"===this.element.tagName)for(var t=0,i=i=this.element.querySelectorAll("input, textarea, select, button");;){if(t>=i.length)break;var n=i[t++],r=n.getAttribute("name"),o=n.getAttribute("type");if(o&&(o=o.toLowerCase()),null!=r)if("SELECT"===n.tagName&&n.hasAttribute("multiple"))for(var s=0,a=a=n.options;;){if(s>=a.length)break;var l=a[s++];l.selected&&e.append(r,l.value)}else(!o||"checkbox"!==o&&"radio"!==o||n.checked)&&e.append(r,n.value)}}},{key:"_updateFilesUploadProgress",value:function(e,t,i){var n=void 0;if(void 0!==i){if(n=100*i.loaded/i.total,e[0].upload.chunked){var r=e[0],o=this._getChunk(r,t);o.progress=n,o.total=i.total,o.bytesSent=i.loaded;r.upload.progress=0,r.upload.total=0;for(var s=r.upload.bytesSent=0;s<r.upload.totalChunkCount;s++)void 0!==r.upload.chunks[s]&&void 0!==r.upload.chunks[s].progress&&(r.upload.progress+=r.upload.chunks[s].progress,r.upload.total+=r.upload.chunks[s].total,r.upload.bytesSent+=r.upload.chunks[s].bytesSent);r.upload.progress=r.upload.progress/r.upload.totalChunkCount}else for(var a=0,l=l=e;;){if(a>=l.length)break;var u=l[a++];u.upload.progress=n,u.upload.total=i.total,u.upload.bytesSent=i.loaded}for(var d=0,c=c=e;;){if(d>=c.length)break;var p=c[d++];this.emit("uploadprogress",p,p.upload.progress,p.upload.bytesSent)}}else{var h=!0;n=100;for(var f=0,m=m=e;;){if(f>=m.length)break;var v=m[f++];100===v.upload.progress&&v.upload.bytesSent===v.upload.total||(h=!1),v.upload.progress=n,v.upload.bytesSent=v.upload.total}if(h)return;for(var g=0,k=k=e;;){if(g>=k.length)break;var y=k[g++];this.emit("uploadprogress",y,n,y.upload.bytesSent)}}}},{key:"_finishedUploading",value:function(e,t,i){var n=void 0;if(e[0].status!==b.CANCELED&&4===t.readyState){if("arraybuffer"!==t.responseType&&"blob"!==t.responseType&&(n=t.responseText,t.getResponseHeader("content-type")&&~t.getResponseHeader("content-type").indexOf("application/json")))try{n=JSON.parse(n)}catch(e){i=e,n="Invalid JSON response from server."}this._updateFilesUploadProgress(e),200<=t.status&&t.status<300?e[0].upload.chunked?e[0].upload.finishedChunkUpload(this._getChunk(e[0],t)):this._finished(e,n,i):this._handleUploadError(e,t,n)}}},{key:"_handleUploadError",value:function(e,t,i){if(e[0].status!==b.CANCELED){if(e[0].upload.chunked&&this.options.retryChunks){var n=this._getChunk(e[0],t);if(n.retries++<this.options.retryChunksLimit)return void this._uploadData(e,[n.dataBlock]);console.warn("Retried this chunk too often. Giving up.")}for(var r=0,o=o=e;;){if(r>=o.length)break;o[r++];this._errorProcessing(e,i||this.options.dictResponseError.replace("{{statusCode}}",t.status),t)}}}},{key:"submitRequest",value:function(e,t,i){e.send(t)}},{key:"_finished",value:function(e,t,i){for(var n=0,r=r=e;;){if(n>=r.length)break;var o=r[n++];o.status=b.SUCCESS,this.emit("success",o,t,i),this.emit("complete",o)}if(this.options.uploadMultiple&&(this.emit("successmultiple",e,t,i),this.emit("completemultiple",e)),this.options.autoProcessQueue)return this.processQueue()}},{key:"_errorProcessing",value:function(e,t,i){for(var n=0,r=r=e;;){if(n>=r.length)break;var o=r[n++];o.status=b.ERROR,this.emit("error",o,t,i),this.emit("complete",o)}if(this.options.uploadMultiple&&(this.emit("errormultiple",e,t,i),this.emit("completemultiple",e)),this.options.autoProcessQueue)return this.processQueue()}}],[{key:"uuidv4",value:function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"===e?t:3&t|8).toString(16)})}}]),b}();r.initClass(),r.version="5.4.0",r.options={},r.optionsForElement=function(e){return e.getAttribute("id")?r.options[o(e.getAttribute("id"))]:void 0},r.instances=[],r.forElement=function(e){if("string"==typeof e&&(e=document.querySelector(e)),null==(null!=e?e.dropzone:void 0))throw new Error("No Dropzone found for given element. This is probably because you're trying to access it before Dropzone had the time to initialize. Use the `init` option to setup any additional observers on your Dropzone.");return e.dropzone},r.autoDiscover=!0,r.discover=function(){var o=void 0;if(document.querySelectorAll)o=document.querySelectorAll(".dropzone");else{o=[];var e=function(r){return function(){for(var e=[],t=0,i=i=r;;){if(t>=i.length)break;var n=i[t++];/(^| )dropzone($| )/.test(n.className)?e.push(o.push(n)):e.push(void 0)}return e}()};e(document.getElementsByTagName("div")),e(document.getElementsByTagName("form"))}return function(){for(var e=[],t=0,i=i=o;;){if(t>=i.length)break;var n=i[t++];!1!==r.optionsForElement(n)?e.push(new r(n)):e.push(void 0)}return e}()},r.blacklistedBrowsers=[/opera.*(Macintosh|Windows Phone).*version\/12/i],r.isBrowserSupported=function(){var e=!0;if(window.File&&window.FileReader&&window.FileList&&window.Blob&&window.FormData&&document.querySelector)if("classList"in document.createElement("a"))for(var t=0,i=i=r.blacklistedBrowsers;;){if(t>=i.length)break;i[t++].test(navigator.userAgent)&&(e=!1)}else e=!1;else e=!1;return e},r.dataURItoBlob=function(e){for(var t=atob(e.split(",")[1]),i=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(t.length),r=new Uint8Array(n),o=0,s=t.length,a=0<=s;a?o<=s:s<=o;a?o++:o--)r[o]=t.charCodeAt(o);return new Blob([n],{type:i})};var n=function(e,t){return e.filter(function(e){return e!==t}).map(function(e){return e})},o=function(e){return e.replace(/[\-_](\w)/g,function(e){return e.charAt(1).toUpperCase()})};r.createElement=function(e){var t=document.createElement("div");return t.innerHTML=e,t.childNodes[0]},r.elementInside=function(e,t){if(e===t)return!0;for(;e=e.parentNode;)if(e===t)return!0;return!1},r.getElement=function(e,t){var i=void 0;if("string"==typeof e?i=document.querySelector(e):null!=e.nodeType&&(i=e),null==i)throw new Error("Invalid `"+t+"` option provided. Please provide a CSS selector or a plain HTML element.");return i},r.getElements=function(e,t){var i=void 0,n=void 0;if(e instanceof Array){n=[];try{for(var r=0,o=o=e;!(r>=o.length);)i=o[r++],n.push(this.getElement(i,t))}catch(e){n=null}}else if("string"==typeof e){n=[];for(var s=0,a=a=document.querySelectorAll(e);!(s>=a.length);)i=a[s++],n.push(i)}else null!=e.nodeType&&(n=[e]);if(null==n||!n.length)throw new Error("Invalid `"+t+"` option provided. Please provide a CSS selector, a plain HTML element or a list of those.");return n},r.confirm=function(e,t,i){return window.confirm(e)?t():null!=i?i():void 0},r.isValidFile=function(e,t){if(!t)return!0;t=t.split(",");for(var i=e.type,n=i.replace(/\/.*$/,""),r=0,o=o=t;;){if(r>=o.length)break;var s=o[r++];if("."===(s=s.trim()).charAt(0)){if(-1!==e.name.toLowerCase().indexOf(s.toLowerCase(),e.name.length-s.length))return!0}else if(/\/\*$/.test(s)){if(n===s.replace(/\/.*$/,""))return!0}else if(i===s)return!0}return!1},"undefined"!=typeof jQuery&&null!==jQuery&&(jQuery.fn.dropzone=function(e){return this.each(function(){return new r(this,e)})}),null!==e?e.exports=r:window.Dropzone=r,r.ADDED="added",r.QUEUED="queued",r.ACCEPTED=r.QUEUED,r.UPLOADING="uploading",r.PROCESSING=r.UPLOADING,r.CANCELED="canceled",r.ERROR="error",r.SUCCESS="success";var p=function(e,t,i,n,r,o,s,a,l,u){var d=function(e){e.naturalWidth;var t=e.naturalHeight,i=document.createElement("canvas");i.width=1,i.height=t;var n=i.getContext("2d");n.drawImage(e,0,0);for(var r=n.getImageData(1,0,1,t).data,o=0,s=t,a=t;o<a;)0===r[4*(a-1)+3]?s=a:o=a,a=s+o>>1;var l=a/t;return 0===l?1:l}(t);return e.drawImage(t,i,n,r,o,s,a,l,u/d)},u=function(){function e(){l(this,e)}return t(e,null,[{key:"initClass",value:function(){this.KEY_STR="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="}},{key:"encode64",value:function(e){for(var t="",i=void 0,n=void 0,r="",o=void 0,s=void 0,a=void 0,l="",u=0;o=(i=e[u++])>>2,s=(3&i)<<4|(n=e[u++])>>4,a=(15&n)<<2|(r=e[u++])>>6,l=63&r,isNaN(n)?a=l=64:isNaN(r)&&(l=64),t=t+this.KEY_STR.charAt(o)+this.KEY_STR.charAt(s)+this.KEY_STR.charAt(a)+this.KEY_STR.charAt(l),i=n=r="",o=s=a=l="",u<e.length;);return t}},{key:"restore",value:function(e,t){if(!e.match("data:image/jpeg;base64,"))return t;var i=this.decode64(e.replace("data:image/jpeg;base64,","")),n=this.slice2Segments(i),r=this.exifManipulation(t,n);return"data:image/jpeg;base64,"+this.encode64(r)}},{key:"exifManipulation",value:function(e,t){var i=this.getExifArray(t),n=this.insertExif(e,i);return new Uint8Array(n)}},{key:"getExifArray",value:function(e){for(var t=void 0,i=0;i<e.length;){if(255===(t=e[i])[0]&225===t[1])return t;i++}return[]}},{key:"insertExif",value:function(e,t){var i=e.replace("data:image/jpeg;base64,",""),n=this.decode64(i),r=n.indexOf(255,3),o=n.slice(0,r),s=n.slice(r),a=o;return a=(a=a.concat(t)).concat(s)}},{key:"slice2Segments",value:function(e){for(var t=0,i=[];;){if(255===e[t]&218===e[t+1])break;if(255===e[t]&216===e[t+1])t+=2;else{var n=t+(256*e[t+2]+e[t+3])+2,r=e.slice(t,n);i.push(r),t=n}if(t>e.length)break}return i}},{key:"decode64",value:function(e){var t=void 0,i=void 0,n="",r=void 0,o=void 0,s="",a=0,l=[];for(/[^A-Za-z0-9\+\/\=]/g.exec(e)&&console.warn("There were invalid base64 characters in the input text.\nValid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\nExpect errors in decoding."),e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");t=this.KEY_STR.indexOf(e.charAt(a++))<<2|(r=this.KEY_STR.indexOf(e.charAt(a++)))>>4,i=(15&r)<<4|(o=this.KEY_STR.indexOf(e.charAt(a++)))>>2,n=(3&o)<<6|(s=this.KEY_STR.indexOf(e.charAt(a++))),l.push(t),64!==o&&l.push(i),64!==s&&l.push(n),t=i=n="",r=o=s="",a<e.length;);return l}}]),e}();u.initClass();r._autoDiscoverFunction=function(){if(r.autoDiscover)return r.discover()},function(i,n){var r=!1,e=!0,o=i.document,s=o.documentElement,t=o.addEventListener?"addEventListener":"attachEvent",a=o.addEventListener?"removeEventListener":"detachEvent",l=o.addEventListener?"":"on",u=function e(t){if("readystatechange"!==t.type||"complete"===o.readyState)return("load"===t.type?i:o)[a](l+t.type,e,!1),!r&&(r=!0)?n.call(i,t.type||t):void 0};if("complete"!==o.readyState){if(o.createEventObject&&s.doScroll){try{e=!i.frameElement}catch(e){}e&&function t(){try{s.doScroll("left")}catch(e){return void setTimeout(t,50)}return u("poll")}()}o[t](l+"DOMContentLoaded",u,!1),o[t](l+"readystatechange",u,!1),i[t](l+"load",u,!1)}}(window,r._autoDiscoverFunction)}(e={exports:{}},e.exports),e.exports);return t.autoDiscover=!1,{render:function(){var e=this.$createElement;return(this._self._c||e)("div",{ref:"dropzoneElement",class:{"vue-dropzone dropzone":this.includeStyling},attrs:{id:this.id}})},staticRenderFns:[],props:{id:{type:String,required:!0},options:{type:Object,required:!0},includeStyling:{type:Boolean,default:!0,required:!1},awss3:{type:Object,required:!1,default:null},destroyDropzone:{type:Boolean,default:!0,required:!1}},data:function(){return{isS3:!1,isS3OverridesServerPropagation:!1,wasQueueAutoProcess:!0}},computed:{dropzoneSettings:function(){var t={thumbnailWidth:200,thumbnailHeight:200};return Object.keys(this.options).forEach(function(e){t[e]=this.options[e]},this),null!==this.awss3&&(t.autoProcessQueue=!1,this.isS3=!0,this.isS3OverridesServerPropagation=!1===this.awss3.sendFileToServer,void 0!==this.options.autoProcessQueue&&(this.wasQueueAutoProcess=this.options.autoProcessQueue),this.isS3OverridesServerPropagation&&(t.url=function(e){return e[0].s3Url})),t}},methods:{manuallyAddFile:function(e,t){e.manuallyAdded=!0,this.dropzone.emit("addedfile",e),t&&this.dropzone.emit("thumbnail",e,t);for(var i=e.previewElement.querySelectorAll("[data-dz-thumbnail]"),n=0;n<i.length;n++)i[n].style.width=this.dropzoneSettings.thumbnailWidth+"px",i[n].style.height=this.dropzoneSettings.thumbnailHeight+"px",i[n].style["object-fit"]="contain";this.dropzone.emit("complete",e),this.dropzone.options.maxFiles&&this.dropzone.options.maxFiles--,this.dropzone.files.push(e),this.$emit("vdropzone-file-added-manually",e)},setOption:function(e,t){this.dropzone.options[e]=t},removeAllFiles:function(e){this.dropzone.removeAllFiles(e)},processQueue:function(){var t=this,e=this.dropzone;this.isS3&&!this.wasQueueAutoProcess?this.getQueuedFiles().forEach(function(e){t.getSignedAndUploadToS3(e)}):this.dropzone.processQueue(),this.dropzone.on("success",function(){e.options.autoProcessQueue=!0}),this.dropzone.on("queuecomplete",function(){e.options.autoProcessQueue=!1})},init:function(){return this.dropzone.init()},destroy:function(){return this.dropzone.destroy()},updateTotalUploadProgress:function(){return this.dropzone.updateTotalUploadProgress()},getFallbackForm:function(){return this.dropzone.getFallbackForm()},getExistingFallback:function(){return this.dropzone.getExistingFallback()},setupEventListeners:function(){return this.dropzone.setupEventListeners()},removeEventListeners:function(){return this.dropzone.removeEventListeners()},disable:function(){return this.dropzone.disable()},enable:function(){return this.dropzone.enable()},filesize:function(e){return this.dropzone.filesize(e)},accept:function(e,t){return this.dropzone.accept(e,t)},addFile:function(e){return this.dropzone.addFile(e)},removeFile:function(e){this.dropzone.removeFile(e)},getAcceptedFiles:function(){return this.dropzone.getAcceptedFiles()},getRejectedFiles:function(){return this.dropzone.getRejectedFiles()},getFilesWithStatus:function(){return this.dropzone.getFilesWithStatus()},getQueuedFiles:function(){return this.dropzone.getQueuedFiles()},getUploadingFiles:function(){return this.dropzone.getUploadingFiles()},getAddedFiles:function(){return this.dropzone.getAddedFiles()},getActiveFiles:function(){return this.dropzone.getActiveFiles()},getSignedAndUploadToS3:function(t){var i=this,e=n.sendFile(t,this.awss3,this.isS3OverridesServerPropagation);this.isS3OverridesServerPropagation?e.then(function(){setTimeout(function(){return i.dropzone.processFile(t)})}):e.then(function(e){e.success?(t.s3ObjectLocation=e.message,setTimeout(function(){return i.dropzone.processFile(t)}),i.$emit("vdropzone-s3-upload-success",e.message)):void 0!==e.message?i.$emit("vdropzone-s3-upload-error",e.message):i.$emit("vdropzone-s3-upload-error","Network Error : Could not send request to AWS. (Maybe CORS error)")}),e.catch(function(e){alert(e)})},setAWSSigningURL:function(e){this.isS3&&(this.awss3.signingURL=e)}},mounted:function(){if(!this.$isServer||!this.hasBeenMounted){this.hasBeenMounted=!0,this.dropzone=new t(this.$refs.dropzoneElement,this.dropzoneSettings);var r=this;this.dropzone.on("thumbnail",function(e,t){r.$emit("vdropzone-thumbnail",e,t)}),this.dropzone.on("addedfile",function(t){r.duplicateCheck&&this.files.length&&this.files.forEach(function(e){e.name===t.name&&(this.removeFile(t),r.$emit("duplicate-file",t))},this),r.$emit("vdropzone-file-added",t),r.isS3&&r.wasQueueAutoProcess&&r.getSignedAndUploadToS3(t)}),this.dropzone.on("addedfiles",function(e){r.$emit("vdropzone-files-added",e)}),this.dropzone.on("removedfile",function(e){r.$emit("vdropzone-removed-file",e),e.manuallyAdded&&r.dropzone.options.maxFiles++}),this.dropzone.on("success",function(e,t){if(r.$emit("vdropzone-success",e,t),r.isS3){if(r.isS3OverridesServerPropagation){var i=(new window.DOMParser).parseFromString(t,"text/xml").firstChild.children[0].innerHTML;r.$emit("vdropzone-s3-upload-success",i)}r.wasQueueAutoProcess&&r.setOption("autoProcessQueue",!1)}}),this.dropzone.on("successmultiple",function(e,t){r.$emit("vdropzone-success-multiple",e,t)}),this.dropzone.on("error",function(e,t,i){r.$emit("vdropzone-error",e,t,i),this.isS3&&r.$emit("vdropzone-s3-upload-error")}),this.dropzone.on("errormultiple",function(e,t,i){r.$emit("vdropzone-error-multiple",e,t,i)}),this.dropzone.on("sending",function(e,t,i){if(r.isS3)if(r.isS3OverridesServerPropagation){var n=e.s3Signature;Object.keys(n).forEach(function(e){i.append(e,n[e])})}else i.append("s3ObjectLocation",e.s3ObjectLocation);r.$emit("vdropzone-sending",e,t,i)}),this.dropzone.on("sendingmultiple",function(e,t,i){r.$emit("vdropzone-sending-multiple",e,t,i)}),this.dropzone.on("complete",function(e){r.$emit("vdropzone-complete",e)}),this.dropzone.on("completemultiple",function(e){r.$emit("vdropzone-complete-multiple",e)}),this.dropzone.on("canceled",function(e){r.$emit("vdropzone-canceled",e)}),this.dropzone.on("canceledmultiple",function(e){r.$emit("vdropzone-canceled-multiple",e)}),this.dropzone.on("maxfilesreached",function(e){r.$emit("vdropzone-max-files-reached",e)}),this.dropzone.on("maxfilesexceeded",function(e){r.$emit("vdropzone-max-files-exceeded",e)}),this.dropzone.on("processing",function(e){r.$emit("vdropzone-processing",e)}),this.dropzone.on("processing",function(e){r.$emit("vdropzone-processing",e)}),this.dropzone.on("processingmultiple",function(e){r.$emit("vdropzone-processing-multiple",e)}),this.dropzone.on("uploadprogress",function(e,t,i){r.$emit("vdropzone-upload-progress",e,t,i)}),this.dropzone.on("totaluploadprogress",function(e,t,i){r.$emit("vdropzone-total-upload-progress",e,t,i)}),this.dropzone.on("reset",function(){r.$emit("vdropzone-reset")}),this.dropzone.on("queuecomplete",function(){r.$emit("vdropzone-queue-complete")}),this.dropzone.on("drop",function(e){r.$emit("vdropzone-drop",e)}),this.dropzone.on("dragstart",function(e){r.$emit("vdropzone-drag-start",e)}),this.dropzone.on("dragend",function(e){r.$emit("vdropzone-drag-end",e)}),this.dropzone.on("dragenter",function(e){r.$emit("vdropzone-drag-enter",e)}),this.dropzone.on("dragover",function(e){r.$emit("vdropzone-drag-over",e)}),this.dropzone.on("dragleave",function(e){r.$emit("vdropzone-drag-leave",e)}),r.$emit("vdropzone-mounted")}},beforeDestroy:function(){this.destroyDropzone&&this.dropzone.destroy()}}});
+//# sourceMappingURL=vue2Dropzone.js.map
+
+
+/***/ }),
+/* 49 */
+=======
 /* 64 */
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "form-group m-form__group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.comentario,
-              expression: "comentario"
-            }
-          ],
-          staticClass: "form-control m-input m-input--solid",
-          attrs: { rows: "3", maxlength: "500", placeholder: "Escriba" },
-          domProps: { value: _vm.comentario },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.comentario = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "d-flex" }, [
-          _c("div", { staticClass: "p-2", staticStyle: { width: "80%" } }, [
-            _c(
-              "div",
-              { attrs: { id: "mis-fotos" } },
-              _vm._l(_vm.subidas, function(item, index) {
-                return _c("img", {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: index < 19,
-                      expression: "index<19"
-                    }
-                  ],
-                  staticClass: "img-item",
-                  attrs: {
-                    src: _vm.parsearArchivo(item.file),
-                    "data-src": _vm.parsearArchivo(item.file)
-                  }
-                })
-              })
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "ml-auto p-2" },
-            [
-              _c("vue-dropzone", {
-                ref: "fotos",
-                staticClass: "btn btn-secondary m-btn m-btn--icon",
-                attrs: { id: "fotos", options: _vm.dropzoneOptions },
-                on: {
-                  "vdropzone-error": _vm.errores,
-                  "vdropzone-success": _vm.cargarArchivos,
-                  sending: _vm.cargarArchivos
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "btn btn-success btn-sm m-btn \tm-btn m-btn--icon",
-                  attrs: { type: "reset" },
-                  on: {
-                    click: function($event) {
-                      _vm.enviar(null)
-                    }
-                  }
-                },
-                [_vm._m(0)]
-              )
-            ],
-            1
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "m-timeline-1 m-timeline-1--fixed" },
-      [
+  return _c(
+    "div",
+    {
+      staticClass:
+        "m-wizard m-wizard--3 m-wizard--success m-wizard--step-first",
+      attrs: { id: "m_wizard" }
+    },
+    [
+      _c("div", { staticClass: "m-portlet__padding-x" }, [
         _c(
           "div",
-          { staticClass: "m-timeline-1__items" },
+          {
+            staticClass: "m-alert m-alert--icon alert animated fadeIn",
+            class: _vm.mensaje.clase,
+            attrs: { role: "alert" }
+          },
           [
-            _c("div", { staticClass: "m-timeline-1__marker" }),
+            _c("div", { staticClass: "m-alert__icon" }, [
+              _c("i", { class: _vm.mensaje.icono })
+            ]),
             _vm._v(" "),
-            _vm._l(_vm.noticias, function(item, index) {
-              return _c(
+            _c("div", { staticClass: "m-alert__text" }, [
+              _c("span", { domProps: { innerHTML: _vm._s(_vm.mensaje.texto) } })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row m-row--no-padding" }, [
+        _c("div", { staticClass: "col-xl-3 col-lg-12" }, [
+          _c("div", { staticClass: "m-wizard__head" }, [
+            _c("div", { staticClass: "m-wizard__progress" }, [
+              _c("div", { staticClass: "progress" }, [
+                _c("div", {
+                  staticClass: "progress-bar",
+                  style: "width:" + _vm.avance + "%",
+                  attrs: {
+                    role: "progressbar",
+                    "aria-valuenow": "100",
+                    "aria-valuemin": "0",
+                    "aria-valuemax": "100"
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "m-wizard__nav" }, [
+              _c(
                 "div",
-                {
-                  staticClass: "m-timeline-1__item",
-                  class:
-                    index % 2 === 0
-                      ? "m-timeline-1__item--left"
-                      : "m-timeline-1__item--right"
-                },
-                [
-                  _vm._m(1, true),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "m-timeline-1__item-arrow" }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    { staticClass: "m-timeline-1__item-time m--font-brand" },
-                    [_vm._v(_vm._s(item.fecha))]
-                  ),
-                  _vm._v(" "),
-                  _c(
+                { staticClass: "m-wizard__steps" },
+                _vm._l(_vm.lista, function(item, index) {
+                  return _c(
                     "div",
-                    { staticClass: "m-timeline-1__item-content" },
+                    {
+                      staticClass: "m-wizard__step",
+                      class: [
+                        _vm.pasos.actual === index + 1
+                          ? "m-wizard__step--current"
+                          : _vm.pasos.actual > index + 1
+                            ? "m-wizard__step--done"
+                            : ""
+                      ]
+                    },
                     [
-                      item.code
-                        ? [
+                      _c("div", { staticClass: "m-wizard__step-info" }, [
+                        _c("a", { staticClass: "m-wizard__step-number" }, [
+                          _c("span", [
+                            _c("span", [
+                              _vm._v(
+                                "\n                                            " +
+                                  _vm._s(index + 1) +
+                                  "\n                                        "
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(0, true),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "m-wizard__step-label" }, [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(item.title) +
+                              "\n                                "
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                })
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        !_vm.procesando
+          ? _c("div", { staticClass: "col-xl-9 col-lg-12" }, [
+              _c("div", { staticClass: "m-wizard__form" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "m-form m-form--label-align-left- m-form--state-"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "m-portlet__body m-portlet__body--no-padding"
+                      },
+                      [
+                        _c(
+                          "form",
+                          {
+                            staticClass: "m-wizard__form-step",
+                            class:
+                              _vm.pasos.actual === 1
+                                ? "m-wizard__form-step--current"
+                                : "",
+                            attrs: { novalidate: "novalidate" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.validar($event)
+                              }
+                            }
+                          },
+                          [
                             _c(
                               "div",
-                              { staticClass: "m-timeline-1__item-body" },
+                              {
+                                staticClass:
+                                  "m-form__section m-form__section--first"
+                              },
                               [
-                                _c("div", { staticClass: "m-widget3" }, [
+                                _c("div", { staticClass: "m-form__heading" }, [
+                                  _c(
+                                    "h3",
+                                    { staticClass: "m-form__heading-title" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.lista[_vm.pasos.actual - 1].title
+                                        )
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "m-form__section" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "m-widget3__item" },
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
                                     [
-                                      _c(
-                                        "div",
-                                        { staticClass: "m-widget3__header" },
-                                        [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass: "m-widget3__user-img"
-                                            },
-                                            [
-                                              _c("img", {
-                                                staticClass: "m-widget3__img",
-                                                attrs: { src: item.avatar }
-                                              })
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "m-widget3__info" },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "m-widget3__username"
-                                                },
-                                                [_vm._v(_vm._s(item.usuario))]
-                                              ),
-                                              _c("br"),
-                                              _vm._v(" "),
-                                              _c(
-                                                "b",
-                                                {
-                                                  staticClass: "m-widget3__time"
-                                                },
-                                                [_vm._v(_vm._s(item.org))]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "m-widget3__status m--font-info"
-                                                },
-                                                [
-                                                  _c("span", {
-                                                    staticClass: "fa",
-                                                    class: item.meLike
-                                                      ? "fa-heart"
-                                                      : "fa fa-heart-o",
-                                                    attrs: {
-                                                      "data-skin": "dark",
-                                                      "data-toggle":
-                                                        "m-tooltip",
-                                                      title: "Me gusta",
-                                                      "data-html": "true",
-                                                      "data-content":
-                                                        "<b>" +
-                                                        item.likes +
-                                                        "</b>"
-                                                    },
-                                                    on: {
-                                                      click: function($event) {
-                                                        _vm.enviarLike(item)
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
+                                      _vm._m(1),
                                       _vm._v(" "),
                                       _c(
                                         "div",
-                                        { staticClass: "m-widget3__body" },
+                                        { staticClass: "col-xl-9 col-lg-9" },
                                         [
-                                          _c(
-                                            "p",
-                                            { staticClass: "m-widget3__text" },
-                                            [
-                                              _vm._v(
-                                                "\n                                                " +
-                                                  _vm._s(item.comentario) +
-                                                  "\n                                            "
-                                              )
-                                            ]
-                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.titulo,
+                                                expression: "titulo"
+                                              }
+                                            ],
+                                            staticClass: "form-control m-input",
+                                            attrs: {
+                                              placeholder: "Vinculación UNOS",
+                                              type: "text",
+                                              name: "nombre proyecto",
+                                              maxlength: "500"
+                                            },
+                                            domProps: { value: _vm.titulo },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.titulo = $event.target.value
+                                              }
+                                            }
+                                          }),
                                           _vm._v(" "),
                                           _c(
-                                            "div",
-                                            { attrs: { id: item.code } },
-                                            _vm._l(item.fotos, function(
-                                              imagen,
-                                              index
-                                            ) {
-                                              return _c("img", {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value: index < 3,
-                                                    expression: "index<3"
-                                                  }
-                                                ],
-                                                staticClass: "img-item",
-                                                attrs: {
-                                                  src: imagen.down,
-                                                  "data-src": imagen.down
-                                                },
-                                                on: {
-                                                  mouseover: function($event) {
-                                                    _vm.renderizarId(item.code)
-                                                  }
+                                            "span",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.errors.has(
+                                                    "nombre proyecto"
+                                                  ),
+                                                  expression:
+                                                    "errors.has('nombre proyecto')"
                                                 }
-                                              })
-                                            })
+                                              ],
+                                              staticClass:
+                                                "m-form__help text-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.first(
+                                                    "nombre proyecto"
+                                                  )
+                                                )
+                                              )
+                                            ]
                                           )
                                         ]
                                       )
                                     ]
-                                  )
-                                ])
-                              ]
-                            )
-                          ]
-                        : [
-                            _c(
-                              "div",
-                              { staticClass: "m-timeline-1__item-title" },
-                              [
-                                _vm._v(
-                                  "\n                            " +
-                                    _vm._s(item.proyecto.titulo_pr)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("b", [
-                                  _vm._v(
-                                    _vm._s(
-                                      item.proyecto.org.ncomercial_or ||
-                                        item.proyecto.org.rsocial_or
-                                    )
-                                  )
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "m-timeline-1__item-body" },
-                              [_vm._v(_vm._s(item.proyecto.objgeneral_pr))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "m-timeline-1__item-actions" },
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass:
-                                      "btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.cargarProyecto(item.p)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                Leer más..\n                            "
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ],
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "m-timeline-1__item-actions" },
-                        [
-                          item.hijos
-                            ? [
-                                item.mostrando
-                                  ? _c("div", [
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "col-xl-3 col-lg-3 col-form-label"
+                                        },
+                                        [_vm._v("Objetivo general:")]
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "div",
-                                        { staticClass: "m-widget3" },
-                                        _vm._l(item.listaHijos, function(
-                                          itemChill
-                                        ) {
-                                          return _c(
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c("textarea", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.obgeneral,
+                                                expression: "obgeneral"
+                                              }
+                                            ],
+                                            staticClass: "form-control m-input",
+                                            attrs: {
+                                              rows: "3",
+                                              maxlength: "500"
+                                            },
+                                            domProps: { value: _vm.obgeneral },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.obgeneral =
+                                                  $event.target.value
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "col-xl-3 col-lg-3 col-form-label"
+                                        },
+                                        [_vm._v("Descripción general:")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c("textarea", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.descripcion,
+                                                expression: "descripcion"
+                                              }
+                                            ],
+                                            staticClass: "form-control m-input",
+                                            attrs: {
+                                              rows: "3",
+                                              maxlength: "500"
+                                            },
+                                            domProps: {
+                                              value: _vm.descripcion
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.descripcion =
+                                                  $event.target.value
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "col-xl-3 col-lg-3 col-form-label"
+                                        },
+                                        [_vm._v("Beneficiarios directos:")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c(
                                             "div",
-                                            { staticClass: "m-widget3__item" },
+                                            {
+                                              staticClass:
+                                                "input-group bootstrap-touchspin"
+                                            },
                                             [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value:
+                                                      "numeric|min_value:1",
+                                                    expression:
+                                                      "'numeric|min_value:1'"
+                                                  },
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.benedirectos,
+                                                    expression: "benedirectos"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "form-control m-input bootstrap-touchspin-vertical-btn",
+                                                attrs: {
+                                                  placeholder: "1000",
+                                                  type: "text",
+                                                  name: "beneficiarios"
+                                                },
+                                                domProps: {
+                                                  value: _vm.benedirectos
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.benedirectos =
+                                                      $event.target.value
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
                                               _c(
-                                                "div",
+                                                "span",
                                                 {
                                                   staticClass:
-                                                    "m-widget3__header"
+                                                    "input-group-btn-vertical"
                                                 },
                                                 [
                                                   _c(
-                                                    "div",
+                                                    "button",
                                                     {
                                                       staticClass:
-                                                        "m-widget3__user-img"
+                                                        "btn btn-secondary bootstrap-touchspin-up",
+                                                      attrs: { type: "button" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.benedirectos++
+                                                        }
+                                                      }
                                                     },
                                                     [
-                                                      _c("img", {
+                                                      _c("i", {
                                                         staticClass:
-                                                          "m-widget3__img",
-                                                        attrs: {
-                                                          src: itemChill.avatar
-                                                        }
+                                                          "la la-plus"
                                                       })
                                                     ]
                                                   ),
                                                   _vm._v(" "),
                                                   _c(
-                                                    "div",
+                                                    "button",
                                                     {
                                                       staticClass:
-                                                        "m-widget3__info"
+                                                        "btn btn-secondary bootstrap-touchspin-down",
+                                                      attrs: { type: "button" },
+                                                      on: {
+                                                        click: function(
+                                                          $event
+                                                        ) {
+                                                          _vm.benedirectos--
+                                                        }
+                                                      }
                                                     },
                                                     [
-                                                      _c(
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "la la-minus"
+                                                      })
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.errors.has(
+                                                    "beneficiarios"
+                                                  ),
+                                                  expression:
+                                                    "errors.has('beneficiarios')"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "m-form__help text-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.first(
+                                                    "beneficiarios"
+                                                  )
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _vm._m(2),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "form-control m-input fechas",
+                                            attrs: {
+                                              placeholder:
+                                                "dd/mm/aaaa - dd/mm/aaaa",
+                                              type: "text",
+                                              name: "fechas"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.errors.has(
+                                                    "fechas"
+                                                  ),
+                                                  expression:
+                                                    "errors.has('fechas')"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "m-form__help text-danger",
+                                              attrs: { id: "fecha_val" }
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.first("fechas")
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _vm._m(3),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.estado,
+                                                  expression: "estado"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "form-control m-input m_selectpicker",
+                                              attrs: {
+                                                name: "estado",
+                                                title: "Elija el estado"
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.estado = $event.target
+                                                    .multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                                }
+                                              }
+                                            },
+                                            _vm._l(_vm.listaEstados, function(
+                                              item
+                                            ) {
+                                              return _c(
+                                                "option",
+                                                {
+                                                  domProps: { value: item.id }
+                                                },
+                                                [_vm._v(_vm._s(item.name))]
+                                              )
+                                            })
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.errors.has(
+                                                    "estado"
+                                                  ),
+                                                  expression:
+                                                    "errors.has('estado')"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "m-form__help text-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.first("estado")
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "form-group m-form__group row"
+                                    },
+                                    [
+                                      _vm._m(4),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-xl-9 col-lg-9" },
+                                        [
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.requiere,
+                                                  expression: "requiere"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "form-control m-input m_selectpicker",
+                                              attrs: {
+                                                name: "requerimiento",
+                                                title: "Elija",
+                                                multiple: ""
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.requiere = $event.target
+                                                    .multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                                }
+                                              }
+                                            },
+                                            _vm._l(_vm.listaReq, function(
+                                              item
+                                            ) {
+                                              return _c(
+                                                "option",
+                                                {
+                                                  domProps: { value: item.id }
+                                                },
+                                                [_vm._v(_vm._s(item.name))]
+                                              )
+                                            })
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "show",
+                                                  rawName: "v-show",
+                                                  value: _vm.errors.has(
+                                                    "requerimiento"
+                                                  ),
+                                                  expression:
+                                                    "errors.has('requerimiento')"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "m-form__help text-danger"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.first(
+                                                    "requerimiento"
+                                                  )
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.reqOsc
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "form-group m-form__group row"
+                                        },
+                                        [
+                                          _vm._m(5),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "col-xl-9 col-lg-9"
+                                            },
+                                            [
+                                              _c(
+                                                "select",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: "required",
+                                                      expression: "'required'"
+                                                    },
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.atrabajo,
+                                                      expression: "atrabajo"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "form-control m-input m_selectpicker",
+                                                  attrs: {
+                                                    name: "áreas de trabajo",
+                                                    title: "OSCs",
+                                                    multiple: ""
+                                                  },
+                                                  on: {
+                                                    change: function($event) {
+                                                      var $$selectedVal = Array.prototype.filter
+                                                        .call(
+                                                          $event.target.options,
+                                                          function(o) {
+                                                            return o.selected
+                                                          }
+                                                        )
+                                                        .map(function(o) {
+                                                          var val =
+                                                            "_value" in o
+                                                              ? o._value
+                                                              : o.value
+                                                          return val
+                                                        })
+                                                      _vm.atrabajo = $event
+                                                        .target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    }
+                                                  }
+                                                },
+                                                _vm._l(
+                                                  _vm.listaAtrabajo,
+                                                  function(item) {
+                                                    return _c(
+                                                      "option",
+                                                      {
+                                                        domProps: {
+                                                          value: item.id
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.name)
+                                                        )
+                                                      ]
+                                                    )
+                                                  }
+                                                )
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "show",
+                                                      rawName: "v-show",
+                                                      value: _vm.errors.has(
+                                                        "áreas de trabajo"
+                                                      ),
+                                                      expression:
+                                                        "errors.has('áreas de trabajo')"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "m-form__help text-danger"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors.first(
+                                                        "áreas de trabajo"
+                                                      )
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.reqIes
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "form-group m-form__group row"
+                                        },
+                                        [
+                                          _vm._m(6),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "col-xl-9 col-lg-9"
+                                            },
+                                            [
+                                              _c(
+                                                "select",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "validate",
+                                                      rawName: "v-validate",
+                                                      value: "required",
+                                                      expression: "'required'"
+                                                    },
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.carreras,
+                                                      expression: "carreras"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "form-control m-input m_selectpicker",
+                                                  attrs: {
+                                                    name: "carreras",
+                                                    title: "IES",
+                                                    multiple: ""
+                                                  },
+                                                  on: {
+                                                    change: function($event) {
+                                                      var $$selectedVal = Array.prototype.filter
+                                                        .call(
+                                                          $event.target.options,
+                                                          function(o) {
+                                                            return o.selected
+                                                          }
+                                                        )
+                                                        .map(function(o) {
+                                                          var val =
+                                                            "_value" in o
+                                                              ? o._value
+                                                              : o.value
+                                                          return val
+                                                        })
+                                                      _vm.carreras = $event
+                                                        .target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    }
+                                                  }
+                                                },
+                                                _vm._l(
+                                                  _vm.listaCarreras,
+                                                  function(item) {
+                                                    return _c(
+                                                      "option",
+                                                      {
+                                                        domProps: {
+                                                          value: item.id
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.name)
+                                                        )
+                                                      ]
+                                                    )
+                                                  }
+                                                )
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "show",
+                                                      rawName: "v-show",
+                                                      value: _vm.errors.has(
+                                                        "carreras"
+                                                      ),
+                                                      expression:
+                                                        "errors.has('carreras')"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "m-form__help text-danger"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.errors.first(
+                                                        "carreras"
+                                                      )
+                                                    )
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ])
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.pasos.actual === 2
+                          ? _c(
+                              "form",
+                              {
+                                staticClass: "m-wizard__form-step",
+                                class:
+                                  _vm.pasos.actual === 2
+                                    ? "m-wizard__form-step--current"
+                                    : "",
+                                attrs: { novalidate: "novalidate" },
+                                on: {
+                                  submit: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.validar($event)
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "m-form__section m-form__section--first"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "m-form__heading" },
+                                      [
+                                        _c(
+                                          "h3",
+                                          {
+                                            staticClass: "m-form__heading-title"
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.lista[_vm.pasos.actual - 1]
+                                                  .title
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-group m-form__group row"
+                                      },
+                                      [
+                                        _vm._m(7),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-xl-9 col-lg-9" },
+                                          [
+                                            _c(
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  },
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.ainteres,
+                                                    expression: "ainteres"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "form-control m-input m_selectpicker",
+                                                attrs: {
+                                                  name: "área",
+                                                  title: "Elija una área"
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.ainteres = $event.target
+                                                      .multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  }
+                                                }
+                                              },
+                                              _vm._l(_vm.listaAreas, function(
+                                                item
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: item.id }
+                                                  },
+                                                  [_vm._v(_vm._s(item.name))]
+                                                )
+                                              })
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "span",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value: _vm.errors.has(
+                                                      "área"
+                                                    ),
+                                                    expression:
+                                                      "errors.has('área')"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "m-form__help text-danger"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.errors.first("área")
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.ainteres >= 1
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-group m-form__group row"
+                                          },
+                                          [
+                                            _vm._m(8),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-xl-9 col-lg-9"
+                                              },
+                                              [
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "validate",
+                                                        rawName: "v-validate",
+                                                        value: "required",
+                                                        expression: "'required'"
+                                                      },
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.pais,
+                                                        expression: "pais"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-control m-input m_selectpicker",
+                                                    attrs: {
+                                                      name: "país",
+                                                      "data-live-search":
+                                                        "true",
+                                                      title: "Elija país"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.pais = $event.target
+                                                          .multiple
+                                                          ? $$selectedVal
+                                                          : $$selectedVal[0]
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.listaPaises,
+                                                    function(item) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: item.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(item.name)
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  )
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value: _vm.errors.has(
+                                                          "país"
+                                                        ),
+                                                        expression:
+                                                          "errors.has('país')"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "m-form__help text-danger"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first("país")
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.ainteres >= 2
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-group m-form__group row"
+                                          },
+                                          [
+                                            _vm._m(9),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-xl-9 col-lg-9"
+                                              },
+                                              [
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "validate",
+                                                        rawName: "v-validate",
+                                                        value: "required",
+                                                        expression: "'required'"
+                                                      },
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.provincia,
+                                                        expression: "provincia"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-control m-input m_selectpicker",
+                                                    attrs: {
+                                                      name: "provincia",
+                                                      "data-live-search":
+                                                        "true",
+                                                      title: "Elija provincia"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.provincia = $event
+                                                          .target.multiple
+                                                          ? $$selectedVal
+                                                          : $$selectedVal[0]
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.listaProvincias,
+                                                    function(item) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: item.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(item.name)
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  )
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value: _vm.errors.has(
+                                                          "provincia"
+                                                        ),
+                                                        expression:
+                                                          "errors.has('provincia')"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "m-form__help text-danger"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first(
+                                                          "provincia"
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.ainteres >= 3
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-group m-form__group row"
+                                          },
+                                          [
+                                            _vm._m(10),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-xl-9 col-lg-9"
+                                              },
+                                              [
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "validate",
+                                                        rawName: "v-validate",
+                                                        value: "required",
+                                                        expression: "'required'"
+                                                      },
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.canton,
+                                                        expression: "canton"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-control m-input m_selectpicker",
+                                                    attrs: {
+                                                      name: "cantón",
+                                                      "data-live-search":
+                                                        "true",
+                                                      title: "Elija cantón"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.canton = $event
+                                                          .target.multiple
+                                                          ? $$selectedVal
+                                                          : $$selectedVal[0]
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.listaCantones,
+                                                    function(item) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: item.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(item.name)
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  )
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value: _vm.errors.has(
+                                                          "cantón"
+                                                        ),
+                                                        expression:
+                                                          "errors.has('cantón')"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "m-form__help text-danger"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first(
+                                                          "cantón"
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.ainteres >= 4
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "form-group m-form__group row"
+                                          },
+                                          [
+                                            _vm._m(11),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-xl-9 col-lg-9"
+                                              },
+                                              [
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "validate",
+                                                        rawName: "v-validate",
+                                                        value: "required",
+                                                        expression: "'required'"
+                                                      },
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.parroquia,
+                                                        expression: "parroquia"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-control m-input m_selectpicker",
+                                                    attrs: {
+                                                      name: "parroquia",
+                                                      "data-live-search":
+                                                        "true",
+                                                      title: "Elija parroquia"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.parroquia = $event
+                                                          .target.multiple
+                                                          ? $$selectedVal
+                                                          : $$selectedVal[0]
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.listaParroquias,
+                                                    function(item) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: item.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(item.name)
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  )
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value: _vm.errors.has(
+                                                          "parroquia"
+                                                        ),
+                                                        expression:
+                                                          "errors.has('parroquia')"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "m-form__help text-danger"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.errors.first(
+                                                          "parroquia"
+                                                        )
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-group m-form__group row"
+                                      },
+                                      [
+                                        _vm._m(12),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "col-xl-9 col-lg-9" },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.poblacion,
+                                                  expression: "poblacion"
+                                                },
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "form-control m-input",
+                                              attrs: {
+                                                placeholder: "Puembo",
+                                                type: "text",
+                                                name: "nombre población",
+                                                maxlength: "200"
+                                              },
+                                              domProps: {
+                                                value: _vm.poblacion
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.poblacion =
+                                                    $event.target.value
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "span",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value: _vm.errors.has(
+                                                      "nombre población"
+                                                    ),
+                                                    expression:
+                                                      "errors.has('nombre población')"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "m-form__help text-danger"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    _vm.errors.first(
+                                                      "nombre población"
+                                                    )
+                                                  )
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "form-group m-form__group row"
+                                      },
+                                      _vm._l(_vm.lugares, function(
+                                        item,
+                                        index
+                                      ) {
+                                        return _c(
+                                          "a",
+                                          {
+                                            key: item.id,
+                                            staticClass:
+                                              "badge badge-success badge-pill",
+                                            staticStyle: { color: "white" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(item.label) +
+                                                "\n                                        "
+                                            ),
+                                            _c("span", [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "text-danger del",
+                                                  attrs: {
+                                                    type: "button",
+                                                    "data-dismiss": "modal"
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.eliminarLugar(index)
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("x")]
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      })
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "embed-responsive embed-responsive-4by3"
+                                      },
+                                      [
+                                        _c(
+                                          "gmap-map",
+                                          {
+                                            staticClass:
+                                              "embed-responsive-item",
+                                            attrs: {
+                                              center: _vm.centro,
+                                              zoom: _vm.acercamiento,
+                                              options: _vm.configuracionMap
+                                            },
+                                            on: { click: _vm.clicMapa }
+                                          },
+                                          [
+                                            _c(
+                                              "gmap-info-window",
+                                              {
+                                                attrs: {
+                                                  options: _vm.info,
+                                                  opened: true,
+                                                  position: _vm.cordenadas
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass: "text-center"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "button",
+                                                      {
+                                                        staticClass:
+                                                          "btn m-btn m-btn--pill m-btn--air m-btn--gradient-from-metal m-btn--gradient-to-accent",
+                                                        attrs: {
+                                                          type: "button"
+                                                        },
+                                                        on: {
+                                                          click:
+                                                            _vm.agregarLugar
+                                                        }
+                                                      },
+                                                      [_vm._v("Agregar")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(_vm.lugares, function(
+                                              m,
+                                              index
+                                            ) {
+                                              return _c("gmap-marker", {
+                                                key: index + 1,
+                                                attrs: {
+                                                  position: m,
+                                                  clickable: false,
+                                                  draggable: false,
+                                                  label: m.label
+                                                }
+                                              })
+                                            }),
+                                            _vm._v(" "),
+                                            _c("gmap-marker", {
+                                              key: 0,
+                                              attrs: {
+                                                position: _vm.cordenadas,
+                                                clickable: true,
+                                                draggable: true,
+                                                color: "green"
+                                              },
+                                              on: { dragend: _vm.clicMapa }
+                                            })
+                                          ],
+                                          2
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "m-wizard__form-step",
+                            class:
+                              _vm.pasos.actual === 3
+                                ? "m-wizard__form-step--current"
+                                : ""
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "m-form__section m-form__section--first"
+                              },
+                              [
+                                _c("div", { staticClass: "m-form__heading" }, [
+                                  _c(
+                                    "h3",
+                                    { staticClass: "m-form__heading-title" },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.lista[_vm.pasos.actual - 1].title
+                                        )
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "row" },
+                                  _vm._l(_vm.listaArchivos, function(item) {
+                                    return _c(
+                                      "label",
+                                      {
+                                        staticClass:
+                                          "m-option col-md-1 col-sm-1"
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "m-option__label" },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "m-option__head" },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "m-option__title text-center"
+                                                  },
+                                                  [
+                                                    _c("h1", {
+                                                      staticClass: "fiv-cla",
+                                                      class:
+                                                        "fiv-icon-" + item.ext
+                                                    }),
+                                                    _vm._v(" "),
+                                                    _c("br"),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "small",
+                                                      {
+                                                        staticClass:
+                                                          "text-muted"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.name)
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "span",
+                                              { staticClass: "m-option__body" },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "m-btn-group m-btn-group--pill btn-group btn-group-sm"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "button",
+                                                      {
+                                                        staticClass:
+                                                          "m-btn btn btn-danger",
+                                                        attrs: {
+                                                          type: "button"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            _vm.eliminarArchivo(
+                                                              item
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("i", {
+                                                          staticClass:
+                                                            "la la-remove"
+                                                        })
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "button",
+                                                      {
+                                                        staticClass:
+                                                          "m-btn btn btn-success",
+                                                        attrs: {
+                                                          type: "button"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            _vm.descargarArchivo(
+                                                              item.file,
+                                                              item.name
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("i", {
+                                                          staticClass:
+                                                            "la la la-download"
+                                                        })
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ),
+                                _vm._v(" "),
+                                _c("vue-dropzone", {
+                                  ref: "archivos",
+                                  attrs: {
+                                    id: "documentos",
+                                    options: _vm.dropzoneOptions
+                                  },
+                                  on: {
+                                    "vdropzone-success": _vm.cargarArchivos,
+                                    "vdropzone-error": _vm.cargarArchivos,
+                                    sending: _vm.cargarArchivos
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "m-wizard__form-step",
+                            class:
+                              _vm.pasos.actual === 4
+                                ? "m-wizard__form-step--current"
+                                : ""
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "m-accordion m-accordion--default",
+                                attrs: { id: "m_accordion_1", role: "tablist" }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "m-accordion__item active" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "m-accordion__item-head",
+                                        attrs: {
+                                          role: "tab",
+                                          id: "m_accordion_1_item_1_head",
+                                          "data-toggle": "collapse",
+                                          href: "#m_accordion_1_item_1_body",
+                                          "aria-expanded": "  false"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-icon"
+                                          },
+                                          [_vm._v("1")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-title"
+                                          },
+                                          [_vm._v(_vm._s(_vm.lista[0].title))]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", {
+                                          staticClass: "m-accordion__item-mode"
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "m-accordion__item-body collapse show",
+                                        attrs: {
+                                          id: "m_accordion_1_item_1_body",
+                                          role: "tabpanel",
+                                          "aria-labelledby":
+                                            "m_accordion_1_item_1_head",
+                                          "data-parent": "#m_accordion_1"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "tab-content active  m--padding-30"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "m-form__section m-form__section--first"
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Nombre de proyecto:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.titulo
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [_vm._v("Estado:")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _vm.estado > 0
+                                                          ? _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "m-form__control-static"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "\n                                                            " +
+                                                                    _vm._s(
+                                                                      _vm.buscar(
+                                                                        _vm.listaEstados,
+                                                                        _vm.estado
+                                                                      )
+                                                                    ) +
+                                                                    "\n                                                        "
+                                                                )
+                                                              ]
+                                                            )
+                                                          : _vm._e()
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Objetivo general:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static",
+                                                            staticStyle: {
+                                                              "white-space":
+                                                                "pre-line"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.obgeneral
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Descripción general:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static",
+                                                            staticStyle: {
+                                                              "white-space":
+                                                                "pre-line"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.descripcion
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Beneficiarios directos:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.benedirectos
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Fecha de inicio:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.fdeinicio
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "form-group m-form__group m-form__group--sm row"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "label",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-4 col-lg-4 col-form-label"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Fecha de finalización:"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "col-xl-8 col-lg-8"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "m-form__control-static"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                            " +
+                                                                _vm._s(
+                                                                  _vm.fdefin
+                                                                ) +
+                                                                "\n                                                        "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "m-accordion__item" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "m-accordion__item-head collapsed",
+                                        attrs: {
+                                          role: "tab",
+                                          id: "m_accordion_1_item_2_head",
+                                          "data-toggle": "collapse",
+                                          href: "#m_accordion_1_item_2_body",
+                                          "aria-expanded": "    false"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-icon"
+                                          },
+                                          [_vm._v("2")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-title"
+                                          },
+                                          [_vm._v(_vm._s(_vm.lista[1].title))]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", {
+                                          staticClass: "m-accordion__item-mode"
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "m-accordion__item-body collapse",
+                                        attrs: {
+                                          id: "m_accordion_1_item_2_body",
+                                          role: "tabpanel",
+                                          "aria-labelledby":
+                                            "m_accordion_1_item_2_head",
+                                          "data-parent": "#m_accordion_1"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "tab-content  m--padding-30"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "m-form__section m-form__section--first"
+                                              },
+                                              [
+                                                _vm.ainteres > 0
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass: "m-widget1"
+                                                      },
+                                                      [
+                                                        _c("h4", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              _vm.buscar(
+                                                                _vm.listaAreas,
+                                                                _vm.ainteres
+                                                              )
+                                                            )
+                                                          )
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _vm._l(
+                                                          _vm.lugares,
+                                                          function(item) {
+                                                            return _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "m-widget1__item"
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "div",
+                                                                  {
+                                                                    staticClass:
+                                                                      "row m-row--no-padding align-items-center"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "col"
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "h3",
+                                                                          {
+                                                                            staticClass:
+                                                                              "m-widget1__title"
+                                                                          },
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                item.label
+                                                                              )
+                                                                            )
+                                                                          ]
+                                                                        ),
+                                                                        _vm._v(
+                                                                          " "
+                                                                        ),
+                                                                        _c(
+                                                                          "span",
+                                                                          {
+                                                                            staticClass:
+                                                                              "m-widget1__desc"
+                                                                          },
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                item.name
+                                                                              )
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      ]
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "div",
+                                                                      {
+                                                                        staticClass:
+                                                                          "col m--align-right"
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "img",
+                                                                          {
+                                                                            staticClass:
+                                                                              "img-fluid",
+                                                                            attrs: {
+                                                                              src:
+                                                                                _vm.actual +
+                                                                                "/api/google?lat=" +
+                                                                                item.lat +
+                                                                                "&lng=" +
+                                                                                item.lng
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            )
+                                                          }
+                                                        )
+                                                      ],
+                                                      2
+                                                    )
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "m-accordion__item" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "m-accordion__item-head collapsed",
+                                        attrs: {
+                                          role: "tab",
+                                          id: "m_accordion_1_item_3_head",
+                                          "data-toggle": "collapse",
+                                          href: "#m_accordion_1_item_3_body",
+                                          "aria-expanded": "    false"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-icon"
+                                          },
+                                          [_vm._v("3")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "m-accordion__item-title"
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(_vm.lista[2].title) + " "
+                                            ),
+                                            _c("span", [
+                                              _vm._v(
+                                                _vm._s(_vm.listaArchivos.lengh)
+                                              )
+                                            ])
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", {
+                                          staticClass: "m-accordion__item-mode"
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "m-accordion__item-body collapse",
+                                        attrs: {
+                                          id: "m_accordion_1_item_3_body",
+                                          role: "tabpanel",
+                                          "aria-labelledby":
+                                            "m_accordion_1_item_3_head",
+                                          "data-parent": "#m_accordion_1"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "tab-content  m--padding-30"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "m-form__section m-form__section--first"
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "m-widget4" },
+                                                  _vm._l(
+                                                    _vm.listaArchivos,
+                                                    function(item) {
+                                                      return _c(
                                                         "div",
                                                         {
-                                                          staticClass: "d-flex"
+                                                          staticClass:
+                                                            "m-widget4__item"
                                                         },
                                                         [
                                                           _c(
                                                             "div",
                                                             {
-                                                              staticClass: "p-2"
+                                                              staticClass:
+                                                                "m-widget4__img m-widget4__img--icon"
+                                                            },
+                                                            [
+                                                              _c("h1", {
+                                                                staticClass:
+                                                                  "fiv-cla",
+                                                                class:
+                                                                  "fiv-icon-" +
+                                                                  item.ext
+                                                              })
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "m-widget4__info"
                                                             },
                                                             [
                                                               _c(
                                                                 "span",
                                                                 {
                                                                   staticClass:
-                                                                    "m-widget3__username"
+                                                                    "m-widget4__text"
                                                                 },
                                                                 [
                                                                   _vm._v(
-                                                                    _vm._s(
-                                                                      itemChill.usuario
-                                                                    )
-                                                                  )
-                                                                ]
-                                                              ),
-                                                              _c("br"),
-                                                              _vm._v(" "),
-                                                              _c(
-                                                                "b",
-                                                                {
-                                                                  staticClass:
-                                                                    "m-widget3__time"
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    _vm._s(
-                                                                      itemChill.org
-                                                                    )
+                                                                    "\n                                                                " +
+                                                                      _vm._s(
+                                                                        item.name
+                                                                      ) +
+                                                                      "\n                                                            "
                                                                   )
                                                                 ]
                                                               )
@@ -34861,227 +37898,262 @@ var render = function() {
                                                             "div",
                                                             {
                                                               staticClass:
-                                                                "ml-auto p-2"
+                                                                "m-widget4__ext"
                                                             },
                                                             [
-                                                              _c(
-                                                                "small",
-                                                                {
-                                                                  staticClass:
-                                                                    "text-muted"
-                                                                },
-                                                                [
-                                                                  _vm._v(
-                                                                    _vm._s(
-                                                                      itemChill.fecha
-                                                                    )
+                                                              _vm.ver
+                                                                ? _c(
+                                                                    "a",
+                                                                    {
+                                                                      staticClass:
+                                                                        "m-widget4__icon",
+                                                                      on: {
+                                                                        click: function(
+                                                                          $event
+                                                                        ) {
+                                                                          _vm.descargarArchivo(
+                                                                            item.file,
+                                                                            item.name
+                                                                          )
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c("i", {
+                                                                        staticClass:
+                                                                          "la la-download"
+                                                                      })
+                                                                    ]
                                                                   )
-                                                                ]
-                                                              )
-                                                            ]
-                                                          ),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticClass:
-                                                                "m-widget3__status m--font-info"
-                                                            },
-                                                            [
-                                                              _c("span", {
-                                                                staticClass:
-                                                                  "fa",
-                                                                class: itemChill.meLike
-                                                                  ? "fa-heart"
-                                                                  : "fa fa-heart-o",
-                                                                attrs: {
-                                                                  "data-toggle":
-                                                                    "m-tooltip",
-                                                                  title:
-                                                                    "Me gusta",
-                                                                  "data-html":
-                                                                    "true",
-                                                                  "data-content":
-                                                                    "<b>" +
-                                                                    itemChill.likes +
-                                                                    "</b>"
-                                                                },
-                                                                on: {
-                                                                  click: function(
-                                                                    $event
-                                                                  ) {
-                                                                    _vm.enviarLike(
-                                                                      itemChill
-                                                                    )
-                                                                  }
-                                                                }
-                                                              })
+                                                                : _vm._e()
                                                             ]
                                                           )
                                                         ]
                                                       )
-                                                    ]
+                                                    }
                                                   )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass: "m-widget3__body"
-                                                },
-                                                [
-                                                  _c(
-                                                    "p",
-                                                    {
-                                                      staticClass:
-                                                        "m-widget3__text"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n                                                " +
-                                                          _vm._s(
-                                                            itemChill.comentario
-                                                          ) +
-                                                          "\n                                            "
-                                                      )
-                                                    ]
-                                                  )
-                                                ]
-                                              )
-                                            ]
-                                          )
-                                        })
-                                      )
-                                    ])
-                                  : _c(
-                                      "a",
-                                      {
-                                        staticClass: "m-nav__link btn-sm",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.mostrarComentarios(item)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(item.hijos) + " Comentarios "
+                                                )
+                                              ]
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
+                                  ]
+                                )
                               ]
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
+                            ),
+                            _vm._v(" "),
+                            _c("div", {
                               staticClass:
-                                "input-group m-input-group m-input-group--pill"
-                            },
-                            [
-                              _c("input", {
-                                directives: [
+                                "m-separator m-separator--dashed m-separator--lg"
+                            }),
+                            _vm._v(" "),
+                            _vm.ver
+                              ? _c(
+                                  "div",
                                   {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: item.texto,
-                                    expression: "item.texto"
-                                  }
-                                ],
-                                staticClass:
-                                  "form-control m-input form-control-sm",
-                                attrs: {
-                                  placeholder: "Escribe un comentario. . .",
-                                  type: "text",
-                                  maxlength: "500"
-                                },
-                                domProps: { value: item.texto },
-                                on: {
-                                  keyup: function($event) {
-                                    if (
-                                      !("button" in $event) &&
-                                      $event.keyCode !== 13
-                                    ) {
-                                      return null
-                                    }
-                                    _vm.enviarHijo(item)
+                                    staticClass:
+                                      "form-group m-form__group m-form__group--sm row"
                                   },
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(item, "texto", $event.target.value)
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        ],
-                        2
-                      )
-                    ],
-                    2
-                  )
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm._m(2)
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c("infinite-loading", { on: { infinite: _vm.cargarMasNoticias } }, [
-          _c("div", { staticClass: "m-timeline-1__marker" }),
-          _vm._v(" "),
-          _c("span", { attrs: { slot: "no-more" }, slot: "no-more" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col m--align-center" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "btn btn-sm m-btn--custom m-btn--pill  btn-metal"
-                  },
-                  [
-                    _vm._v(
-                      "\n                        No existen más Noticias\n                    "
-                    )
+                                  [
+                                    _c("div", { staticClass: "col-xl-12" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "m-checkbox-inline" },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass:
+                                                "m-checkbox m-checkbox--solid m-checkbox--brand"
+                                            },
+                                            [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: _vm.checkVar,
+                                                    expression: "checkVar"
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  name: "accept",
+                                                  type: "checkbox"
+                                                },
+                                                domProps: {
+                                                  value: true,
+                                                  checked: Array.isArray(
+                                                    _vm.checkVar
+                                                  )
+                                                    ? _vm._i(
+                                                        _vm.checkVar,
+                                                        true
+                                                      ) > -1
+                                                    : _vm.checkVar
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$a = _vm.checkVar,
+                                                      $$el = $event.target,
+                                                      $$c = $$el.checked
+                                                        ? true
+                                                        : false
+                                                    if (Array.isArray($$a)) {
+                                                      var $$v = true,
+                                                        $$i = _vm._i($$a, $$v)
+                                                      if ($$el.checked) {
+                                                        $$i < 0 &&
+                                                          (_vm.checkVar = $$a.concat(
+                                                            [$$v]
+                                                          ))
+                                                      } else {
+                                                        $$i > -1 &&
+                                                          (_vm.checkVar = $$a
+                                                            .slice(0, $$i)
+                                                            .concat(
+                                                              $$a.slice($$i + 1)
+                                                            ))
+                                                      }
+                                                    } else {
+                                                      _vm.checkVar = $$c
+                                                    }
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(
+                                                "\n                                            La información es correcta?\n                                            "
+                                              ),
+                                              _c("span")
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.ver
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "m-portlet__foot m-portlet__foot--fit m--margin-top-40"
+                          },
+                          [
+                            _c("div", { staticClass: "m-form__actions" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-6 m--align-left" },
+                                  [
+                                    _vm.pasos.actual > 1
+                                      ? _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-secondary m-btn m-btn--custom m-btn--icon",
+                                            attrs: { type: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.pasos.actual--
+                                              }
+                                            }
+                                          },
+                                          [_vm._m(13)]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-lg-6 m--align-right" },
+                                  [
+                                    _vm.pasos.actual === _vm.pasos.total
+                                      ? _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-primary m-btn m-btn--custom m-btn--icon",
+                                            attrs: { type: "button" },
+                                            on: { click: _vm.validar }
+                                          },
+                                          [_vm._m(14)]
+                                        )
+                                      : _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-success m-btn m-btn--custom m-btn--icon",
+                                            attrs: { type: "button" },
+                                            on: { click: _vm.validar }
+                                          },
+                                          [_vm._m(15)]
+                                        )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      : _vm._e()
                   ]
                 )
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("span", { attrs: { slot: "no-results" }, slot: "no-results" }, [
-            _vm._v("\n            No existen Noticias\n        ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("proyecto", { attrs: { id: _vm.proyectoSele, clic: _vm.tiempo } })
-      ],
-      1
-    )
-  ])
+          : _c("div", { staticClass: "col-xl-9 col-lg-12" }, [_vm._m(16)])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [
-      _vm._v("Enviar"),
-      _c("span", { staticClass: "la la-send" })
+    return _c("div", { staticClass: "m-wizard__step-line" }, [_c("span")])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Nombre de proyecto:")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-timeline-1__item-circle" }, [
-      _c("div", { staticClass: "m--bg-danger" })
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Fecha de inicio/Fecha de fin:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Estado de proyecto:")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Se requiere:")
     ])
   },
   function() {
@@ -35089,17 +38161,153 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "label",
       {
-        staticClass: "m-scroll-top m-scroll-top--skin-top",
+        staticClass: "col-xl-3 col-lg-3 col-form-label",
         attrs: {
-          "data-toggle": "m-scroll-top",
-          "data-scroll-offset": "500",
-          "data-scroll-speed": "300"
+          "data-toggle": "m-popover",
+          "data-placement": "top",
+          "data-content": "Si requiere de OSCs para su proyecto"
         }
       },
-      [_c("i", { staticClass: "la la-arrow-up" })]
+      [
+        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+        _vm._v("Áreas de trabajo:")
+      ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "col-xl-3 col-lg-3 col-form-label",
+        attrs: {
+          "data-toggle": "m-popover",
+          "data-placement": "top",
+          "data-content": "Si requiere de Universidades para su proyecto"
+        }
+      },
+      [
+        _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+        _vm._v("Clasificación de carreras:")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Área de interés")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("País")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Provincia")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Cantón")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Parroquia")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "col-xl-3 col-lg-3 col-form-label" }, [
+      _c("span", { staticClass: "text-danger" }, [_vm._v("*")]),
+      _vm._v("Población")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-arrow-left" }),
+      _vm._v(" "),
+      _c("span", [
+        _vm._v(
+          "\n                                                Atrás\n                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("i", { staticClass: "la la-check" }),
+      _vm._v(" "),
+      _c("span", [
+        _vm._v(
+          "\n                                                Enviar\n                                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("span", [
+        _vm._v(
+          "\n                                                Siguiente\n                                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("i", { staticClass: "la la-arrow-right" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("br"),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "m-loader m-loader--lg",
+        staticStyle: { width: "30px", display: "inline-block" }
+      }),
+      _vm._v(" "),
+      _c("p", [_vm._v("Procesando")])
+    ])
   }
 ]
 render._withStripped = true
@@ -35112,6 +38320,57 @@ if (false) {
 }
 
 /***/ }),
+<<<<<<< HEAD
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(51)
+/* template */
+var __vue_template__ = __webpack_require__(52)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\actividad.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-843b5714", Component.options)
+  } else {
+    hotAPI.reload("data-v-843b5714", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+=======
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35120,15 +38379,20 @@ if (false) {
 /***/ }),
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define(t):e.vue2Dropzone=t()}(this,function(){"use strict";var n={getSignedURL:function(o,s){var a={filePath:o.name,contentType:o.type};return new Promise(function(e,t){var n=new FormData,r=new XMLHttpRequest,i="function"==typeof s.signingURL?s.signingURL(o):s.signingURL;r.open("POST",i),r.onload=function(){200==r.status?e(JSON.parse(r.response)):t(r.statusText)},r.onerror=function(e){console.error("Network Error : Could not send request to AWS (Maybe CORS errors)"),t(e)},Object.entries(s.headers||{}).forEach(function(e){var t=e[0],i=e[1];r.setRequestHeader(t,i)}),a=Object.assign(a,s.params||{}),Object.entries(a).forEach(function(e){var t=e[0],i=e[1];n.append(t,i)}),r.send(n)})},sendFile:function(t,e,i){var n=i?this.setResponseHandler:this.sendS3Handler;return this.getSignedURL(t,e).then(function(e){return n(e,t)}).catch(function(e){return e})},setResponseHandler:function(e,t){t.s3Signature=e.signature,t.s3Url=e.postEndpoint},sendS3Handler:function(e,t){var o=new FormData,i=e.signature;return Object.keys(i).forEach(function(e){o.append(e,i[e])}),o.append("file",t),new Promise(function(i,n){var r=new XMLHttpRequest;r.open("POST",e.postEndpoint),r.onload=function(){if(201==r.status){var e=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[0].innerHTML;i({success:!0,message:e})}else{var t=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[0].innerHTML;n({success:!1,message:t+". Request is marked as resolved when returns as status 201"})}},r.onerror=function(e){var t=(new window.DOMParser).parseFromString(r.response,"text/xml").firstChild.children[1].innerHTML;n({success:!1,message:t})},r.send(o)})}};var e,t=(function(e){var t=function(){function n(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,i){return t&&n(e.prototype,t),i&&n(e,i),e}}();function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var i=function(){function e(){l(this,e)}return t(e,[{key:"on",value:function(e,t){return this._callbacks=this._callbacks||{},this._callbacks[e]||(this._callbacks[e]=[]),this._callbacks[e].push(t),this}},{key:"emit",value:function(e){this._callbacks=this._callbacks||{};var t=this._callbacks[e];if(t){for(var i=arguments.length,n=Array(1<i?i-1:0),r=1;r<i;r++)n[r-1]=arguments[r];for(var o=0,s=s=t;;){if(o>=s.length)break;s[o++].apply(this,n)}}return this}},{key:"off",value:function(e,t){if(!this._callbacks||0===arguments.length)return this._callbacks={},this;var i=this._callbacks[e];if(!i)return this;if(1===arguments.length)return delete this._callbacks[e],this;for(var n=0;n<i.length;n++){if(i[n]===t){i.splice(n,1);break}}return this}}]),e}(),r=function(e){function b(e,t){l(this,b);var i,n=a(this,(b.__proto__||Object.getPrototypeOf(b)).call(this)),r=void 0;if(n.element=e,n.version=b.version,n.defaultOptions.previewTemplate=n.defaultOptions.previewTemplate.replace(/\n*/g,""),n.clickableElements=[],n.listeners=[],n.files=[],"string"==typeof n.element&&(n.element=document.querySelector(n.element)),!n.element||null==n.element.nodeType)throw new Error("Invalid dropzone element.");if(n.element.dropzone)throw new Error("Dropzone already attached.");b.instances.push(n),n.element.dropzone=n;var o,s=null!=(i=b.optionsForElement(n.element))?i:{};if(n.options=b.extend({},n.defaultOptions,s,null!=t?t:{}),n.options.forceFallback||!b.isBrowserSupported())return o=n.options.fallback.call(n),a(n,o);if(null==n.options.url&&(n.options.url=n.element.getAttribute("action")),!n.options.url)throw new Error("No URL provided.");if(n.options.acceptedFiles&&n.options.acceptedMimeTypes)throw new Error("You can't provide both 'acceptedFiles' and 'acceptedMimeTypes'. 'acceptedMimeTypes' is deprecated.");if(n.options.uploadMultiple&&n.options.chunking)throw new Error("You cannot set both: uploadMultiple and chunking.");return n.options.acceptedMimeTypes&&(n.options.acceptedFiles=n.options.acceptedMimeTypes,delete n.options.acceptedMimeTypes),null!=n.options.renameFilename&&(n.options.renameFile=function(e){return n.options.renameFilename.call(n,e.name,e)}),n.options.method=n.options.method.toUpperCase(),(r=n.getExistingFallback())&&r.parentNode&&r.parentNode.removeChild(r),!1!==n.options.previewsContainer&&(n.options.previewsContainer?n.previewsContainer=b.getElement(n.options.previewsContainer,"previewsContainer"):n.previewsContainer=n.element),n.options.clickable&&(!0===n.options.clickable?n.clickableElements=[n.element]:n.clickableElements=b.getElements(n.options.clickable,"clickable")),n.init(),n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(b,i),t(b,null,[{key:"initClass",value:function(){this.prototype.Emitter=i,this.prototype.events=["drop","dragstart","dragend","dragenter","dragover","dragleave","addedfile","addedfiles","removedfile","thumbnail","error","errormultiple","processing","processingmultiple","uploadprogress","totaluploadprogress","sending","sendingmultiple","success","successmultiple","canceled","canceledmultiple","complete","completemultiple","reset","maxfilesexceeded","maxfilesreached","queuecomplete"],this.prototype.defaultOptions={url:null,method:"post",withCredentials:!1,timeout:3e4,parallelUploads:2,uploadMultiple:!1,chunking:!1,forceChunking:!1,chunkSize:2e6,parallelChunkUploads:!1,retryChunks:!1,retryChunksLimit:3,maxFilesize:256,paramName:"file",createImageThumbnails:!0,maxThumbnailFilesize:10,thumbnailWidth:120,thumbnailHeight:120,thumbnailMethod:"crop",resizeWidth:null,resizeHeight:null,resizeMimeType:null,resizeQuality:.8,resizeMethod:"contain",filesizeBase:1e3,maxFiles:null,headers:null,clickable:!0,ignoreHiddenFiles:!0,acceptedFiles:null,acceptedMimeTypes:null,autoProcessQueue:!0,autoQueue:!0,addRemoveLinks:!1,previewsContainer:null,hiddenInputContainer:"body",capture:null,renameFilename:null,renameFile:null,forceFallback:!1,dictDefaultMessage:"Drop files here to upload",dictFallbackMessage:"Your browser does not support drag'n'drop file uploads.",dictFallbackText:"Please use the fallback form below to upload your files like in the olden days.",dictFileTooBig:"File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",dictInvalidFileType:"You can't upload files of this type.",dictResponseError:"Server responded with {{statusCode}} code.",dictCancelUpload:"Cancel upload",dictUploadCanceled:"Upload canceled.",dictCancelUploadConfirmation:"Are you sure you want to cancel this upload?",dictRemoveFile:"Remove file",dictRemoveFileConfirmation:null,dictMaxFilesExceeded:"You can not upload any more files.",dictFileSizeUnits:{tb:"TB",gb:"GB",mb:"MB",kb:"KB",b:"b"},init:function(){},params:function(e,t,i){if(i)return{dzuuid:i.file.upload.uuid,dzchunkindex:i.index,dztotalfilesize:i.file.size,dzchunksize:this.options.chunkSize,dztotalchunkcount:i.file.upload.totalChunkCount,dzchunkbyteoffset:i.index*this.options.chunkSize}},accept:function(e,t){return t()},chunksUploaded:function(e,t){t()},fallback:function(){var e=void 0;this.element.className=this.element.className+" dz-browser-not-supported";for(var t=0,i=i=this.element.getElementsByTagName("div");;){if(t>=i.length)break;var n=i[t++];if(/(^| )dz-message($| )/.test(n.className)){(e=n).className="dz-message";break}}e||(e=b.createElement('<div class="dz-message"><span></span></div>'),this.element.appendChild(e));var r=e.getElementsByTagName("span")[0];return r&&(null!=r.textContent?r.textContent=this.options.dictFallbackMessage:null!=r.innerText&&(r.innerText=this.options.dictFallbackMessage)),this.element.appendChild(this.getFallbackForm())},resize:function(e,t,i,n){var r={srcX:0,srcY:0,srcWidth:e.width,srcHeight:e.height},o=e.width/e.height;null==t&&null==i?(t=r.srcWidth,i=r.srcHeight):null==t?t=i*o:null==i&&(i=t/o);var s=(t=Math.min(t,r.srcWidth))/(i=Math.min(i,r.srcHeight));if(r.srcWidth>t||r.srcHeight>i)if("crop"===n)s<o?(r.srcHeight=e.height,r.srcWidth=r.srcHeight*s):(r.srcWidth=e.width,r.srcHeight=r.srcWidth/s);else{if("contain"!==n)throw new Error("Unknown resizeMethod '"+n+"'");s<o?i=t/o:t=i*o}return r.srcX=(e.width-r.srcWidth)/2,r.srcY=(e.height-r.srcHeight)/2,r.trgWidth=t,r.trgHeight=i,r},transformFile:function(e,t){return(this.options.resizeWidth||this.options.resizeHeight)&&e.type.match(/image.*/)?this.resizeImage(e,this.options.resizeWidth,this.options.resizeHeight,this.options.resizeMethod,t):t(e)},previewTemplate:'<div class="dz-preview dz-file-preview">\n  <div class="dz-image"><img data-dz-thumbnail /></div>\n  <div class="dz-details">\n    <div class="dz-size"><span data-dz-size></span></div>\n    <div class="dz-filename"><span data-dz-name></span></div>\n  </div>\n  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>\n  <div class="dz-error-message"><span data-dz-errormessage></span></div>\n  <div class="dz-success-mark">\n    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">\n      <title>Check</title>\n      <defs></defs>\n      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">\n        <path d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>\n      </g>\n    </svg>\n  </div>\n  <div class="dz-error-mark">\n    <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">\n      <title>Error</title>\n      <defs></defs>\n      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">\n        <g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474" stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">\n          <path d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" sketch:type="MSShapeGroup"></path>\n        </g>\n      </g>\n    </svg>\n  </div>\n</div>',drop:function(e){return this.element.classList.remove("dz-drag-hover")},dragstart:function(e){},dragend:function(e){return this.element.classList.remove("dz-drag-hover")},dragenter:function(e){return this.element.classList.add("dz-drag-hover")},dragover:function(e){return this.element.classList.add("dz-drag-hover")},dragleave:function(e){return this.element.classList.remove("dz-drag-hover")},paste:function(e){},reset:function(){return this.element.classList.remove("dz-started")},addedfile:function(t){var i=this;if(this.element===this.previewsContainer&&this.element.classList.add("dz-started"),this.previewsContainer){t.previewElement=b.createElement(this.options.previewTemplate.trim()),t.previewTemplate=t.previewElement,this.previewsContainer.appendChild(t.previewElement);for(var e=0,n=n=t.previewElement.querySelectorAll("[data-dz-name]");;){if(e>=n.length)break;var r=n[e++];r.textContent=t.name}for(var o=0,s=s=t.previewElement.querySelectorAll("[data-dz-size]");!(o>=s.length);)(r=s[o++]).innerHTML=this.filesize(t.size);this.options.addRemoveLinks&&(t._removeLink=b.createElement('<a class="dz-remove" href="javascript:undefined;" data-dz-remove>'+this.options.dictRemoveFile+"</a>"),t.previewElement.appendChild(t._removeLink));for(var a=function(e){return e.preventDefault(),e.stopPropagation(),t.status===b.UPLOADING?b.confirm(i.options.dictCancelUploadConfirmation,function(){return i.removeFile(t)}):i.options.dictRemoveFileConfirmation?b.confirm(i.options.dictRemoveFileConfirmation,function(){return i.removeFile(t)}):i.removeFile(t)},l=0,u=u=t.previewElement.querySelectorAll("[data-dz-remove]");;){if(l>=u.length)break;u[l++].addEventListener("click",a)}}},removedfile:function(e){return null!=e.previewElement&&null!=e.previewElement.parentNode&&e.previewElement.parentNode.removeChild(e.previewElement),this._updateMaxFilesReachedClass()},thumbnail:function(e,t){if(e.previewElement){e.previewElement.classList.remove("dz-file-preview");for(var i=0,n=n=e.previewElement.querySelectorAll("[data-dz-thumbnail]");;){if(i>=n.length)break;var r=n[i++];r.alt=e.name,r.src=t}return setTimeout(function(){return e.previewElement.classList.add("dz-image-preview")},1)}},error:function(e,t){if(e.previewElement){e.previewElement.classList.add("dz-error"),"String"!=typeof t&&t.error&&(t=t.error);for(var i=0,n=n=e.previewElement.querySelectorAll("[data-dz-errormessage]");;){if(i>=n.length)break;n[i++].textContent=t}}},errormultiple:function(){},processing:function(e){if(e.previewElement&&(e.previewElement.classList.add("dz-processing"),e._removeLink))return e._removeLink.textContent=this.options.dictCancelUpload},processingmultiple:function(){},uploadprogress:function(e,t,i){if(e.previewElement)for(var n=0,r=r=e.previewElement.querySelectorAll("[data-dz-uploadprogress]");;){if(n>=r.length)break;var o=r[n++];"PROGRESS"===o.nodeName?o.value=t:o.style.width=t+"%"}},totaluploadprogress:function(){},sending:function(){},sendingmultiple:function(){},success:function(e){if(e.previewElement)return e.previewElement.classList.add("dz-success")},successmultiple:function(){},canceled:function(e){return this.emit("error",e,this.options.dictUploadCanceled)},canceledmultiple:function(){},complete:function(e){if(e._removeLink&&(e._removeLink.textContent=this.options.dictRemoveFile),e.previewElement)return e.previewElement.classList.add("dz-complete")},completemultiple:function(){},maxfilesexceeded:function(){},maxfilesreached:function(){},queuecomplete:function(){},addedfiles:function(){}},this.prototype._thumbnailQueue=[],this.prototype._processingThumbnail=!1}},{key:"extend",value:function(e){for(var t=arguments.length,i=Array(1<t?t-1:0),n=1;n<t;n++)i[n-1]=arguments[n];for(var r=0,o=o=i;;){if(r>=o.length)break;var s=o[r++];for(var a in s){var l=s[a];e[a]=l}}return e}}]),t(b,[{key:"getAcceptedFiles",value:function(){return this.files.filter(function(e){return e.accepted}).map(function(e){return e})}},{key:"getRejectedFiles",value:function(){return this.files.filter(function(e){return!e.accepted}).map(function(e){return e})}},{key:"getFilesWithStatus",value:function(t){return this.files.filter(function(e){return e.status===t}).map(function(e){return e})}},{key:"getQueuedFiles",value:function(){return this.getFilesWithStatus(b.QUEUED)}},{key:"getUploadingFiles",value:function(){return this.getFilesWithStatus(b.UPLOADING)}},{key:"getAddedFiles",value:function(){return this.getFilesWithStatus(b.ADDED)}},{key:"getActiveFiles",value:function(){return this.files.filter(function(e){return e.status===b.UPLOADING||e.status===b.QUEUED}).map(function(e){return e})}},{key:"init",value:function(){var o=this;if("form"===this.element.tagName&&this.element.setAttribute("enctype","multipart/form-data"),this.element.classList.contains("dropzone")&&!this.element.querySelector(".dz-message")&&this.element.appendChild(b.createElement('<div class="dz-default dz-message"><span>'+this.options.dictDefaultMessage+"</span></div>")),this.clickableElements.length){!function r(){return o.hiddenFileInput&&o.hiddenFileInput.parentNode.removeChild(o.hiddenFileInput),o.hiddenFileInput=document.createElement("input"),o.hiddenFileInput.setAttribute("type","file"),(null===o.options.maxFiles||1<o.options.maxFiles)&&o.hiddenFileInput.setAttribute("multiple","multiple"),o.hiddenFileInput.className="dz-hidden-input",null!==o.options.acceptedFiles&&o.hiddenFileInput.setAttribute("accept",o.options.acceptedFiles),null!==o.options.capture&&o.hiddenFileInput.setAttribute("capture",o.options.capture),o.hiddenFileInput.style.visibility="hidden",o.hiddenFileInput.style.position="absolute",o.hiddenFileInput.style.top="0",o.hiddenFileInput.style.left="0",o.hiddenFileInput.style.height="0",o.hiddenFileInput.style.width="0",document.querySelector(o.options.hiddenInputContainer).appendChild(o.hiddenFileInput),o.hiddenFileInput.addEventListener("change",function(){var e=o.hiddenFileInput.files;if(e.length)for(var t=0,i=i=e;!(t>=i.length);){var n=i[t++];o.addFile(n)}return o.emit("addedfiles",e),r()})}()}this.URL=null!==window.URL?window.URL:window.webkitURL;for(var e=0,t=t=this.events;;){if(e>=t.length)break;var i=t[e++];this.on(i,this.options[i])}this.on("uploadprogress",function(){return o.updateTotalUploadProgress()}),this.on("removedfile",function(){return o.updateTotalUploadProgress()}),this.on("canceled",function(e){return o.emit("complete",e)}),this.on("complete",function(e){if(0===o.getAddedFiles().length&&0===o.getUploadingFiles().length&&0===o.getQueuedFiles().length)return setTimeout(function(){return o.emit("queuecomplete")},0)});var n=function(e){return e.stopPropagation(),e.preventDefault?e.preventDefault():e.returnValue=!1};return this.listeners=[{element:this.element,events:{dragstart:function(e){return o.emit("dragstart",e)},dragenter:function(e){return n(e),o.emit("dragenter",e)},dragover:function(e){var t=void 0;try{t=e.dataTransfer.effectAllowed}catch(e){}return e.dataTransfer.dropEffect="move"===t||"linkMove"===t?"move":"copy",n(e),o.emit("dragover",e)},dragleave:function(e){return o.emit("dragleave",e)},drop:function(e){return n(e),o.drop(e)},dragend:function(e){return o.emit("dragend",e)}}}],this.clickableElements.forEach(function(t){return o.listeners.push({element:t,events:{click:function(e){return(t!==o.element||e.target===o.element||b.elementInside(e.target,o.element.querySelector(".dz-message")))&&o.hiddenFileInput.click(),!0}}})}),this.enable(),this.options.init.call(this)}},{key:"destroy",value:function(){return this.disable(),this.removeAllFiles(!0),(null!=this.hiddenFileInput?this.hiddenFileInput.parentNode:void 0)&&(this.hiddenFileInput.parentNode.removeChild(this.hiddenFileInput),this.hiddenFileInput=null),delete this.element.dropzone,b.instances.splice(b.instances.indexOf(this),1)}},{key:"updateTotalUploadProgress",value:function(){var e=void 0,t=0,i=0;if(this.getActiveFiles().length){for(var n=0,r=r=this.getActiveFiles();;){if(n>=r.length)break;var o=r[n++];t+=o.upload.bytesSent,i+=o.upload.total}e=100*t/i}else e=100;return this.emit("totaluploadprogress",e,i,t)}},{key:"_getParamName",value:function(e){return"function"==typeof this.options.paramName?this.options.paramName(e):this.options.paramName+(this.options.uploadMultiple?"["+e+"]":"")}},{key:"_renameFile",value:function(e){return"function"!=typeof this.options.renameFile?e.name:this.options.renameFile(e)}},{key:"getFallbackForm",value:function(){var e,t=void 0;if(e=this.getExistingFallback())return e;var i='<div class="dz-fallback">';this.options.dictFallbackText&&(i+="<p>"+this.options.dictFallbackText+"</p>"),i+='<input type="file" name="'+this._getParamName(0)+'" '+(this.options.uploadMultiple?'multiple="multiple"':void 0)+' /><input type="submit" value="Upload!"></div>';var n=b.createElement(i);return"FORM"!==this.element.tagName?(t=b.createElement('<form action="'+this.options.url+'" enctype="multipart/form-data" method="'+this.options.method+'"></form>')).appendChild(n):(this.element.setAttribute("enctype","multipart/form-data"),this.element.setAttribute("method",this.options.method)),null!=t?t:n}},{key:"getExistingFallback",value:function(){for(var e=function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];if(/(^| )fallback($| )/.test(n.className))return n}},t=["div","form"],i=0;i<t.length;i++){var n,r=t[i];if(n=e(this.element.getElementsByTagName(r)))return n}}},{key:"setupEventListeners",value:function(){return this.listeners.map(function(n){return function(){var e=[];for(var t in n.events){var i=n.events[t];e.push(n.element.addEventListener(t,i,!1))}return e}()})}},{key:"removeEventListeners",value:function(){return this.listeners.map(function(n){return function(){var e=[];for(var t in n.events){var i=n.events[t];e.push(n.element.removeEventListener(t,i,!1))}return e}()})}},{key:"disable",value:function(){var t=this;return this.clickableElements.forEach(function(e){return e.classList.remove("dz-clickable")}),this.removeEventListeners(),this.disabled=!0,this.files.map(function(e){return t.cancelUpload(e)})}},{key:"enable",value:function(){return delete this.disabled,this.clickableElements.forEach(function(e){return e.classList.add("dz-clickable")}),this.setupEventListeners()}},{key:"filesize",value:function(e){var t=0,i="b";if(0<e){for(var n=["tb","gb","mb","kb","b"],r=0;r<n.length;r++){var o=n[r];if(Math.pow(this.options.filesizeBase,4-r)/10<=e){t=e/Math.pow(this.options.filesizeBase,4-r),i=o;break}}t=Math.round(10*t)/10}return"<strong>"+t+"</strong> "+this.options.dictFileSizeUnits[i]}},{key:"_updateMaxFilesReachedClass",value:function(){return null!=this.options.maxFiles&&this.getAcceptedFiles().length>=this.options.maxFiles?(this.getAcceptedFiles().length===this.options.maxFiles&&this.emit("maxfilesreached",this.files),this.element.classList.add("dz-max-files-reached")):this.element.classList.remove("dz-max-files-reached")}},{key:"drop",value:function(e){if(e.dataTransfer){this.emit("drop",e);for(var t=[],i=0;i<e.dataTransfer.files.length;i++)t[i]=e.dataTransfer.files[i];if(this.emit("addedfiles",t),t.length){var n=e.dataTransfer.items;n&&n.length&&null!=n[0].webkitGetAsEntry?this._addFilesFromItems(n):this.handleFiles(t)}}}},{key:"paste",value:function(e){if(null!=(t=null!=e?e.clipboardData:void 0,i=function(e){return e.items},null!=t?i(t):void 0)){var t,i;this.emit("paste",e);var n=e.clipboardData.items;return n.length?this._addFilesFromItems(n):void 0}}},{key:"handleFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];this.addFile(n)}}},{key:"_addFilesFromItems",value:function(o){var s=this;return function(){for(var e=[],t=0,i=i=o;;){if(t>=i.length)break;var n,r=i[t++];null!=r.webkitGetAsEntry&&(n=r.webkitGetAsEntry())?n.isFile?e.push(s.addFile(r.getAsFile())):n.isDirectory?e.push(s._addFilesFromDirectory(n,n.name)):e.push(void 0):null!=r.getAsFile&&(null==r.kind||"file"===r.kind)?e.push(s.addFile(r.getAsFile())):e.push(void 0)}return e}()}},{key:"_addFilesFromDirectory",value:function(e,o){var s=this,t=e.createReader(),i=function(t){return e=console,i="log",n=function(e){return e.log(t)},null!=e&&"function"==typeof e[i]?n(e,i):void 0;var e,i,n};return function r(){return t.readEntries(function(e){if(0<e.length){for(var t=0,i=i=e;!(t>=i.length);){var n=i[t++];n.isFile?n.file(function(e){if(!s.options.ignoreHiddenFiles||"."!==e.name.substring(0,1))return e.fullPath=o+"/"+e.name,s.addFile(e)}):n.isDirectory&&s._addFilesFromDirectory(n,o+"/"+n.name)}r()}return null},i)}()}},{key:"accept",value:function(e,t){return e.size>1024*this.options.maxFilesize*1024?t(this.options.dictFileTooBig.replace("{{filesize}}",Math.round(e.size/1024/10.24)/100).replace("{{maxFilesize}}",this.options.maxFilesize)):b.isValidFile(e,this.options.acceptedFiles)?null!=this.options.maxFiles&&this.getAcceptedFiles().length>=this.options.maxFiles?(t(this.options.dictMaxFilesExceeded.replace("{{maxFiles}}",this.options.maxFiles)),this.emit("maxfilesexceeded",e)):this.options.accept.call(this,e,t):t(this.options.dictInvalidFileType)}},{key:"addFile",value:function(t){var i=this;return t.upload={uuid:b.uuidv4(),progress:0,total:t.size,bytesSent:0,filename:this._renameFile(t),chunked:this.options.chunking&&(this.options.forceChunking||t.size>this.options.chunkSize),totalChunkCount:Math.ceil(t.size/this.options.chunkSize)},this.files.push(t),t.status=b.ADDED,this.emit("addedfile",t),this._enqueueThumbnail(t),this.accept(t,function(e){return e?(t.accepted=!1,i._errorProcessing([t],e)):(t.accepted=!0,i.options.autoQueue&&i.enqueueFile(t)),i._updateMaxFilesReachedClass()})}},{key:"enqueueFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];this.enqueueFile(n)}return null}},{key:"enqueueFile",value:function(e){var t=this;if(e.status!==b.ADDED||!0!==e.accepted)throw new Error("This file can't be queued because it has already been processed or was rejected.");if(e.status=b.QUEUED,this.options.autoProcessQueue)return setTimeout(function(){return t.processQueue()},0)}},{key:"_enqueueThumbnail",value:function(e){var t=this;if(this.options.createImageThumbnails&&e.type.match(/image.*/)&&e.size<=1024*this.options.maxThumbnailFilesize*1024)return this._thumbnailQueue.push(e),setTimeout(function(){return t._processThumbnailQueue()},0)}},{key:"_processThumbnailQueue",value:function(){var t=this;if(!this._processingThumbnail&&0!==this._thumbnailQueue.length){this._processingThumbnail=!0;var i=this._thumbnailQueue.shift();return this.createThumbnail(i,this.options.thumbnailWidth,this.options.thumbnailHeight,this.options.thumbnailMethod,!0,function(e){return t.emit("thumbnail",i,e),t._processingThumbnail=!1,t._processThumbnailQueue()})}}},{key:"removeFile",value:function(e){if(e.status===b.UPLOADING&&this.cancelUpload(e),this.files=n(this.files,e),this.emit("removedfile",e),0===this.files.length)return this.emit("reset")}},{key:"removeAllFiles",value:function(e){null==e&&(e=!1);for(var t=0,i=i=this.files.slice();;){if(t>=i.length)break;var n=i[t++];(n.status!==b.UPLOADING||e)&&this.removeFile(n)}return null}},{key:"resizeImage",value:function(r,e,t,i,o){var s=this;return this.createThumbnail(r,e,t,i,!1,function(e,t){if(null==t)return o(r);var i=s.options.resizeMimeType;null==i&&(i=r.type);var n=t.toDataURL(i,s.options.resizeQuality);return"image/jpeg"!==i&&"image/jpg"!==i||(n=u.restore(r.dataURL,n)),o(b.dataURItoBlob(n))})}},{key:"createThumbnail",value:function(e,t,i,n,r,o){var s=this,a=new FileReader;return a.onload=function(){if(e.dataURL=a.result,"image/svg+xml"!==e.type)return s.createThumbnailFromUrl(e,t,i,n,r,o);null!=o&&o(a.result)},a.readAsDataURL(e)}},{key:"createThumbnailFromUrl",value:function(o,s,a,l,t,u,e){var d=this,c=document.createElement("img");return e&&(c.crossOrigin=e),c.onload=function(){var e=function(e){return e(1)};return"undefined"!=typeof EXIF&&null!==EXIF&&t&&(e=function(e){return EXIF.getData(c,function(){return e(EXIF.getTag(this,"Orientation"))})}),e(function(e){o.width=c.width,o.height=c.height;var t=d.options.resize.call(d,o,s,a,l),i=document.createElement("canvas"),n=i.getContext("2d");switch(i.width=t.trgWidth,i.height=t.trgHeight,4<e&&(i.width=t.trgHeight,i.height=t.trgWidth),e){case 2:n.translate(i.width,0),n.scale(-1,1);break;case 3:n.translate(i.width,i.height),n.rotate(Math.PI);break;case 4:n.translate(0,i.height),n.scale(1,-1);break;case 5:n.rotate(.5*Math.PI),n.scale(1,-1);break;case 6:n.rotate(.5*Math.PI),n.translate(0,-i.height);break;case 7:n.rotate(.5*Math.PI),n.translate(i.width,-i.height),n.scale(-1,1);break;case 8:n.rotate(-.5*Math.PI),n.translate(-i.width,0)}p(n,c,null!=t.srcX?t.srcX:0,null!=t.srcY?t.srcY:0,t.srcWidth,t.srcHeight,null!=t.trgX?t.trgX:0,null!=t.trgY?t.trgY:0,t.trgWidth,t.trgHeight);var r=i.toDataURL("image/png");if(null!=u)return u(r,i)})},null!=u&&(c.onerror=u),c.src=o.dataURL}},{key:"processQueue",value:function(){var e=this.options.parallelUploads,t=this.getUploadingFiles().length,i=t;if(!(e<=t)){var n=this.getQueuedFiles();if(0<n.length){if(this.options.uploadMultiple)return this.processFiles(n.slice(0,e-t));for(;i<e;){if(!n.length)return;this.processFile(n.shift()),i++}}}}},{key:"processFile",value:function(e){return this.processFiles([e])}},{key:"processFiles",value:function(e){for(var t=0,i=i=e;;){if(t>=i.length)break;var n=i[t++];n.processing=!0,n.status=b.UPLOADING,this.emit("processing",n)}return this.options.uploadMultiple&&this.emit("processingmultiple",e),this.uploadFiles(e)}},{key:"_getFilesWithXhr",value:function(t){return this.files.filter(function(e){return e.xhr===t}).map(function(e){return e})}},{key:"cancelUpload",value:function(e){if(e.status===b.UPLOADING){for(var t=this._getFilesWithXhr(e.xhr),i=0,n=n=t;;){if(i>=n.length)break;n[i++].status=b.CANCELED}void 0!==e.xhr&&e.xhr.abort();for(var r=0,o=o=t;;){if(r>=o.length)break;var s=o[r++];this.emit("canceled",s)}this.options.uploadMultiple&&this.emit("canceledmultiple",t)}else e.status!==b.ADDED&&e.status!==b.QUEUED||(e.status=b.CANCELED,this.emit("canceled",e),this.options.uploadMultiple&&this.emit("canceledmultiple",[e]));if(this.options.autoProcessQueue)return this.processQueue()}},{key:"resolveOption",value:function(e){if("function"==typeof e){for(var t=arguments.length,i=Array(1<t?t-1:0),n=1;n<t;n++)i[n-1]=arguments[n];return e.apply(this,i)}return e}},{key:"uploadFile",value:function(e){return this.uploadFiles([e])}},{key:"uploadFiles",value:function(a){var l=this;this._transformFiles(a,function(e){if(a[0].upload.chunked){var r=a[0],o=e[0];r.upload.chunks=[];var n=function(){for(var e=0;void 0!==r.upload.chunks[e];)e++;if(!(e>=r.upload.totalChunkCount)){0;var t=e*l.options.chunkSize,i=Math.min(t+l.options.chunkSize,r.size),n={name:l._getParamName(0),data:o.webkitSlice?o.webkitSlice(t,i):o.slice(t,i),filename:r.upload.filename,chunkIndex:e};r.upload.chunks[e]={file:r,index:e,dataBlock:n,status:b.UPLOADING,progress:0,retries:0},l._uploadData(a,[n])}};if(r.upload.finishedChunkUpload=function(e){var t=!0;e.status=b.SUCCESS,e.dataBlock=null;for(var i=0;i<r.upload.totalChunkCount;i++){if(void 0===r.upload.chunks[i])return n();r.upload.chunks[i].status!==b.SUCCESS&&(t=!1)}t&&l.options.chunksUploaded(r,function(){l._finished(a,"",null)})},l.options.parallelChunkUploads)for(var t=0;t<r.upload.totalChunkCount;t++)n();else n()}else{for(var i=[],s=0;s<a.length;s++)i[s]={name:l._getParamName(s),data:e[s],filename:a[s].upload.filename};l._uploadData(a,i)}})}},{key:"_getChunk",value:function(e,t){for(var i=0;i<e.upload.totalChunkCount;i++)if(void 0!==e.upload.chunks[i]&&e.upload.chunks[i].xhr===t)return e.upload.chunks[i]}},{key:"_uploadData",value:function(t,e){for(var i=this,n=new XMLHttpRequest,r=0,o=o=t;;){if(r>=o.length)break;o[r++].xhr=n}t[0].upload.chunked&&(t[0].upload.chunks[e[0].chunkIndex].xhr=n);var s=this.resolveOption(this.options.method,t),a=this.resolveOption(this.options.url,t);n.open(s,a,!0),n.timeout=this.resolveOption(this.options.timeout,t),n.withCredentials=!!this.options.withCredentials,n.onload=function(e){i._finishedUploading(t,n,e)},n.onerror=function(){i._handleUploadError(t,n)},(null!=n.upload?n.upload:n).onprogress=function(e){return i._updateFilesUploadProgress(t,n,e)};var l={Accept:"application/json","Cache-Control":"no-cache","X-Requested-With":"XMLHttpRequest"};for(var u in this.options.headers&&b.extend(l,this.options.headers),l){var d=l[u];d&&n.setRequestHeader(u,d)}var c=new FormData;if(this.options.params){var p=this.options.params;for(var h in"function"==typeof p&&(p=p.call(this,t,n,t[0].upload.chunked?this._getChunk(t[0],n):null)),p){var f=p[h];c.append(h,f)}}for(var m=0,v=v=t;;){if(m>=v.length)break;var g=v[m++];this.emit("sending",g,n,c)}this.options.uploadMultiple&&this.emit("sendingmultiple",t,n,c),this._addFormElementData(c);for(var k=0;k<e.length;k++){var y=e[k];c.append(y.name,y.data,y.filename)}this.submitRequest(n,c,t)}},{key:"_transformFiles",value:function(i,n){for(var e=this,r=[],o=0,t=function(t){e.options.transformFile.call(e,i[t],function(e){r[t]=e,++o===i.length&&n(r)})},s=0;s<i.length;s++)t(s)}},{key:"_addFormElementData",value:function(e){if("FORM"===this.element.tagName)for(var t=0,i=i=this.element.querySelectorAll("input, textarea, select, button");;){if(t>=i.length)break;var n=i[t++],r=n.getAttribute("name"),o=n.getAttribute("type");if(o&&(o=o.toLowerCase()),null!=r)if("SELECT"===n.tagName&&n.hasAttribute("multiple"))for(var s=0,a=a=n.options;;){if(s>=a.length)break;var l=a[s++];l.selected&&e.append(r,l.value)}else(!o||"checkbox"!==o&&"radio"!==o||n.checked)&&e.append(r,n.value)}}},{key:"_updateFilesUploadProgress",value:function(e,t,i){var n=void 0;if(void 0!==i){if(n=100*i.loaded/i.total,e[0].upload.chunked){var r=e[0],o=this._getChunk(r,t);o.progress=n,o.total=i.total,o.bytesSent=i.loaded;r.upload.progress=0,r.upload.total=0;for(var s=r.upload.bytesSent=0;s<r.upload.totalChunkCount;s++)void 0!==r.upload.chunks[s]&&void 0!==r.upload.chunks[s].progress&&(r.upload.progress+=r.upload.chunks[s].progress,r.upload.total+=r.upload.chunks[s].total,r.upload.bytesSent+=r.upload.chunks[s].bytesSent);r.upload.progress=r.upload.progress/r.upload.totalChunkCount}else for(var a=0,l=l=e;;){if(a>=l.length)break;var u=l[a++];u.upload.progress=n,u.upload.total=i.total,u.upload.bytesSent=i.loaded}for(var d=0,c=c=e;;){if(d>=c.length)break;var p=c[d++];this.emit("uploadprogress",p,p.upload.progress,p.upload.bytesSent)}}else{var h=!0;n=100;for(var f=0,m=m=e;;){if(f>=m.length)break;var v=m[f++];100===v.upload.progress&&v.upload.bytesSent===v.upload.total||(h=!1),v.upload.progress=n,v.upload.bytesSent=v.upload.total}if(h)return;for(var g=0,k=k=e;;){if(g>=k.length)break;var y=k[g++];this.emit("uploadprogress",y,n,y.upload.bytesSent)}}}},{key:"_finishedUploading",value:function(e,t,i){var n=void 0;if(e[0].status!==b.CANCELED&&4===t.readyState){if("arraybuffer"!==t.responseType&&"blob"!==t.responseType&&(n=t.responseText,t.getResponseHeader("content-type")&&~t.getResponseHeader("content-type").indexOf("application/json")))try{n=JSON.parse(n)}catch(e){i=e,n="Invalid JSON response from server."}this._updateFilesUploadProgress(e),200<=t.status&&t.status<300?e[0].upload.chunked?e[0].upload.finishedChunkUpload(this._getChunk(e[0],t)):this._finished(e,n,i):this._handleUploadError(e,t,n)}}},{key:"_handleUploadError",value:function(e,t,i){if(e[0].status!==b.CANCELED){if(e[0].upload.chunked&&this.options.retryChunks){var n=this._getChunk(e[0],t);if(n.retries++<this.options.retryChunksLimit)return void this._uploadData(e,[n.dataBlock]);console.warn("Retried this chunk too often. Giving up.")}for(var r=0,o=o=e;;){if(r>=o.length)break;o[r++];this._errorProcessing(e,i||this.options.dictResponseError.replace("{{statusCode}}",t.status),t)}}}},{key:"submitRequest",value:function(e,t,i){e.send(t)}},{key:"_finished",value:function(e,t,i){for(var n=0,r=r=e;;){if(n>=r.length)break;var o=r[n++];o.status=b.SUCCESS,this.emit("success",o,t,i),this.emit("complete",o)}if(this.options.uploadMultiple&&(this.emit("successmultiple",e,t,i),this.emit("completemultiple",e)),this.options.autoProcessQueue)return this.processQueue()}},{key:"_errorProcessing",value:function(e,t,i){for(var n=0,r=r=e;;){if(n>=r.length)break;var o=r[n++];o.status=b.ERROR,this.emit("error",o,t,i),this.emit("complete",o)}if(this.options.uploadMultiple&&(this.emit("errormultiple",e,t,i),this.emit("completemultiple",e)),this.options.autoProcessQueue)return this.processQueue()}}],[{key:"uuidv4",value:function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0;return("x"===e?t:3&t|8).toString(16)})}}]),b}();r.initClass(),r.version="5.4.0",r.options={},r.optionsForElement=function(e){return e.getAttribute("id")?r.options[o(e.getAttribute("id"))]:void 0},r.instances=[],r.forElement=function(e){if("string"==typeof e&&(e=document.querySelector(e)),null==(null!=e?e.dropzone:void 0))throw new Error("No Dropzone found for given element. This is probably because you're trying to access it before Dropzone had the time to initialize. Use the `init` option to setup any additional observers on your Dropzone.");return e.dropzone},r.autoDiscover=!0,r.discover=function(){var o=void 0;if(document.querySelectorAll)o=document.querySelectorAll(".dropzone");else{o=[];var e=function(r){return function(){for(var e=[],t=0,i=i=r;;){if(t>=i.length)break;var n=i[t++];/(^| )dropzone($| )/.test(n.className)?e.push(o.push(n)):e.push(void 0)}return e}()};e(document.getElementsByTagName("div")),e(document.getElementsByTagName("form"))}return function(){for(var e=[],t=0,i=i=o;;){if(t>=i.length)break;var n=i[t++];!1!==r.optionsForElement(n)?e.push(new r(n)):e.push(void 0)}return e}()},r.blacklistedBrowsers=[/opera.*(Macintosh|Windows Phone).*version\/12/i],r.isBrowserSupported=function(){var e=!0;if(window.File&&window.FileReader&&window.FileList&&window.Blob&&window.FormData&&document.querySelector)if("classList"in document.createElement("a"))for(var t=0,i=i=r.blacklistedBrowsers;;){if(t>=i.length)break;i[t++].test(navigator.userAgent)&&(e=!1)}else e=!1;else e=!1;return e},r.dataURItoBlob=function(e){for(var t=atob(e.split(",")[1]),i=e.split(",")[0].split(":")[1].split(";")[0],n=new ArrayBuffer(t.length),r=new Uint8Array(n),o=0,s=t.length,a=0<=s;a?o<=s:s<=o;a?o++:o--)r[o]=t.charCodeAt(o);return new Blob([n],{type:i})};var n=function(e,t){return e.filter(function(e){return e!==t}).map(function(e){return e})},o=function(e){return e.replace(/[\-_](\w)/g,function(e){return e.charAt(1).toUpperCase()})};r.createElement=function(e){var t=document.createElement("div");return t.innerHTML=e,t.childNodes[0]},r.elementInside=function(e,t){if(e===t)return!0;for(;e=e.parentNode;)if(e===t)return!0;return!1},r.getElement=function(e,t){var i=void 0;if("string"==typeof e?i=document.querySelector(e):null!=e.nodeType&&(i=e),null==i)throw new Error("Invalid `"+t+"` option provided. Please provide a CSS selector or a plain HTML element.");return i},r.getElements=function(e,t){var i=void 0,n=void 0;if(e instanceof Array){n=[];try{for(var r=0,o=o=e;!(r>=o.length);)i=o[r++],n.push(this.getElement(i,t))}catch(e){n=null}}else if("string"==typeof e){n=[];for(var s=0,a=a=document.querySelectorAll(e);!(s>=a.length);)i=a[s++],n.push(i)}else null!=e.nodeType&&(n=[e]);if(null==n||!n.length)throw new Error("Invalid `"+t+"` option provided. Please provide a CSS selector, a plain HTML element or a list of those.");return n},r.confirm=function(e,t,i){return window.confirm(e)?t():null!=i?i():void 0},r.isValidFile=function(e,t){if(!t)return!0;t=t.split(",");for(var i=e.type,n=i.replace(/\/.*$/,""),r=0,o=o=t;;){if(r>=o.length)break;var s=o[r++];if("."===(s=s.trim()).charAt(0)){if(-1!==e.name.toLowerCase().indexOf(s.toLowerCase(),e.name.length-s.length))return!0}else if(/\/\*$/.test(s)){if(n===s.replace(/\/.*$/,""))return!0}else if(i===s)return!0}return!1},"undefined"!=typeof jQuery&&null!==jQuery&&(jQuery.fn.dropzone=function(e){return this.each(function(){return new r(this,e)})}),null!==e?e.exports=r:window.Dropzone=r,r.ADDED="added",r.QUEUED="queued",r.ACCEPTED=r.QUEUED,r.UPLOADING="uploading",r.PROCESSING=r.UPLOADING,r.CANCELED="canceled",r.ERROR="error",r.SUCCESS="success";var p=function(e,t,i,n,r,o,s,a,l,u){var d=function(e){e.naturalWidth;var t=e.naturalHeight,i=document.createElement("canvas");i.width=1,i.height=t;var n=i.getContext("2d");n.drawImage(e,0,0);for(var r=n.getImageData(1,0,1,t).data,o=0,s=t,a=t;o<a;)0===r[4*(a-1)+3]?s=a:o=a,a=s+o>>1;var l=a/t;return 0===l?1:l}(t);return e.drawImage(t,i,n,r,o,s,a,l,u/d)},u=function(){function e(){l(this,e)}return t(e,null,[{key:"initClass",value:function(){this.KEY_STR="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="}},{key:"encode64",value:function(e){for(var t="",i=void 0,n=void 0,r="",o=void 0,s=void 0,a=void 0,l="",u=0;o=(i=e[u++])>>2,s=(3&i)<<4|(n=e[u++])>>4,a=(15&n)<<2|(r=e[u++])>>6,l=63&r,isNaN(n)?a=l=64:isNaN(r)&&(l=64),t=t+this.KEY_STR.charAt(o)+this.KEY_STR.charAt(s)+this.KEY_STR.charAt(a)+this.KEY_STR.charAt(l),i=n=r="",o=s=a=l="",u<e.length;);return t}},{key:"restore",value:function(e,t){if(!e.match("data:image/jpeg;base64,"))return t;var i=this.decode64(e.replace("data:image/jpeg;base64,","")),n=this.slice2Segments(i),r=this.exifManipulation(t,n);return"data:image/jpeg;base64,"+this.encode64(r)}},{key:"exifManipulation",value:function(e,t){var i=this.getExifArray(t),n=this.insertExif(e,i);return new Uint8Array(n)}},{key:"getExifArray",value:function(e){for(var t=void 0,i=0;i<e.length;){if(255===(t=e[i])[0]&225===t[1])return t;i++}return[]}},{key:"insertExif",value:function(e,t){var i=e.replace("data:image/jpeg;base64,",""),n=this.decode64(i),r=n.indexOf(255,3),o=n.slice(0,r),s=n.slice(r),a=o;return a=(a=a.concat(t)).concat(s)}},{key:"slice2Segments",value:function(e){for(var t=0,i=[];;){if(255===e[t]&218===e[t+1])break;if(255===e[t]&216===e[t+1])t+=2;else{var n=t+(256*e[t+2]+e[t+3])+2,r=e.slice(t,n);i.push(r),t=n}if(t>e.length)break}return i}},{key:"decode64",value:function(e){var t=void 0,i=void 0,n="",r=void 0,o=void 0,s="",a=0,l=[];for(/[^A-Za-z0-9\+\/\=]/g.exec(e)&&console.warn("There were invalid base64 characters in the input text.\nValid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\nExpect errors in decoding."),e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");t=this.KEY_STR.indexOf(e.charAt(a++))<<2|(r=this.KEY_STR.indexOf(e.charAt(a++)))>>4,i=(15&r)<<4|(o=this.KEY_STR.indexOf(e.charAt(a++)))>>2,n=(3&o)<<6|(s=this.KEY_STR.indexOf(e.charAt(a++))),l.push(t),64!==o&&l.push(i),64!==s&&l.push(n),t=i=n="",r=o=s="",a<e.length;);return l}}]),e}();u.initClass();r._autoDiscoverFunction=function(){if(r.autoDiscover)return r.discover()},function(i,n){var r=!1,e=!0,o=i.document,s=o.documentElement,t=o.addEventListener?"addEventListener":"attachEvent",a=o.addEventListener?"removeEventListener":"detachEvent",l=o.addEventListener?"":"on",u=function e(t){if("readystatechange"!==t.type||"complete"===o.readyState)return("load"===t.type?i:o)[a](l+t.type,e,!1),!r&&(r=!0)?n.call(i,t.type||t):void 0};if("complete"!==o.readyState){if(o.createEventObject&&s.doScroll){try{e=!i.frameElement}catch(e){}e&&function t(){try{s.doScroll("left")}catch(e){return void setTimeout(t,50)}return u("poll")}()}o[t](l+"DOMContentLoaded",u,!1),o[t](l+"readystatechange",u,!1),i[t](l+"load",u,!1)}}(window,r._autoDiscoverFunction)}(e={exports:{}},e.exports),e.exports);return t.autoDiscover=!1,{render:function(){var e=this.$createElement;return(this._self._c||e)("div",{ref:"dropzoneElement",class:{"vue-dropzone dropzone":this.includeStyling},attrs:{id:this.id}})},staticRenderFns:[],props:{id:{type:String,required:!0},options:{type:Object,required:!0},includeStyling:{type:Boolean,default:!0,required:!1},awss3:{type:Object,required:!1,default:null},destroyDropzone:{type:Boolean,default:!0,required:!1}},data:function(){return{isS3:!1,isS3OverridesServerPropagation:!1,wasQueueAutoProcess:!0}},computed:{dropzoneSettings:function(){var t={thumbnailWidth:200,thumbnailHeight:200};return Object.keys(this.options).forEach(function(e){t[e]=this.options[e]},this),null!==this.awss3&&(t.autoProcessQueue=!1,this.isS3=!0,this.isS3OverridesServerPropagation=!1===this.awss3.sendFileToServer,void 0!==this.options.autoProcessQueue&&(this.wasQueueAutoProcess=this.options.autoProcessQueue),this.isS3OverridesServerPropagation&&(t.url=function(e){return e[0].s3Url})),t}},methods:{manuallyAddFile:function(e,t){e.manuallyAdded=!0,this.dropzone.emit("addedfile",e),t&&this.dropzone.emit("thumbnail",e,t);for(var i=e.previewElement.querySelectorAll("[data-dz-thumbnail]"),n=0;n<i.length;n++)i[n].style.width=this.dropzoneSettings.thumbnailWidth+"px",i[n].style.height=this.dropzoneSettings.thumbnailHeight+"px",i[n].style["object-fit"]="contain";this.dropzone.emit("complete",e),this.dropzone.options.maxFiles&&this.dropzone.options.maxFiles--,this.dropzone.files.push(e),this.$emit("vdropzone-file-added-manually",e)},setOption:function(e,t){this.dropzone.options[e]=t},removeAllFiles:function(e){this.dropzone.removeAllFiles(e)},processQueue:function(){var t=this,e=this.dropzone;this.isS3&&!this.wasQueueAutoProcess?this.getQueuedFiles().forEach(function(e){t.getSignedAndUploadToS3(e)}):this.dropzone.processQueue(),this.dropzone.on("success",function(){e.options.autoProcessQueue=!0}),this.dropzone.on("queuecomplete",function(){e.options.autoProcessQueue=!1})},init:function(){return this.dropzone.init()},destroy:function(){return this.dropzone.destroy()},updateTotalUploadProgress:function(){return this.dropzone.updateTotalUploadProgress()},getFallbackForm:function(){return this.dropzone.getFallbackForm()},getExistingFallback:function(){return this.dropzone.getExistingFallback()},setupEventListeners:function(){return this.dropzone.setupEventListeners()},removeEventListeners:function(){return this.dropzone.removeEventListeners()},disable:function(){return this.dropzone.disable()},enable:function(){return this.dropzone.enable()},filesize:function(e){return this.dropzone.filesize(e)},accept:function(e,t){return this.dropzone.accept(e,t)},addFile:function(e){return this.dropzone.addFile(e)},removeFile:function(e){this.dropzone.removeFile(e)},getAcceptedFiles:function(){return this.dropzone.getAcceptedFiles()},getRejectedFiles:function(){return this.dropzone.getRejectedFiles()},getFilesWithStatus:function(){return this.dropzone.getFilesWithStatus()},getQueuedFiles:function(){return this.dropzone.getQueuedFiles()},getUploadingFiles:function(){return this.dropzone.getUploadingFiles()},getAddedFiles:function(){return this.dropzone.getAddedFiles()},getActiveFiles:function(){return this.dropzone.getActiveFiles()},getSignedAndUploadToS3:function(t){var i=this,e=n.sendFile(t,this.awss3,this.isS3OverridesServerPropagation);this.isS3OverridesServerPropagation?e.then(function(){setTimeout(function(){return i.dropzone.processFile(t)})}):e.then(function(e){e.success?(t.s3ObjectLocation=e.message,setTimeout(function(){return i.dropzone.processFile(t)}),i.$emit("vdropzone-s3-upload-success",e.message)):void 0!==e.message?i.$emit("vdropzone-s3-upload-error",e.message):i.$emit("vdropzone-s3-upload-error","Network Error : Could not send request to AWS. (Maybe CORS error)")}),e.catch(function(e){alert(e)})},setAWSSigningURL:function(e){this.isS3&&(this.awss3.signingURL=e)}},mounted:function(){if(!this.$isServer||!this.hasBeenMounted){this.hasBeenMounted=!0,this.dropzone=new t(this.$refs.dropzoneElement,this.dropzoneSettings);var r=this;this.dropzone.on("thumbnail",function(e,t){r.$emit("vdropzone-thumbnail",e,t)}),this.dropzone.on("addedfile",function(t){r.duplicateCheck&&this.files.length&&this.files.forEach(function(e){e.name===t.name&&(this.removeFile(t),r.$emit("duplicate-file",t))},this),r.$emit("vdropzone-file-added",t),r.isS3&&r.wasQueueAutoProcess&&r.getSignedAndUploadToS3(t)}),this.dropzone.on("addedfiles",function(e){r.$emit("vdropzone-files-added",e)}),this.dropzone.on("removedfile",function(e){r.$emit("vdropzone-removed-file",e),e.manuallyAdded&&r.dropzone.options.maxFiles++}),this.dropzone.on("success",function(e,t){if(r.$emit("vdropzone-success",e,t),r.isS3){if(r.isS3OverridesServerPropagation){var i=(new window.DOMParser).parseFromString(t,"text/xml").firstChild.children[0].innerHTML;r.$emit("vdropzone-s3-upload-success",i)}r.wasQueueAutoProcess&&r.setOption("autoProcessQueue",!1)}}),this.dropzone.on("successmultiple",function(e,t){r.$emit("vdropzone-success-multiple",e,t)}),this.dropzone.on("error",function(e,t,i){r.$emit("vdropzone-error",e,t,i),this.isS3&&r.$emit("vdropzone-s3-upload-error")}),this.dropzone.on("errormultiple",function(e,t,i){r.$emit("vdropzone-error-multiple",e,t,i)}),this.dropzone.on("sending",function(e,t,i){if(r.isS3)if(r.isS3OverridesServerPropagation){var n=e.s3Signature;Object.keys(n).forEach(function(e){i.append(e,n[e])})}else i.append("s3ObjectLocation",e.s3ObjectLocation);r.$emit("vdropzone-sending",e,t,i)}),this.dropzone.on("sendingmultiple",function(e,t,i){r.$emit("vdropzone-sending-multiple",e,t,i)}),this.dropzone.on("complete",function(e){r.$emit("vdropzone-complete",e)}),this.dropzone.on("completemultiple",function(e){r.$emit("vdropzone-complete-multiple",e)}),this.dropzone.on("canceled",function(e){r.$emit("vdropzone-canceled",e)}),this.dropzone.on("canceledmultiple",function(e){r.$emit("vdropzone-canceled-multiple",e)}),this.dropzone.on("maxfilesreached",function(e){r.$emit("vdropzone-max-files-reached",e)}),this.dropzone.on("maxfilesexceeded",function(e){r.$emit("vdropzone-max-files-exceeded",e)}),this.dropzone.on("processing",function(e){r.$emit("vdropzone-processing",e)}),this.dropzone.on("processing",function(e){r.$emit("vdropzone-processing",e)}),this.dropzone.on("processingmultiple",function(e){r.$emit("vdropzone-processing-multiple",e)}),this.dropzone.on("uploadprogress",function(e,t,i){r.$emit("vdropzone-upload-progress",e,t,i)}),this.dropzone.on("totaluploadprogress",function(e,t,i){r.$emit("vdropzone-total-upload-progress",e,t,i)}),this.dropzone.on("reset",function(){r.$emit("vdropzone-reset")}),this.dropzone.on("queuecomplete",function(){r.$emit("vdropzone-queue-complete")}),this.dropzone.on("drop",function(e){r.$emit("vdropzone-drop",e)}),this.dropzone.on("dragstart",function(e){r.$emit("vdropzone-drag-start",e)}),this.dropzone.on("dragend",function(e){r.$emit("vdropzone-drag-end",e)}),this.dropzone.on("dragenter",function(e){r.$emit("vdropzone-drag-enter",e)}),this.dropzone.on("dragover",function(e){r.$emit("vdropzone-drag-over",e)}),this.dropzone.on("dragleave",function(e){r.$emit("vdropzone-drag-leave",e)}),r.$emit("vdropzone-mounted")}},beforeDestroy:function(){this.destroyDropzone&&this.dropzone.destroy()}}});
 //# sourceMappingURL=vue2Dropzone.js.map
 
 
 /***/ }),
+<<<<<<< HEAD
+/* 52 */
+=======
 /* 67 */,
 /* 68 */,
 /* 69 */
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -35154,17 +38418,117 @@ if(false) {
 }
 
 /***/ }),
+<<<<<<< HEAD
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\actividad-vacia.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-76dfae99", Component.options)
+  } else {
+    hotAPI.reload("data-v-76dfae99", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: {
+        actividad: {
+            type: Object
+        }
+    },
+    data: function data() {
+        return {
+            fecha: '',
+            descripcion: ''
+        };
+    },
+    created: function created() {}
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+=======
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(50)(true);
 // imports
 
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 // module
 exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"actividad.vue","sourceRoot":""}]);
 
+<<<<<<< HEAD
+/***/ }),
+/* 56 */
+/***/ (function(module, exports) {
+=======
 // exports
+>>>>>>> 1394ecd34308c06b8a3d60a6374afd3d4519076f
 
 
 /***/ })

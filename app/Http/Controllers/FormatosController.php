@@ -38,10 +38,10 @@ class FormatosController extends Controller
         ]);
         Formato::create([
             'idtipodocumento'       => request('id'),
-            'archivoformato'      => request('archivo')
+            'archivoformato'      => $request->text('archivo')
         ]);
 
-        $path   =   storage_path("app/formatos/");
+        $path   =   "app/formatos/";
         $file  =   $request->file('archivo');
         $name = request('id');
 

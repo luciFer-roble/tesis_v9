@@ -39,7 +39,8 @@ class ActividadesController extends Controller
         Actividad::updateOrCreate(['idactividad'  => $id], [
             'descripcionactividad'       => request('descripcion'),
             'fechaactividad'       => request('fecha'),
-            'comentarioactividad'      => request('comentario')
+            'comentarioactividad'      => request('comentario'),
+            'estadoactividad'      => request('estado')
         ]);
 
 

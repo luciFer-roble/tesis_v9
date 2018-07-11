@@ -8,12 +8,9 @@
         </td>
         <td>
         </td>
-        <td><div class="form-check">
-            <label>
-                <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check" @change="insertar">
-
-            </label>
-        </div></td>
+        <td>
+            <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check">
+        </td>
         <td>
             <input class="form-control" type="text" name="comentario" id="comentario" v-model="comentario" @blur="insertar" :disabled="check">
         </td>
@@ -32,15 +29,14 @@
             fecha: '',
             descripcion: '',
             comentario: '',
-            check: ''
+            check: false
         }),
         methods:{
             insertar:function () {
                 axios.put('/actividades/'+this.actividad.idactividad, {
                     fecha: this.fecha,
                     descripcion: this.descripcion,
-                    comentario: this.comentario,
-                    estado: this.check
+                    comentario: this.comentario
                 })
                     .then(function (response) {
                         console.log(response);
@@ -56,10 +52,6 @@
             this.fecha = this.actividad.fechaactividad;
             this.descripcion = this.actividad.descripcionactividad;
             this.comentario = this.actividad.comentarioactividad;
-            this.check = this.actividad.estadoactividad;
         }
     }
 </script>
-<style>
-
-</style>

@@ -63,6 +63,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/organizaciones'),
         ],
+        'formatos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/formatos'),
+        ],
 
         'public' => [
             'driver' => 'local',

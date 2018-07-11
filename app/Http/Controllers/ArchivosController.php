@@ -25,6 +25,7 @@ class ArchivosController extends Controller{
             $ext = $file->getClientOriginalExtension();
             $nom = $file->getClientOriginalName();
             $file->move($path,$nom);
+
         }
         return (['val'=>true]);
     }

@@ -18,7 +18,7 @@ class FormatosController extends Controller
 
     public function create()
     {
-        return view('formatos.createroba');
+        return view('formatos.create');
     }
 
     public function store(Request $request)
@@ -40,6 +40,12 @@ class FormatosController extends Controller
             'idtipodocumento'       => request('id'),
             'archivoformato'      => request('archivo')
         ]);
+
+        $path   =   storage_path("app/formatos/");
+        $file  =   $request->file('archivo');
+        $name = request('id');
+
+        $file->storeAs($path, $name);
 
 
         // redirect

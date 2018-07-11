@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-            <form method="POST" action="/formatos">
+            <form method="POST" action="/formatos" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
                 <div class="card-body">

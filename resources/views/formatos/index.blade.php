@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="app">
                             <div class="table-responsive">
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -31,43 +31,15 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Descripcion</th>
-                                        <th>Archivo</th>
+                                        <th>Archivos</th>
                                         <td></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($formatos as $formato)
-                                      <tr>
-                                            <td>{{ $formato->idtipodocumento }}</td>
-                                            <td>{{ $formato->tipodocumento->descripciontipodocumento }}</td>
-                                            <td>{{ $formato->archivoformato }}</td>
-                                            <td>
+                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcion="{{ $formato->tipodocumento->descripciontipodocumento }}">
 
-
-
-                                                <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                                                <a class="btn btn-small btn-success" href="{{ URL::to('formatos/' . $formato->idformato) }}">ver
-                                                </a>-->
-                                                <div class="row">
-                                                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('formatos/' . $formato->idformato . '/edit') }}">
-
-                                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                                </a></div>
-
-                                                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                                <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
-                                                {{ Form::open(array('url' => 'formatos/' . $formato->idformato, 'class' => '')) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                {{ Form::close() }}
-                                                    </div>
-                                                </div>
-
-                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -51,7 +51,7 @@ window.Vue= require('vue');
 Vue.component('listarasignatura', require('./components/listarasignatura.vue'));
 Vue.component('noticias', require('./components/noticias.vue'));
 Vue.component('actividad', require('./components/actividad.vue'));
-Vue.component('actividad-vacia', require('./components/actividad-vacia.vue'));
+Vue.component('documento-item', require('./components/documento-item.vue'));
 const app = new Vue({
     el: '#app'
 });

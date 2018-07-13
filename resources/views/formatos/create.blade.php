@@ -29,11 +29,8 @@
                         <label for="archivo">Archivo de Formato:</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="archivo" name="archivo">
-                                <label class="custom-file-label" for="archivo">Elegir Archivo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="">Cargar</span>
+                                <input type="file" class="" id="archivo" name="archivo">
+                                <label class="" for="archivo"></label>
                             </div>
                         </div>
                     </div>

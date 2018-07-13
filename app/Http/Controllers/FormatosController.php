@@ -6,6 +6,7 @@ use App\Formato;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class FormatosController extends Controller
 {
@@ -30,6 +31,10 @@ class FormatosController extends Controller
         );
         $this->validate(request(), $rules);
 
+        $file  =   $request->file('archivo');
+
+        $name = request('id').'.'.$file->getClientOriginalExtension();
+
 
         // store
         TipoDocumento::create([
@@ -38,12 +43,10 @@ class FormatosController extends Controller
         ]);
         Formato::create([
             'idtipodocumento'       => request('id'),
-            'archivoformato'      => $request->text('archivo')
+            'archivoformato'      => $name
         ]);
 
-        $path   =   "app/formatos/";
-        $file  =   $request->file('archivo');
-        $name = request('id');
+        $path   =   "formatos/";
 
         $file->storeAs($path, $name);
 
@@ -66,6 +69,12 @@ class FormatosController extends Controller
         return view('formatos.edit')->with(compact('formato','tipodocumento'));
     }
 
+    public function descargar(Formato $formato)
+    {
+        $headers = ['Content-Type: application/zip','Content-Disposition: attachment; filename={$filename}'];
+        return response()->download(storage_path('app/formatos/').$formato->archivoformato, 200, $headers );
+    }
+
 
     public function update(Request $request, $id)
     {
@@ -73,7 +82,9 @@ class FormatosController extends Controller
             'descripcion'       => 'required'
         );
         $this->validate(request(), $rules);
+        $file  =   $request->file('archivo');
 
+        $name = request('id').'.'.$file->getClientOriginalExtension();
 
         // store
         TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
@@ -84,8 +95,11 @@ class FormatosController extends Controller
         ]);*/
         DB::table('formato')
             ->where('idtipodocumento', $id)
-            ->update(['archivoformato' => request('archivo')]);
+            ->update(['archivoformato' => $name]);
 
+        $path   =   "formatos/";
+        Storage::disk('formatos')->delete($name);
+        $file->storeAs($path, $name);
 
         // redirect
         return redirect('formatos');
@@ -97,6 +111,6 @@ class FormatosController extends Controller
         Formato::find($formato)
             ->delete();
 
-        return redirect('formatos');
+        return true;
     }
 }

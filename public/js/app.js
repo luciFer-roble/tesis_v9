@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(4);
-var isBuffer = __webpack_require__(18);
+var isBuffer = __webpack_require__(20);
 
 /*global toString:true*/
 
@@ -517,7 +517,7 @@ module.exports = function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(20);
+var normalizeHeaderName = __webpack_require__(22);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -825,12 +825,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(21);
-var buildURL = __webpack_require__(23);
-var parseHeaders = __webpack_require__(24);
-var isURLSameOrigin = __webpack_require__(25);
+var settle = __webpack_require__(23);
+var buildURL = __webpack_require__(25);
+var parseHeaders = __webpack_require__(26);
+var isURLSameOrigin = __webpack_require__(27);
 var createError = __webpack_require__(7);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(26);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -927,7 +927,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(27);
+      var cookies = __webpack_require__(29);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1011,7 +1011,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(22);
+var enhanceError = __webpack_require__(24);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1069,14 +1069,324 @@ module.exports = Cancel;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-__webpack_require__(11);
-module.exports = __webpack_require__(57);
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(46)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(13);
+module.exports = __webpack_require__(59);
+
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1126,24 +1436,24 @@ module.exports = __webpack_require__(57);
     });
 })(jQuery); // End of use strict
 **/
-__webpack_require__(12);
-window.Vue = __webpack_require__(35);
+__webpack_require__(14);
+window.Vue = __webpack_require__(37);
 
-Vue.component('listarasignatura', __webpack_require__(38));
-Vue.component('noticias', __webpack_require__(41));
+Vue.component('listarasignatura', __webpack_require__(40));
+Vue.component('noticias', __webpack_require__(43));
 Vue.component('actividad', __webpack_require__(51));
-Vue.component('actividad-vacia', __webpack_require__(54));
+Vue.component('documento-item', __webpack_require__(54));
 var app = new Vue({
     el: '#app'
 });
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(13);
-window.Popper = __webpack_require__(15).default;
+window._ = __webpack_require__(15);
+window.Popper = __webpack_require__(17).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -1163,7 +1473,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(16);
+window.axios = __webpack_require__(18);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -1199,7 +1509,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18309,10 +18619,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(14)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -18340,7 +18650,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20869,13 +21179,13 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(17);
+module.exports = __webpack_require__(19);
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20883,7 +21193,7 @@ module.exports = __webpack_require__(17);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(4);
-var Axios = __webpack_require__(19);
+var Axios = __webpack_require__(21);
 var defaults = __webpack_require__(3);
 
 /**
@@ -20918,14 +21228,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(9);
-axios.CancelToken = __webpack_require__(33);
+axios.CancelToken = __webpack_require__(35);
 axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(34);
+axios.spread = __webpack_require__(36);
 
 module.exports = axios;
 
@@ -20934,7 +21244,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /*!
@@ -20961,7 +21271,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20969,10 +21279,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(3);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(28);
-var dispatchRequest = __webpack_require__(29);
-var isAbsoluteURL = __webpack_require__(31);
-var combineURLs = __webpack_require__(32);
+var InterceptorManager = __webpack_require__(30);
+var dispatchRequest = __webpack_require__(31);
+var isAbsoluteURL = __webpack_require__(33);
+var combineURLs = __webpack_require__(34);
 
 /**
  * Create a new instance of Axios
@@ -21054,7 +21364,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21073,7 +21383,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21106,7 +21416,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21134,7 +21444,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21209,7 +21519,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21253,7 +21563,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21328,7 +21638,7 @@ module.exports = (
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21371,7 +21681,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21431,7 +21741,7 @@ module.exports = (
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21490,14 +21800,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(30);
+var transformData = __webpack_require__(32);
 var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(3);
 
@@ -21576,7 +21886,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21603,7 +21913,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21624,7 +21934,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21645,7 +21955,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21709,7 +22019,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21743,7 +22053,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32706,10 +33016,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(36).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38).setImmediate))
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -32765,7 +33075,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(37);
+__webpack_require__(39);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -32779,7 +33089,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -32972,15 +33282,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(5)))
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(39)
+var __vue_script__ = __webpack_require__(41)
 /* template */
-var __vue_template__ = __webpack_require__(40)
+var __vue_template__ = __webpack_require__(42)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33019,7 +33329,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33092,7 +33402,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -33185,13 +33495,13 @@ if (false) {
 }
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(42)
+  __webpack_require__(44)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
@@ -33236,17 +33546,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(43);
+var content = __webpack_require__(45);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(45)("c78fb70e", content, false, {});
+var update = __webpack_require__(11)("c78fb70e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33262,10 +33572,10 @@ if(false) {
 }
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(44)(true);
+exports = module.exports = __webpack_require__(10)(true);
 // imports
 
 
@@ -33273,316 +33583,6 @@ exports = module.exports = __webpack_require__(44)(true);
 exports.push([module.i, "\n.img-item[data-v-578d1136]{\n    height:37px !important;\n    cursor:pointer;\n}\n.fa-heart[data-v-578d1136]{\n    color: red;\n    cursor:pointer;\n}\n.fa-heart-o[data-v-578d1136]{\n    color:black;\n    cursor:pointer;\n}\na[data-v-578d1136]{\n    cursor:pointer;\n}\n\n\n", "", {"version":3,"sources":["D:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AA6UA;IACA,uBAAA;IACA,eAAA;CACA;AACA;IACA,WAAA;IACA,eAAA;CACA;AACA;IACA,YAAA;IACA,eAAA;CACA;AACA;IACA,eAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div>\r\n        <div class=\"container\">\r\n            <div class=\"form-group m-form__group\">\r\n                <textarea class=\"form-control m-input m-input--solid\" rows=\"3\" maxlength=\"500\" placeholder=\"Escriba\" v-model=\"comentario\"></textarea>\r\n                <div class=\"d-flex\">\r\n                    <div class=\"p-2\" style=\"width:80%\">\r\n                        <div id=\"mis-fotos\">\r\n                            <img :src=\"parsearArchivo(item.file)\" :data-src=\"parsearArchivo(item.file)\" class=\"img-item\" v-for=\"(item,index) in subidas\" v-show=\"index<19\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"ml-auto p-2\">\r\n                        <vue-dropzone  id=\"fotos\" :options=\"dropzoneOptions\" v-on:vdropzone-error=\"errores\" v-on:vdropzone-success=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" ref=\"fotos\" class=\"btn btn-secondary m-btn m-btn--icon\"/>\r\n                        <button type=\"reset\" class=\"btn btn-success btn-sm m-btn \tm-btn m-btn--icon\" v-on:click=\"enviar(null)\">\r\n                            <span>Enviar<span class=\"la la-send\"></span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"m-timeline-1 m-timeline-1--fixed\">\r\n            <div class=\"m-timeline-1__items\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <div class=\"m-timeline-1__item\" v-for=\"(item, index) in noticias\" v-bind:class=\"index % 2===0?'m-timeline-1__item--left': 'm-timeline-1__item--right'\">\r\n                    <div class=\"m-timeline-1__item-circle\">\r\n                        <div class=\"m--bg-danger\"></div>\r\n                    </div>\r\n                    <div class=\"m-timeline-1__item-arrow\"></div>\r\n                    <span class=\"m-timeline-1__item-time m--font-brand\">{{item.fecha}}</span>\r\n                    <div class=\"m-timeline-1__item-content\">\r\n                        <template v-if=\"item.code\">\r\n                                <div class=\"m-timeline-1__item-body\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"item.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <span class=\"m-widget3__username\">{{item.usuario}}</span><br>\r\n                                                    <b class=\"m-widget3__time\">{{item.org}}</b>\r\n                                                    <span class=\"m-widget3__status m--font-info\">\r\n                                                        <span class=\"fa\" v-bind:class=\"item.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(item)\" data-skin=\"dark\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+item.likes+'</b>'\"></span>\r\n                                                    </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{item.comentario}}\r\n                                                </p>\r\n                                                <div :id=\"item.code\">\r\n                                                    <img :src=\"imagen.down\" :data-src=\"imagen.down\" class=\"img-item\" v-for=\"(imagen,index) in item.fotos\" v-show=\"index<3\" v-on:mouseover=\"renderizarId(item.code)\"/>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                        </template>\r\n                        <template v-else>\r\n                            <div class=\"m-timeline-1__item-title\">\r\n                                {{item.proyecto.titulo_pr}}<br>\r\n                                <b>{{item.proyecto.org.ncomercial_or || item.proyecto.org.rsocial_or}}</b>\r\n                            </div>\r\n                            <div class=\"m-timeline-1__item-body\">{{item.proyecto.objgeneral_pr}}</div>\r\n                            <div class=\"m-timeline-1__item-actions\">\r\n                                <button class=\"btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom\" v-on:click=\"cargarProyecto(item.p)\">\r\n                                    Leer más..\r\n                                </button>\r\n                            </div>\r\n                        </template>\r\n                        <div class=\"m-timeline-1__item-actions\">\r\n                            <template v-if=\"item.hijos\">\r\n                                <div v-if=\"item.mostrando\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\" v-for=\"itemChill in item.listaHijos\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"itemChill.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <div class=\"d-flex\">\r\n                                                        <div class=\"p-2\">\r\n                                                            <span class=\"m-widget3__username\">{{itemChill.usuario}}</span><br>\r\n                                                            <b class=\"m-widget3__time\">{{itemChill.org}}</b>\r\n                                                        </div>\r\n                                                        <div class=\"ml-auto p-2\"><small class=\"text-muted\">{{itemChill.fecha}}</small></div>\r\n                                                        <span class=\"m-widget3__status m--font-info\">\r\n                                                            <span class=\"fa\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+itemChill.likes+'</b>'\" v-bind:class=\"itemChill.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(itemChill)\"></span>\r\n                                                        </span>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{itemChill.comentario}}\r\n                                                </p>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <a type=\"button\" class=\"m-nav__link btn-sm\" v-else v-on:click=\"mostrarComentarios(item)\">{{item.hijos}} Comentarios </a>\r\n                            </template>\r\n                            <div class=\"input-group m-input-group m-input-group--pill\">\r\n                                <input class=\"form-control m-input form-control-sm\" placeholder=\"Escribe un comentario. . .\" type=\"text\" v-model=\"item.texto\" v-on:keyup.13=\"enviarHijo(item)\" maxlength=\"500\"/>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"m-scroll-top m-scroll-top--skin-top\" data-toggle=\"m-scroll-top\" data-scroll-offset=\"500\" data-scroll-speed=\"300\">\r\n                    <i class=\"la la-arrow-up\"></i>\r\n                </div>\r\n            </div>\r\n            <infinite-loading @infinite=\"cargarMasNoticias\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <span slot=\"no-more\">\r\n                <div class=\"row\">\r\n                    <div class=\"col m--align-center\">\r\n                        <div class=\"btn btn-sm m-btn--custom m-btn--pill  btn-metal\">\r\n                            No existen más Noticias\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </span>\r\n                <span slot=\"no-results\">\r\n                No existen Noticias\r\n            </span>\r\n            </infinite-loading>\r\n            <proyecto :id=\"proyectoSele\" :clic=\"tiempo\"></proyecto>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import InfiniteLoading from 'vue-infinite-loading';\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    export default {\r\n        name: \"noticias\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone,\r\n            InfiniteLoading,\r\n        },\r\n        data: () => ({\r\n            subidas:[],\r\n            comentario:'',\r\n            noticias:[],\r\n\r\n            dropzoneOptions: {\r\n                url:'/consulta/upload',\r\n                maxFiles:30,\r\n                maxFilesize: 5,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: '<i class=\"la la-photo\"></i>',\r\n                previewTemplate:'<i><i/>',\r\n                acceptedFiles:'image/*',\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"Solo se admiten imágenes.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"A superado el límite de imágenes.\",\r\n            },\r\n            pagina:0,\r\n\r\n            proyectoSele:null,\r\n            tiempo:1,\r\n        }),\r\n        methods:{\r\n            cargarProyecto(codigo){\r\n                this.tiempo=moment();\r\n                this.proyectoSele=codigo;\r\n            },\r\n            parsearArchivo:function(archivo){\r\n                return ('/consulta/imagen?nombre='+archivo+'&p='+moment());\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: '/consulta/upload',\r\n                }).then((response) => {\r\n                    this.subidas=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href='/consulta/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: '/consulta/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            errores:function(file,meesage,xhr){\r\n                toastr.error(meesage, \"Error\");\r\n            },\r\n            enviar:function(){\r\n                if(this.comentario.length>10){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':this.comentario,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            toastr.info(\"Se publicó su comentario\", \"Éxito\");\r\n                            this.cargarPrimerasNoticias();\r\n                            this.comentario='';\r\n                            this.cargarArchivos();\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n                }else{\r\n                    toastr.error(\"El texto no puede estar vacío\", \"Error\");\r\n                }\r\n            },\r\n            enviarHijo:function(comentario){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':comentario.texto,\r\n                            'id':comentario.code,\r\n                            'p':comentario.p,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            comentario.texto='';\r\n                            comentario.hijos++;\r\n                            if(comentario.mostrando)\r\n                                this.cargarHijos(comentario);\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n            },\r\n            mostrarComentarios:function(comentario){\r\n                if(!comentario.mostrando){\r\n                    //Object.assign(comentario, {'mostrando':true});\r\n                    comentario.mostrando=true;\r\n                    this.cargarHijos(comentario);\r\n                }\r\n\r\n            },\r\n            cargarHijos:function(comentario){\r\n                let parametro   =   comentario.code ? comentario.code : comentario.p;\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url:window.location.href+'/'+parametro,\r\n                }).then((response) => {\r\n                    Object.assign(comentario, {'listaHijos':response.data});\r\n                });\r\n            },\r\n            cargarPrimerasNoticias:function(){\r\n                axios.options(window.location.href)\r\n                    .then((response) => {\r\n                        this.noticias = response.data;\r\n                    }).catch((error) => {\r\n                        if(error.status===500)\r\n                            this.cargarPrimerasNoticias();\r\n                    });\r\n            },\r\n            cargarMasNoticias:function($state){\r\n                let pagina  =   this.noticias.length / 5 + 1;\r\n                    pagina  =   pagina.toFixed(0);\r\n\r\n                if(pagina===this.pagina)\r\n                    pagina++;\r\n                axios.options(window.location.href, {\r\n                    params: {\r\n                        page: pagina,\r\n                    },\r\n                }).then((response) => {\r\n                    if (response.data.length) {\r\n                        this.noticias = this.noticias.concat(response.data);\r\n                        this.pagina=pagina;\r\n                        $state.loaded();\r\n                        /*\r\n                        if (this.noticias.length===response.data) {\r\n                            $state.complete();\r\n                        }*/\r\n                    } else {\r\n                        $state.complete();\r\n                    }\r\n                }).catch((error) => {\r\n                    if(error.status===500)\r\n                        this.cargarMasNoticias();\r\n                });\r\n            },\r\n            renderizarId:function(id){\r\n                lightGallery(document.getElementById(id),{\r\n                    download: false,\r\n                });\r\n            },\r\n            enviarLike:function(comentario){\r\n                axios({\r\n                    method: 'PUT',\r\n                    url:window.location.href,\r\n                    params:{\r\n                        'id':comentario.code,\r\n                    }\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        comentario.meLike=response.data.like;\r\n                        if(response.data.like)\r\n                            comentario.likes++;\r\n                        else\r\n                            comentario.likes--;\r\n                    }else{\r\n                        toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                    }\r\n                });\r\n            }\r\n        },\r\n        mounted(){\r\n            $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');\r\n            this.cargarArchivos();\r\n        },\r\n        updated(){\r\n            this.renderizarId('mis-fotos');\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .img-item{\r\n        height:37px !important;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart{\r\n        color: red;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart-o{\r\n        color:black;\r\n        cursor:pointer;\r\n    }\r\n    a{\r\n        cursor:pointer;\r\n    }\r\n\r\n\r\n</style>"],"sourceRoot":""}]);
 
 // exports
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__(46)
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction, _options) {
-  isProduction = _isProduction
-
-  options = _options || {}
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
 
 
 /***/ }),
@@ -34923,17 +34923,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(55)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(55)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(56)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-35c97ba3"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -34944,7 +34948,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\actividad-vacia.vue"
+Component.options.__file = "resources\\assets\\js\\components\\documento-item.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34953,9 +34957,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-76dfae99", Component.options)
+    hotAPI.createRecord("data-v-35c97ba3", Component.options)
   } else {
-    hotAPI.reload("data-v-76dfae99", Component.options)
+    hotAPI.reload("data-v-35c97ba3", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -34967,6 +34971,46 @@ module.exports = Component.exports
 
 /***/ }),
 /* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(56);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(11)("2467c4b1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35c97ba3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./documento-item.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35c97ba3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./documento-item.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"documento-item.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34990,120 +35034,147 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     props: {
-        actividad: {
+        formato: {
             type: Object
-        }
+        },
+        descripcion: String
     },
     data: function data() {
         return {
-            fecha: '',
-            descripcion: ''
+            borrado: false
         };
     },
-    created: function created() {}
+    methods: {
+        descargar: function descargar() {
+            var _this = this;
+
+            axios({
+                url: '/formatos/' + this.formato.idformato + '/descargar',
+                method: 'GET',
+                responseType: 'blob'
+            }).then(function (response) {
+                var url = window.URL.createObjectURL(new Blob([response.data]));
+                var link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', _this.formato.archivoformato); //or any other extension
+                document.body.appendChild(link);
+                link.click();
+
+                // window.open('/formatos/'+this.formato.idformato+'/descargar/');
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        eliminar: function eliminar() {
+            axios({
+                url: '/formatos/' + this.formato.idformato,
+                method: 'DELETE'
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            this.borrado = true;
+        },
+        editar: function editar() {
+            window.location.href = '/formatos/' + this.formato.idformato + '/edit';
+        }
+    }
 });
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td", [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.fecha,
-            expression: "fecha"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "date", name: "fecha", id: "fecha" },
-        domProps: { value: _vm.fecha },
-        on: {
-          blur: _vm.actualizar,
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.fecha = $event.target.value
-          }
+  return _c(
+    "tr",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.borrado,
+          expression: "!borrado"
         }
-      })
-    ]),
-    _vm._v(" "),
-    _c("td", { staticClass: "p-0 m-0" }, [
-      _c("textarea", {
-        directives: [
+      ]
+    },
+    [
+      _c("td", [_vm._v(_vm._s(_vm.formato.idtipodocumento))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.descripcion))]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.descripcion,
-            expression: "descripcion"
-          }
-        ],
-        staticClass: "form-control ",
-        attrs: { name: "descripcion", id: "descripcion", cols: "30" },
-        domProps: { value: _vm.descripcion },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+            staticClass: "btn btn-link",
+            on: { click: _vm.descargar },
+            model: {
+              value: _vm.formato.archivoformato,
+              callback: function($$v) {
+                _vm.$set(_vm.formato, "archivoformato", $$v)
+              },
+              expression: "formato.archivoformato"
             }
-            _vm.descripcion = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("td"),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1)
-  ])
+          },
+          [_vm._v(_vm._s(_vm.formato.archivoformato))]
+        )
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm1" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                attrs: { type: "button" },
+                on: { click: _vm.editar }
+              },
+              [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm1" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                attrs: { type: "submit" },
+                on: { click: _vm.eliminar }
+              },
+              [_c("i", { staticClass: "fa fa-fw fa-trash-alt" })]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", {
-        staticClass: "form-control custom-checkbox ",
-        attrs: { type: "checkbox" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-76dfae99", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-35c97ba3", module.exports)
   }
 }
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

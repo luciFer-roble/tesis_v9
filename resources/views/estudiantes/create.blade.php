@@ -4,7 +4,7 @@
 @endsection
 @section('nav')
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="/eatudiantes">Estudiantes</a></li>
+    <li class="breadcrumb-item"><a href="/estudiantes">Estudiantes</a></li>
     <li class="breadcrumb-item active">Nuevo</li>
 @endsection
 @section('content')
@@ -71,7 +71,7 @@
                                 <label for="carrera">Carrera:</label>
                                 <select id="carrera" name="carrera" class="form-control">
                                     @foreach($carreras as $carrera)
-                                        <option value="{{ (string)$carrera->idcarrera }}">{{ $carrera->nombrecarrera }}</option>
+                                        <option value="{{ $carrera->idcarrera }}">{{ $carrera->nombrecarrera }}</option>
                                     @endforeach
                                 </select>
                             </div>

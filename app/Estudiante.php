@@ -12,6 +12,7 @@ class Estudiante extends Model
     protected $primaryKey = 'idestudiante';
     public $timestamps = false;
     protected $guarded = [];
+    public $incrementing = false;
 
     public function practica(){
         return $this->hasMany('App\Practica');

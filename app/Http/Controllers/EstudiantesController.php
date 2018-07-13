@@ -50,6 +50,7 @@ class EstudiantesController extends Controller
 
         // store
         Estudiante::create([
+            'idestudiante'       => request('cedula'),
             'idcarrera'       => request('carrera'),
             'cedulaestudiante'       => request('cedula'),
             'nombre1estudiante'      => request('nombre1'),

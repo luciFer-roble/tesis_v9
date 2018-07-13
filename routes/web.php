@@ -132,3 +132,6 @@ Route::delete('/practicas/{practica}', 'PracticasController@destroy');
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');
 Route::get('/actividades/{practica}/{total}', 'ActividadesController@store');
 Route::put('/actividades/{actividad}', 'ActividadesController@update');
+
+
+Route::get('/documentos/{practica}/list', 'DocumentosPController@index');

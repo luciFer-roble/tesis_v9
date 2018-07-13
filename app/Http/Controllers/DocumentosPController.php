@@ -9,17 +9,18 @@ use Illuminate\Http\Request;
 
 class DocumentosPController extends Controller
 {
-    public function index()
+    public function index(Practica $practica)
     {
-        $documentosp = DocumentoP::all();
-        return view('documentosp.index', compact('documentosp'));
+        $documentosp = DocumentoP::all()->where('idpractica', '=' , $practica->idpractica );
+        $tiposdocumento = TipoDocumento::all();
+        return view('documentos.index', compact('documentosp', 'tiposdocumento', 'practica'));
     }
 
     public function create()
     {
         $tiposdocumento =TipoDocumento::all();
         $practicas = Practica::all();
-        return view('documentosp.create')->with(compact('tiposdocumento', 'practicas'));
+        return view('documentos.create')->with(compact('tiposdocumento', 'practicas'));
     }
 
     public function store(Request $request)

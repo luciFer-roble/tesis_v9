@@ -135,3 +135,5 @@ Route::put('/actividades/{actividad}', 'ActividadesController@update');
 
 
 Route::get('/documentos/{practica}/list', 'DocumentosPController@index');
+Route::get('/documentos/{documentop}/descargar', 'DocumentosPController@descargar');
+Route::post('/documentos', 'DocumentosPController@store');

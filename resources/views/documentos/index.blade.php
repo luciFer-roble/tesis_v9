@@ -34,16 +34,18 @@
                                     @foreach($tiposdocumento as $tipo)
                                         @php
                                             $documento = null;
+                                            $codigo =null;
                                         @endphp
                                         @foreach($documentosp as $doc)
                                             @if($doc->idtipodocumento == $tipo->idtipodocumento)
                                                 @php
                                                     $documento = $doc->archivodocumentop;
+                                                    $codigo = $doc->iddocumentop;
                                                 @endphp
                                             @endif
                                         @endforeach
 
-                                        <tr is="documentop" practica="{{ $practica->idpractica }}" :tipo="{{ $tipo }}"  documento="{{ $documento }}" >
+                                        <tr is="documentop" :practica="{{ $practica }}" :tipo="{{ $tipo }}"  documento="{{ $documento }}" codigo="{{ $codigo }}" >
 
                                         </tr>
                                     @endforeach

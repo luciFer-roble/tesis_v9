@@ -28,17 +28,24 @@ class DocumentosPController extends Controller
         $rules = array(
             'tipo'       => 'required',
             'practica'       => 'required',
-            'archivo'    => 'required'
+            'archivo'    => 'required',
+            'estudiante'  => 'required'
         );
         $this->validate(request(), $rules);
 
+        $file  =   $request->file('archivo');
 
+        $name = request('estudiante').request('tipo').'P'.request('practica').'.'.$file->getClientOriginalExtension();
         // store
         DocumentoP::create([
             'idtipodocumento'       => request('tipo'),
             'idpractica'       => request('practica'),
-            'archivodocumentop'      => request('archivo')
+            'archivodocumentop'      => $name
         ]);
+
+        $path   =   "practicas/";
+
+        $file->storeAs($path, $name);
 
 
         // redirect
@@ -61,6 +68,11 @@ class DocumentosPController extends Controller
         return view('documentosp.edit')->with(compact('documentop', 'tiposdocumento', 'practicas'));
     }
 
+    public function descargar(DocumentoP $documentop)
+    {
+        $headers = ['Content-Type: application/zip','Content-Disposition: attachment; filename={$filename}'];
+        return response()->download(storage_path('app/formatos/').$documentop->archivoformato, 200, $headers );
+    }
 
     public function update(Request $request, $id)
     {

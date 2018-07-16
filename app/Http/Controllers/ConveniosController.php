@@ -6,16 +6,13 @@ use App\Convenio;
 use App\Empresa;
 use App\Sede;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ConveniosController extends Controller
 {
     public function index()
     {
-        $sedes = Sede::all();
-        $empresas =Empresa::all();
         $convenios = Convenio::all();
-        return view('convenios.index', compact('convenios','sedes', 'empresas'));
+        return view('convenios.index', compact('convenios'));
     }
 
     public function create()
@@ -28,44 +25,32 @@ class ConveniosController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'id'       => 'required',
             'sede'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required',
+            'direccion'    => 'required',
             'inicio'       => 'required',
-            'fin'       => 'required',
-            'archivo'       => 'required'
+            'fin'       => 'required'
         );
         $this->validate(request(), $rules);
 
-        $file  =   $request->file('archivo');
-
-        $name = request('id').'.'.$file->getClientOriginalExtension();
 
         // store
         Convenio::create([
-            'idconvenio'       => request('id'),
             'idsede'       => request('sede'),
             'idempresa'       => request('empresa'),
             'descripcionconvenio'      => request('descripcion'),
             'fechainicioconvenio'      => request('inicio'),
             'fechafinconvenio' => request('fin'),
-            'archivoconvenio' => $name
+            'archivoconvenio' => request('archivo')
         ]);
-        $path   =   "convenios/";
 
-        $file->storeAs($path, $name);
 
         // redirect
         return redirect('convenios');
 
     }
 
-    public function descargar(Convenio $convenio)
-    {
-        $headers = ['Content-Type: application/zip','Content-Disposition: attachment; filename={$filename}'];
-        return response()->download(storage_path('app/convenios/').$convenio->archivoconvenio, 200, $headers );
-    }
+
     public function show(Convenio $convenio)
     {
         return view('convenios.show')->with('convenio', $convenio);
@@ -86,16 +71,12 @@ class ConveniosController extends Controller
         $rules = array(
             'sede'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required',
+            'direccion'    => 'required',
             'inicio'       => 'required',
-            'fin'       => 'required',
-            'archivo'       => 'required'
+            'fin'       => 'required'
         );
         $this->validate(request(), $rules);
 
-        $file  =   $request->file('archivo');
-
-        $name = request('id').'.'.$file->getClientOriginalExtension();
 
         // store
         Convenio::updateOrCreate(['idconvenio'  => $id], [
@@ -104,11 +85,9 @@ class ConveniosController extends Controller
             'descripcionconvenio'      => request('descripcion'),
             'fechainicioconvenio'      => request('inicio'),
             'fechafinconvenio' => request('fin'),
-            'archivoconvenio' => $name
+            'archivoconvenio' => request('archivo')
         ]);
-        $path   =   "convenios/";
-        Storage::disk('convenios')->delete($name);
-        $file->storeAs($path, $name);
+
 
         // redirect
         return redirect('convenios');

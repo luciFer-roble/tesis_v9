@@ -104,15 +104,6 @@ Route::put('/formatos/{tipodocumento}', 'FormatosController@update');
 Route::delete('/formatos/{formato}', 'FormatosController@destroy');
 Route::get('/formatos/{formato}/descargar', 'FormatosController@descargar');
 
-Route::get('/convenios', 'ConveniosController@index');
-Route::get('/convenios/create', 'ConveniosController@create');
-Route::get('/convenios/{convenio}', 'ConveniosController@show');
-Route::post('/convenios', 'ConveniosController@store');
-Route::get('/convenios/{convenio}/edit', 'ConveniosController@edit');
-Route::put('/convenios/{convenio}', 'ConveniosController@update');
-Route::delete('/convenios/{convenio}', 'ConveniosController@destroy');
-Route::get('/convenios/{convenio}/descargar', 'ConveniosController@descargar');
-
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
 Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');
 

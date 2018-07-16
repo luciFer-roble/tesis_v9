@@ -67,6 +67,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/formatos'),
         ],
+        'practicas' => [
+            'driver' => 'local',
+            'root' => storage_path('app/practicas'),
+        ],
 
         'public' => [
             'driver' => 'local',

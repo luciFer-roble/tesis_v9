@@ -71,7 +71,7 @@ class DocumentosPController extends Controller
     public function descargar(DocumentoP $documentop)
     {
         $headers = ['Content-Type: application/zip','Content-Disposition: attachment; filename={$filename}'];
-        return response()->download(storage_path('app/formatos/').$documentop->archivoformato, 200, $headers );
+        return response()->download(storage_path('app/practicas/').$documentop->archivodocumentop, 200, $headers );
     }
 
     public function update(Request $request, $id)

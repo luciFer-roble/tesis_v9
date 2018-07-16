@@ -35,12 +35,14 @@
                                         @php
                                             $documento = null;
                                             $codigo =null;
+                                            $documentop =null;
                                         @endphp
                                         @foreach($documentosp as $doc)
                                             @if($doc->idtipodocumento == $tipo->idtipodocumento)
                                                 @php
                                                     $documento = $doc->archivodocumentop;
                                                     $codigo = $doc->iddocumentop;
+                                                $documentop = $doc;
                                                 @endphp
                                             @endif
                                         @endforeach

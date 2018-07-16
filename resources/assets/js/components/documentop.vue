@@ -6,7 +6,7 @@
         <td class="p-0 m-0" v-if="!mostrar">
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class=""  name="archivo" id="archivo" v-bind="archivo" >
+                    <input type="file" class=""  ref="file" name="archivo" id="archivo" @change="guardar" >
                     <label class="" for="archivo"></label>
                 </div>
             </div>
@@ -16,7 +16,7 @@
         </td>
         <td><div class="form-check">
             <label>
-                <input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" >
+                <input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">
 
             </label>
         </div></td>
@@ -39,7 +39,8 @@
         data:()=>({
             descripcion: '',
             archivo: '',
-            mostrar: false
+            mostrar: false,
+            file:''
         }),
 
         methods:{
@@ -65,19 +66,28 @@
 
             },
             guardar:function () {
-                axios.post('/documentos/', {
-                    tipo: this.tipo.idtipodocumento,
-                    practica: this.practica.idpractica,
-                    archivo: this.archivo,
-                    estudiante: this.practica.idestudiante
-                })
+
+                this.file = this.$refs.file.files[0];
+                let formData = new FormData();
+                formData.append('tipo', this.tipo.idtipodocumento);
+                formData.append('practica', this.practica.idpractica);
+                formData.append('archivo', this.file);
+                formData.append('estudiante', this.practica.idestudiante);
+
+                axios.post('/documentos/', formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
                     .then(function (response) {
                         console.log(response);
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
-
+                this.mostrar = true;
+                this.archivo= this.practica.idestudiante+this.tipo.idtipodocumento+'P'+this.practica.idpractica;
             },
             editar:function () {
                 window.location.href = '/formatos/'+this.formato.idformato+'/edit';

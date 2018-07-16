@@ -101,7 +101,7 @@ class ConveniosController extends Controller
         Convenio::updateOrCreate(['idconvenio'  => $id], [
             'idsede'       => request('sede'),
             'idempresa'       => request('empresa'),
-            'descripcionconvenio'      => request('descripcion'),
+            'descripcionconvenio'      => request('descripcion'),   
             'fechainicioconvenio'      => request('inicio'),
             'fechafinconvenio' => request('fin'),
             'archivoconvenio' => $name

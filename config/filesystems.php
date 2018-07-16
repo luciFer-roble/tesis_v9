@@ -72,6 +72,11 @@ return [
             'root' => storage_path('app/practicas'),
         ],
 
+        'convenios' => [
+            'driver' => 'local',
+            'root' => storage_path('app/convenios'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

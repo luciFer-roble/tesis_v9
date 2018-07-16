@@ -112,6 +112,8 @@ Route::get('/convenios/{convenio}/edit', 'ConveniosController@edit');
 Route::put('/convenios/{convenio}', 'ConveniosController@update');
 Route::delete('/convenios/{convenio}', 'ConveniosController@destroy');
 Route::get('/convenios/{convenio}/descargar', 'ConveniosController@descargar');
+Route::get('/convenios/{sede}/create', 'ConveniosController@createfrom');
+Route::get('/convenios/{sede}/list', 'ConveniosController@indexfrom');
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
 Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');

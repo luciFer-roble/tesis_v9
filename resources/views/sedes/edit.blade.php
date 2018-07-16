@@ -52,6 +52,12 @@
                             <a  class="btn btn-warning" href="{{ URL::to('facultades/' . $sede->idsede . '/list') }}">
                                 Facultades
                             </a>
+                            <a  class="btn btn-info" href="{{ URL::to('convenios/' . $sede->idsede . '/create') }}">
+                                Anadir Convenios
+                            </a>
+                            <a  class="btn btn-warning" href="{{ URL::to('convenios/' . $sede->idsede . '/list') }}">
+                                Convenios
+                            </a>
                         </div>
                     </div>
 

@@ -112,6 +112,34 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
+        @guest
+            <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">
+                    <i class="fa fa-sign-in"></i>
+                </a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">
+                    <i class="fa fa-user"></i>
+                </a></li>
+        @else
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @endguest
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
                         class="fa fa-th-large"></i></a>

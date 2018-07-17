@@ -11,6 +11,8 @@
 |
 */
 
+use App\Sede;
+
 Route::get('/', function () {
     return view('layouts.master');
 });
@@ -22,6 +24,8 @@ Route::get('/master',function (){
     return view ('layouts.master');
 });
 
+$sedes =Sede::all();
+View::share('sedes',$sedes);
 Route::get('/empresas', 'EmpresasController@index');
 Route::get('/empresas/create', 'EmpresasController@create');
 Route::get('/empresas/{empresa}', 'EmpresasController@show');
@@ -39,6 +43,7 @@ Route::put('/carreras/{carrera}', 'CarrerasController@update');
 Route::delete('/carreras/{carrera}', 'CarrerasController@destroy');
 Route::get('/carreras/{escuela}/create', 'CarrerasController@createfrom');
 Route::get('/carreras/{escuela}/list', 'CarrerasController@indexfrom');
+Route::get('/carreras/{sede}/list', 'CarrerasController@indexfromsede');
 
 
 Route::get('/profesores', 'ProfesoresController@index');
@@ -68,6 +73,7 @@ Route::put('/escuelas/{escuela}', 'EscuelasController@update');
 Route::delete('/escuelas/{escuela}', 'EscuelasController@destroy');
 Route::get('/escuelas/{facultad}/create', 'EscuelasController@createfrom');
 Route::get('/escuelas/{facultad}/list', 'EscuelasController@indexfrom');
+Route::get('/escuelas/{sede}/list', 'EscuelasController@indexfromsede');
 
 Route::get('/facultades', 'FacultadesController@index');
 Route::get('/facultades/create', 'FacultadesController@create');

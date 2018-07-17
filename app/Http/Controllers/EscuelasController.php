@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Escuela;
 use App\Facultad;
+use App\Sede;
 use Illuminate\Http\Request;
 
 class EscuelasController extends Controller
@@ -22,6 +23,18 @@ class EscuelasController extends Controller
     public function indexfrom(Facultad $facultad)
     {
         $escuelas = Escuela::all()->where('idfacultad', '=' , $facultad->idfacultad );
+        return view('escuelas.index', compact('escuelas'));
+    }
+    public function indexfromsede(Sede $sede)
+    {
+
+        $facultades = Facultad::pluck('idfacultad')->where('idsede', '=' , $sede->idsede );
+        $escuelas=Escuela::all()->whereIn('idfacultad',$facultades);
+        /*$escuelas = DB::table('escuela')
+            ->join('facultad', 'escuela.idfacultad', '=', 'facultad.idfacultad')
+            ->join('sede', 'facultad.idfacultad', '=', $sede->idsede)
+            ->select('escuela.*')
+            ->get();*/
         return view('escuelas.index', compact('escuelas'));
     }
     public function createfrom(Facultad $facultad)

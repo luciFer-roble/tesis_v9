@@ -24,99 +24,87 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview ">
-                    <a href="#" class="nav-link ">
-                        <i class="fas fa-university"></i>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fa fa-dashboard"></i>
                         <p>
-                            Sedes
+                            Estudiantes
+
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @foreach($sedes as $sede)
-                        <a href="#" class="nav-link ">
-                            <p>
-                                {{ $sede->nombresede }}
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview ">
-                            <ul class="nav-item">
-                                <a  class="nav-link">
-                                    <p>Facultades</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="./index2.html" class="nav-link">
-                                    <p>Escuelas</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="./index3.html" class="nav-link ">
-                                    <p>Carreras</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="./index3.html" class="nav-link active">
-                                    <p>Convenios</p>
-                                </a>
-                            </ul>
-                         </ul>
-                        @endforeach
+                        <li class="nav-item">
+                            <a href="./index.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Ver</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index2.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Nuevo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./index3.html" class="nav-link active">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Modificar</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="/coordinadores" class="nav-link">
-                        <i class="far fa-clipboard"></i>
-                        <p>
-                            Coordinadores
-                        </p>
-                    </a>
-
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="/empresas" class="nav-link">
-                        <i class="far fa-building"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-pie-chart"></i>
                         <p>
                             Empresas
+                            <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
-
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/charts/chartjs.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Ver</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/charts/flot.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Nueva</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="nav-icon fa fa-tree"></i>
                         <p>
-                            Tutores
+                            Convenios
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/profesores" class="nav-link">
+                            <a href="pages/UI/general.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Tutores Academicos</p>
+                                <p>Ver</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/tutores" class="nav-link">
+                            <a href="pages/UI/icons.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Tutores Empresariales</p>
+                                <p>Nuevo</p>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="/estudiantes" class="nav-link">
-                        <i class="fas fa-user-graduate"></i>
-                        <p>
-                            Estudiantes
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fab fa-leanpub"></i>
+                        <i class="nav-icon fa fa-edit"></i>
                         <p>
                             Practicas
                             <i class="fa fa-angle-left right"></i>
@@ -124,24 +112,47 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/practicas" class="nav-link">
+                            <a href="pages/forms/general.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Listar</p>
+                                <p>Ver</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/formatos" class="nav-link">
+                            <a href="pages/forms/advanced.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Formatos</p>
+                                <p>Nueva</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa fa-pie-chart"></i>
+                        <i class="nav-icon fa fa-table"></i>
                         <p>
-                            Reportes
+                            Actividades
+                            <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/tables/simple.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Ver</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/data.html" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Nueva</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-envelope-o"></i>
+                        <p>
+                            Tutor Empresarial
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -149,13 +160,13 @@
                         <li class="nav-item">
                             <a href="pages/mailbox/mailbox.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Practicas por Nivel</p>
+                                <p>Ver</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/mailbox/compose.html" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Practicas por Horas</p>
+                                <p>Nuevo</p>
                             </a>
                         </li>
                     </ul>

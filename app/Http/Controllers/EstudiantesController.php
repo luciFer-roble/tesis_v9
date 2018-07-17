@@ -8,9 +8,11 @@ use App\Estudiante;
 use App\Facultad;
 use App\Sede;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class EstudiantesController extends Controller
 {
+
     public function index()
     {
         $estudiantes = Estudiante::all();

@@ -11,6 +11,8 @@
 |
 */
 
+use App\Sede;
+
 Route::get('/', function () {
     return view('layouts.master');
 });
@@ -22,6 +24,8 @@ Route::get('/master',function (){
     return view ('layouts.master');
 });
 
+$sedes =Sede::all();
+View::share('sedes',$sedes);
 Route::get('/empresas', 'EmpresasController@index');
 Route::get('/empresas/create', 'EmpresasController@create');
 Route::get('/empresas/{empresa}', 'EmpresasController@show');

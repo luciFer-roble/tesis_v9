@@ -1,7 +1,13 @@
 @extends('layouts.master')
-
+@section('titulo')
+    <h1 class="m-0 text-dark">{{ 'Actividades de la '.$practica->tipopractica}}</h1>
+@endsection
+@section('nav')
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ URL::to('practicas/' . $practica->idpractica . '/edit') }}">{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}</a></li>
+    <li class="breadcrumb-item active">Actividades</li>
+@endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -111,5 +117,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @stop

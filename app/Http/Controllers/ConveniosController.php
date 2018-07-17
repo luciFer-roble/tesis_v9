@@ -25,6 +25,18 @@ class ConveniosController extends Controller
         return view('convenios.create')->with(compact('sedes', 'empresas'));
     }
 
+    public function indexfrom(Sede $sede)
+    {
+        $convenios = Convenio::all()->where('idsede', '=' , $sede->idsede );
+        return view('convenios.index', compact('convenios'));
+    }
+    public function createfrom(Sede $sede)
+    {
+        $sedes =Sede::all();
+        $empresas =Empresa::all();
+        return view('convenios.create')->with(compact('sede', 'sedes','empresas'));
+    }
+
     public function store(Request $request)
     {
         $rules = array(

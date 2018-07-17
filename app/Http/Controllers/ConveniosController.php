@@ -6,6 +6,7 @@ use App\Convenio;
 use App\Empresa;
 use App\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ConveniosController extends Controller
@@ -107,8 +108,7 @@ class ConveniosController extends Controller
 
         if($file <> null){
             $name = request('id').'.'.$file->getClientOriginalExtension();
-            $nameorigin=Convenio::all()->where('idconvenio','=',$id);
-
+            $nameorigin= DB::table('convenio')->select('archivoconvenio')->where('idconvenio', $id)->first();
             Convenio::updateOrCreate(['idconvenio'  => $id], [
                 'idsede'       => request('sede'),
                 'idempresa'       => request('empresa'),
@@ -118,7 +118,7 @@ class ConveniosController extends Controller
                 'archivoconvenio' => $name
             ]);
             $path   =   "convenios/";
-            Storage::disk('convenios')->delete(json_encode($nameorigin)->archivoconvenio);
+            Storage::disk('convenios')->delete($nameorigin->archivoconvenio);
             $file->storeAs($path, $name);
         }
 
@@ -133,7 +133,6 @@ class ConveniosController extends Controller
                  //'archivoconvenio' => $name
              ]);
          }
-
 
         // redirect
         return redirect('convenios');

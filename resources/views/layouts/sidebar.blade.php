@@ -32,15 +32,15 @@
                             <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        @foreach($sedes as $sede)
+                    @foreach($sedes as $sede)
+                    <ul class="nav-item nav-treeview">
                         <a href="#" class="nav-link ">
                             <i class="right fa fa-angle-right"></i>
                             <p>
                                 {{ $sede->nombresede }}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview ">
+                        <ul class="nav-item nav-treeview ">
                             <ul class="nav-item">
                                 <a href="{{ URL::to('facultades/' . $sede->idsede . '/list') }}"  class="nav-link">
                                     <p>Facultades</p>
@@ -62,8 +62,8 @@
                                 </a>
                             </ul>
                          </ul>
-                        @endforeach
                     </ul>
+                    @endforeach
                 </li>
 
                 <li class="nav-item has-treeview">

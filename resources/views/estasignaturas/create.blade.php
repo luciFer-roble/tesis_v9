@@ -12,21 +12,19 @@
         <div class="col-lg-12">
 
             <div class="row">
-                <form method="POST" action="/estasignaturas">
+                    <div class="card">
+                    <div class="col-lg-12 card-body">
 
-                    {{ csrf_field() }}
-                    <div class="col-lg-12">
-
-                            <listarasignatura codigo="{{ $idcarrera }} " estudiante="{{ $estudiante->idestudiante }}">
+                            <listarasignatura codigo="{{ $idcarrera }} " estudiante="{{ $estudiante->idestudiante }}" :asignaturas="{{ $asignaturas }}">
 
                             </listarasignatura>
                     </div>
-
                     <hr>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+
+                    <div class="col-lg-12 -align-right m-lg-4">
+                        <a href="#" onclick="history.go(-1)" class="btn btn-primary float-left">OK</a>
                     </div>
-                </form>
+                    </div>
                 @include('layouts.errors')
             </div>
 

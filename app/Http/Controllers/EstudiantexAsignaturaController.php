@@ -36,8 +36,8 @@ class EstudiantexAsignaturaController extends Controller
      */
     public function create(Carrera $carrera, Estudiante $estudiante)
     {
-
-        return view('estasignaturas.create',['idcarrera'=>$carrera->idcarrera, 'estudiante'=>$estudiante]);
+        $asignaturas = EstudiantexAsignatura::with('asignatura')->where('idestudiante', $estudiante->idestudiante)->get();
+        return view('estasignaturas.create',['idcarrera'=>$carrera->idcarrera, 'estudiante'=>$estudiante, 'asignaturas'=> $asignaturas]);
     }
 
     /**

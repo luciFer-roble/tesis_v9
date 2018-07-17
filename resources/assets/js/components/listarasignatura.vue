@@ -3,12 +3,24 @@
  <tbody>
  <tr>
  </tr>
+ <tr v-for="asignatura in asignaturas" class="d-flex">
+  <td class="col-6">
+   <label >Asignatura</label>
+  </td>
+  <td class="col-6">
+   <select  class="form-control" disabled>
+    <option  :key="item.idasignatura" v-for="item in lista2" :value="item.idasignatura" :selected="item.idasignatura == asignatura.idasignatura">{{item.nombreasignatura}}</option>
+   </select>
+  </td>
+ </tr>
+
  <tr v-for="(row, index) in rows" class="d-flex">
   <td class="col-6">
     <label v-model="row.title">{{ row.title }}</label>
   </td>
   <td class="col-6">
   <select  class="form-control" v-model="seleccionado" @change="addrow">
+   <option value="0">-Seleccione-</option>
    <option  :key="item.idasignatura" v-for="item in lista2" :value="item.idasignatura">{{item.nombreasignatura}}</option>
   </select>
   </td>
@@ -18,15 +30,16 @@
 </template>
 <script>
     export default{
-        props:['codigo', 'estudiante'],
+        props:['codigo', 'estudiante', 'asignaturas'],
         name:'fer',
         data:()=>({
             lista2:[],
-            seleccionado:'',
+            seleccionado:'0',
             rows: [{
                 title: 'Asignatura',
                 description: ''
-            }]
+            }],
+            check: false
         }),
         methods:{
             cargardatos:function () {
@@ -57,7 +70,6 @@
                     .catch(function (error) {
                         console.log(error);
                     });
-
             }
         },
         created(){

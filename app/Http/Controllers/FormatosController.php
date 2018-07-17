@@ -84,22 +84,26 @@ class FormatosController extends Controller
         $this->validate(request(), $rules);
         $file  =   $request->file('archivo');
 
-        $name = request('id').'.'.$file->getClientOriginalExtension();
+        if($file<>null){
+            $name = request('id').'.'.$file->getClientOriginalExtension();
+            $nameorigin= DB::table('formato')->select('archivoformato')->where('idtipodocumento', $id)->first();
 
-        // store
-        TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
-            'descripciontipodocumento'      => request('descripcion')
-        ]);/*
+            // store
+            TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
+                'descripciontipodocumento'      => request('descripcion')
+            ]);/*
         Formato::updateOrCreate(['idtipodocumento'  => $id], [
             'archivoformato'      => request('archivo')
         ]);*/
-        DB::table('formato')
-            ->where('idtipodocumento', $id)
-            ->update(['archivoformato' => $name]);
+            DB::table('formato')
+                ->where('idtipodocumento', $id)
+                ->update(['archivoformato' => $name]);
 
-        $path   =   "formatos/";
-        Storage::disk('formatos')->delete($name);
-        $file->storeAs($path, $name);
+            $path   =   "formatos/";
+            Storage::disk('formatos')->delete($nameorigin->archivoformato);
+            $file->storeAs($path, $name);
+        }
+
 
         // redirect
         return redirect('formatos');

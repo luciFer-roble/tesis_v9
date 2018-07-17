@@ -10,12 +10,23 @@ class CarrerasController extends Controller
 {
     public function index()
     {
+
         $carreras = Carrera::all();
         return view('carreras.index', compact('carreras'));
     }
     public function indexfrom(Escuela $escuela)
     {
         $carreras = Carrera::all()->where('idescuela', '=' , $escuela->idescuela );
+        return view('carreras.index', compact('carreras'));
+    }
+    public function indexfromsede(Sede $sede)
+    {
+        $escuelas = DB::table('escuela')
+            ->join('facultad', 'escuela.idfacultad', '=', 'facultad.idfacultad')
+            ->join('sede', 'facultad.idsede', '=', 'sede.idsede')
+            ->where('sede.idsede', $sede->idsede)
+            ->get();
+        $carreras = Carrera::all()->whereIn('idescuela',$escuelas)->get();
         return view('carreras.index', compact('carreras'));
     }
     public function createfrom(Escuela $escuela)

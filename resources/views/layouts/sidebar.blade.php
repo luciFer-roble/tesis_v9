@@ -117,7 +117,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fa fa-leanpub"></i>
+                        <i class="fas fa-leanpub"></i>
                         <p>
                             Practicas
                             <i class="fa fa-angle-left right"></i>

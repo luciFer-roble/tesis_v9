@@ -15,8 +15,7 @@
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
                         <div class="card-header">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-
+                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <h1>FACULTADES</h1></div>
                                     <div class="btn-group mr-2">

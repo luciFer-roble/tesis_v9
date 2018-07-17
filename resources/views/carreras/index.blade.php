@@ -44,7 +44,7 @@
                                             <td>{{ $carrera->idcarrera }}</td>
                                             <td>{{ $carrera->nombrecarrera }}</td>
                                             <td>{{ $carrera->descripcioncarrera }}</td>
-                                            <td>{{ $carrera->escuela->nombreescuela }}</td>
+                                            <td>{{ $carrera->nombreescuela }}</td>
                                             <td>
 
 

@@ -43,7 +43,7 @@ Route::put('/carreras/{carrera}', 'CarrerasController@update');
 Route::delete('/carreras/{carrera}', 'CarrerasController@destroy');
 Route::get('/carreras/{escuela}/create', 'CarrerasController@createfrom');
 Route::get('/carreras/{escuela}/list', 'CarrerasController@indexfrom');
-Route::get('/carreras/{sede}/list', 'CarrerasController@indexfromsede');
+Route::get('/carreras/{sede}/list2', 'CarrerasController@indexfromsede');
 
 
 Route::get('/profesores', 'ProfesoresController@index');
@@ -119,7 +119,7 @@ Route::put('/convenios/{convenio}', 'ConveniosController@update');
 Route::delete('/convenios/{convenio}', 'ConveniosController@destroy');
 Route::get('/convenios/{convenio}/descargar', 'ConveniosController@descargar');
 Route::get('/convenios/{sede}/create', 'ConveniosController@createfrom');
-Route::get('/convenios/{sede}/list', 'ConveniosController@indexfrom');
+Route::get('/convenios/{sede}/list2', 'ConveniosController@indexfrom');
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
 Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');

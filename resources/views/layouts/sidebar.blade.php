@@ -52,12 +52,12 @@
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="{{ URL::to('carreras/' . $sede->idsede . '/list') }}" class="nav-link ">
+                                <a href="{{ URL::to('carreras/' . $sede->idsede . '/list2') }}" class="nav-link ">
                                     <p>Carreras</p>
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list') }}" class="nav-link active">
+                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list2') }}" class="nav-link active">
                                     <p>Convenios</p>
                                 </a>
                             </ul>

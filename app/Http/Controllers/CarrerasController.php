@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Carrera;
 use App\Escuela;
+use App\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CarrerasController extends Controller
 {
@@ -21,12 +23,13 @@ class CarrerasController extends Controller
     }
     public function indexfromsede(Sede $sede)
     {
-        $escuelas = DB::table('escuela')
+        $carreras = DB::table('carrera')
+            ->join('escuela', 'escuela.idescuela', '=', 'carrera.idescuela')
             ->join('facultad', 'escuela.idfacultad', '=', 'facultad.idfacultad')
             ->join('sede', 'facultad.idsede', '=', 'sede.idsede')
             ->where('sede.idsede', $sede->idsede)
             ->get();
-        $carreras = Carrera::all()->whereIn('idescuela',$escuelas)->get();
+        //$carreras = Carrera::all()->whereIn('idescuela',$escuelas)->get();
         return view('carreras.index', compact('carreras'));
     }
     public function createfrom(Escuela $escuela)

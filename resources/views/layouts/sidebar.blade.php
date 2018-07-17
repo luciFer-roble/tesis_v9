@@ -26,7 +26,7 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
-                        <i class="fas fa-university"></i>
+                        <i class="fa fa-university"></i>
                         <p>
                             Sedes
                             <i class="right fa fa-angle-left"></i>
@@ -47,7 +47,7 @@
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="{{ URL::to('escuelas/' . $sede->idsede . '/list') }}" class="nav-link">
+                                <a href="{{ URL::to('escuelas/' . $sede->idsede . '/list2') }}" class="nav-link">
                                     <p>Escuelas</p>
                                 </a>
                             </ul>
@@ -68,7 +68,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="/coordinadores" class="nav-link">
-                        <i class="far fa-clipboard"></i>
+                        <i class="fa fa-clipboard"></i>
                         <p>
                             Coordinadores
                         </p>
@@ -77,7 +77,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="/empresas" class="nav-link">
-                        <i class="far fa-building"></i>
+                        <i class="fa fa-building"></i>
                         <p>
                             Empresas
                         </p>
@@ -86,7 +86,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fa fa-chalkboard-teacher"></i>
                         <p>
                             Tutores
                             <i class="fa fa-angle-left right"></i>
@@ -109,7 +109,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
-                        <i class="fas fa-user-graduate"></i>
+                        <i class="fa fa-user-graduate"></i>
                         <p>
                             Estudiantes
                         </p>

@@ -6,6 +6,7 @@ use App\Escuela;
 use App\Facultad;
 use App\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EscuelasController extends Controller
 {
@@ -28,13 +29,11 @@ class EscuelasController extends Controller
     public function indexfromsede(Sede $sede)
     {
 
-        $facultades = Facultad::pluck('idfacultad')->where('idsede', '=' , $sede->idsede );
-        $escuelas=Escuela::all()->whereIn('idfacultad',$facultades);
-        /*$escuelas = DB::table('escuela')
+        $escuelas = DB::table('escuela')
             ->join('facultad', 'escuela.idfacultad', '=', 'facultad.idfacultad')
-            ->join('sede', 'facultad.idfacultad', '=', $sede->idsede)
-            ->select('escuela.*')
-            ->get();*/
+            ->join('sede', 'facultad.idsede', '=', 'sede.idsede')
+            ->where('sede.idsede', $sede->idsede)
+            ->get();
         return view('escuelas.index', compact('escuelas'));
     }
     public function createfrom(Facultad $facultad)

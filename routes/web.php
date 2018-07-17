@@ -73,7 +73,7 @@ Route::put('/escuelas/{escuela}', 'EscuelasController@update');
 Route::delete('/escuelas/{escuela}', 'EscuelasController@destroy');
 Route::get('/escuelas/{facultad}/create', 'EscuelasController@createfrom');
 Route::get('/escuelas/{facultad}/list', 'EscuelasController@indexfrom');
-Route::get('/escuelas/{sede}/list', 'EscuelasController@indexfromsede');
+Route::get('/escuelas/{sede}/list2', 'EscuelasController@indexfromsede');
 
 Route::get('/facultades', 'FacultadesController@index');
 Route::get('/facultades/create', 'FacultadesController@create');

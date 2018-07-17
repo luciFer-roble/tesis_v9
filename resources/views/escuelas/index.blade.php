@@ -52,7 +52,7 @@
                                             <td>{{ $escuela->idescuela }}</td>
                                             <td>{{ $escuela->nombreescuela }}</td>
                                             <td>{{ $escuela->descripcionescuela }}</td>
-                                            <td>{{ $escuela->facultad->nombrefacultad }}</td>
+                                            <td>{{ $escuela->nombrefacultad }}</td>
                                             <td>{{ $escuela->titulacionescuela }}</td>
                                             <td>{{ $escuela->misionescuela }}</td>
                                             <td>{{ $escuela->visionescuela }}</td>
@@ -72,7 +72,7 @@
                                                     <div class="col-sm1">
                                                 <a  class="btn btn-link" href="{{ URL::to('escuelas/' . $escuela->idescuela . '/edit') }}">
 
-                                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                                    <i class="fa fa-pencil"></i>
                                                 </a></div>
 
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
@@ -80,7 +80,7 @@
                                                     <div class="col-sm1">
                                                 {{ Form::open(array('url' => 'escuelas/' . $escuela->idescuela, 'class' => '')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                    <button type="submit" class="btn btn-link"><i class="fa fa-trash" style="color: #f10407"></i></button>
                                                 {{ Form::close() }}
                                                     </div>
                                                 </div>

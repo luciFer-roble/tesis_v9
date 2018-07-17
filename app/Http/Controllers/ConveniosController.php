@@ -100,27 +100,40 @@ class ConveniosController extends Controller
             'empresa'       => 'required',
             'descripcion'    => 'required',
             'inicio'       => 'required',
-            'fin'       => 'required',
-            'archivo'       => 'required'
+            'fin'       => 'required'
         );
         $this->validate(request(), $rules);
-
         $file  =   $request->file('archivo');
 
-        $name = request('id').'.'.$file->getClientOriginalExtension();
+        if($file <> null){
+            $name = request('id').'.'.$file->getClientOriginalExtension();
+            $nameorigin=Convenio::all()->where('idconvenio','=',$id);
 
-        // store
-        Convenio::updateOrCreate(['idconvenio'  => $id], [
-            'idsede'       => request('sede'),
-            'idempresa'       => request('empresa'),
-            'descripcionconvenio'      => request('descripcion'),
-            'fechainicioconvenio'      => request('inicio'),
-            'fechafinconvenio' => request('fin'),
-            'archivoconvenio' => $name
-        ]);
-        $path   =   "convenios/";
-        Storage::disk('convenios')->delete($name);
-        $file->storeAs($path, $name);
+            Convenio::updateOrCreate(['idconvenio'  => $id], [
+                'idsede'       => request('sede'),
+                'idempresa'       => request('empresa'),
+                'descripcionconvenio'      => request('descripcion'),
+                'fechainicioconvenio'      => request('inicio'),
+                'fechafinconvenio' => request('fin'),
+                'archivoconvenio' => $name
+            ]);
+            $path   =   "convenios/";
+            Storage::disk('convenios')->delete(json_encode($nameorigin)->archivoconvenio);
+            $file->storeAs($path, $name);
+        }
+
+
+         else{
+             Convenio::updateOrCreate(['idconvenio'  => $id], [
+                 'idsede'       => request('sede'),
+                 'idempresa'       => request('empresa'),
+                 'descripcionconvenio'      => request('descripcion'),
+                 'fechainicioconvenio'      => request('inicio'),
+                 'fechafinconvenio' => request('fin')
+                 //'archivoconvenio' => $name
+             ]);
+         }
+
 
         // redirect
         return redirect('convenios');

@@ -44,6 +44,7 @@
                                             <td>{{ $coordinador->carrera->nombrecarrera }}</td>
                                             <td>{{ $coordinador->fechainiciocoordinador }}</td>
                                             <td>{{ $coordinador->fechafincoordinador }}</td>
+
                                             <td>
 
 
@@ -60,9 +61,10 @@
                                                 </a>
                                                 <a  class="btn btn-link" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador . '/change') }}">
 
-                                                    <i class="fa fa-fw fa-exchange-alt"></i>
+                                                    <i class="fa fa-fw fa-exchange"></i>
                                                 </a>
                                                     </div>
+                                                </div>
 
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                 <!-- we will add this later since its a little more complicated than the other two buttons -->

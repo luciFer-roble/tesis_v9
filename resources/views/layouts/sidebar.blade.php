@@ -35,6 +35,7 @@
                     <ul class="nav nav-treeview">
                         @foreach($sedes as $sede)
                         <a href="#" class="nav-link ">
+                            <i class="right fa fa-angle-right"></i>
                             <p>
                                 {{ $sede->nombresede }}
                             </p>
@@ -94,13 +95,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/profesores" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Tutores Academicos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/tutores" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Tutores Empresariales</p>
                             </a>
                         </li>
@@ -125,13 +126,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/practicas" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Listar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/formatos" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Formatos</p>
                             </a>
                         </li>
@@ -148,13 +149,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Practicas por Nivel</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/mailbox/compose.html" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
+                                <i class="right fa fa-angle-right"></i> 
                                 <p>Practicas por Horas</p>
                             </a>
                         </li>

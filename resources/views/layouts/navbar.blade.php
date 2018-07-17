@@ -116,9 +116,6 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">
                     <i class="fa fa-sign-in"></i>
                 </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">
-                    <i class="fa fa-user"></i>
-                </a></li>
         @else
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

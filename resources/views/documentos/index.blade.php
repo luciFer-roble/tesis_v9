@@ -1,22 +1,26 @@
 @extends('layouts.master')
 
+@section('titulo')
+    <h1 class="m-0 text-dark">{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}</h1>
+@endsection
+@section('nav')
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="{{ URL::to('practicas/' . $practica->idpractica . '/edit') }}">{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}</a></li>
+    <li class="breadcrumb-item active">Documentos</li>
+@endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
-
         <div class="container-fluid">
             <!-- Breadcrumbs-->
 
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
 
-                    </div>
 
                     <!-- DataTable Card-->
                     <div class="card mb-3">
-                        <div class="card-header row">
+                        <div class="card-header ">
                             <div class="col-lg-6">
-                                <h5>{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}</h5>
+                                <h5>DOCUMENTOS</h5>
                             </div>
                         </div>
                         <div class="card-body" id="app">
@@ -25,9 +29,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>TIPO</th>
-                                        <th>DOCUMENTO</th>
-                                        <th>ESTADO</th>
+                                        <th>Tipo</th>
+                                        <th>Documento</th>
+                                        <th>Estado</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -63,5 +67,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @stop

@@ -86,7 +86,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fa fa-chalkboard-teacher"></i>
+                        <i class="fa fa-briefcase"></i>
                         <p>
                             Tutores
                             <i class="fa fa-angle-left right"></i>
@@ -109,7 +109,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
-                        <i class="fa fa-user-graduate"></i>
+                        <i class="fa fa-user"></i>
                         <p>
                             Estudiantes
                         </p>
@@ -117,7 +117,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fab fa-leanpub"></i>
+                        <i class="fa fa-leanpub"></i>
                         <p>
                             Practicas
                             <i class="fa fa-angle-left right"></i>

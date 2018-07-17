@@ -185,8 +185,7 @@
                             <div class="form-group">
                                 <div class="col-5">
                                 <span >
-                                 <button type="submit" class="btn btn-danger btn-lg">FINALIZAR</button>
-                                </span>
+                                 <a href="#"  class="btn btn-danger btn-lg btn-block">FINALIZAR</a></span></span>
                                 </div>
                             </div>
                         </div>

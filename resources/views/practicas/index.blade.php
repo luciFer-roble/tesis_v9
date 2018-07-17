@@ -4,7 +4,6 @@
     <li class="breadcrumb-item">Practicas</li>
 @endsection
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -70,5 +69,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @stop

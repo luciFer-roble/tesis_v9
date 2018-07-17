@@ -12,8 +12,13 @@ use PhpParser\PrettyPrinterAbstract;
 
 class PracticasController extends Controller
 {
-    public function index()
+    public function __construct()
     {
+        $this->middleware('auth');
+    }
+    public function index(Request $request)
+    {
+        $request->user()->authorizeRoles(['admin']);
         $practicas = Practica::all();
         return view('practicas.index', compact('practicas'));
     }

@@ -4,7 +4,6 @@
     <li class="breadcrumb-item">Practicas</li>
 @endsection
 @section('content')
-
         <div class="container-fluid">
             <!-- Breadcrumbs-->
 

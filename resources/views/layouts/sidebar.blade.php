@@ -42,22 +42,22 @@
                         </a>
                         <ul class="nav nav-treeview ">
                             <ul class="nav-item">
-                                <a  class="nav-link">
+                                <a href="{{ URL::to('facultades/' . $sede->idsede . '/list') }}"  class="nav-link">
                                     <p>Facultades</p>
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="{{ URL::to('escuelas/' . $sede->idsede . '/list') }}" class="nav-link">
                                     <p>Escuelas</p>
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="./index3.html" class="nav-link ">
+                                <a href="{{ URL::to('carreras/' . $sede->idsede . '/list') }}" class="nav-link ">
                                     <p>Carreras</p>
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="./index3.html" class="nav-link active">
+                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list') }}" class="nav-link active">
                                     <p>Convenios</p>
                                 </a>
                             </ul>
@@ -155,7 +155,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="pages/mailbox/compose.html" class="nav-link">
-                                <i class="right fa fa-angle-right"></i> 
+                                <i class="right fa fa-angle-right"></i>
                                 <p>Practicas por Horas</p>
                             </a>
                         </li>

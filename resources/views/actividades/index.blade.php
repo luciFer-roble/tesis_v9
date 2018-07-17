@@ -22,7 +22,7 @@
                     <div class="card mb-3">
                         <div class="card-header row">
                             <div class="col-lg-6">
-                                <h5>NOMBRE DEL PROYECTO EN EL QUE SE REALIZA LA PRACTICA: </h5>
+                                <h5>Nombre del proyecto en el que se realiza la practica: </h5>
                             </div>
                             <div class="col-lg-6">
                                 <input type="text" class="form-control" value="{{ $practica->tipopractica .' '. $practica->tutore->empresa->nombreempresa}}" readonly>
@@ -34,10 +34,10 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>FECHA</th>
-                                        <th>DESCRIPCION DE ACTIVIDADES</th>
-                                        <th>CONTROL</th>
-                                        <th>COMENTARIO</th>
+                                        <th>Fecha</th>
+                                        <th>Descripcion de Actividades</th>
+                                        <th>Control</th>
+                                        <th>Comentario</th>
 
                                     </tr>
                                     </thead>

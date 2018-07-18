@@ -57,7 +57,7 @@
                                 </a>
                             </ul>
                             <ul class="nav-item">
-                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list2') }}" class="nav-link active">
+                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list') }}" class="nav-link active">
                                     <p>Convenios</p>
                                 </a>
                             </ul>
@@ -117,7 +117,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-leanpub"></i>
+                        <i class="fa fa-book-open"></i>
                         <p>
                             Practicas
                             <i class="fa fa-angle-left right"></i>

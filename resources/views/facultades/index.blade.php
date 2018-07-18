@@ -48,11 +48,7 @@
                                             <td>{{ $facultad->misionfacultad }}</td>
                                             <td>{{ $facultad->visionfacultad }}</td>
                                             <td>{{ $facultad->sede->nombresede }}</td>
-                                            <td>
-
-
-
-                                                <!-- show the nerd (uses the show method found at GET /nerds/{id}
+                                            <td> <!-- show the nerd (uses the show method found at GET /nerds/{id}
                                                 <a class="btn btn-small btn-success" href="{{ URL::to('facultades/' . $facultad->idfacultad) }}">ver
                                                 </a>-->
                                                 <div class="row">

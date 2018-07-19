@@ -8,6 +8,10 @@ use App\Empresa;
 
 class TutorEsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $tutores = TutorE::all();

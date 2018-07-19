@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class DocumentosPController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Practica $practica)
     {
         $documentosp = DocumentoP::all()->where('idpractica', '=' , $practica->idpractica );

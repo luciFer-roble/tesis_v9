@@ -18,7 +18,7 @@ class PracticasController extends Controller
     }
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin']);
+        $request->user()->authorizeRoles(['admin', 'est']);
         $practicas = Practica::all();
         return view('practicas.index', compact('practicas'));
     }

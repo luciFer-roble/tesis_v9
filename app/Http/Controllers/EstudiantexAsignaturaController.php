@@ -16,6 +16,10 @@ class EstudiantexAsignaturaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function roba(Request $carrera)
     {
         $asignaturas = DB::table('carrera')

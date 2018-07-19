@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ActividadesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Practica $practica)
     {
         $actividades = Actividad::where('idpractica', '=' , $practica->idpractica )->orderBy('idactividad')->paginate(5);

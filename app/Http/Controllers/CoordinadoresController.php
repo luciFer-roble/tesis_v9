@@ -10,6 +10,10 @@ use function Symfony\Component\VarDumper\Tests\Fixtures\bar;
 
 class CoordinadoresController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $coordinadores = Coordinador::all( )->where('activocoordinador','=','TRUE');

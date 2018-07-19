@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ConveniosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $sedes = Sede::all();

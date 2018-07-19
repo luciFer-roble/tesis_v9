@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class FormatosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $tiposdocumento = TipoDocumento::orderby('idtipodocumento')->get();

@@ -38,8 +38,9 @@ class DocumentosPController extends Controller
         $this->validate(request(), $rules);
 
         $file  =   $request->file('archivo');
+        $time = date('Y-m-d');
 
-        $name = request('estudiante').request('tipo').'P'.request('practica').'.'.$file->getClientOriginalExtension();
+        $name = request('estudiante').request('tipo').'P'.request('practica').'_'.$time.'.'.$file->getClientOriginalExtension();
         // store
         DocumentoP::create([
             'idtipodocumento'       => request('tipo'),

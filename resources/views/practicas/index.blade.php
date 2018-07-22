@@ -16,9 +16,12 @@
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <h1>PRACTICAS</h1></div>
-                                <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'practicas/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
-                                </div>
+                                @if(Auth::user()->hasRole('admin')or Auth::user()->hasRole('coord') )
+                                    <div class="btn-group mr-2">
+                                        <input type="button" onClick="location.href = 'practicas/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -30,8 +33,8 @@
                                         <th>Codigo</th>
                                         <th>Estudiante</th>
                                         <th>Empresa</th>
-                                        <th>Tutor empresarial</th>
-                                        <th>Tutor academico</th>
+                                        <th>Tutor Academico</th>
+                                        <th>Tutor Empresarial</th>
                                         <th>Tipo</th>
                                         <th>Inicio</th>
                                         <th>Fin</th>
@@ -43,10 +46,15 @@
                                     @foreach($practicas as $practica)
                                         <tr>
                                             <td class="p-1 m-0">{{ $practica->idpractica }}</td>
-                                            <td class="p-1 m-0">{{ $practica->estudiante->nombre1estudiante .' '. $practica->estudiante->apellido1estudiante }}</td>
+                                            <td class="p-1 m-0">
+                                                <a  class="btn btn-link" href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombre1estudiante .' '. $practica->estudiante->apellido1estudiante }}</a></td>
                                             <td class="p-1 m-0">{{ $practica->tutore->empresa->nombreempresa }}</td>
-                                            <td class="p-1 m-0">{{ $practica->profesor->nombre1profesor .' '. $practica->profesor->apellido1profesor }}</td>
-                                            <td class="p-1 m-0">{{ $practica->tutore->nombretutore .' '. $practica->tutore->apellidotutore }}</td>
+                                            <td class="p-1 m-0">
+                                                <a  class="btn btn-link" href="{{ URL::to('profesores/' . $practica->idprofesor) }}">
+                                                    {{ $practica->profesor->nombre1profesor .' '. $practica->profesor->apellido1profesor }}</a></td>
+                                            <td class="p-1 m-0">
+                                                <a  class="btn btn-link" href="{{ URL::to('tutores/' . $practica->idtutore) }}">
+                                                    {{ $practica->tutore->nombretutore .' '. $practica->tutore->apellidotutore }}</a></td>
                                             <td class="p-1 m-0">{{ $practica->tipopractica }}</td>
                                             <td class="p-1 m-0">{{ $practica->fechainiciopractica }}</td>
                                             <td class="p-1 m-0">{{ $practica->fechafinpractica }}</td>

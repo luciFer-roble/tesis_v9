@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Convenio;
 use App\Empresa;
 use App\Estudiante;
 use App\Practica;
 use App\Profesor;
 use App\TutorE;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use PhpParser\PrettyPrinterAbstract;
 
 class PracticasController extends Controller
@@ -18,16 +21,36 @@ class PracticasController extends Controller
     }
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'est']);
-        $practicas = Practica::all();
-        return view('practicas.index', compact('practicas'));
+        $request->user()->authorizeRoles(['admin', 'est','prof','tut', 'coord']);
+
+        if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord')){
+            $practicas = Practica::all();
+            return view('practicas.index', compact('practicas'));
+        }
+        if(Auth::user()->hasRole('est')){
+            $estudiante = Estudiante::all()->where('iduser','=',Auth::user()->id)->first();
+            $practicas = Practica::all()->where('idestudiante','=',$estudiante->idestudiante);
+            return view('practicas.index', compact('practicas'));
+        }
+        if(Auth::user()->hasRole('prof')){
+            $profesor = Profesor::all()->where('iduser','=',Auth::user()->id)->first();
+            $practicas = Practica::all()->where('idprofesor','=',$profesor->idprofesor);
+            return view('practicas.index', compact('practicas'));
+        }
+        if(Auth::user()->hasRole('tut')){
+            $tutore = Tutore::all()->where('iduser','=',Auth::user()->id)->first();
+            $practicas = Practica::all()->where('idtutore','=',$tutore->idtutore);
+            return view('practicas.index', compact('practicas'));
+        }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin', 'coord']);
         $estudiantes =Estudiante::all();
+        $empresasconvenio = Convenio::pluck('idempresa')->all();
+        $empresas = Empresa::whereIn('idempresa', $empresasconvenio)->select('idempresa','nombreempresa')->get();
         $profesores = Profesor::all();
-        $empresas = Empresa::all();
         $tutores = TutorE::all();
         return view('practicas.create')->with(compact('estudiantes', 'profesores', 'empresas', 'tutores'));
     }

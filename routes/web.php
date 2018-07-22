@@ -48,7 +48,7 @@ Route::get('/carreras/{sede}/list2', 'CarrerasController@indexfromsede');
 
 Route::get('/profesores', 'ProfesoresController@index');
 Route::get('/profesores/create', 'ProfesoresController@create');
-Route::get('/profesores/{escuela}', 'ProfesoresController@show');
+Route::get('/profesores/{profesor}', 'ProfesoresController@show');
 Route::post('/profesores', 'ProfesoresController@store');
 Route::get('/profesores/{profesor}/edit', 'ProfesoresController@edit');
 Route::put('/profesores/{profesor}', 'ProfesoresController@update');
@@ -97,7 +97,7 @@ Route::get('/sedes/{universidad}/list', 'SedesController@indexfrom');
 
 Route::get('/tutores', 'TutorEsController@index');
 Route::get('/tutores/create', 'TutorEsController@create');
-Route::get('/tutores/{empresa}', 'TutorEsController@show');
+Route::get('/tutores/{tutore}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');
 Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
 

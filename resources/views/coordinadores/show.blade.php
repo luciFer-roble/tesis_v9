@@ -3,42 +3,42 @@
     <h1 class="m-0 text-dark">Coordinador</h1>
 @endsection
 @section('nav')
-    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-    <li class="breadcrumb-item active">Coordinador</li>
+    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="/coordinadores">Coordinadores</a></li>
+    <li class="breadcrumb-item active">{{ $coordinador->profesor->nombre1profesor.' '.$coordinador->profesor->nombre2profesor.' '.$coordinador->profesor->apellido1profesor.' '.$coordinador->apellido2profesor }}</li>
 @endsection
 
 @section('content')
-    <div class="my-4 w-100" id="myChart" width="50%" height="380">
 
-        <div class="container-fluid">
+    <div class="container-fluid">
 
-            <div class="row">
-                <div class="col-12">
+        <div class="row">
+            <div class="col-md-6">
 
-                    <!-- Example DataTables Card-->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h1>COORDINADOR</h1></div>
+
+                <!-- Example DataTables Card-->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h2>{{ $coordinador->profesor->nombre1profesor.' '.$coordinador->profesor->nombre2profesor.' '.$coordinador->profesor->apellido1profesor.' '.$coordinador->apellido2profesor }}</h2>
+                    </div>
+                    <form role="form">
+
                         <div class="card-body">
-
-                            <div class="row">
-                                <div class="jumbotron text-center">
-                                    <h2>{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</h2>
-                                    <p>
+                            <p>
                                         <strong>Carrera:</strong> {{ $coordinador->carrera->nombrecarrera }}<br>
                                         <strong>Correo:</strong> {{ $coordinador->profesor->correoprofesor }}<br>
                                         <strong>Celular:</strong> {{ $coordinador->profesor->celularprofesor }}<br>
                                         <strong>Oficina:</strong> {{ $coordinador->profesor->oficinaprofesor }}
-                                    </p>
-                                </div>
-                            </div>
+                            </p>
                         </div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                    </div>
 
+                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
+
 
 @stop

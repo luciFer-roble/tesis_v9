@@ -10,8 +10,6 @@ use App\Profesor;
 use App\TutorE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use PhpParser\PrettyPrinterAbstract;
 
 class PracticasController extends Controller
 {

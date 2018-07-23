@@ -7,6 +7,7 @@
                     <option value="0">-Seleccione-</option>
                     <option value="periodo">Periodo Academico</option>
                     <option value="empresa">Empresa</option>
+                    <option value="nivel">Nivel</option>
                 </select>
                 <select class="form-control" v-model="parametro" @change="cargardatos">
                     <option value="0">-Seleccione-</option>

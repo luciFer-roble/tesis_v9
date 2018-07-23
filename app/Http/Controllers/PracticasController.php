@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Convenio;
 use App\Empresa;
 use App\Estudiante;
+use App\PeriodoAcademico;
 use App\Practica;
 use App\Profesor;
 use App\TutorE;
@@ -58,7 +59,8 @@ class PracticasController extends Controller
         $empresas = Empresa::whereIn('idempresa', $empresasconvenio)->select('idempresa','nombreempresa')->get();
         $profesores = Profesor::all();
         $tutores = TutorE::all();
-        return view('practicas.create')->with(compact('estudiantes', 'profesores', 'empresas', 'tutores'));
+        $periodos = PeriodoAcademico::all();
+        return view('practicas.create')->with(compact('estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
     }
 
     public function store(Request $request)
@@ -71,9 +73,11 @@ class PracticasController extends Controller
             'descripcion'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
-            'salario'    => 'required'
+            'salario'    => 'required',
+            'periodo'    => 'required'
         );
         $this->validate(request(), $rules);
+        $activa='TRUE';
 
 
         // store
@@ -85,7 +89,10 @@ class PracticasController extends Controller
             'fechainiciopractica'      => request('inicio'),
             'fechafinpractica'      => request('fin'),
             'tipopractica'      => request('tipo'),
-            'salariopractica'      => request('salario')
+            'salariopractica'      => request('salario'),
+            'idperiodoacademico'      => request('periodo'),
+            'horaspractica'      => request('horas'),
+            'activapractica'      => $activa
         ]);
 
 
@@ -108,7 +115,8 @@ class PracticasController extends Controller
         $profesores = Profesor::all();
         $empresas = Empresa::all();
         $tutores = TutorE::all();
-        return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores'));
+        $periodos = PeriodoAcademico::all();
+        return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
     }
 
 
@@ -120,10 +128,12 @@ class PracticasController extends Controller
             'tutore'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
-            'salario'    => 'required'
+            'salario'    => 'required',
+            'horas'    => 'required',
+            'periodo'    => 'required'
         );
         $this->validate(request(), $rules);
-
+        $activa='TRUE';
 
         // store
         Practica::updateOrCreate(['idpractica'  => $id], [
@@ -134,7 +144,10 @@ class PracticasController extends Controller
             'fechainiciopractica'      => request('inicio'),
             'fechafinpractica'      => request('fin'),
             'tipopractica'      => request('tipo'),
-            'salariopractica'      => request('salario')
+            'salariopractica'      => request('salario'),
+            'idperiodoacademico'      => request('periodo'),
+            'horaspractica'      => request('horas'),
+            'activapractica'      => $activa
         ]);
 
 

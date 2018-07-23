@@ -48,16 +48,6 @@
                             </select>
                             </div>
                         </div>
-
-                        {{--<div class="col-lg-6" width="100%">
-
-                        </div>
-                        <div class="col-lg-1" ><span class="float-right" width="100%">
-                                <a href="/actividades/{{ $practica->idpractica .'/list'}}"  class="btn btn-info btn-lg btn-block">SEGUIMIENTO</a>
-                            </span>
-                        </div>
-                        <div class="col-lg-1" width="100%">
-                        </div>--}}
                         <div class="form-group">
                             <label class="col-sm-10 control-label" for="tutore">Tutor Empresarial:</label>
 
@@ -139,6 +129,28 @@
                             <input type="date" class="form-control" id="inicio" name="inicio" value="{{ $practica->fechainiciopractica }}">
                         </div>
                     </div>
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="periodo">Periodo Academico:</label>
+                            <div class="col-lg-11">
+                                <select id="periodo" name="periodo" class="form-control">
+                                    @foreach($periodos as $periodo)
+                                        <option value="{{ $periodo->idperiodoacademico }}"
+                                                @if($periodo->idperiodoacademico == $practica->idperiodoacademico)
+                                                selected
+                                                @endif
+                                        >{{ $periodo->nombreperiodoacademico }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="horas">Horas:</label>
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" id="horas" name="horas" value="{{ $practica->horaspractica }}">
+
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-10 control-label" for="descripcion">Descripcion:</label>
                             <div class="col-lg-11">

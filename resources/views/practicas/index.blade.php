@@ -36,8 +36,10 @@
                                         <th>Tutor Academico</th>
                                         <th>Tutor Empresarial</th>
                                         <th>Tipo</th>
+                                        <th>Periodo</th>
                                         <th>Inicio</th>
                                         <th>Fin</th>
+                                        <th>Horas</th>
                                         <td></td>
 
                                     </tr>
@@ -56,8 +58,10 @@
                                                 <a  class="btn btn-link" href="{{ URL::to('tutores/' . $practica->idtutore) }}">
                                                     {{ $practica->tutore->nombretutore .' '. $practica->tutore->apellidotutore }}</a></td>
                                             <td class="p-1 m-0">{{ $practica->tipopractica }}</td>
+                                            <td class="p-1 m-0">{{ $practica->periodoacademico->nombreperiodoacademico }}</td>
                                             <td class="p-1 m-0">{{ $practica->fechainiciopractica }}</td>
                                             <td class="p-1 m-0">{{ $practica->fechafinpractica }}</td>
+                                            <td class="p-1 m-0">{{ $practica->horaspractica }}</td>
                                             <td>
                                                 <a  class="btn btn-link" href="{{ URL::to('practicas/' . $practica->idpractica . '/edit') }}">
 

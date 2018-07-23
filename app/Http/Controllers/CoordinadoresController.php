@@ -45,14 +45,14 @@ class CoordinadoresController extends Controller
         );
         $this->validate(request(), $rules);
         $idprofesor=request('profesor');
-
+        $activo='TRUE';
         // store
         Coordinador::create([
             'idcarrera'       => request('carrera'),
             'idprofesor'       => request('profesor'),
             'fechainiciocoordinador'      => request('inicio'),
             'fechafincoordinador'      => request('fin'),
-            'activocoordinador'      => request('activo')
+            'activocoordinador'      => $activo
         ]);
         $profesor=Profesor::where('idprofesor','=',$idprofesor)->first();
         $user=User::where('id','=',$profesor->iduser)->first();
@@ -115,13 +115,18 @@ class CoordinadoresController extends Controller
 
         );
         $this->validate(request(), $rules);
-
+        $coordinador=Coordinador::where('idcoordinador','=',$id)->first();
 
         // store
         Coordinador::updateOrCreate(['idcoordinador'  => $id], [
             'fechafincoordinador'      => request('fin'),
             'activocoordinador'      => request('activo')
         ]);
+
+        $profesor=Profesor::where('idprofesor','=',$coordinador->idprofesor)->first();
+        $user=User::where('id','=',$profesor->iduser)->first();
+        $user->roles()->detach();
+        $user->roles()->attach(Role::where('name','=', 'prof')->first());
         return back();
 
 

@@ -38,9 +38,9 @@
                             <td>
                                 <input  style="width: 50%;display: inline" type="text" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
 
-                                <input  type="hidden" class="form-control" id="activo" name="activo" value="false">
+                                <input  type="hidden" class="form-control" id="activo" name="activo" value="FALSE">
 
-                                <button type="submit" class="btn btn-sm btn-outline-secondary">Cambiar</button>
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">Finalizar Termino</button>
 
 
                                 {{ Form::close() }}
@@ -78,7 +78,7 @@
                                 <td colspan="2"><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
                                         @if (empty($profesor))
                                             @foreach($profesores as $profesor)
-                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</option>
+                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombre1profesor }} {{ $profesor->nombre2profesor }} {{ $profesor->apellido1profesor }} {{ $profesor->apellido2profesor }}</option>
                                             @endforeach
                                         @else
                                             @foreach($profesores as $prof)

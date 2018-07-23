@@ -13,7 +13,6 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="card">
-                    <form role="form">
                 {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas", $practica->idpractica)]) }}
 
                     {{ csrf_field() }}
@@ -162,13 +161,11 @@
                     <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Guardar</button>
 
-                            <button type="submit" class="btn btn-danger float-right">FINALIZAR</button>
 
                         </div>
-                    </form>
+                    {{Form::close()}}
 
                     </div>
-                    </form>
                 @include('layouts.errors')
 
                 </div>

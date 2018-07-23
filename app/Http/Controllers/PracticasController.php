@@ -17,6 +17,10 @@ class PracticasController extends Controller
     {
         $this->middleware('auth');
     }
+    public function consultas(Request $request)
+    {
+        return view('practicas.consultas');
+    }
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin', 'est','prof','tut', 'coord']);

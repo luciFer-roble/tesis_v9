@@ -377,33 +377,6 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -510,107 +483,34 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 2 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+var g;
 
-var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(22);
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
 
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
 }
 
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(8);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(8);
-  }
-  return adapter;
-}
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
 
-var defaults = {
-  adapter: getDefaultAdapter(),
+module.exports = g;
 
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -692,7 +592,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -918,6 +818,106 @@ function applyToTag (styleElement, obj) {
   }
 }
 
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var utils = __webpack_require__(0);
+var normalizeHeaderName = __webpack_require__(22);
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(8);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(8);
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 6 */
@@ -1382,7 +1382,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(64);
+module.exports = __webpack_require__(74);
 
 
 /***/ }),
@@ -1443,7 +1443,10 @@ Vue.component('listarasignatura', __webpack_require__(40));
 Vue.component('noticias', __webpack_require__(43));
 Vue.component('actividad', __webpack_require__(51));
 Vue.component('documento-item', __webpack_require__(54));
-Vue.component('documentop', __webpack_require__(59));
+Vue.component('convenio-item', __webpack_require__(59));
+Vue.component('documentop', __webpack_require__(64));
+
+Vue.component('consulta-praticas', __webpack_require__(69));
 var app = new Vue({
     el: '#app'
 });
@@ -18620,7 +18623,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(16)(module)))
 
 /***/ }),
 /* 16 */
@@ -21177,7 +21180,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
 /* 18 */
@@ -21195,7 +21198,7 @@ module.exports = __webpack_require__(19);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(6);
 var Axios = __webpack_require__(21);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 
 /**
  * Create an instance of Axios
@@ -21278,7 +21281,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(30);
 var dispatchRequest = __webpack_require__(31);
@@ -21810,7 +21813,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(32);
 var isCancel = __webpack_require__(10);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(5);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -33017,7 +33020,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(38).setImmediate))
 
 /***/ }),
 /* 38 */
@@ -33087,7 +33090,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
 /* 39 */
@@ -33280,14 +33283,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(7)))
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(41)
 /* template */
@@ -33353,18 +33356,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['codigo', 'estudiante'],
+    props: ['codigo', 'estudiante', 'asignaturas'],
     name: 'fer',
     data: function data() {
         return {
             lista2: [],
-            seleccionado: '',
+            seleccionado: '0',
             rows: [{
                 title: 'Asignatura',
                 description: ''
-            }]
+            }],
+            check: false
         };
     },
     methods: {
@@ -33416,6 +33432,32 @@ var render = function() {
       [
         _c("tr"),
         _vm._v(" "),
+        _vm._l(_vm.asignaturas, function(asignatura) {
+          return _c("tr", { staticClass: "d-flex" }, [
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("td", { staticClass: "col-6" }, [
+              _c(
+                "select",
+                { staticClass: "form-control", attrs: { disabled: "" } },
+                _vm._l(_vm.lista2, function(item) {
+                  return _c(
+                    "option",
+                    {
+                      key: item.idasignatura,
+                      domProps: {
+                        value: item.idasignatura,
+                        selected: item.idasignatura == asignatura.idasignatura
+                      }
+                    },
+                    [_vm._v(_vm._s(item.nombreasignatura))]
+                  )
+                })
+              )
+            ])
+          ])
+        }),
+        _vm._v(" "),
         _vm._l(_vm.rows, function(row, index) {
           return _c("tr", { staticClass: "d-flex" }, [
             _c("td", { staticClass: "col-6" }, [
@@ -33466,16 +33508,23 @@ var render = function() {
                     ]
                   }
                 },
-                _vm._l(_vm.lista2, function(item) {
-                  return _c(
-                    "option",
-                    {
-                      key: item.idasignatura,
-                      domProps: { value: item.idasignatura }
-                    },
-                    [_vm._v(_vm._s(item.nombreasignatura))]
-                  )
-                })
+                [
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("-Seleccione-")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.lista2, function(item) {
+                    return _c(
+                      "option",
+                      {
+                        key: item.idasignatura,
+                        domProps: { value: item.idasignatura }
+                      },
+                      [_vm._v(_vm._s(item.nombreasignatura))]
+                    )
+                  })
+                ],
+                2
               )
             ])
           ])
@@ -33485,7 +33534,16 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "col-6" }, [
+      _c("label", [_vm._v("Asignatura")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -33504,7 +33562,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(44)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(47)
 /* template */
@@ -33557,7 +33615,7 @@ var content = __webpack_require__(45);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("c78fb70e", content, false, {});
+var update = __webpack_require__(4)("c78fb70e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33576,12 +33634,12 @@ if(false) {
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(true);
+exports = module.exports = __webpack_require__(3)(true);
 // imports
 
 
 // module
-exports.push([module.i, "\n.img-item[data-v-578d1136]{\n    height:37px !important;\n    cursor:pointer;\n}\n.fa-heart[data-v-578d1136]{\n    color: red;\n    cursor:pointer;\n}\n.fa-heart-o[data-v-578d1136]{\n    color:black;\n    cursor:pointer;\n}\na[data-v-578d1136]{\n    cursor:pointer;\n}\n\n\n", "", {"version":3,"sources":["C:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AA6UA;IACA,uBAAA;IACA,eAAA;CACA;AACA;IACA,WAAA;IACA,eAAA;CACA;AACA;IACA,YAAA;IACA,eAAA;CACA;AACA;IACA,eAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div>\r\n        <div class=\"container\">\r\n            <div class=\"form-group m-form__group\">\r\n                <textarea class=\"form-control m-input m-input--solid\" rows=\"3\" maxlength=\"500\" placeholder=\"Escriba\" v-model=\"comentario\"></textarea>\r\n                <div class=\"d-flex\">\r\n                    <div class=\"p-2\" style=\"width:80%\">\r\n                        <div id=\"mis-fotos\">\r\n                            <img :src=\"parsearArchivo(item.file)\" :data-src=\"parsearArchivo(item.file)\" class=\"img-item\" v-for=\"(item,index) in subidas\" v-show=\"index<19\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"ml-auto p-2\">\r\n                        <vue-dropzone  id=\"fotos\" :options=\"dropzoneOptions\" v-on:vdropzone-error=\"errores\" v-on:vdropzone-success=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" ref=\"fotos\" class=\"btn btn-secondary m-btn m-btn--icon\"/>\r\n                        <button type=\"reset\" class=\"btn btn-success btn-sm m-btn \tm-btn m-btn--icon\" v-on:click=\"enviar(null)\">\r\n                            <span>Enviar<span class=\"la la-send\"></span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"m-timeline-1 m-timeline-1--fixed\">\r\n            <div class=\"m-timeline-1__items\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <div class=\"m-timeline-1__item\" v-for=\"(item, index) in noticias\" v-bind:class=\"index % 2===0?'m-timeline-1__item--left': 'm-timeline-1__item--right'\">\r\n                    <div class=\"m-timeline-1__item-circle\">\r\n                        <div class=\"m--bg-danger\"></div>\r\n                    </div>\r\n                    <div class=\"m-timeline-1__item-arrow\"></div>\r\n                    <span class=\"m-timeline-1__item-time m--font-brand\">{{item.fecha}}</span>\r\n                    <div class=\"m-timeline-1__item-content\">\r\n                        <template v-if=\"item.code\">\r\n                                <div class=\"m-timeline-1__item-body\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"item.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <span class=\"m-widget3__username\">{{item.usuario}}</span><br>\r\n                                                    <b class=\"m-widget3__time\">{{item.org}}</b>\r\n                                                    <span class=\"m-widget3__status m--font-info\">\r\n                                                        <span class=\"fa\" v-bind:class=\"item.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(item)\" data-skin=\"dark\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+item.likes+'</b>'\"></span>\r\n                                                    </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{item.comentario}}\r\n                                                </p>\r\n                                                <div :id=\"item.code\">\r\n                                                    <img :src=\"imagen.down\" :data-src=\"imagen.down\" class=\"img-item\" v-for=\"(imagen,index) in item.fotos\" v-show=\"index<3\" v-on:mouseover=\"renderizarId(item.code)\"/>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                        </template>\r\n                        <template v-else>\r\n                            <div class=\"m-timeline-1__item-title\">\r\n                                {{item.proyecto.titulo_pr}}<br>\r\n                                <b>{{item.proyecto.org.ncomercial_or || item.proyecto.org.rsocial_or}}</b>\r\n                            </div>\r\n                            <div class=\"m-timeline-1__item-body\">{{item.proyecto.objgeneral_pr}}</div>\r\n                            <div class=\"m-timeline-1__item-actions\">\r\n                                <button class=\"btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom\" v-on:click=\"cargarProyecto(item.p)\">\r\n                                    Leer más..\r\n                                </button>\r\n                            </div>\r\n                        </template>\r\n                        <div class=\"m-timeline-1__item-actions\">\r\n                            <template v-if=\"item.hijos\">\r\n                                <div v-if=\"item.mostrando\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\" v-for=\"itemChill in item.listaHijos\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"itemChill.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <div class=\"d-flex\">\r\n                                                        <div class=\"p-2\">\r\n                                                            <span class=\"m-widget3__username\">{{itemChill.usuario}}</span><br>\r\n                                                            <b class=\"m-widget3__time\">{{itemChill.org}}</b>\r\n                                                        </div>\r\n                                                        <div class=\"ml-auto p-2\"><small class=\"text-muted\">{{itemChill.fecha}}</small></div>\r\n                                                        <span class=\"m-widget3__status m--font-info\">\r\n                                                            <span class=\"fa\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+itemChill.likes+'</b>'\" v-bind:class=\"itemChill.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(itemChill)\"></span>\r\n                                                        </span>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{itemChill.comentario}}\r\n                                                </p>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <a type=\"button\" class=\"m-nav__link btn-sm\" v-else v-on:click=\"mostrarComentarios(item)\">{{item.hijos}} Comentarios </a>\r\n                            </template>\r\n                            <div class=\"input-group m-input-group m-input-group--pill\">\r\n                                <input class=\"form-control m-input form-control-sm\" placeholder=\"Escribe un comentario. . .\" type=\"text\" v-model=\"item.texto\" v-on:keyup.13=\"enviarHijo(item)\" maxlength=\"500\"/>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"m-scroll-top m-scroll-top--skin-top\" data-toggle=\"m-scroll-top\" data-scroll-offset=\"500\" data-scroll-speed=\"300\">\r\n                    <i class=\"la la-arrow-up\"></i>\r\n                </div>\r\n            </div>\r\n            <infinite-loading @infinite=\"cargarMasNoticias\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <span slot=\"no-more\">\r\n                <div class=\"row\">\r\n                    <div class=\"col m--align-center\">\r\n                        <div class=\"btn btn-sm m-btn--custom m-btn--pill  btn-metal\">\r\n                            No existen más Noticias\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </span>\r\n                <span slot=\"no-results\">\r\n                No existen Noticias\r\n            </span>\r\n            </infinite-loading>\r\n            <proyecto :id=\"proyectoSele\" :clic=\"tiempo\"></proyecto>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import InfiniteLoading from 'vue-infinite-loading';\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    export default {\r\n        name: \"noticias\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone,\r\n            InfiniteLoading,\r\n        },\r\n        data: () => ({\r\n            subidas:[],\r\n            comentario:'',\r\n            noticias:[],\r\n\r\n            dropzoneOptions: {\r\n                url:'/consulta/upload',\r\n                maxFiles:30,\r\n                maxFilesize: 5,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: '<i class=\"la la-photo\"></i>',\r\n                previewTemplate:'<i><i/>',\r\n                acceptedFiles:'image/*',\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"Solo se admiten imágenes.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"A superado el límite de imágenes.\",\r\n            },\r\n            pagina:0,\r\n\r\n            proyectoSele:null,\r\n            tiempo:1,\r\n        }),\r\n        methods:{\r\n            cargarProyecto(codigo){\r\n                this.tiempo=moment();\r\n                this.proyectoSele=codigo;\r\n            },\r\n            parsearArchivo:function(archivo){\r\n                return ('/consulta/imagen?nombre='+archivo+'&p='+moment());\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: '/consulta/upload',\r\n                }).then((response) => {\r\n                    this.subidas=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href='/consulta/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: '/consulta/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            errores:function(file,meesage,xhr){\r\n                toastr.error(meesage, \"Error\");\r\n            },\r\n            enviar:function(){\r\n                if(this.comentario.length>10){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':this.comentario,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            toastr.info(\"Se publicó su comentario\", \"Éxito\");\r\n                            this.cargarPrimerasNoticias();\r\n                            this.comentario='';\r\n                            this.cargarArchivos();\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n                }else{\r\n                    toastr.error(\"El texto no puede estar vacío\", \"Error\");\r\n                }\r\n            },\r\n            enviarHijo:function(comentario){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':comentario.texto,\r\n                            'id':comentario.code,\r\n                            'p':comentario.p,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            comentario.texto='';\r\n                            comentario.hijos++;\r\n                            if(comentario.mostrando)\r\n                                this.cargarHijos(comentario);\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n            },\r\n            mostrarComentarios:function(comentario){\r\n                if(!comentario.mostrando){\r\n                    //Object.assign(comentario, {'mostrando':true});\r\n                    comentario.mostrando=true;\r\n                    this.cargarHijos(comentario);\r\n                }\r\n\r\n            },\r\n            cargarHijos:function(comentario){\r\n                let parametro   =   comentario.code ? comentario.code : comentario.p;\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url:window.location.href+'/'+parametro,\r\n                }).then((response) => {\r\n                    Object.assign(comentario, {'listaHijos':response.data});\r\n                });\r\n            },\r\n            cargarPrimerasNoticias:function(){\r\n                axios.options(window.location.href)\r\n                    .then((response) => {\r\n                        this.noticias = response.data;\r\n                    }).catch((error) => {\r\n                        if(error.status===500)\r\n                            this.cargarPrimerasNoticias();\r\n                    });\r\n            },\r\n            cargarMasNoticias:function($state){\r\n                let pagina  =   this.noticias.length / 5 + 1;\r\n                    pagina  =   pagina.toFixed(0);\r\n\r\n                if(pagina===this.pagina)\r\n                    pagina++;\r\n                axios.options(window.location.href, {\r\n                    params: {\r\n                        page: pagina,\r\n                    },\r\n                }).then((response) => {\r\n                    if (response.data.length) {\r\n                        this.noticias = this.noticias.concat(response.data);\r\n                        this.pagina=pagina;\r\n                        $state.loaded();\r\n                        /*\r\n                        if (this.noticias.length===response.data) {\r\n                            $state.complete();\r\n                        }*/\r\n                    } else {\r\n                        $state.complete();\r\n                    }\r\n                }).catch((error) => {\r\n                    if(error.status===500)\r\n                        this.cargarMasNoticias();\r\n                });\r\n            },\r\n            renderizarId:function(id){\r\n                lightGallery(document.getElementById(id),{\r\n                    download: false,\r\n                });\r\n            },\r\n            enviarLike:function(comentario){\r\n                axios({\r\n                    method: 'PUT',\r\n                    url:window.location.href,\r\n                    params:{\r\n                        'id':comentario.code,\r\n                    }\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        comentario.meLike=response.data.like;\r\n                        if(response.data.like)\r\n                            comentario.likes++;\r\n                        else\r\n                            comentario.likes--;\r\n                    }else{\r\n                        toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                    }\r\n                });\r\n            }\r\n        },\r\n        mounted(){\r\n            $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');\r\n            this.cargarArchivos();\r\n        },\r\n        updated(){\r\n            this.renderizarId('mis-fotos');\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .img-item{\r\n        height:37px !important;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart{\r\n        color: red;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart-o{\r\n        color:black;\r\n        cursor:pointer;\r\n    }\r\n    a{\r\n        cursor:pointer;\r\n    }\r\n\r\n\r\n</style>"],"sourceRoot":""}]);
+exports.push([module.i, "\n.img-item[data-v-578d1136]{\n    height:37px !important;\n    cursor:pointer;\n}\n.fa-heart[data-v-578d1136]{\n    color: red;\n    cursor:pointer;\n}\n.fa-heart-o[data-v-578d1136]{\n    color:black;\n    cursor:pointer;\n}\na[data-v-578d1136]{\n    cursor:pointer;\n}\n\n\n", "", {"version":3,"sources":["D:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AA6UA;IACA,uBAAA;IACA,eAAA;CACA;AACA;IACA,WAAA;IACA,eAAA;CACA;AACA;IACA,YAAA;IACA,eAAA;CACA;AACA;IACA,eAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div>\r\n        <div class=\"container\">\r\n            <div class=\"form-group m-form__group\">\r\n                <textarea class=\"form-control m-input m-input--solid\" rows=\"3\" maxlength=\"500\" placeholder=\"Escriba\" v-model=\"comentario\"></textarea>\r\n                <div class=\"d-flex\">\r\n                    <div class=\"p-2\" style=\"width:80%\">\r\n                        <div id=\"mis-fotos\">\r\n                            <img :src=\"parsearArchivo(item.file)\" :data-src=\"parsearArchivo(item.file)\" class=\"img-item\" v-for=\"(item,index) in subidas\" v-show=\"index<19\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"ml-auto p-2\">\r\n                        <vue-dropzone  id=\"fotos\" :options=\"dropzoneOptions\" v-on:vdropzone-error=\"errores\" v-on:vdropzone-success=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" ref=\"fotos\" class=\"btn btn-secondary m-btn m-btn--icon\"/>\r\n                        <button type=\"reset\" class=\"btn btn-success btn-sm m-btn \tm-btn m-btn--icon\" v-on:click=\"enviar(null)\">\r\n                            <span>Enviar<span class=\"la la-send\"></span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"m-timeline-1 m-timeline-1--fixed\">\r\n            <div class=\"m-timeline-1__items\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <div class=\"m-timeline-1__item\" v-for=\"(item, index) in noticias\" v-bind:class=\"index % 2===0?'m-timeline-1__item--left': 'm-timeline-1__item--right'\">\r\n                    <div class=\"m-timeline-1__item-circle\">\r\n                        <div class=\"m--bg-danger\"></div>\r\n                    </div>\r\n                    <div class=\"m-timeline-1__item-arrow\"></div>\r\n                    <span class=\"m-timeline-1__item-time m--font-brand\">{{item.fecha}}</span>\r\n                    <div class=\"m-timeline-1__item-content\">\r\n                        <template v-if=\"item.code\">\r\n                                <div class=\"m-timeline-1__item-body\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"item.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <span class=\"m-widget3__username\">{{item.usuario}}</span><br>\r\n                                                    <b class=\"m-widget3__time\">{{item.org}}</b>\r\n                                                    <span class=\"m-widget3__status m--font-info\">\r\n                                                        <span class=\"fa\" v-bind:class=\"item.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(item)\" data-skin=\"dark\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+item.likes+'</b>'\"></span>\r\n                                                    </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{item.comentario}}\r\n                                                </p>\r\n                                                <div :id=\"item.code\">\r\n                                                    <img :src=\"imagen.down\" :data-src=\"imagen.down\" class=\"img-item\" v-for=\"(imagen,index) in item.fotos\" v-show=\"index<3\" v-on:mouseover=\"renderizarId(item.code)\"/>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                        </template>\r\n                        <template v-else>\r\n                            <div class=\"m-timeline-1__item-title\">\r\n                                {{item.proyecto.titulo_pr}}<br>\r\n                                <b>{{item.proyecto.org.ncomercial_or || item.proyecto.org.rsocial_or}}</b>\r\n                            </div>\r\n                            <div class=\"m-timeline-1__item-body\">{{item.proyecto.objgeneral_pr}}</div>\r\n                            <div class=\"m-timeline-1__item-actions\">\r\n                                <button class=\"btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom\" v-on:click=\"cargarProyecto(item.p)\">\r\n                                    Leer más..\r\n                                </button>\r\n                            </div>\r\n                        </template>\r\n                        <div class=\"m-timeline-1__item-actions\">\r\n                            <template v-if=\"item.hijos\">\r\n                                <div v-if=\"item.mostrando\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\" v-for=\"itemChill in item.listaHijos\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"itemChill.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <div class=\"d-flex\">\r\n                                                        <div class=\"p-2\">\r\n                                                            <span class=\"m-widget3__username\">{{itemChill.usuario}}</span><br>\r\n                                                            <b class=\"m-widget3__time\">{{itemChill.org}}</b>\r\n                                                        </div>\r\n                                                        <div class=\"ml-auto p-2\"><small class=\"text-muted\">{{itemChill.fecha}}</small></div>\r\n                                                        <span class=\"m-widget3__status m--font-info\">\r\n                                                            <span class=\"fa\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+itemChill.likes+'</b>'\" v-bind:class=\"itemChill.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(itemChill)\"></span>\r\n                                                        </span>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{itemChill.comentario}}\r\n                                                </p>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <a type=\"button\" class=\"m-nav__link btn-sm\" v-else v-on:click=\"mostrarComentarios(item)\">{{item.hijos}} Comentarios </a>\r\n                            </template>\r\n                            <div class=\"input-group m-input-group m-input-group--pill\">\r\n                                <input class=\"form-control m-input form-control-sm\" placeholder=\"Escribe un comentario. . .\" type=\"text\" v-model=\"item.texto\" v-on:keyup.13=\"enviarHijo(item)\" maxlength=\"500\"/>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"m-scroll-top m-scroll-top--skin-top\" data-toggle=\"m-scroll-top\" data-scroll-offset=\"500\" data-scroll-speed=\"300\">\r\n                    <i class=\"la la-arrow-up\"></i>\r\n                </div>\r\n            </div>\r\n            <infinite-loading @infinite=\"cargarMasNoticias\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <span slot=\"no-more\">\r\n                <div class=\"row\">\r\n                    <div class=\"col m--align-center\">\r\n                        <div class=\"btn btn-sm m-btn--custom m-btn--pill  btn-metal\">\r\n                            No existen más Noticias\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </span>\r\n                <span slot=\"no-results\">\r\n                No existen Noticias\r\n            </span>\r\n            </infinite-loading>\r\n            <proyecto :id=\"proyectoSele\" :clic=\"tiempo\"></proyecto>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import InfiniteLoading from 'vue-infinite-loading';\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    export default {\r\n        name: \"noticias\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone,\r\n            InfiniteLoading,\r\n        },\r\n        data: () => ({\r\n            subidas:[],\r\n            comentario:'',\r\n            noticias:[],\r\n\r\n            dropzoneOptions: {\r\n                url:'/consulta/upload',\r\n                maxFiles:30,\r\n                maxFilesize: 5,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: '<i class=\"la la-photo\"></i>',\r\n                previewTemplate:'<i><i/>',\r\n                acceptedFiles:'image/*',\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"Solo se admiten imágenes.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"A superado el límite de imágenes.\",\r\n            },\r\n            pagina:0,\r\n\r\n            proyectoSele:null,\r\n            tiempo:1,\r\n        }),\r\n        methods:{\r\n            cargarProyecto(codigo){\r\n                this.tiempo=moment();\r\n                this.proyectoSele=codigo;\r\n            },\r\n            parsearArchivo:function(archivo){\r\n                return ('/consulta/imagen?nombre='+archivo+'&p='+moment());\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: '/consulta/upload',\r\n                }).then((response) => {\r\n                    this.subidas=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href='/consulta/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: '/consulta/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            errores:function(file,meesage,xhr){\r\n                toastr.error(meesage, \"Error\");\r\n            },\r\n            enviar:function(){\r\n                if(this.comentario.length>10){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':this.comentario,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            toastr.info(\"Se publicó su comentario\", \"Éxito\");\r\n                            this.cargarPrimerasNoticias();\r\n                            this.comentario='';\r\n                            this.cargarArchivos();\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n                }else{\r\n                    toastr.error(\"El texto no puede estar vacío\", \"Error\");\r\n                }\r\n            },\r\n            enviarHijo:function(comentario){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':comentario.texto,\r\n                            'id':comentario.code,\r\n                            'p':comentario.p,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            comentario.texto='';\r\n                            comentario.hijos++;\r\n                            if(comentario.mostrando)\r\n                                this.cargarHijos(comentario);\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n            },\r\n            mostrarComentarios:function(comentario){\r\n                if(!comentario.mostrando){\r\n                    //Object.assign(comentario, {'mostrando':true});\r\n                    comentario.mostrando=true;\r\n                    this.cargarHijos(comentario);\r\n                }\r\n\r\n            },\r\n            cargarHijos:function(comentario){\r\n                let parametro   =   comentario.code ? comentario.code : comentario.p;\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url:window.location.href+'/'+parametro,\r\n                }).then((response) => {\r\n                    Object.assign(comentario, {'listaHijos':response.data});\r\n                });\r\n            },\r\n            cargarPrimerasNoticias:function(){\r\n                axios.options(window.location.href)\r\n                    .then((response) => {\r\n                        this.noticias = response.data;\r\n                    }).catch((error) => {\r\n                        if(error.status===500)\r\n                            this.cargarPrimerasNoticias();\r\n                    });\r\n            },\r\n            cargarMasNoticias:function($state){\r\n                let pagina  =   this.noticias.length / 5 + 1;\r\n                    pagina  =   pagina.toFixed(0);\r\n\r\n                if(pagina===this.pagina)\r\n                    pagina++;\r\n                axios.options(window.location.href, {\r\n                    params: {\r\n                        page: pagina,\r\n                    },\r\n                }).then((response) => {\r\n                    if (response.data.length) {\r\n                        this.noticias = this.noticias.concat(response.data);\r\n                        this.pagina=pagina;\r\n                        $state.loaded();\r\n                        /*\r\n                        if (this.noticias.length===response.data) {\r\n                            $state.complete();\r\n                        }*/\r\n                    } else {\r\n                        $state.complete();\r\n                    }\r\n                }).catch((error) => {\r\n                    if(error.status===500)\r\n                        this.cargarMasNoticias();\r\n                });\r\n            },\r\n            renderizarId:function(id){\r\n                lightGallery(document.getElementById(id),{\r\n                    download: false,\r\n                });\r\n            },\r\n            enviarLike:function(comentario){\r\n                axios({\r\n                    method: 'PUT',\r\n                    url:window.location.href,\r\n                    params:{\r\n                        'id':comentario.code,\r\n                    }\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        comentario.meLike=response.data.like;\r\n                        if(response.data.like)\r\n                            comentario.likes++;\r\n                        else\r\n                            comentario.likes--;\r\n                    }else{\r\n                        toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                    }\r\n                });\r\n            }\r\n        },\r\n        mounted(){\r\n            $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');\r\n            this.cargarArchivos();\r\n        },\r\n        updated(){\r\n            this.renderizarId('mis-fotos');\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .img-item{\r\n        height:37px !important;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart{\r\n        color: red;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart-o{\r\n        color:black;\r\n        cursor:pointer;\r\n    }\r\n    a{\r\n        cursor:pointer;\r\n    }\r\n\r\n\r\n</style>"],"sourceRoot":""}]);
 
 // exports
 
@@ -34654,7 +34712,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(52)
 /* template */
@@ -34928,7 +34986,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(55)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(57)
 /* template */
@@ -34981,7 +35039,7 @@ var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("2467c4b1", content, false, {});
+var update = __webpack_require__(4)("2467c4b1", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -35000,7 +35058,7 @@ if(false) {
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(true);
+exports = module.exports = __webpack_require__(3)(true);
 // imports
 
 
@@ -35183,11 +35241,280 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(60)
 }
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(62)
 /* template */
 var __vue_template__ = __webpack_require__(63)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5a3f7196"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\convenio-item.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a3f7196", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a3f7196", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(61);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("532e2422", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5a3f7196\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./convenio-item.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5a3f7196\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./convenio-item.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"convenio-item.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        convenio: {
+            type: Object
+        },
+        sede: String,
+        empresa: String
+    },
+    data: function data() {
+        return {
+            borrado: false
+        };
+    },
+    methods: {
+        descargar: function descargar() {
+            var _this = this;
+
+            axios({
+                url: '/convenios/' + this.convenio.idconvenio + '/descargar',
+                method: 'GET',
+                responseType: 'blob'
+            }).then(function (response) {
+                var url = window.URL.createObjectURL(new Blob([response.data]));
+                var link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', _this.convenio.archivoconvenio); //or any other extension
+                document.body.appendChild(link);
+                link.click();
+
+                // window.open('/formatos/'+this.formato.idformato+'/descargar/');
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        eliminar: function eliminar() {
+            axios({
+                url: '/convenios/' + this.convenio.idconvenio,
+                method: 'DELETE'
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            this.borrado = true;
+        },
+        editar: function editar() {
+            window.location.href = '/convenios/' + this.convenio.idconvenio + '/edit';
+        }
+    }
+});
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "tr",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.borrado,
+          expression: "!borrado"
+        }
+      ]
+    },
+    [
+      _c("td", [_vm._v(_vm._s(_vm.convenio.idconvenio))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.sede))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.empresa))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.convenio.descripcionconvenio))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.convenio.fechainicioconvenio))]),
+      _vm._v(" "),
+      _c("td", [_vm._v(_vm._s(_vm.convenio.fechafinconvenio))]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-link",
+            on: { click: _vm.descargar },
+            model: {
+              value: _vm.convenio.archivoconvenio,
+              callback: function($$v) {
+                _vm.$set(_vm.convenio, "archivoconvenio", $$v)
+              },
+              expression: "convenio.archivoconvenio"
+            }
+          },
+          [_vm._v(_vm._s(_vm.convenio.archivoconvenio))]
+        )
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm1" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                attrs: { type: "button" },
+                on: { click: _vm.editar }
+              },
+              [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm1" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-link",
+                attrs: { type: "submit" },
+                on: { click: _vm.eliminar }
+              },
+              [_c("i", { staticClass: "fa fa-fw fa-trash-alt" })]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5a3f7196", module.exports)
+  }
+}
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(65)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35226,17 +35553,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("7f84afa1", content, false, {});
+var update = __webpack_require__(4)("7f84afa1", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -35252,21 +35579,21 @@ if(false) {
 }
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(true);
+exports = module.exports = __webpack_require__(3)(true);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"documentop.vue","sourceRoot":""}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"documentop.vue","sourceRoot":""}]);
 
 // exports
 
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35313,7 +35640,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             descripcion: '',
             archivo: '',
-            mostrar: false
+            mostrar: false,
+            file: ''
         };
     },
 
@@ -35339,16 +35667,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         guardar: function guardar() {
-            axios.post('/documentos/', {
-                tipo: this.tipo.idtipodocumento,
-                practica: this.practica.idpractica,
-                archivo: this.archivo,
-                estudiante: this.practica.idestudiante
+
+            this.file = this.$refs.file.files[0];
+            var formData = new FormData();
+            formData.append('tipo', this.tipo.idtipodocumento);
+            formData.append('practica', this.practica.idpractica);
+            formData.append('archivo', this.file);
+            formData.append('estudiante', this.practica.idestudiante);
+
+            axios.post('/documentos/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
+            this.mostrar = true;
+            this.archivo = this.practica.idestudiante + this.tipo.idtipodocumento + 'P' + this.practica.idpractica;
         },
         editar: function editar() {
             window.location.href = '/formatos/' + this.formato.idformato + '/edit';
@@ -35364,7 +35701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35390,15 +35727,11 @@ var render = function() {
       ? _c("td", { staticClass: "p-0 m-0" }, [
           _c("div", { staticClass: "input-group" }, [
             _c("div", { staticClass: "custom-file" }, [
-              _c(
-                "input",
-                _vm._b(
-                  { attrs: { type: "file", name: "archivo", id: "archivo" } },
-                  "input",
-                  _vm.archivo,
-                  false
-                )
-              ),
+              _c("input", {
+                ref: "file",
+                attrs: { type: "file", name: "archivo", id: "archivo" },
+                on: { change: _vm.guardar }
+              }),
               _vm._v(" "),
               _c("label", { attrs: { for: "archivo" } })
             ])
@@ -35421,7 +35754,8 @@ var render = function() {
         _c("label", [
           _c("input", {
             staticClass: "form-control custom-checkbox ",
-            attrs: { type: "checkbox", disabled: _vm.mostrar }
+            attrs: { type: "checkbox", disabled: _vm.mostrar },
+            domProps: { checked: _vm.mostrar }
           })
         ])
       ])
@@ -35439,7 +35773,399 @@ if (false) {
 }
 
 /***/ }),
-/* 64 */
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(70)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-323589db"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\consulta-practicas.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-323589db", Component.options)
+  } else {
+    hotAPI.reload("data-v-323589db", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("7e4de596", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-323589db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./consulta-practicas.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-323589db\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./consulta-practicas.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"consulta-practicas.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "consulta-practicas",
+    data: function data() {
+        return {
+            lista: [],
+            criterio: 'estudiante',
+            parametro: ''
+        };
+    },
+    methods: {
+        cargardatos: function cargardatos() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/consultar-practicas', {
+                params: { 'criterio': this.criterio,
+                    'parametro': this.parametro }
+            }).then(function (response) {
+                _this.lista = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card mb-3" }, [
+    _c("div", { staticClass: "card-header " }, [
+      _c("div", { staticClass: "form-inline mr-2" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.criterio,
+                expression: "criterio"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.criterio = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "0" } }, [_vm._v("-Seleccione-")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "estudiante" } }, [
+              _vm._v("Estudiante")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "profesor" } }, [
+              _vm._v("Tutor Academico")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.parametro,
+              expression: "parametro"
+            }
+          ],
+          staticClass: " form-control",
+          attrs: {
+            type: "search",
+            placeholder: "Buscar...",
+            "aria-label": "Search"
+          },
+          domProps: { value: _vm.parametro },
+          on: {
+            keyup: _vm.cargardatos,
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.parametro = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body", attrs: { id: "app" } }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          {
+            staticClass: "table table-bordered",
+            attrs: { id: "dataTable", width: "100%", cellspacing: "0" }
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.lista, function(item) {
+                return _c("tr", [
+                  _c("td", [_vm._v(_vm._s(item.idpractica))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-link",
+                        attrs: { href: "estudiantes/" + item.idestudiante }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            item.nombre1estudiante +
+                              " " +
+                              item.apellido1estudiante
+                          )
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-link",
+                        attrs: { href: "empresas/" + item.idempresa }
+                      },
+                      [_vm._v(_vm._s(item.nombreempresa))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-link",
+                        attrs: { href: "profesores/" + item.idprofesor }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            item.nombre1profesor + " " + item.apellido1profesor
+                          )
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-link",
+                        attrs: { href: "tutores/" + item.idtutore }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(item.nombretutore + " " + item.apellidotutore)
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.tipopractica))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fechainiciopractica))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.fechafinpractica))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.activapractica))])
+                ])
+              })
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer small text-muted" }, [
+      _vm._v("Updated yesterday at 11:59 PM")
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Codigo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Estudiante")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Empresa")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tutor Academico")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tutor Empresarial")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Tipo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Inicio")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fin")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Finalizada")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-323589db", module.exports)
+  }
+}
+
+/***/ }),
+/* 74 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

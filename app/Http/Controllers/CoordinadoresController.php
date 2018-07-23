@@ -54,8 +54,8 @@ class CoordinadoresController extends Controller
             'fechafincoordinador'      => request('fin'),
             'activocoordinador'      => request('activo')
         ]);
-        $profesor=Profesor::all()->where('idprofesor','=',$idprofesor)->first();
-        $user=User::all()->where('id','=',$profesor->iduser)->first();
+        $profesor=Profesor::where('idprofesor','=',$idprofesor)->first();
+        $user=User::where('id','=',$profesor->iduser)->first();
         $user->roles()->detach();
         $user->roles()->attach(Role::where('name','=', 'coord')->first());
 

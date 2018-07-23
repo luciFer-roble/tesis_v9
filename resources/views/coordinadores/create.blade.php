@@ -71,7 +71,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                                    <input type="date" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                                                 </div>
                                             </td>
                                         </tr>
@@ -83,7 +83,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                     </div>
-                                                    <input id="fin" name="fin" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                                    <input id="fin" name="fin" type="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                                                 </div>
                                             </td>
                                         </tr>

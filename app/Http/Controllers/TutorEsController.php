@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\TutorE;
 use App\Empresa;
 
 class TutorEsController extends Controller
 {
+    use RegistersUsers;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -24,8 +29,9 @@ class TutorEsController extends Controller
         return view('tutores.index', compact('tutores'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin', 'coord']);
         $empresas =Empresa::all();
         return view('tutores.create')->with(compact('empresas'));
     }
@@ -41,10 +47,19 @@ class TutorEsController extends Controller
             'nombre'       => 'required',
             'apellido'    => 'required',
             'celular'       => 'required',
-            'correo'     => 'required'
+            'correo'     => 'required',
+            'cedula'    => 'required'
         );
         $this->validate(request(), $rules);
 
+        $name= request('nombre').' '.request('apellido');
+        $user = User::create([
+            'name'     => $name,
+            'email'    => request('correo'),
+            'password' => bcrypt(request('cedula')),
+        ]);
+        $user->roles()->attach(Role::where('name','=', 'tut')->first());
+        $iduser=$user->id;
 
         // store
         TutorE::create([
@@ -52,7 +67,8 @@ class TutorEsController extends Controller
             'nombretutore'       => request('nombre'),
             'apellidotutore'      => request('apellido'),
             'celulartutore'      => request('celular'),
-            'correotutore' => request('correo')
+            'correotutore' => request('correo'),
+            'iduser'=> $iduser
         ]);
 
 

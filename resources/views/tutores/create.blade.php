@@ -36,7 +36,10 @@
                             @endif
                         </select>
                     </div>
-
+                    <div class="formgroup" width="100%">
+                        <label for="cedula">Cedula:</label>
+                        <input type="text" class="form-control" id="cedula" name="cedula">
+                    </div>
                     <div class="formgroup" width="100">
                         <label for="nombre">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre">

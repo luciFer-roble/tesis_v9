@@ -20,18 +20,6 @@ class EstudiantexAsignaturaController extends Controller
     {
         $this->middleware('auth');
     }
-    public function roba(Request $carrera)
-    {
-        $asignaturas = DB::table('carrera')
-            ->join('mallascurricular', 'carrera.idcarrera', '=', 'mallascurricular.idcarrera')
-            ->join('nivel', 'mallascurricular.idmalla', '=', 'nivel.idmalla')
-            ->join('asignatura', 'nivel.idnivel', '=', 'asignatura.idnivel')
-            ->select('asignatura.idasignatura',  'asignatura.nombreasignatura')
-            ->where('carrera.idcarrera', '=', $carrera->idcarrera)
-            ->get();
-        return $asignaturas;
-
-    }
 
     /**
      * Show the form for creating a new resource.

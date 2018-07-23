@@ -59,6 +59,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    public function estudiante(){
+        return $this->hasOne('App\Estudiante');
+    }
+    public function profesor(){
+        return $this->hasOne('App\Profesor');
+    }
+    public function tutore(){
+        return $this->hasOne('App\TutorE');
+    }
     protected $fillable = [
         'name', 'email', 'password',
     ];

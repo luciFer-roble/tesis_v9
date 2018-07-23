@@ -18,6 +18,10 @@ class Facultad extends Model
         return $this->hasMany('App\Escuela');
     }
 
+    public function periodoacademico(){
+        return $this->hasMany('App\PeriodoAcademico');
+    }
+
     public function sede(){
         return $this->belongsTo('App\Sede', 'idsede', 'idsede');
     }

@@ -16,7 +16,7 @@
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                    <tr>
+                    <tr v-show="check">
                         <th>Codigo</th>
                         <th>Estudiante</th>
                         <th>Empresa</th>
@@ -25,17 +25,20 @@
                         <th>Tipo</th>
                         <th>Inicio</th>
                         <th>Fin</th>
-                        <th>Finalizada</th>
+                        <th>En curso</th>
+                    </tr>
+                    <tr v-show="vacio">
+                        No se encontraron coincidencias
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="item in lista">
 
                         <td>{{ item.idpractica }}</td>
-                        <td> <a  class="btn btn-link" :href="'estudiantes/' + item.idestudiante" >{{ item.nombre1estudiante+' '+item.apellido1estudiante}}</a></td>
-                        <td><a  class="btn btn-link" :href="'empresas/' + item.idempresa" >{{ item.nombreempresa}}</a></td>
-                        <td><a  class="btn btn-link" :href="'profesores/' + item.idprofesor" >{{ item.nombre1profesor+' '+item.apellido1profesor }}</a></td>
-                        <td><a  class="btn btn-link" :href="'tutores/' + item.idtutore" >{{ item.nombretutore+' '+item.apellidotutore }}</a></td>
+                        <td> <a  class="btn btn-link" :href="'/estudiantes/' + item.idestudiante" >{{ item.nombre1estudiante+' '+item.apellido1estudiante}}</a></td>
+                        <td><a  class="btn btn-link" :href="'/empresas/' + item.idempresa" >{{ item.nombreempresa}}</a></td>
+                        <td><a  class="btn btn-link" :href="'/profesores/' + item.idprofesor" >{{ item.nombre1profesor+' '+item.apellido1profesor }}</a></td>
+                        <td><a  class="btn btn-link" :href="'/tutores/' + item.idtutore" >{{ item.nombretutore+' '+item.apellidotutore }}</a></td>
                         <td>{{ item.tipopractica }}</td>
                         <td>{{ item.fechainiciopractica }}</td>
                         <td>{{ item.fechafinpractica }}</td>
@@ -56,18 +59,27 @@
         data:()=>({
             lista:[],
             criterio:'estudiante',
-            parametro:''
+            parametro:'',
+            check: false,
+            vacio: false
         }),
         methods:{
             cargardatos:function () {
                 axios.get(window.location.origin+'/api/consultar-practicas',{
                     params:{'criterio':this.criterio,
-                    'parametro': this.parametro}
+                        'parametro': this.parametro}
                 }).then((response)=>{
                     this.lista=response.data;
+                    if(Object.keys(this.lista).length === 0){
+                        this.check = false;
+                        this.vacio = true;
+                    }else{
+                        this.check = true;
+                        this.vacio = false;
+                    }
                 }).catch(function (error) {
-                        console.log(error);
-                    });
+                    console.log(error);
+                });
 
             }
         }

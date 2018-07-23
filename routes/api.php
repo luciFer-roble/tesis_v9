@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('lista_asignaturas','ConsultasController@listarasignaturas');
 Route::get('consultar-practicas','ConsultasController@consultarpracticas');
+Route::get('listar-select1','ConsultasController@listarselect1');
+Route::get('consultar2-practicas','ConsultasController@consultarpracticas2');

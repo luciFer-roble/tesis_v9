@@ -21,6 +21,10 @@ class PracticasController extends Controller
     {
         return view('practicas.consultas');
     }
+    public function consultas2(Request $request)
+    {
+        return view('practicas.consultas2');
+    }
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin', 'est','prof','tut', 'coord']);

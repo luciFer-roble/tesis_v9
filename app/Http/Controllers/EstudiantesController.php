@@ -6,12 +6,16 @@ use App\Carrera;
 use App\Escuela;
 use App\Estudiante;
 use App\Facultad;
+use App\Role;
 use App\Sede;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\View\View;
 
 class EstudiantesController extends Controller
 {
+    use RegistersUsers;
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,8 +30,10 @@ class EstudiantesController extends Controller
         return view('estudiantes.index', compact('estudiantes', 'carreras', 'escuelas', 'facultades', 'sedes'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+
+        $request->user()->authorizeRoles(['admin',  'coord']);
         $carreras =Carrera::all();
         $escuelas =Escuela::all();
         $facultades =Facultad::all();
@@ -52,7 +58,14 @@ class EstudiantesController extends Controller
         );
         $this->validate(request(), $rules);
 
-
+        $name= request('nombre1').' '.request('apellido1');
+        $user = User::create([
+            'name'     => $name,
+            'email'    => request('correo'),
+            'password' => bcrypt(request('cedula')),
+        ]);
+        $user->roles()->attach(Role::where('name','=', 'est')->first());
+        $iduser=$user->id;
         // store
         Estudiante::create([
             'idestudiante'       => request('cedula'),
@@ -66,8 +79,10 @@ class EstudiantesController extends Controller
             'correoestudiante'      => request('correo'),
             'celularestudiante'      => request('celular'),
             'fechanacimientoestudiante'      => request('fechanacimiento'),
-            'generoestudiante'      => request('genero')
+            'generoestudiante'      => request('genero'),
+            'iduser'=>$iduser
         ]);
+
 
 
         // redirect

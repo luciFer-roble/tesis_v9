@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Carrera;
 use App\Coordinador;
 use App\Profesor;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use function Symfony\Component\VarDumper\Tests\Fixtures\bar;
 
@@ -42,7 +44,7 @@ class CoordinadoresController extends Controller
             'fin'    => 'required'
         );
         $this->validate(request(), $rules);
-
+        $idprofesor=request('profesor');
 
         // store
         Coordinador::create([
@@ -52,6 +54,10 @@ class CoordinadoresController extends Controller
             'fechafincoordinador'      => request('fin'),
             'activocoordinador'      => request('activo')
         ]);
+        $profesor=Profesor::all()->where('idprofesor','=',$idprofesor)->first();
+        $user=User::all()->where('id','=',$profesor->iduser)->first();
+        $user->roles()->detach();
+        $user->roles()->attach(Role::where('name','=', 'coord')->first());
 
 
         // redirect

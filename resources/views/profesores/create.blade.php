@@ -21,7 +21,12 @@
                                 <label for="id">Id:</label>
                                 <input type="text" class="form-control" id="id" name="id">
                             </div>
-
+                            <div class="row" style="width: 51%" >
+                                <div class="col-lg-12" width="50%">
+                                    <label for="cedula">Cedula:</label>
+                                    <input type="text" class="form-control" id="cedula" name="cedula">
+                                </div>
+                            </div>
                             <div class="col-lg-6" width="100">
                                 <label for="escuela">Escuela:</label>
                                 <select id="escuela" name="escuela" class="form-control">

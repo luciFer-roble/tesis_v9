@@ -21,5 +21,7 @@ class TutorE extends Model
     public function empresa(){
         return $this->belongsTo('App\Empresa', 'idempresa', 'idempresa');
     }
-
+    public function user(){
+        return $this->belongsTo('App\User', 'iduser', 'id');
+    }
 }

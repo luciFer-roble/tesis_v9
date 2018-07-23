@@ -25,4 +25,7 @@ class Profesor extends Model
     public function coordinador(){
         return $this->hasMany('App\Coordinador');
     }
+    public function user(){
+        return $this->belongsTo('App\User', 'iduser', 'id');
+    }
 }

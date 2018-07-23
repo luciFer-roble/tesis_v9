@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Escuela;
 use App\Profesor;
+use App\Role;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
 class ProfesoresController extends Controller
 {
+    use RegistersUsers;
     public function __construct()
     {
         $this->middleware('auth');
@@ -19,8 +23,9 @@ class ProfesoresController extends Controller
         return view('profesores.index', compact('profesores','escuelas'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles(['admin', 'coord']);
         $escuelas =Escuela::all();
         return view('profesores.create')->with(compact('escuelas'));
     }
@@ -35,10 +40,19 @@ class ProfesoresController extends Controller
             'apellido2'    => 'required',
             'correo'    => 'required',
             'oficina'    => 'required',
-            'celular'    => 'required'
+            'celular'    => 'required',
+            'cedula'    => 'required'
         );
         $this->validate(request(), $rules);
 
+        $name= request('nombre1').' '.request('apellido1');
+        $user = User::create([
+            'name'     => $name,
+            'email'    => request('correo'),
+            'password' => bcrypt(request('cedula')),
+        ]);
+        $user->roles()->attach(Role::where('name','=', 'prof')->first());
+        $iduser=$user->id;
 
         // store
         Profesor::create([
@@ -50,7 +64,8 @@ class ProfesoresController extends Controller
             'apellido2profesor'      => request('apellido2'),
             'correoprofesor'      => request('correo'),
             'oficinaprofesor'      => request('oficina'),
-            'celularprofesor'      => request('celular')
+            'celularprofesor'      => request('celular'),
+            'iduser'=>$iduser
         ]);
 
 

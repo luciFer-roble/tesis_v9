@@ -16,4 +16,7 @@ class PeriodoAcademico extends Model
     public function facultad(){
         return $this->belongsTo('App\Facultad', 'idfacultad', 'idfacultad');
     }
+    public function practica(){
+        return $this->hasMany('App\Practica');
+    }
 }

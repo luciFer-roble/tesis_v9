@@ -120,6 +120,25 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-10 control-label" for="periodo">Periodo Academico:</label>
+                            <div class="col-lg-11">
+                                <select id="periodo" name="periodo" class="form-control">
+                                    @foreach($periodos as $periodo)
+                                        <option value="{{ $periodo->idperiodoacademico }}"
+                                        >{{ $periodo->nombreperiodoacademico }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="horas">Horas:</label>
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" id="horas" name="horas" >
+
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-10 control-label" for="descripcion">Descripcion:</label>
                             <div class="col-lg-11">
                                 <textarea  class="form-control" id="descripcion" name="descripcion" ></textarea>

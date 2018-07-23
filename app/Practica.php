@@ -26,6 +26,9 @@ class Practica extends Model
     public function estudiante(){
         return $this->belongsTo('App\Estudiante', 'idestudiante', 'idestudiante');
     }
+    public function periodoacademico(){
+        return $this->belongsTo('App\PeriodoAcademico', 'idperiodoacademico', 'idperiodoacademico');
+    }
 
     public function documentop(){
         return $this->hasMany('App\DocumentoP');

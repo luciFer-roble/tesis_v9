@@ -3,13 +3,13 @@
     <div class="card mb-3">
         <div class="card-header ">
             <div class="form-inline mr-2">
-                <select  class="form-control" v-model="criterio" @change="cargarselect">
+                <select  class="form-control" v-model="criterio2" @change="cargarselect">
                     <option value="0">-Seleccione-</option>
                     <option value="periodo">Periodo Academico</option>
                     <option value="empresa">Empresa</option>
                     <option value="nivel">Nivel</option>
                 </select>
-                <select class="form-control" v-model="parametro" @change="cargardatos">
+                <select class="form-control" v-model="parametro2" @change="cargardatos2">
                     <option value="0">-Seleccione-</option>
                     <option v-if="isperiodo" v-for="item in lista2" :value="item.idperiodoacademico">{{ item.facultad.nombrefacultad+' '+item.nombreperiodoacademico}}</option>
                     <option v-if="isempresa" v-for="item in lista2" :value="item.idempresa">{{ item.nombreempresa }}</option>

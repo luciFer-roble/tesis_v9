@@ -35,8 +35,6 @@ Route::put('/empresas/{empresa}', 'EmpresasController@update');
 Route::delete('/empresas/{empresa}', 'EmpresasController@destroy');
 
 
-Route::get('/empresasc', 'EmpresasController@index2');
-
 Route::get('/carreras', 'CarrerasController@index');
 Route::get('/carreras/create', 'CarrerasController@create');
 Route::get('/carreras/{escuela}', 'CarrerasController@show');

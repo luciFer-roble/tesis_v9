@@ -16,17 +16,20 @@ class EmpresasController extends Controller
     }
     public function index()
     {
-        $empresas = Empresa::all();
+        $empresas = DB::table('empresa')
+        ->leftJoin('convenio', 'empresa.idempresa', '=', 'convenio.idempresa')
+        ->leftJoin('sede', 'convenio.idsede', '=', 'sede.idsede')
+        ->get();
         return view('empresas.index', compact('empresas'));
     }
-    public function index2()
+   /* public function index2()
     {
         $empresas = DB::table('empresa')
             ->leftJoin('convenio', 'empresa.idempresa', '=', 'convenio.idempresa')
             ->leftJoin('sede', 'convenio.idsede', '=', 'sede.idsede')
         ->get();
         return view('empresas.coordinador.index', compact('empresas'));
-    }
+    }*/
 
     public function create()
     {

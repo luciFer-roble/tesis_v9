@@ -26,6 +26,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
 
+                                @if(Auth::user()->hasRole('admin'))
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
@@ -38,42 +39,80 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($empresas as $empresa)
-                                        <tr>
-                                            <td>{{ $empresa->nombreempresa }}</td>
-                                            <td>{{ $empresa->direccionempresa }}</td>
-                                            <td>{{ $empresa->sectorempresa }}</td>
-                                            <td>{{ $empresa->telefonoempresa }}</td>
-                                            <td>
+
+                                        @foreach($empresas as $empresa)
+                                            <tr>
+                                                <td>{{ $empresa->nombreempresa }}</td>
+                                                <td>{{ $empresa->direccionempresa }}</td>
+                                                <td>{{ $empresa->sectorempresa }}</td>
+                                                <td>{{ $empresa->telefonoempresa }}</td>
+                                                <td>
 
 
 
-                                                <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                                                <a class="btn btn-small btn-success" href="{{ URL::to('empresas/' . $empresa->idempresa) }}">ver
-                                                </a>-->
-                                                <div class="row">
-                                                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('empresas/' . $empresa->idempresa . '/edit') }}">
+                                                    <!-- show the nerd (uses the show method found at GET /nerds/{id}
+                                                    <a class="btn btn-small btn-success" href="{{ URL::to('empresas/' . $empresa->idempresa) }}">ver
+                                                    </a>-->
+                                                    <div class="row">
+                                                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
+                                                        <div class="col-sm1">
+                                                    <a  class="btn btn-link" href="{{ URL::to('empresas/' . $empresa->idempresa . '/edit') }}">
 
-                                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                                </a></div>
+                                                        <i class="fa fa-fw fa-pencil-alt"></i>
+                                                    </a></div>
 
-                                                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                                <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
-                                                {{ Form::open(array('url' => 'empresas/' . $empresa->idempresa, 'class' => '')) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                {{ Form::close() }}
+                                                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                                                    <!-- we will add this later since its a little more complicated than the other two buttons -->
+                                                        <div class="col-sm1">
+                                                    {{ Form::open(array('url' => 'empresas/' . $empresa->idempresa, 'class' => '')) }}
+                                                    {{ Form::hidden('_method', 'DELETE') }}
+                                                        <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                    {{ Form::close() }}
+                                                        </div>
                                                     </div>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                @endif
+
+                                @if(Auth::user()->hasRole('coord'))
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>Empresa</th>
+                                                <th>Direccion</th>
+                                                <th>Sector</th>
+                                                <th>Telefono</th>
+                                                <th>Convenio</th>
+                                                <td>Sede</td>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($empresas as $empresa)
+                                                <tr is="empresa-item"  :empresa="{{ $empresa }}">
+
+                                                </tr>
+                                            @endforeach
+
+                                            {{--lo comentado de abajo es para probar el join:--}}
+                                            {{-- @foreach($empresas as $empresa)
+                                                  <tr>
+                                                     <td>{{ $empresa->nombreempresa }}</td>
+                                                     <td>{{ $empresa->direccionempresa }}</td>
+                                                     <td>{{ $empresa->sectorempresa }}</td>
+                                                      <td>{{ $empresa->telefonoempresa }}</td>
+                                                      <td>{{ $empresa->idconvenio }}</td>
+                                                      <td>{{ $empresa->nombresede }}</td>
+
+
+                                                 </tr>
+                                             @endforeach--}}
+                                            </tbody>
+                                        </table>
+                                @endif
                             </div>
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

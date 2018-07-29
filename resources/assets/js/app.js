@@ -53,6 +53,7 @@ Vue.component('noticias', require('./components/noticias.vue'));
 Vue.component('actividad', require('./components/actividad.vue'));
 Vue.component('documento-item', require('./components/documento-item.vue'));
 Vue.component('convenio-item', require('./components/convenio-item.vue'));
+Vue.component('empresa-item', require('./components/convenio-item.vue'));
 Vue.component('documentop', require('./components/documentop.vue'));
 Vue.component('consulta2-praticas', require('./components/consulta2-practicas.vue'));
 Vue.component('consulta-praticas', require('./components/consulta-practicas.vue'));

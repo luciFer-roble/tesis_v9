@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Convenio;
+use App\Sede;
 use Illuminate\Http\Request;
 use App\Empresa;
+use Illuminate\Support\Facades\DB;
 
 class EmpresasController extends Controller
 {
@@ -15,6 +18,14 @@ class EmpresasController extends Controller
     {
         $empresas = Empresa::all();
         return view('empresas.index', compact('empresas'));
+    }
+    public function index2()
+    {
+        $empresas = DB::table('empresa')
+            ->leftJoin('convenio', 'empresa.idempresa', '=', 'convenio.idempresa')
+            ->leftJoin('sede', 'convenio.idsede', '=', 'sede.idsede')
+        ->get();
+        return view('empresas.coordinador.index', compact('empresas'));
     }
 
     public function create()

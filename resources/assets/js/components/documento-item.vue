@@ -1,4 +1,4 @@
-<template>
+    <template>
     <tr v-show="!borrado">
         <td>{{ formato.idtipodocumento }}</td>
         <td>{{ descripcion }}</td>

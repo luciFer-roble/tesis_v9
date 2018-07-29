@@ -10,7 +10,7 @@
             <!-- Breadcrumbs-->
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" >
 
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
@@ -19,14 +19,14 @@
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>EMPRESAS</h1></div>
                             <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA">
                             </div>
                         </div>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
 
                                 @if(Auth::user()->hasRole('admin'))
+                                <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
@@ -47,12 +47,6 @@
                                                 <td>{{ $empresa->sectorempresa }}</td>
                                                 <td>{{ $empresa->telefonoempresa }}</td>
                                                 <td>
-
-
-
-                                                    <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                                                    <a class="btn btn-small btn-success" href="{{ URL::to('empresas/' . $empresa->idempresa) }}">ver
-                                                    </a>-->
                                                     <div class="row">
                                                     <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
                                                         <div class="col-sm1">
@@ -75,9 +69,13 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+
+                                </div>
                                 @endif
 
                                 @if(Auth::user()->hasRole('coord'))
+
+                                        <div class="table-responsive" id="app">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                             <tr>
@@ -92,7 +90,11 @@
                                             </thead>
                                             <tbody>
                                             @foreach($empresas as $empresa)
-                                                <tr is="empresa-item"  :empresa="{{ $empresa }}">
+
+                                                {{--@php--}}
+                                                    {{--var_dump($empresa); exit();--}}
+                                                {{--@endphp--}}
+                                                <tr is="empresa-item"  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" >
 
                                                 </tr>
                                             @endforeach
@@ -112,8 +114,9 @@
                                              @endforeach--}}
                                             </tbody>
                                         </table>
+
+                                        </div>
                                 @endif
-                            </div>
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>

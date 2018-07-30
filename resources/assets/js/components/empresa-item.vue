@@ -8,9 +8,28 @@
         <td>{{ sede }}</td>
         <td>
             <div class="row">
-                    <button  type="button" class="btn btn-success" @click="tutores">
-                    Ver Tutores
-                    </button>
+                <button  type="button" class="btn btn-success" @click="tutores">
+                    Ver
+                </button>
+                <!--INTENTO DE CONDICION EN BOTONES DE TUTOR:-->
+                <!--@foreach(tutores as tutor)
+                @if(tutor->idempresa == empresa->idempresa )
+                hastutores=true
+                @break
+                @endif
+                @endforeach
+                @if(hastutores == true)
+                <button  type="button" class="btn btn-success" @click="tutores">
+                    Ver
+                </button>
+
+                @else
+                <button  type="button" class="btn btn-success" >
+                    Sin asignar
+                </button>
+
+                @endif-->
+
             </div>
 
         </td>
@@ -25,6 +44,12 @@
             },
             convenios: {
                 type: Array
+            },
+            tutores: {
+                type: Array
+            },
+            hastutores:{
+                type:String
             }
         },
         data:()=>({
@@ -56,18 +81,6 @@
                     });
 
             },
-/*            eliminar:function () {
-                axios({
-                    url: '/convenios/'+this.convenio.idconvenio,
-                    method: 'DELETE'
-                }).then(function (response) {
-                    console.log(response);
-                }).catch(function (error) {
-                        console.log(error);
-                    });
-
-                this.borrado = true;
-            },*/
             tutores:function () {
                 window.location.href = '/tutores/'+this.empresa.idempresa+'/list';
             }

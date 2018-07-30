@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Convenio;
 use App\Sede;
+use App\TutorE;
 use Illuminate\Http\Request;
 use App\Empresa;
 use Illuminate\Support\Facades\DB;
@@ -16,10 +17,11 @@ class EmpresasController extends Controller
     }
     public function index()
     {
+        $tutores=TutorE::all();
         $convenios = Convenio::with('sede')->get();
         $empresas = Empresa::all();
 
-        return view('empresas.index', compact('empresas', 'convenios'));
+        return view('empresas.index', compact('empresas', 'convenios','tutores'));
     }
    /* public function index2()
     {

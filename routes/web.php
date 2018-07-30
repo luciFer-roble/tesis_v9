@@ -148,6 +148,7 @@ Route::delete('/practicas/{practica}', 'PracticasController@destroy');
 Route::get('/consultas/practicas', 'PracticasController@consultas');
 Route::get('/consultas2/practicas', 'PracticasController@consultas2');
 Route::get('/practicas/{profesor}/list', 'PracticasController@indexfrom');
+Route::get('/practicas/{estudiante}/list2', 'PracticasController@indexfrom2');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');

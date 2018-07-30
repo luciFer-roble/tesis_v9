@@ -22,12 +22,13 @@
                                     <div class="btn-group mr-2">
                                         <input  type="button" onClick="location.href = 'estudiantes/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
                                     </div>
-                                    @endif
+                                 @endif
                                 </div>
                             </div>
                         <div class="card-body m-0">
                             <div class="table-responsive">
 
+                                @if(Auth::user()->hasRole('admin'))
                                 <table class="table table-bordered" style="table-layout: inherit"  >
 
                                     <tbody style="font-size: 10px" >
@@ -45,9 +46,8 @@
                                     <th >Facultad</th>
                                     <th >Escuela</th>
                                     <th >Carrera</th>
-                                        @if(Auth::user()->hasRole('admin'))
                                     <td colspan="3" ></td>
-                                            @endif
+
 
                                 </tr>
 
@@ -70,7 +70,7 @@
                                             <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
                                             <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->escuela->nombreescuela }}</td>
                                             <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
-                                            @if(Auth::user()->hasRole('admin'))
+
                                             <td class="p-0 m-0" style="vertical-align: middle">
 
                                                     <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
@@ -88,10 +88,8 @@
                                                         <i class="fa fa-fw fa-clipboard-list"></i></a>
 
                                             </td>
-                                                @endif
                                         </tr>
                                     @endforeach
-                                    @if(Auth::user()->hasRole('admin'))
                                         <form method="POST" action="/estudiantes">
                                             {{ csrf_field() }}
 
@@ -135,9 +133,51 @@
                                                 <td colspan="3" style="vertical-align: middle" class="p-0 m-0"><button type="submit"class="btn btn-sm btn-primary btn-block">Insertar</button></td>
                                             </tr>
                                         </form>
-                                        @endif
                                 </tbody>
                                 </table>
+                                @else
+                                    <table class="table table-bordered" style="table-layout: inherit"  >
+
+                                        <tbody>
+                                        <tr>
+                                            <th >Cedula</th>
+                                            <th >Nombre</th>
+                                            <th >Celular</th>
+                                            <th >Correo</th>
+                                            <th >Facultad</th>
+                                            <th >Carrera</th>
+                                            <th >Horas</th>
+
+
+                                        </tr>
+
+
+                                        @foreach($estudiantes as $estudiante)
+                                            <tr>
+                                                <td class="p-1 m-0" >{{ $estudiante->cedulaestudiante }}</td>
+                                                <td class="p-1 m-0" >{{ $estudiante->nombre1estudiante }} {{ $estudiante->nombre2estudiante }} {{ $estudiante->apellido1estudiante }} {{ $estudiante->apellido2estudiante }}</td>
+                                                <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
+                                                <td  class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
+                                                <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
+                                                <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
+                                                <td  class="p-1 m-0" align="center">
+                                                    @if(!empty($estudiante->horasestudiante ))
+                                                        <a href="/practicas/{{ $estudiante->idestudiante .'/list2'}}"  class="btn btn-outline-success " style="width: 100%">{{$estudiante->horasestudiante}}</a>
+
+                                                        @else
+                                                        <a href=#  class="btn btn-outline-danger " style="width: 100%">0</a>
+
+                                                    @endif
+
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+
+                                        </tbody>
+                                    </table>
+                                @endif
+
 
                             </div>
                         </div>

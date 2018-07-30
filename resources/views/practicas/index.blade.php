@@ -8,7 +8,7 @@
             <!-- Breadcrumbs-->
 
             <div class="row">
-                    @if(Auth::user()->hasRole('admin') or (Auth::user()->hasRole('coord') and !empty($profesor)))
+                    @if(Auth::user()->hasRole('est')or Auth::user()->hasRole('est')or Auth::user()->hasRole('prof') or Auth::user()->hasRole('tut') or  (Auth::user()->hasRole('coord') and (!empty($profesor) or !empty($estudiante))))
 
                     <div class="col-12" id="app">
                         <!-- Example DataTables Card-->
@@ -82,7 +82,6 @@
 </div>
 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
-<div>Acceso como administrador</div>
 
 </div>
 

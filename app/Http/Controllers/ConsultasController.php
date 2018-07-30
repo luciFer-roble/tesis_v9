@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\Nivel;
 use App\PeriodoAcademico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +24,16 @@ class ConsultasController extends Controller
 
     }
 
+    public function todaslaspracticas(){
+        $practicas =DB::table('practica')
+            ->join('estudiante', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->get();
+        return $practicas;
+    }
+
     public function consultarpracticas(Request $request)
     {
         $practicas =DB::table('practica')
@@ -40,7 +51,12 @@ class ConsultasController extends Controller
             $lista = Empresa::all();
         }
         else{
-            $lista = PeriodoAcademico::with('facultad')->get();
+            if ($request->criterio == 'periodo'){
+                $lista = PeriodoAcademico::with('facultad')->get();
+            }
+            else{
+                $lista = Nivel::all();
+            }
         }
         return $lista;
     }
@@ -54,12 +70,31 @@ class ConsultasController extends Controller
                 ->where('empresa.idempresa', '=', $request->parametro)->get();
         }
         else{
-            $practicas =DB::table('practica')
-                ->join('estudiante', 'practica.idestudiante', '=', 'estudiante.idestudiante')
-                ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
-                ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
-                ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-                ->where('practica.idperiodoacademico', '=', $request->parametro)->get();
+            if ($request->criterio == 'periodo'){
+                $practicas =DB::table('practica')
+                    ->join('estudiante', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                    ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+                    ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                    ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                    ->where('practica.idperiodoacademico', '=', $request->parametro)->get();
+            }
+            else{
+                $estudiantes = DB::select("select estudiante.idestudiante
+                from estudiante
+                join estudiantexasignatura on estudiantexasignatura.idestudiante = estudiante.idestudiante
+                join asignatura on estudiantexasignatura.idasignatura = asignatura.idasignatura
+                join nivel on nivel.idnivel = asignatura.idnivel
+                group by estudiante.idestudiante
+                having min(nivel.idnivel) = '".$request->parametro."'");
+                $lista = collect($estudiantes)->map(function($x){ return (array) $x; })->toArray();
+
+                $practicas =DB::table('practica')
+                    ->join('estudiante', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                    ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+                    ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                    ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                    ->whereIn('estudiante.idestudiante', $lista)->get();
+            }
         }
         return $practicas;
     }

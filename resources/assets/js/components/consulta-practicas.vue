@@ -18,6 +18,7 @@
                     <option value="0">-Seleccione-</option>
                     <option v-if="isperiodo" v-for="item in lista2" :value="item.idperiodoacademico">{{ item.facultad.nombrefacultad+' '+item.nombreperiodoacademico}}</option>
                     <option v-if="isempresa" v-for="item in lista2" :value="item.idempresa">{{ item.nombreempresa }}</option>
+                    <option v-if="isnivel" v-for="item in lista2" :value="item.idnivel">{{ item.nombrenivel }}</option>
                 </select>
             </div>
         </div>
@@ -89,6 +90,7 @@
             parametro2:'0',
             isperiodo: false,
             isempresa: false,
+            isnivel: false
         }),
         methods:{
             cargardatos:function () {
@@ -130,16 +132,50 @@
 
 
             },
+            mostrartodo:function () {
+                axios.get(window.location.origin+'/api/todo-practicas'
+                ).then((response)=>{
+                    this.lista=response.data;
+                    if(Object.keys(this.lista).length === 0){
+                        this.check = false;
+                        this.vacio = true;
+                    }else{
+                        this.check = true;
+                        this.vacio = false;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+
+
+            },
 
             cargarselect:function () {
                 console.log(this.criterio);
                 if(this.criterio === 'empresa'){
                     this.isempresa = true;
                     this.isperiodo = false;
+                    this.isnivel = false;
                 }
                 else {
-                    this.isempresa = false;
-                    this.isperiodo = true;
+                    if (this.criterio === 'periodo'){
+                        this.isempresa = false;
+                        this.isperiodo = true;
+                        this.isnivel = false;
+                    }
+                    else {
+                        if (this.criterio === 'nivel'){
+                            this.isempresa = false;
+                            this.isperiodo = false;
+                            this.isnivel = true;
+                        }
+                        else {
+                            this.isempresa = false;
+                            this.isperiodo = false;
+                            this.isnivel = false;
+                        }
+                    }
                 }
                 axios.get(window.location.origin+'/api/listar-select1',{
                     params:{'criterio':this.criterio}
@@ -153,6 +189,9 @@
             editar:function (id) {
                 window.location.href = '/practicas/'+id+'/edit';
             }
+        },
+        created() {
+            this.mostrartodo();
         }
     }
 </script>

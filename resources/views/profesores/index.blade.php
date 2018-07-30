@@ -41,7 +41,7 @@
                                         <th>Celular</th>
                                         <th>Oficina</th>
                                         <th>Escuela</th>
-                                        <th></th>
+                                        <th>Tutorias</th>
                                         @if(Auth::user()->hasRole('admin'))
                                         <td colspan="3"></td>
                                             @endif
@@ -61,12 +61,22 @@
                                             <td class="p-1 m-0">{{ $profesor->oficinaprofesor }}</td>
                                             <td class="p-1 m-0">{{ $profesor->escuela->nombreescuela }}</td>
                                             <td class="p-1 m-0">
-                                                @foreach($practicas as $practica)
-                                                    @if($profesor->idprofesor == $practica->idprofesor )
-                                                        <a type="button" class="btn btn-success" href="{{ URL::to('practicas/' . $profesor->idprofesor . '/list') }}">Tutor</a>
-                                                    @break
+                                                <?php $haspracticas=false; ?>
+                                                    @foreach($practicas as $practica)
+                                                        @if($profesor->idprofesor == $practica->idprofesor )
+                                                            <?php $haspracticas=true ?>
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                    @if($haspracticas == true)
+                                                            <a href="/practicas/{{ $profesor->idprofesor .'/list'}}"  class="btn btn-outline-success " style="width: 100%">Ver</a>
+
+
+                                                         @else
+                                                        <a class="btn btn-outline-danger " href=# style="width: 100%">Sin asignar</a>
+
                                                     @endif
-                                                @endforeach
+
                                             </td>
                                             @if(Auth::user()->hasRole('admin'))
                                             <td>

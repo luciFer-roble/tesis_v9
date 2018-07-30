@@ -52,7 +52,7 @@ class PracticasController extends Controller
     }
     public function indexfrom(Profesor $profesor){
         $practicas = Practica::all()->where('idprofesor','=',$profesor->idprofesor);
-        return view('practicas.index', compact('practicas'));
+        return view('practicas.index', compact('practicas','profesor'));
 
     }
     public function create(Request $request)
@@ -120,7 +120,12 @@ class PracticasController extends Controller
         $empresas = Empresa::all();
         $tutores = TutorE::all();
         $periodos = PeriodoAcademico::all();
-        return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
+        if(Auth::user()->hasRole('admin') ){
+            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
+        }
+        if(Auth::user()->hasRole('coord') ){
+            return view('practicas.show')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
+        }
     }
 
 

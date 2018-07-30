@@ -6,11 +6,15 @@ use App\Carrera;
 use App\Escuela;
 use App\Estudiante;
 use App\Facultad;
+use App\Practica;
+use App\Profesor;
 use App\Role;
 use App\Sede;
 use App\User;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class EstudiantesController extends Controller
@@ -22,7 +26,21 @@ class EstudiantesController extends Controller
     }
     public function index()
     {
-        $estudiantes = Estudiante::all();
+        if(Auth::user()->hasRole('prof')){
+            $profesor = Profesor::all()->where('iduser','=',Auth::user()->id)->first();
+            $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
+                ->where('practica.idprofesor','=',$profesor->idprofesor)
+                ->get();
+        }
+        else{
+            $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+            ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->groupBy('estudiante.idestudiante')
+            ->get();
+
+        }
         $carreras =Carrera::all();
         $escuelas =Escuela::all();
         $facultades =Facultad::all();

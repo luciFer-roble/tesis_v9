@@ -17,9 +17,11 @@
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>TUTORES</h1></div>
+                                @if(Auth::user()->hasRole('admin'))
                             <div class="btn-group mr-2">
                                 <input type="button" onClick="location.href = 'tutores/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                             </div>
+                                    @endif
                         </div>
                         </div>
                         <div class="card-body">
@@ -33,7 +35,9 @@
                                         <th>Apellido</th>
                                         <th>Celular</th>
                                         <th>Correo</th>
+                                        @if(Auth::user()->hasRole('admin'))
                                         <td></td>
+                                            @endif
 
                                     </tr>
                                     </thead>
@@ -45,6 +49,7 @@
                                             <td>{{ $tutore->apellidotutore }}</td>
                                             <td>{{ $tutore->celulartutore }}</td>
                                             <td>{{ $tutore->correotutore }}</td>
+                                            @if(Auth::user()->hasRole('admin'))
                                             <td>
 
                                                 <div class="row">
@@ -66,6 +71,7 @@
                                                 </div>
 
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     </tbody>

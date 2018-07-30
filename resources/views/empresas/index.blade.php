@@ -73,9 +73,7 @@
                                 </table>
 
                                 </div>
-                                @endif
-
-                                @if(Auth::user()->hasRole('coord'))
+                                @else
 
                                         <div class="table-responsive" id="app">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -87,7 +85,7 @@
                                                 <th>Telefono</th>
                                                 <th>Convenio</th>
                                                 <th>Sede</th>
-                                                <th></th>
+                                                <th>Tutores</th>
 
                                             </tr>
                                             </thead>
@@ -97,7 +95,8 @@
                                                 {{--@php--}}
                                                     {{--var_dump($empresa); exit();--}}
                                                 {{--@endphp--}}
-                                                <tr is="empresa-item"  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" >
+                                                <tr is="empresa-item"  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :tutores="{{$tutores}}"
+                                                    hastutores="false">
 
                                                 </tr>
                                             @endforeach

@@ -124,7 +124,7 @@
 
                     </li>
                     @endif
-
+                @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') or Auth::user()->hasRole('tut'))
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
                         <i class="fa fa-user"></i>
@@ -133,6 +133,7 @@
                         </p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fa fa-book-open"></i>
@@ -156,6 +157,8 @@
                         </li>
                     </ul>
                 </li>
+
+                @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-pie-chart"></i>
@@ -179,7 +182,7 @@
                         </li>
                     </ul>
                 </li>
-
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

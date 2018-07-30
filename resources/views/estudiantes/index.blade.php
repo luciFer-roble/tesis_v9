@@ -18,9 +18,11 @@
 
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <h1>ESTUDIANTES</h1></div>
+                                @if(Auth::user()->hasRole('admin'))
                                     <div class="btn-group mr-2">
                                         <input  type="button" onClick="location.href = 'estudiantes/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         <div class="card-body m-0">
@@ -43,7 +45,9 @@
                                     <th >Facultad</th>
                                     <th >Escuela</th>
                                     <th >Carrera</th>
+                                        @if(Auth::user()->hasRole('admin'))
                                     <td colspan="3" ></td>
+                                            @endif
 
                                 </tr>
 
@@ -66,6 +70,7 @@
                                             <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
                                             <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->escuela->nombreescuela }}</td>
                                             <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
+                                            @if(Auth::user()->hasRole('admin'))
                                             <td class="p-0 m-0" style="vertical-align: middle">
 
                                                     <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
@@ -83,8 +88,10 @@
                                                         <i class="fa fa-fw fa-clipboard-list"></i></a>
 
                                             </td>
+                                                @endif
                                         </tr>
                                     @endforeach
+                                    @if(Auth::user()->hasRole('admin'))
                                         <form method="POST" action="/estudiantes">
                                             {{ csrf_field() }}
 
@@ -128,6 +135,7 @@
                                                 <td colspan="3" style="vertical-align: middle" class="p-0 m-0"><button type="submit"class="btn btn-sm btn-primary btn-block">Insertar</button></td>
                                             </tr>
                                         </form>
+                                        @endif
                                 </tbody>
                                 </table>
 

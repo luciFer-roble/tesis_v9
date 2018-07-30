@@ -26,10 +26,50 @@
                             <label for="direccion">Direccion:</label>
                             <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $empresa->direccionempresa }}">
                         </div>
-
+                        <div class="form-group">
+                            <label for="tipo">Tipo:</label>
+                                <select id="tipo" name="tipo" class="form-control">
+                                    <option value="Publica"
+                                            @if("Publica" == $empresa->tipoempresa)
+                                            selected
+                                            @endif
+                                    >Publica</option>
+                                    <option value="Privada"
+                                            @if("Privada" == $empresa->tipoempresa)
+                                            selected
+                                            @endif
+                                    >Privada</option>
+                                    <option value="Sin fines de lucro"
+                                            @if("Sin fines de lucro" == $empresa->tipoempresa)
+                                            selected
+                                            @endif
+                                    >Sin fines de lucro</option>
+                                    <option value="Organismo Internacional"
+                                            @if("Organismo Internacional" == $empresa->tipoempresa)
+                                            selected
+                                            @endif
+                                    >Organismo Internacional</option>
+                                </select>
+                        </div>
                         <div class="formgroup">
                             <label for="sector">Sector:</label>
-                            <input type="text" class="form-control" id="sector" name="sector" value="{{ $empresa->sectorempresa }}">
+                            <select id="sector" name="sector" class="form-control">
+                                <option value="Primario"
+                                        @if("Primario" == $empresa->sectorempresa)
+                                        selected
+                                        @endif
+                                >PRIMARIO (Agricultura, Ganadería, Pesca, Minería)</option>
+                                <option value="Secundario"
+                                        @if("Secundario" == $empresa->sectorempresa)
+                                        selected
+                                        @endif
+                                >SECUNDARIO (Industria, Construcción)</option>
+                                <option value="Terciario"
+                                        @if("Terciario" == $empresa->sectorempresa)
+                                        selected
+                                        @endif
+                                >TERCIARIO (Comercio, Servicios)</option>
+                            </select>
                         </div>
 
                         <div class="formgroup">

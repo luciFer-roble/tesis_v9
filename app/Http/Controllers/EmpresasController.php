@@ -41,7 +41,8 @@ class EmpresasController extends Controller
             'nombre'       => 'required',
             'direccion'    => 'required',
             'sector'       => 'required',
-            'telefono'     => 'required'
+            'telefono'     => 'required',
+            'tipo'     => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -51,7 +52,8 @@ class EmpresasController extends Controller
                 'nombreempresa'       => request('nombre'),
                 'direccionempresa'      => request('direccion'),
                 'sectorempresa'      => request('sector'),
-                'telefonoempresa' => request('telefono')
+                'telefonoempresa' => request('telefono'),
+                'tipoempresa' => request('tipo')
             ]);
 
 
@@ -81,16 +83,19 @@ class EmpresasController extends Controller
             'nombre'       => 'required',
             'direccion'    => 'required',
             'sector'       => 'required',
-            'telefono'     => 'required'
+            'telefono'     => 'required',
+            'tipo'     => 'required'
         );
         $this->validate(request(), $rules);
 
 
         // store
-        Empresa::updateOrCreate(['idempresa'  => $id], ['nombreempresa'       => request('nombre'),
+        Empresa::updateOrCreate(['idempresa'  => $id], [
+            'nombreempresa'       => request('nombre'),
             'direccionempresa'      => request('direccion'),
             'sectorempresa'      => request('sector'),
-            'telefonoempresa' => request('telefono')
+            'telefonoempresa' => request('telefono'),
+            'tipoempresa' => request('tipo')
         ]);
 
 

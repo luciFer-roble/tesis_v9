@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Escuela;
+use App\Practica;
 use App\Profesor;
 use App\Role;
 use App\User;
@@ -20,12 +21,13 @@ class ProfesoresController extends Controller
     {
         $profesores = Profesor::all();
         $escuelas = Escuela::all();
-        return view('profesores.index', compact('profesores','escuelas'));
+        $practicas = Practica::all();
+        return view('profesores.index', compact('profesores','escuelas','practicas'));
     }
 
     public function create(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'coord']);
+        $request->user()->authorizeRoles(['admin']);
         $escuelas =Escuela::all();
         return view('profesores.create')->with(compact('escuelas'));
     }
@@ -82,8 +84,10 @@ class ProfesoresController extends Controller
     }
 
 
-    public function edit(Profesor $profesor)
+    public function edit(Profesor $profesor, Request $request)
     {
+
+        $request->user()->authorizeRoles(['admin']);
         $escuelas =Escuela::all();
         return view('profesores.edit')->with(compact('profesor', 'escuelas'));
     }

@@ -31,12 +31,13 @@ class TutorEsController extends Controller
 
     public function create(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'coord']);
+        $request->user()->authorizeRoles(['admin']);
         $empresas =Empresa::all();
         return view('tutores.create')->with(compact('empresas'));
     }
-    public function createfrom(Empresa $empresa)
+    public function createfrom(Empresa $empresa, Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $empresas =Empresa::all();
         return view('tutores.create')->with(compact('empresa', 'empresas'));
     }
@@ -85,8 +86,9 @@ class TutorEsController extends Controller
     }
 
 
-    public function edit(TutorE $tutore)
+    public function edit(TutorE $tutore, Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         $empresas =Empresa::all();
         return view('tutores.edit')->with(compact('tutore', 'empresas'));
     }

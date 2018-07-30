@@ -17,9 +17,11 @@
                                 <div class="btn-toolbar mb-2 mb-md-0">
 
                                     <h1>PROFESORES</h1></div>
+                                @if(Auth::user()->hasRole('admin'))
                                     <div class="btn-group mr-2">
                                     <input type="button" onClick="location.href = 'profesores/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                                 </div>
+                                    @endif
                             </div>
 
 
@@ -39,7 +41,10 @@
                                         <th>Celular</th>
                                         <th>Oficina</th>
                                         <th>Escuela</th>
+                                        <th></th>
+                                        @if(Auth::user()->hasRole('admin'))
                                         <td colspan="3"></td>
+                                            @endif
 
                                     </tr>
                                     </thead>
@@ -55,6 +60,15 @@
                                             <td class="p-1 m-0">{{ $profesor->celularprofesor }}</td>
                                             <td class="p-1 m-0">{{ $profesor->oficinaprofesor }}</td>
                                             <td class="p-1 m-0">{{ $profesor->escuela->nombreescuela }}</td>
+                                            <td class="p-1 m-0">
+                                                @foreach($practicas as $practica)
+                                                    @if($profesor->idprofesor == $practica->idprofesor )
+                                                        <a type="button" class="btn btn-success" href="{{ URL::to('practicas/' . $profesor->idprofesor . '/list') }}">Tutor</a>
+                                                    @break
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            @if(Auth::user()->hasRole('admin'))
                                             <td>
                                                 <a  class="btn btn-link" href="{{ URL::to('profesores/' . $profesor->idprofesor . '/edit') }}">
 
@@ -64,9 +78,12 @@
                                                 {{ Form::hidden('_method', 'DELETE') }}
                                                 <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #0aeff1"></i></button>
                                                 {{ Form::close() }}</td>
+                                                @endif
 
                                         </tr>
                                     @endforeach
+
+                                    @if(Auth::user()->hasRole('admin'))
                                         <form method="POST" action="/profesores">
 
                                             {{ csrf_field() }}
@@ -88,6 +105,7 @@
                                             <td class="p-0 m-0" colspan="3"><button type="submit" class="btn btn-primary btn-block">Insertar</button></td>
                                         </tr>
                                         </form>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

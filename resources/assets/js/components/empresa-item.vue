@@ -6,21 +6,14 @@
         <td>{{ empresa.telefonoempresa }}</td>
         <td><button class="btn btn-link"  >{{ convenio }}</button></td>
         <td>{{ sede }}</td>
-        <!--<td>-->
-            <!--<div class="row">-->
-                <!--<div class="col-sm1">-->
-                    <!--<button  type="button" class="btn btn-link">-->
-                        <!--<i class="fa fa-fw fa-pencil-alt"></i>-->
-                    <!--</button>-->
-                <!--</div>-->
-                <!--<div class="col-sm1">-->
-                    <!--<button type="submit" class="btn btn-link">-->
-                        <!--<i class="fa fa-fw fa-trash-alt" ></i>-->
-                    <!--</button>-->
-                <!--</div>-->
-            <!--</div>-->
+        <td>
+            <div class="row">
+                    <button  type="button" class="btn btn-success" @click="tutores">
+                    Ver Tutores
+                    </button>
+            </div>
 
-        <!--</td>-->
+        </td>
     </tr>
 </template>
 
@@ -74,10 +67,10 @@
                     });
 
                 this.borrado = true;
-            },
-            editar:function () {
-                window.location.href = '/convenios/'+this.convenio.idconvenio+'/edit';
-            }*/
+            },*/
+            tutores:function () {
+                window.location.href = '/tutores/'+this.empresa.idempresa+'/list';
+            }
         },
 
         mounted(){

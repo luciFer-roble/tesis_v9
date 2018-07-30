@@ -50,7 +50,11 @@ class PracticasController extends Controller
             return view('practicas.index', compact('practicas'));
         }
     }
+    public function indexfrom(Profesor $profesor){
+        $practicas = Practica::all()->where('idprofesor','=',$profesor->idprofesor);
+        return view('practicas.index', compact('practicas'));
 
+    }
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['admin', 'coord']);

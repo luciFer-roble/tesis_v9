@@ -18,9 +18,11 @@
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>EMPRESAS</h1></div>
+                                @if(Auth::user()->hasRole('admin'))
                             <div class="btn-group mr-2">
                                 <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA">
                             </div>
+                                    @endif
                         </div>
                         </div>
                         <div class="card-body">
@@ -84,7 +86,8 @@
                                                 <th>Sector</th>
                                                 <th>Telefono</th>
                                                 <th>Convenio</th>
-                                                <td>Sede</td>
+                                                <th>Sede</th>
+                                                <th></th>
 
                                             </tr>
                                             </thead>

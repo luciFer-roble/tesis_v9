@@ -25,11 +25,31 @@
                         <label for="direccion">Direccion:</label>
                         <input type="text" class="form-control" id="direccion" name="direccion">
                     </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo:</label>
+                            <select id="tipo" name="tipo" class="form-control">
+                                <option value="Publica"
+                                >Publica</option>
+                                <option value="Privada"
+                                >Privada</option>
+                                <option value="Sin fines de lucro"
+                                >Sin fines de lucro</option>
+                                <option value="Organismo Internacional"
+                                >Organismo Internacional</option>
+                            </select>
+                    </div>
 
                     <div class="formgroup">
                         <label for="sector">Sector:</label>
-                        <input type="text" class="form-control" id="sector" name="sector">
-                    </div>
+                            <select id="sector" name="sector" class="form-control">
+                                <option value="Primario"
+                                >PRIMARIO (Agricultura, Ganadería, Pesca, Minería)</option>
+                                <option value="Secundario"
+                                >SECUNDARIO (Industria, Construcción)</option>
+                                <option value="Terciario"
+                                >TERCIARIO (Comercio, Servicios)</option>
+                            </select>
+                       </div>
 
                     <div class="formgroup">
                         <label for="telefono">Telefono:</label>

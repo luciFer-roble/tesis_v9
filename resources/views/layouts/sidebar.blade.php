@@ -24,6 +24,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
+                @if(Auth::user()->hasRole('admin'))
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
                         <i class="fa fa-university"></i>
@@ -65,7 +66,8 @@
                     </ul>
                     @endforeach
                 </li>
-
+                @endif
+                @if(Auth::user()->hasRole('admin'))
                 <li class="nav-item has-treeview">
                     <a href="/coordinadores" class="nav-link">
                         <i class="fa fa-clipboard"></i>
@@ -75,6 +77,7 @@
                     </a>
 
                 </li>
+                @endif
                 <li class="nav-item has-treeview">
                     <a href="/empresas" class="nav-link">
                         <i class="fa fa-building"></i>
@@ -84,6 +87,7 @@
                     </a>
 
                 </li>
+                @if(Auth::user()->hasRole('admin'))
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fa fa-briefcase"></i>
@@ -107,6 +111,20 @@
                         </li>
                     </ul>
                 </li>
+                @endif
+
+                @if(Auth::user()->hasRole('coord'))
+                    <li class="nav-item has-treeview">
+                        <a href="/profesores" class="nav-link">
+                            <i class="fa fa-briefcase"></i>
+                            <p>
+                                Profesores
+                            </p>
+                        </a>
+
+                    </li>
+                    @endif
+
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
                         <i class="fa fa-user"></i>

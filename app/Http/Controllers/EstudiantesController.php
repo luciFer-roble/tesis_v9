@@ -33,7 +33,7 @@ class EstudiantesController extends Controller
     public function create(Request $request)
     {
 
-        $request->user()->authorizeRoles(['admin',  'coord']);
+        $request->user()->authorizeRoles(['admin']);
         $carreras =Carrera::all();
         $escuelas =Escuela::all();
         $facultades =Facultad::all();
@@ -98,8 +98,10 @@ class EstudiantesController extends Controller
     }
 
 
-    public function edit(Estudiante $estudiante)
+    public function edit(Estudiante $estudiante,Request $request)
     {
+
+        $request->user()->authorizeRoles(['admin']);
         $carreras =Carrera::all();
         $escuelas =Escuela::all();
         $facultades =Facultad::all();

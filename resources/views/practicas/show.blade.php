@@ -251,8 +251,8 @@
                 {{Form::close()}}
             </div>
             <div class="col-md-0"></div>
-            <div class="col-md-3 card">
-
+            <div class="col-md-3 card" id="app">
+                <dona-item></dona-item>
             </div>
             <div class="col-md-0"></div>
 

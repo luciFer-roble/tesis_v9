@@ -24,11 +24,13 @@
   "dependencies": {
     "admin-lte": "^3.0.0-alpha.2",
     "bootstrap": "^4.1.0",
+    "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
     "moment": "^2.22.1",
     "popper.js": "^1.14.3",
+    "vue-chartjs": "^3.3.2",
     "vue-infinite-loading": "^2.3.1",
     "vue2-dropzone": "^3.2.2"
   }

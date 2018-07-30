@@ -57,6 +57,7 @@ Vue.component('empresa-item', require('./components/empresa-item.vue'));
 Vue.component('documentop', require('./components/documentop.vue'));
 Vue.component('consulta2-praticas', require('./components/consulta2-practicas.vue'));
 Vue.component('consulta-praticas', require('./components/consulta-practicas.vue'));
+Vue.component('dona-item', require('./components/dona-component.vue'));
 const app = new Vue({
     el: '#app'
 });

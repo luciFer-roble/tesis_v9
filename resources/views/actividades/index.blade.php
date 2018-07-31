@@ -38,6 +38,7 @@
                                         <th>Descripcion de Actividades</th>
                                         <th>Control</th>
                                         <th>Comentario</th>
+                                        <th>Horas</th>
 
                                     </tr>
                                     </thead>

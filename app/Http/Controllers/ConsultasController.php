@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empresa;
 use App\Nivel;
 use App\PeriodoAcademico;
+use App\TipoDocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,10 @@ class ConsultasController extends Controller
             ->get();
         return $asignaturas;
 
+    }
+
+    public function totaldocs(){
+        return (string)DB::table('tipodocumento')->count();
     }
 
     public function todaslaspracticas(){

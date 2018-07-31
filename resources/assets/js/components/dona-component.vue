@@ -7,7 +7,7 @@
 
             <div class="donut-inner">
                 <h5 class="btn text-primary porcentaje" >
-                    <button class="btn border-0 btn-link text-primary" @click="actividades">80</button>
+                    <button class="btn border-0 btn-link text-primary" @click="actividades">{{(suma*100)/practica.horaspractica }}%</button>
                 </h5>
             </div>
         </div>
@@ -16,7 +16,9 @@
             </canvas>
 
             <div class="donut-inner">
-                <h5 class="btn text-primary porcentaje" >25</h5>
+                <h5 class="btn text-primary porcentaje" >
+                    <button class="btn border-0 btn-link text-primary" @click="documentos">{{(docs*100)/totaldocs }}%</button>
+                </h5>
             </div>
         </div>
     </div>
@@ -27,8 +29,16 @@
     import Chart from 'chart.js';
     export default {
         props: {
-            codigo: String
+
+            practica: {
+                type: Object
+            },
+            suma: Number,
+            docs: Number
         },
+        data:()=>({
+            totaldocs:'5'
+        }),
         methods: {
             createChart(chartId, chartData) {
                 var canvas = document.getElementById(chartId);
@@ -41,10 +51,24 @@
             },
 
             actividades:function () {
-                window.location.href = '/actividades/'+this.codigo+'/list';
+                window.location.href = '/actividades/'+this.practica.idpractica+'/list';
+            },
+
+            documentos:function () {
+                window.location.href = '/documentos/'+this.practica.idpractica+'/list';
+            },
+            gettotaldocs: function () {
+                axios.get(window.location.origin+'/api/totaldocs'
+                ).then((response)=>{
+                    this.totaldocs=response.data;
+
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
         },
         mounted() {
+
             const data = {
                 type: 'doughnut',
                 data: {
@@ -53,14 +77,14 @@
                         {
                             label: "%Proyecto",
                             backgroundColor: ["#e843b9", "#ddd"],
-                            data: [80,20]
+                            data: [this.suma,(this.practica.horaspractica-this.suma)]
                         }
                     ]
                 },
                 options: {
                     title: {
                         display: true,
-                        text: '% Proyecto'
+                        text: '% Avance'
                     },
                     responsive: true,
                     cutoutPercentage: 90,
@@ -92,7 +116,7 @@
                         {
                             label: "%Documentos",
                             backgroundColor: ["#3e95cd","#ddd"],
-                            data: [25,75]
+                            data: [this.docs,(this.totaldocs-this.docs)]
                         }
                     ]
                 },
@@ -123,8 +147,11 @@
                     }
                 }
             };
+
+            this.gettotaldocs();
             this.createChart('avancechart', data);
             this.createChart('documentoschart', data2);
+            console.log(this.docs);
 
 
         }

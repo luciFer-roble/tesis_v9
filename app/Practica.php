@@ -14,7 +14,7 @@ class Practica extends Model
     protected $guarded = [];
 
     public function actividad(){
-        return $this->hasMany('App\Actividad');
+        return $this->hasMany('App\Actividad', 'idpractica');
     }
 
     public function tutore(){
@@ -31,6 +31,6 @@ class Practica extends Model
     }
 
     public function documentop(){
-        return $this->hasMany('App\DocumentoP');
+        return $this->hasMany('App\DocumentoP', 'idpractica');
     }
 }

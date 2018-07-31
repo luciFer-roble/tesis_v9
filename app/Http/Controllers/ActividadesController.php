@@ -20,7 +20,7 @@ class ActividadesController extends Controller
     public function store($practica, $total)
     {
 
-        echo $total; exit();
+        //echo $total; exit();
         // store
         for ($i = 0; $i < 5; $i++){
 
@@ -44,11 +44,12 @@ class ActividadesController extends Controller
             'descripcionactividad'       => request('descripcion'),
             'fechaactividad'       => request('fecha'),
             'comentarioactividad'      => request('comentario'),
-            'estadoactividad'      => request('estado')
+            'estadoactividad'      => request('estado'),
+            'horasactividad'      => request('horas')
         ]);
 
 
         // redirect
-        return 'hola';
+        return true;
     }
 }

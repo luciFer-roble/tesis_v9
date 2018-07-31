@@ -228,7 +228,7 @@
                     <div class="form-group p-0 m-0 col-md-5">
                         <label class="col-sm-12 control-label" for="horas">Horario:</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="horas" name="horas" value="">
+                            <input type="text" class="form-control" id="horas" name="horas" value="{{ $practica->horariopractica }}">
 
                         </div>
                     </div>
@@ -252,7 +252,7 @@
             </div>
             <div class="col-md-0"></div>
             <div class="col-md-3 card" id="app">
-                <dona-item></dona-item>
+                <dona-item codigo="{{ $practica->idpractica }}"></dona-item>
             </div>
             <div class="col-md-0"></div>
 

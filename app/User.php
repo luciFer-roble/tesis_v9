@@ -1,18 +1,15 @@
 <?php
 
 namespace App;
-
+use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
-    /**
 
-     * @param string|array $roles
-
-     */
-
+    use Notifiable;
     public function authorizeRoles($roles)
     {
         if (is_array($roles)) {

@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Notifications\Notification;
 use App\Convenio;
 use App\Empresa;
 use App\Estudiante;
+use App\Notifications\RegistroPractica;
 use App\PeriodoAcademico;
 use App\Practica;
 use App\Profesor;
 use App\TutorE;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PracticasController extends Controller
 {
@@ -74,7 +78,7 @@ class PracticasController extends Controller
 
     public function store(Request $request)
     {
-        $rules = array(
+        /*$rules = array(
             'estudiante'       => 'required',
             'profesor'       => 'required',
             'empresa'       => 'required',
@@ -86,11 +90,11 @@ class PracticasController extends Controller
             'periodo'    => 'required'
         );
         $this->validate(request(), $rules);
-        $activa='TRUE';
+        $activa='TRUE';*/
 
 
         // store
-        Practica::create([
+        /*Practica::create([
             'idestudiante'       => request('estudiante'),
             'idprofesor'      => request('profesor'),
             'idtutore'      => request('tutore'),
@@ -102,7 +106,13 @@ class PracticasController extends Controller
             'idperiodoacademico'      => request('periodo'),
             'horaspractica'      => request('horas'),
             'activapractica'      => $activa
-        ]);
+        ]);*/
+        $aux = DB::table('role_user')->select('user_id')->where('role_id','=',5);
+        $user = User::whereIn('id',$aux)->first();
+
+        //var_dump($user); exit();
+        $user->notify(new RegistroPractica(Auth::user()));
+
 
 
         // redirect

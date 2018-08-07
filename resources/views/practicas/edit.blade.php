@@ -27,7 +27,7 @@
                                             @if($estudiante->idestudiante == $practica->idestudiante)
                                             selected
                                             @endif
-                                    >{{ ($estudiante->nombre1estudiante).' '.($estudiante->nombre2estudiante).' '.($estudiante->apellido1estudiante).' '.($estudiante->apellido2estudiante) }}</option>
+                                    >{{ ($estudiante->nombresestudiante).' '.($estudiante->apellidosestudiante) }}</option>
                                 @endforeach
                             </select>
                             </div>
@@ -90,7 +90,7 @@
                                             @if($profesor->idprofesor == $practica->idprofesor)
                                             selected
                                             @endif
-                                    >{{ $profesor->nombre1profesor .' '. $profesor->apellido1profesor }}</option>
+                                    >{{ $profesor->nombresprofesor .' '. $profesor->apellidosprofesor }}</option>
                                 @endforeach
                             </select>
                         </div>

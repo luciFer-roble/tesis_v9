@@ -72,7 +72,7 @@
                         <span class="text-info btn p-0 m-0 border-0"><label>Nombre:</label></span>
                     </div>
                     <div class="col-md-3">
-                        <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->estudiante->nombre1estudiante.' '.$practica->estudiante->apellido1estudiante }}</label>
+                        <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->estudiante->nombresestudiante.' '.$practica->estudiante->apellidosestudiante }}</label>
                     </div>
                     <div class="col-md-3">
                         <span class="text-info btn p-0 m-0 border-0"><label>Nivel:</label></span>
@@ -154,7 +154,7 @@
                                             @if($profesor->idprofesor == $practica->idprofesor)
                                             selected
                                             @endif
-                                    >{{ $profesor->nombre1profesor .' '. $profesor->apellido1profesor }}</option>
+                                    >{{ $profesor->nombresprofesor .' '. $profesor->apellidosprofesor }}</option>
                                 @endforeach
                             </select>
                         </div>

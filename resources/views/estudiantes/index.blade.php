@@ -34,10 +34,8 @@
                                     <tbody style="font-size: 10px" >
                                     <tr>
                                     <th >Cedula</th>
-                                    <th >Primer Nombre</th>
-                                    <th >Segundo Nombre</th>
-                                    <th >Apellido Paterno</th>
-                                    <th >Apellido Materno</th>
+                                    <th >Nombres</th>
+                                    <th >Apellidos</th>
                                     <th >Tipo</th>
                                     <th >Celular</th>
                                     <th >Correo</th>
@@ -55,10 +53,8 @@
                                     @foreach($estudiantes as $estudiante)
                                         <tr>
                                             <td class="p-1 m-0" >{{ $estudiante->cedulaestudiante }}</td>
-                                            <td class="p-1 m-0" >{{ $estudiante->nombre1estudiante }}</td>
-                                            <td class="p-1 m-0" >{{ $estudiante->nombre2estudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->apellido1estudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->apellido2estudiante }}</td>
+                                            <td class="p-1 m-0" >{{ $estudiante->nombresestudiante }}</td>
+                                            <td class="p-1 m-0">{{ $estudiante->apellidosestudiante }}</td>
                                             <td class="p-1 m-0">{{ $estudiante->tipoestudiante }}</td>
                                             <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
                                             <td  class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
@@ -95,10 +91,8 @@
 
                                             <tr >
                                                 <td class="p-0 m-0"><input   style="font-size: 10px " type="text" class="form-control" id="cedula" name="cedula"></td>
-                                                <td class="p-0 m-0"><input   style="font-size: 10px " type="text" class="form-control" id="nombre1" name="nombre1"></td>
-                                                <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="nombre2" name="nombre2"></td>
-                                                <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="apellido1" name="apellido1"></td>
-                                                <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="apellido2" name="apellido2"></td>
+                                                <td class="p-0 m-0"><input   style="font-size: 10px " type="text" class="form-control" id="nombres" name="nombres"></td>
+                                                <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="apellidos" name="apellidos"></td>
                                                 <td class="p-0 m-0"><select  style="font-size:10px; height: 10%" id="tipo" name="tipo" class="form-control">
                                                         <option  value="0">Tipo</option>
                                                         <option  value="regular">Regular</option>
@@ -155,7 +149,7 @@
                                         @foreach($estudiantes as $estudiante)
                                             <tr>
                                                 <td class="p-1 m-0" >{{ $estudiante->cedulaestudiante }}</td>
-                                                <td class="p-1 m-0" >{{ $estudiante->nombre1estudiante }} {{ $estudiante->nombre2estudiante }} {{ $estudiante->apellido1estudiante }} {{ $estudiante->apellido2estudiante }}</td>
+                                                <td class="p-1 m-0" >{{ $estudiante->nombresestudiante }} {{ $estudiante->apellidosestudiante }} </td>
                                                 <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
                                                 <td  class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
                                                 <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>

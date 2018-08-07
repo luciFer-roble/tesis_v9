@@ -64,10 +64,8 @@ class EstudiantesController extends Controller
         $rules = array(
             'carrera'       => 'required',
             'cedula'       => 'required',
-            'nombre1'       => 'required',
-            'nombre2'    => 'required',
-            'apellido1'    => 'required',
-            'apellido2'    => 'required',
+            'nombres'       => 'required',
+            'apellidos'    => 'required',
             'tipo'    => 'required',
             'celular'    => 'required',
             'correo'    => 'required',
@@ -76,7 +74,7 @@ class EstudiantesController extends Controller
         );
         $this->validate(request(), $rules);
 
-        $name= request('nombre1').' '.request('apellido1');
+        $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
@@ -89,10 +87,8 @@ class EstudiantesController extends Controller
             'idestudiante'       => request('cedula'),
             'idcarrera'       => request('carrera'),
             'cedulaestudiante'       => request('cedula'),
-            'nombre1estudiante'      => request('nombre1'),
-            'nombre2estudiante'      => request('nombre2'),
-            'apellido1estudiante'      => request('apellido1'),
-            'apellido2estudiante'      => request('apellido2'),
+            'nombresestudiante'      => request('nombres'),
+            'apellidosestudiante'      => request('apellidos'),
             'tipoestudiante'      => request('tipo'),
             'correoestudiante'      => request('correo'),
             'celularestudiante'      => request('celular'),
@@ -133,10 +129,8 @@ class EstudiantesController extends Controller
         $rules = array(
             'carrera'       => 'required',
             'cedula'       => 'required',
-            'nombre1'       => 'required',
-            'nombre2'    => 'required',
-            'apellido1'    => 'required',
-            'apellido2'    => 'required',
+            'nombres'       => 'required',
+            'apellidos'    => 'required',
             'tipo'    => 'required',
             'celular'    => 'required',
             'correo'    => 'required',
@@ -150,10 +144,8 @@ class EstudiantesController extends Controller
         Estudiante::updateOrCreate(['idestudiante'  => $id], [
             'idcarrera'       => request('carrera'),
             'cedulaestudiante'       => request('cedula'),
-            'nombre1estudiante'      => request('nombre1'),
-            'nombre2estudiante'      => request('nombre2'),
-            'apellido1estudiante'      => request('apellido1'),
-            'apellido2estudiante'      => request('apellido2'),
+            'nombresestudiante'      => request('nombres'),
+            'apellidosestudiante'      => request('apellidos'),
             'tipoestudiante'      => request('tipo'),
             'correoestudiante'      => request('correo'),
             'celularestudiante'      => request('celular'),

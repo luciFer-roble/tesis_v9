@@ -23,7 +23,7 @@
                                 <select id="estudiante" name="estudiante" class="form-control">
                                     @foreach($estudiantes as $estudiante)
                                         <option value="{{ $estudiante->idestudiante }}"
-                                        >{{ ($estudiante->nombre1estudiante).' '.($estudiante->nombre2estudiante).' '.($estudiante->apellido1estudiante).' '.($estudiante->apellido2estudiante) }}</option>
+                                        >{{ ($estudiante->nombresestudiante).' '.($estudiante->apellidosestudiante) }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -87,7 +87,7 @@
                                 <select id="profesor" name="profesor" class="form-control">
                                     @foreach($profesores as $profesor)
                                         <option value="{{ $profesor->idprofesor }}"
-                                        >{{ $profesor->nombre1profesor .' '. $profesor->apellido1profesor }}</option>
+                                        >{{ $profesor->nombresprofesor .' '. $profesor->apellidosprofesor }}</option>
                                     @endforeach
                                 </select>
                             </div>

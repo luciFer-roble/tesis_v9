@@ -36,10 +36,8 @@ class ProfesoresController extends Controller
     {
         $rules = array(
             'escuela'       => 'required',
-            'nombre1'       => 'required',
-            'nombre2'    => 'required',
-            'apellido1'    => 'required',
-            'apellido2'    => 'required',
+            'nombres'       => 'required',
+            'apellidos'    => 'required',
             'correo'    => 'required',
             'oficina'    => 'required',
             'celular'    => 'required',
@@ -47,7 +45,7 @@ class ProfesoresController extends Controller
         );
         $this->validate(request(), $rules);
 
-        $name= request('nombre1').' '.request('apellido1');
+        $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
@@ -60,10 +58,8 @@ class ProfesoresController extends Controller
         Profesor::create([
             'idprofesor'       => request('id'),
             'idescuela'       => request('escuela'),
-            'nombre1profesor'      => request('nombre1'),
-            'nombre2profesor'      => request('nombre2'),
-            'apellido1profesor'      => request('apellido1'),
-            'apellido2profesor'      => request('apellido2'),
+            'nombresprofesor'      => request('nombres'),
+            'apellidosprofesor'      => request('apellidos'),
             'correoprofesor'      => request('correo'),
             'oficinaprofesor'      => request('oficina'),
             'celularprofesor'      => request('celular'),
@@ -97,10 +93,8 @@ class ProfesoresController extends Controller
     {
         $rules = array(
             'escuela'       => 'required',
-            'nombre1'       => 'required',
-            'nombre2'    => 'required',
-            'apellido1'    => 'required',
-            'apellido2'    => 'required',
+            'nombres'       => 'required',
+            'apellidos'    => 'required',
             'correo'    => 'required',
             'oficina'    => 'required',
             'celular'    => 'required'
@@ -111,10 +105,8 @@ class ProfesoresController extends Controller
         // store
         Profesor::updateOrCreate(['idprofesor'  => $id], [
             'idescuela'       => request('escuela'),
-            'nombre1profesor'      => request('nombre1'),
-            'nombre2profesor'      => request('nombre2'),
-            'apellido1profesor'      => request('apellido1'),
-            'apellido2profesor'      => request('apellido2'),
+            'nombresprofesor'      => request('nombres'),
+            'apellidosprofesor'      => request('apellidos'),
             'correoprofesor'      => request('correo'),
             'oficinaprofesor'      => request('oficina'),
             'celularprofesor'      => request('celular')

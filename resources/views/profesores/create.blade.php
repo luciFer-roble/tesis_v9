@@ -10,24 +10,21 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-6">
                 <div class="card">
                 <form method="POST" action="/profesores">
 
                     {{ csrf_field() }}
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6" width="100">
+                            <div class="form-group">
                                 <label for="id">Id:</label>
                                 <input type="text" class="form-control" id="id" name="id">
                             </div>
-                            <div class="row" style="width: 51%" >
-                                <div class="col-lg-12" width="50%">
+                        <div class="form-group">
                                     <label for="cedula">Cedula:</label>
                                     <input type="text" class="form-control" id="cedula" name="cedula">
                                 </div>
-                            </div>
-                            <div class="col-lg-6" width="100">
+                        <div class="form-group">
                                 <label for="escuela">Escuela:</label>
                                 <select id="escuela" name="escuela" class="form-control">
                                     @foreach($escuelas as $escuela)
@@ -35,53 +32,28 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6" width="100">
-                                <label for="nombre1">Primer Nombre:</label>
-                                <input type="text" class="form-control" id="nombre1" name="nombre1">
-                            </div>
-                            <div class="col-lg-6" width="100">
-                                <label for="nombre2">Segundo Nombre:</label>
-                                <input type="text" class="form-control" id="nombre2" name="nombre2">
+                        <div class="form-group">
+                                <label for="nombres">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" name="nombres">
                             </div>
 
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-6" width="100">
-                                <label for="apellido1">Primer Apellido:</label>
-                                <input type="text" class="form-control" id="apellido1" name="apellido1">
-                            </div>
-                            <div class="col-lg-6" width="100">
-                                <label for="apellido2">Segundo Apellido:</label>
-                                <input type="text" class="form-control" id="apellido2" name="apellido2">
+                        <div class="form-group">
+                                <label for="apellidos">Apellidos:</label>
+                                <input type="text" class="form-control" id="apellidos" name="apellidos">
                             </div>
 
-                        </div>
-
-
-
-                        <div class="row" style="width: 51%" >
-                            <div class="col-lg-12">
+                        <div class="form-group">
                                 <label for="oficina">Oficina:</label>
                                 <input type="text" class="form-control" id="oficina" name="oficina" width="50%">
                             </div>
-                        </div>
-                        <div class="row" style="width: 51%" >
-                            <div class="col-lg-12" width="50%">
+                        <div class="form-group">
                                 <label for="celular">Numero de celular:</label>
                                 <input type="text" class="form-control" id="celular" name="celular">
                             </div>
-                        </div>
-
-                        <div class="row" style="width: 51%" >
-                            <div class="col-lg-12" width="50%">
+                        <div class="form-group">
                                 <label for="correo">Correo electronico:</label>
                                 <input type="email" class="form-control" id="correo" name="correo">
                             </div>
-                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="form-group">

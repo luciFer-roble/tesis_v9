@@ -5,7 +5,7 @@
 @section('nav')
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>
     <li class="breadcrumb-item"><a href="/profesores">Profesores</a></li>
-    <li class="breadcrumb-item active">{{ $profesor->nombre1profesor.' '.$profesor->nombre2profesor.' '.$profesor->apellido1profesor.' '.$profesor->apellido2estuduante }}</li>
+    <li class="breadcrumb-item active">{{ $profesor->nombresprofesor.' '.$profesor->nombre2profesor.' '.$profesor->apellidosprofesor.' '.$profesor->apellido2estuduante }}</li>
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                     <!-- Example DataTables Card-->
                     <div class="card card-info">
                         <div class="card-header">
-                            <h2>{{ $profesor->nombre1profesor.' '.$profesor->nombre2profesor.' '.$profesor->apellido1profesor.' '.$profesor->apellido2profesor }}</h2>
+                            <h2>{{ $profesor->nombresprofesor.' '.$profesor->apellidosprofesor }}</h2>
                         </div>
                         <form role="form">
 

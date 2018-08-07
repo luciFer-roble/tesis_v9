@@ -54,13 +54,13 @@
                                             <td class="p-1 m-0">{{ $practica->idpractica }}</td>
                                             <td class="p-1 m-0">
                                                 <a class="btn btn-link"
-                                                   href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombre1estudiante .' '. $practica->estudiante->apellido1estudiante }}</a>
+                                                   href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombresestudiante .' '. $practica->estudiante->apellidosestudiante }}</a>
                                             </td>
                                             <td class="p-1 m-0">{{ $practica->tutore->empresa->nombreempresa }}</td>
                                             <td class="p-1 m-0">
                                                 <a class="btn btn-link"
                                                    href="{{ URL::to('profesores/' . $practica->idprofesor) }}">
-                                                    {{ $practica->profesor->nombre1profesor .' '. $practica->profesor->apellido1profesor }}</a>
+                                                    {{ $practica->profesor->nombresprofesor .' '. $practica->profesor->apellidosprofesor }}</a>
                                             </td>
                                             <td class="p-1 m-0">
                                                 <a class="btn btn-link"
@@ -123,7 +123,7 @@
                                                     <td class="m-0 p-0"><span
                                                                 class="btn border-0  m-0 p-0">{{ $practica->idpractica }}</span></td>
                                                     <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
-                                                                           href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombre1estudiante}} {{$practica->estudiante->apellido1estudiante}} {{$practica->estudiante->apellido2estudiante}}</a>
+                                                                           href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombresestudiante}} {{$practica->estudiante->apellidosestudiante}} {{$practica->estudiante->apellido2estudiante}}</a>
                                                     </td>
                                                     <td class="m-0 p-0"><span
                                                                 class="btn border-0  m-0 p-0">{{ $practica->fechainiciopractica }}</span>
@@ -143,7 +143,7 @@
                                                     <td class="m-0 p-0"><span
                                                                 class="btn border-0  m-0 p-0">{{ $practica->tutore->empresa->sectorempresa}}</span></td>
                                                     <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
-                                                                           href="{{ URL::to('profesores/' . $practica->idprofesor) }}">{{ $practica->profesor->nombre1profesor}} {{$practica->profesor->apellido1profesor }}</a>
+                                                                           href="{{ URL::to('profesores/' . $practica->idprofesor) }}">{{ $practica->profesor->nombresprofesor}} {{$practica->profesor->apellidosprofesor }}</a>
                                                     </td>
                                                     <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
                                                                            href="{{ URL::to('tutores/' . $practica->idtutore) }}">{{ $practica->tutore->nombretutore}} {{$practica->tutore->apellidotutore }}</a>

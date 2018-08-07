@@ -22,3 +22,4 @@ Route::get('listar-select1','ConsultasController@listarselect1');
 Route::get('consultar2-practicas','ConsultasController@consultarpracticas2');
 Route::get('todo-practicas','ConsultasController@todaslaspracticas');
 Route::get('totaldocs','ConsultasController@totaldocs');
+Route::get('consultar-practicas-por-estudiante','ConsultasController@consultarpracticasporestudiante');

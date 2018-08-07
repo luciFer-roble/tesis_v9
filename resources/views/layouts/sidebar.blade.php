@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 ">
     <!-- Brand Logo -->
     <a href="https://www.puce.edu.ec" class="brand-link">
         <img src="/images/logo-puce.png" class="brand-image img-circle elevation-3"
@@ -15,7 +15,7 @@
                 <img src="https://scontent.fuio7-1.fna.fbcdn.net/v/t1.0-1/p100x100/10897763_330241177169113_6768127734202000663_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHCw1ouZFbkWVI6orU4G0dZe_lqrxMzfhUoSN7rGepGJBZHYTHL5xcebSORK-h_9GKYrvMTwk-xwlEQtbD1-le96bXEpDmw5obZZ67OAeeDOg&oh=a3f4ae873ab5c9280e61fc85d1779076&oe=5B8A7BE3" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Fernanda Robles</a>
+                <a href="#" class="d-block">{{  Auth::user()->name}}</a>
             </div>
         </div>
 
@@ -163,8 +163,7 @@
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-pie-chart"></i>
-                        <p>
-                            Reportes
+                        <p>Reportes
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>

@@ -91,13 +91,14 @@ class EstudiantesController extends Controller
         else{
             $nameimage="user.jpg";
         }
+        //var_dump($nameimage); exit();
 
         $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
-            'avatar'=>$nameimage//AQUIIIII ESTOY GUARDANDO EL NOMBRE EN LA TABLA USERS PERO NO SE GUARDA NADA
+            'avatar' => $nameimage//AQUIIIII ESTOY GUARDANDO EL NOMBRE EN LA TABLA USERS PERO NO SE GUARDA NADA
         ]);
         $user->roles()->attach(Role::where('name','=', 'est')->first());
         $iduser=$user->id;

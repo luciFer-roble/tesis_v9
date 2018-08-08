@@ -12,6 +12,7 @@ use App\Role;
 use App\Sede;
 use App\User;
 use DB;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -77,17 +78,18 @@ class EstudiantesController extends Controller
         $this->validate(request(), $rules);
 
 
-
+        //SI SE CARGA UNA IMAGEN SE LA GUARDA EN LA CARPETA PUBLIC Y SU NOMBRE SERA LA CEDULA.JPG
         if($request->hasFile('foto'))
         {
             $image  =   $request->file('foto');
 
-            $nameimage = request('cedula').'.'.$image->getClientOriginalExtension();;
-            $path="public/uploads/avatars";
-            $image->storeAs($path,$nameimage);
+            $nameimage = request('cedula').'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save(public_path('/uploads/avatars/'.$nameimage));
+
         }
+        //SI NO SE CARGA IMAGEN SE DEBERIA GUARDAR EL NOBRE DEL AVATAR POR DEFECTO: USER.JPG
         else{
-            $nameimage="prueba.png";
+            $nameimage="user.jpg";
         }
 
         $name= request('nombres').' '.request('apellidos');
@@ -95,7 +97,7 @@ class EstudiantesController extends Controller
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
-            'avatar'=>$nameimage
+            'avatar'=>$nameimage//AQUIIIII ESTOY GUARDANDO EL NOMBRE EN LA TABLA USERS PERO NO SE GUARDA NADA
         ]);
         $user->roles()->attach(Role::where('name','=', 'est')->first());
         $iduser=$user->id;

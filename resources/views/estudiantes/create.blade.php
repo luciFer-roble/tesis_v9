@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <form method="POST" action="/estudiantes">
+                    <form method="POST" action="/estudiantes" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         <div class="card-body">
@@ -53,7 +53,15 @@
                                         <label for="correo">Correo electronico:</label>
                                         <input type="email" class="form-control" id="correo" name="correo">
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="foto">Foto:</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="" id="foto" name="foto">
+                                                <label for="foto"></label>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-sm-6">

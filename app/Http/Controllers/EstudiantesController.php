@@ -15,6 +15,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class EstudiantesController extends Controller
@@ -71,14 +72,30 @@ class EstudiantesController extends Controller
             'correo'    => 'required',
             'fechanacimiento'    => 'required',
             'genero'    => 'required'
+
         );
         $this->validate(request(), $rules);
+
+
+
+        if($request->hasFile('foto'))
+        {
+            $image  =   $request->file('foto');
+
+            $nameimage = request('cedula').'.'.$image->getClientOriginalExtension();;
+            $path="public/uploads/avatars";
+            $image->storeAs($path,$nameimage);
+        }
+        else{
+            $nameimage="prueba.png";
+        }
 
         $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
+            'avatar'=>$nameimage
         ]);
         $user->roles()->attach(Role::where('name','=', 'est')->first());
         $iduser=$user->id;
@@ -103,7 +120,11 @@ class EstudiantesController extends Controller
         return redirect('estudiantes');
 
     }
-
+    public function descargar(Estudiante $estudiante)
+    {
+        $headers = ['Content-Type: application/zip','Content-Disposition: attachment; filename={$filename}'];
+        return response()->download(storage_path('app/convenios/').$estudiante->fotoestudiante, 200, $headers );
+    }
 
     public function show(Estudiante $estudiante)
     {

@@ -12,7 +12,9 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="https://scontent.fuio7-1.fna.fbcdn.net/v/t1.0-1/p100x100/10897763_330241177169113_6768127734202000663_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHCw1ouZFbkWVI6orU4G0dZe_lqrxMzfhUoSN7rGepGJBZHYTHL5xcebSORK-h_9GKYrvMTwk-xwlEQtbD1-le96bXEpDmw5obZZ67OAeeDOg&oh=a3f4ae873ab5c9280e61fc85d1779076&oe=5B8A7BE3" class="img-circle elevation-2" alt="User Image">
+                <img src="/uploads/avatars/user.jpg"
+                     class="img-circle elevation-2" alt="User Image">
+
             </div>
             <div class="info">@if(!empty(Auth::user()))
                 <a href="#" class="d-block">{{  Auth::user()->name}}</a>

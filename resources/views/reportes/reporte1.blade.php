@@ -16,7 +16,7 @@
                     <div class="btn-group mr-2 float-right">
                         <input type="button" onClick="location.href = 'practicas/create'"
                                class="btn btn-sm btn-outline-danger" value="PDF"/>
-                        <input type="button" onClick="location.href = 'practicas/create'"
+                        <input type="button" onClick="location.href = '/reportes/{{ $periodo->idperiodoacademico }}/descarga1'"
                                class="btn btn-sm btn-outline-success" value="EXCEL"/>
                     </div>
 

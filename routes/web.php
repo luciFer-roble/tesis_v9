@@ -154,6 +154,7 @@ Route::get('/practicas/{estudiante}/list2', 'PracticasController@indexfrom2');
 Route::get('/reportes', 'ReportesController@index');
 Route::post('/reportes/r1', 'ReportesController@reporte1');
 Route::get('/reportes/r1', 'ReportesController@reporte1');
+Route::get('/reportes/{periodo}/descarga1', 'ReportesController@descarga1');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');

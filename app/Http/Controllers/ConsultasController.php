@@ -50,6 +50,18 @@ class ConsultasController extends Controller
         return $practicas;
 
     }
+
+    public function consultarpracticasporestudiante(Request $request)
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('practica.idestudiante', '=', request('idestudiante'))->get();
+        return $practicas;
+
+    }
+
     public function listarselect1(Request $request)
     {
         if($request->criterio == 'empresa'){

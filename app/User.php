@@ -66,7 +66,7 @@ class User extends Authenticatable
         return $this->hasOne('App\TutorE');
     }
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','avatar',
     ];
 
     /**

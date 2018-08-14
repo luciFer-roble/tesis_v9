@@ -26,6 +26,11 @@ Route::get('/master',function (){
 
 $sedes =Sede::all();
 View::share('sedes',$sedes);
+
+
+Route::get('/users/{user}', 'UsersController@show');
+Route::put('/users/{user}', 'UsersController@update');
+
 Route::get('/empresas', 'EmpresasController@index');
 Route::get('/empresas/create', 'EmpresasController@create');
 Route::get('/empresas/{empresa}', 'EmpresasController@show');

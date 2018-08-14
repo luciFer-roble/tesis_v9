@@ -11,13 +11,16 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            @if(!empty(Auth::user()))
             <div class="image">
                 <img src="/uploads/avatars/{{Auth::user()->avatar}}"
                      class="img-circle elevation-2" alt="User Image">
 
             </div>
+            @endif
             <div class="info">@if(!empty(Auth::user()))
-                <a href="#" class="d-block">{{  Auth::user()->name}}</a>
+                <a  href="{{ URL::to('users/' . Auth::user()->id) }}"
+                   class="d-block">{{  Auth::user()->name}}</a>
                                   @endif
             </div>
         </div>

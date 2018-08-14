@@ -153,8 +153,11 @@ Route::get('/practicas/{estudiante}/list2', 'PracticasController@indexfrom2');
 
 Route::get('/reportes', 'ReportesController@index');
 Route::post('/reportes/r1', 'ReportesController@reporte1');
-Route::get('/reportes/r1', 'ReportesController@reporte1');
-Route::get('/reportes/{periodo}/descarga1', 'ReportesController@descarga1');
+Route::get('/reportes/{periodo}/descarga1', 'ReportesController@descargaexcelr1');
+Route::post('/reportes/r2', 'ReportesController@reporte2');
+Route::get('/reportes/{periodo}/descarga2', 'ReportesController@descargaexcelr2');
+Route::post('/reportes/r3', 'ReportesController@reporte3');
+Route::get('/reportes/{tipopractica}/descarga3', 'ReportesController@descargaexcelr3');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');

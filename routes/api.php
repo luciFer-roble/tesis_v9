@@ -23,3 +23,5 @@ Route::get('consultar2-practicas','ConsultasController@consultarpracticas2');
 Route::get('todo-practicas','ConsultasController@todaslaspracticas');
 Route::get('totaldocs','ConsultasController@totaldocs');
 Route::get('consultar-practicas-por-estudiante','ConsultasController@consultarpracticasporestudiante');
+Route::get('consultar-practicas-por-periodo','ConsultasController@consultarpracticasporperiodo');
+Route::get('consultar-practicas-por-tipopractica','ConsultasController@consultarpracticasportipopractica');

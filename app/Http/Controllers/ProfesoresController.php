@@ -44,12 +44,14 @@ class ProfesoresController extends Controller
             'cedula'    => 'required'
         );
         $this->validate(request(), $rules);
+        $foto='user.jpg';
 
         $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
+            'avatar' => $foto,
         ]);
         $user->roles()->attach(Role::where('name','=', 'prof')->first());
         $iduser=$user->id;

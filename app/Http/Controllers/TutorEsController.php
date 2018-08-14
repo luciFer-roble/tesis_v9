@@ -52,12 +52,14 @@ class TutorEsController extends Controller
             'cedula'    => 'required'
         );
         $this->validate(request(), $rules);
+        $foto='user.jpg';
 
         $name= request('nombre').' '.request('apellido');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
+            'avatar' => $foto,
         ]);
         $user->roles()->attach(Role::where('name','=', 'tut')->first());
         $iduser=$user->id;

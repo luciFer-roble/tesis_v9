@@ -59,6 +59,8 @@ Vue.component('consulta2-praticas', require('./components/consulta2-practicas.vu
 Vue.component('consulta-praticas', require('./components/consulta-practicas.vue'));
 Vue.component('dona-item', require('./components/dona-component.vue'));
 Vue.component('estudiante-item', require('./components/estudiante-item.vue'));
+Vue.component('estudiante-periodo', require('./components/estudiante-periodo.vue'));
+Vue.component('estudiante-tipopractica', require('./components/estudiante-tipopractica.vue'));
 const app = new Vue({
     el: '#app'
 });

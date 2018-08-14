@@ -30,7 +30,7 @@
                         <div class="inner">
                             <h3>R2</h3>
 
-                            <p>Descripcion...</p>
+                            <p>Practicas por periodo academico</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r2" class="fa fa-baseball-ball"></i>
@@ -43,7 +43,7 @@
                         <div class="inner">
                             <h3>R3</h3>
 
-                            <p>Descripcion...</p>
+                            <p>Estudiantes/practicas por tipo de proyecto</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r3" class="fa fa-baseball-ball"></i>
@@ -56,7 +56,7 @@
                         <div class="inner">
                             <h3>R4</h3>
 
-                            <p>Descripcion...</p>
+                            <p>Estudiantes/practicas por tipo de empresa</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r4" class="fa fa-baseball-ball"></i>
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal reporte 1-->
     <div class="modal fade" id="r1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -105,5 +105,74 @@
         </div>
     </div>
 
+    <!-- Modal reporte 2-->
+    <div class="modal fade" id="r2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Practicas por Periodo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r2">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Fecha de Inicio:</label>
+                            <div class="col-lg-11">
+                                <select id="periodor1" name="periodor1" class="form-control">
+                                    @foreach($periodos as $periodo)
+                                        <option value="{{ $periodo->idperiodoacademico }}"
+                                        >{{ $periodo->descripcionperiodoacademico  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal reporte 3-->
+    <div class="modal fade" id="r3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Listar por tipo de proyecto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r3">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Tipo:</label>
+                            <div class="col-lg-11">
+                                <select id="tipopractica" name="tipopractica" class="form-control">
+                                    <option value="Pasantia">Pasantia</option>
+                                    <option value="Practica">Practica Pre Profesional</option>
+                                    <option value="Proyecto">Proyecto</option>
+                                    <option value="Ayudantia">Ayudantia</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @stop

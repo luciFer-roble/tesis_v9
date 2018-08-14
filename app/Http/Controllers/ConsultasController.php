@@ -61,6 +61,30 @@ class ConsultasController extends Controller
         return $practicas;
 
     }
+    public function consultarpracticasporperiodo(Request $request)
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('practica.idperiodoacademico', '=', request('idperiodo'))
+            ->where('practica.idestudiante', '=', request('idestudiante'))
+            ->get();
+        return $practicas;
+
+    }
+    public function consultarpracticasportipopractica(Request $request)
+{
+    $practicas =DB::table('practica')
+        ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+        ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+        ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+        ->where('practica.tipopractica', '=', request('tipopractica'))
+        ->where('practica.idestudiante', '=', request('idestudiante'))
+        ->get();
+    return $practicas;
+
+}
 
     public function listarselect1(Request $request)
     {

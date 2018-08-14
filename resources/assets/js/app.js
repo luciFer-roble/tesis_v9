@@ -61,6 +61,8 @@ Vue.component('dona-item', require('./components/dona-component.vue'));
 Vue.component('estudiante-item', require('./components/estudiante-item.vue'));
 Vue.component('estudiante-periodo', require('./components/estudiante-periodo.vue'));
 Vue.component('estudiante-tipopractica', require('./components/estudiante-tipopractica.vue'));
+Vue.component('estudiante-tipoempresa', require('./components/estudiante-tipoempresa.vue'));
+Vue.component('estudiante-sector', require('./components/estudiante-sector.vue'));
 Vue.component('chart-reporte3', require('./components/chart-reporte3.vue'));
 const app = new Vue({
     el: '#app'

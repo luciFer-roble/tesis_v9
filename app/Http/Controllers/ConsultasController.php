@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empresa;
 use App\Nivel;
 use App\PeriodoAcademico;
+use App\Practica;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -74,18 +75,26 @@ class ConsultasController extends Controller
 
     }
     public function consultarpracticasportipopractica(Request $request)
-{
-    $practicas =DB::table('practica')
-        ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
-        ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
-        ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-        ->where('practica.tipopractica', '=', request('tipopractica'))
-        ->where('practica.idestudiante', '=', request('idestudiante'))
-        ->get();
-    return $practicas;
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('practica.tipopractica', '=', request('tipopractica'))
+            ->where('practica.idestudiante', '=', request('idestudiante'))
+            ->get();
+        return $practicas;
 
-}
+    }
 
+    public function totalpracticas()
+    {
+        return Practica::all()->count();
+    }
+    public function totalportipo(Request $request)
+    {
+        return Practica::where('tipopractica','=', Request('tipo'))->count();
+    }
     public function listarselect1(Request $request)
     {
         if($request->criterio == 'empresa'){

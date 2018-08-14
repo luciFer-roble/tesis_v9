@@ -48,7 +48,7 @@
                     <tr v-for="item in lista">
 
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.idpractica }}</span></td>
-                        <td class="m-0 p-0"> <a  class="btn btn-link m-0 p-0 border-0" :href="'/estudiantes/' + item.idestudiante" >{{ item.nombre1estudiante+' '+item.apellido1estudiante+' '+item.apellido2estudiante}}</a></td>
+                        <td class="m-0 p-0"> <a  class="btn btn-link m-0 p-0 border-0" :href="'/estudiantes/' + item.idestudiante" >{{ item.nombresestudiante+' '+item.apellidosestudiante}}</a></td>
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.fechainiciopractica }}</span></td>
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.fechafinpractica }}</span></td>
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.tipopractica }}</span></td>
@@ -56,7 +56,7 @@
                         <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/empresas/' + item.idempresa" >{{ item.nombreempresa}}</a></td>
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.tipoempresa}}</span></td>
                         <td class="m-0 p-0"><span class="btn border-0  m-0 p-0">{{ item.sectorempresa}}</span></td>
-                        <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/profesores/' + item.idprofesor" >{{ item.nombre1profesor+' '+item.apellido1profesor }}</a></td>
+                        <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/profesores/' + item.idprofesor" >{{ item.nombresprofesor+' '+item.apellidosprofesor }}</a></td>
                         <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/tutores/' + item.idtutore" >{{ item.nombretutore+' '+item.apellidotutore }}</a></td>
 
                         <td class="m-0 p-0 border-0">

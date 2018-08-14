@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="app">
         <div class="card mb-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
@@ -14,8 +14,8 @@
                         <h3>{{ $tipopractica }}</h3></div>
 
                     <div class="btn-group mr-2 float-right">
-                        <input type="button" onClick="location.href = 'practicas/create'"
-                               class="btn btn-sm btn-outline-danger" value="PDF"/>
+                        <input type="button" data-toggle="modal" data-target="#modal1"
+                               class="btn btn-sm btn-outline-danger" value="Grafico"/>
                         <input type="button" onClick="location.href = '/reportes/{{ $tipopractica }}/descarga3'"
                                class="btn btn-sm btn-outline-success" value="EXCEL"/>
                     </div>
@@ -45,6 +45,21 @@
                                              facultad="{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}"
                                              tipopractica="{{ $tipopractica }}"></estudiante-tipopractica>
                     @endforeach
+                </div>
+            </div>
+
+            <!-- Modal reporte 3-->
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <div class="modal-body">
+                                <chart-reporte3></chart-reporte3>
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Imprimir</button>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>

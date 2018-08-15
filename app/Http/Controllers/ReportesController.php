@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estudiante;
+use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class ReportesController extends Controller
     public function index()
     {
         $periodos = PeriodoAcademico::all();
-        return view('reportes.index', compact('periodos'));
+        $niveles = Nivel::all();
+        return view('reportes.index', compact('periodos', 'niveles'));
     }
     public function reporte1(Request $request)
     {
@@ -303,4 +305,298 @@ class ReportesController extends Controller
 
         //return view('reportes.reporte1', compact('estudiantes', 'periodo'));
     }
+
+    public function reporte4(Request $request)
+    {
+        //$periodo = PeriodoAcademico::where('idperiodoacademico', '=', request('periodor1'))->first();
+        $tipoempresa = request('tipoempresa');
+
+        $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+            ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->leftJoin('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->leftJoin('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->groupBy('estudiante.idestudiante')
+            ->where('empresa.tipoempresa', '=', $tipoempresa)
+            ->get();
+        //var_dump($tipopractica); exit();
+
+        return view('reportes.reporte4', compact('estudiantes', 'tipoempresa'));
+    }
+    public function descargaexcelr4($tipoempresa)
+    {
+
+        Excel::create('Reporte'.$tipoempresa, function ($excel) use($tipoempresa){
+            $excel->sheet('Reporte', function ($sheet) use ($tipoempresa){
+                $sheet->mergeCells('A1:I1');
+                $sheet->mergeCells('A2:I2');
+                $sheet->cells('A1:I1', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(16);
+                });
+                $sheet->cells('A2:K2', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(18);
+                });
+                $sheet->cells('A4:K4', function($cells) {
+
+                    $cells->setBackground('#B1A0C7');
+                    $cells->setFontWeight('bold');
+
+                });
+                $sheet->setFontFamily('Calibri');
+                $sheet->setFontSize(9);
+                $titulo = 'REPORTE DE PRACTICAS DE INTITUCINES TIPO '.$tipoempresa;
+                //var_dump($periodo->fechainicioperiodoacademico); exit();
+
+                $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                    ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                    ->leftJoin('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                    ->leftJoin('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                    ->groupBy('estudiante.idestudiante')
+                    ->where('empresa.tipoempresa', '=', $tipoempresa)
+                    ->get();
+                $sheet->appendRow(1, array(
+                    'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
+                ));
+                $sheet->appendRow(2, array(
+                    $titulo
+                ));
+                $cabecera = [];
+                $cabecera[0]= 'No.';
+                $cabecera[1]= 'Unidad Academica';
+                $cabecera[2]= 'Carrera';
+                $cabecera[3]= 'Identificacion';
+                $cabecera[4]= 'Apellidos y Nombres del Estudiante';
+                $cabecera[5]= 'Fecha de Inicio Practica 1';
+                $cabecera[6]= 'Fecha de Finalizacion Practica 1';
+                $cabecera[7]= 'No. de Horas Practica 1';
+                $cabecera[8]= 'Centro de Practicas 1';
+                $cabecera[9]= 'Tipo de Intitucion 1';
+                $cabecera[10]= 'Sector Institucion 1';
+
+                $sheet->appendRow(4, $cabecera);
+                $numero = 1;
+                foreach ($estudiantes as $estudiante){
+
+
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $row = [];
+                    $row[0] = $numero++;
+                    $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
+                    $row[2] = $estudiante->carrera->nombrecarrera;
+                    $row[3] = $estudiante->cedulaestudiante;
+                    $row[4] = $estudiante->apellidosestudiante.' '.$estudiante->nombresestudiante;
+                    $columna =5;
+                    foreach ($practicas as $practica){
+                        $row[$columna++] = $practica->fechainiciopractica;
+                        $row[$columna++] = $practica->fechafinpractica;
+                        $row[$columna++] = $practica->horaspractica;
+                        $row[$columna++] = $practica->tutore->empresa->nombreempresa;
+                        $row[$columna++] = $practica->tutore->empresa->tipoempresa;
+                        $row[$columna++] = $practica->tutore->empresa->sectorempresa;
+                    }
+                    $sheet->appendRow($row);
+                }
+
+                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+            });
+        })->export('xlsx');
+
+        //return view('reportes.reporte1', compact('estudiantes', 'periodo'));
+    }
+
+    public function reporte5(Request $request)
+    {
+        //$periodo = PeriodoAcademico::where('idperiodoacademico', '=', request('periodor1'))->first();
+        $sector = request('sector');
+
+        $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+            ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->leftJoin('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->leftJoin('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->groupBy('estudiante.idestudiante')
+            ->where('empresa.sectorempresa', '=', $sector)
+            ->get();
+        //var_dump($tipopractica); exit();
+
+        return view('reportes.reporte5', compact('estudiantes', 'sector'));
+    }
+    public function descargaexcelr5($sector)
+    {
+
+        Excel::create('ReportePPEmpresa'.$sector, function ($excel) use($sector){
+            $excel->sheet('Reporte', function ($sheet) use ($sector){
+                $sheet->mergeCells('A1:I1');
+                $sheet->mergeCells('A2:I2');
+                $sheet->cells('A1:I1', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(16);
+                });
+                $sheet->cells('A2:K2', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(18);
+                });
+                $sheet->cells('A4:K4', function($cells) {
+
+                    $cells->setBackground('#B1A0C7');
+                    $cells->setFontWeight('bold');
+
+                });
+                $sheet->setFontFamily('Calibri');
+                $sheet->setFontSize(9);
+                $titulo = 'REPORTE DE PRACTICAS DE INTITUCINES DEL SECTOR '.$sector;
+                //var_dump($periodo->fechainicioperiodoacademico); exit();
+
+                $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                    ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                    ->leftJoin('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                    ->leftJoin('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                    ->groupBy('estudiante.idestudiante')
+                    ->where('empresa.sectorempresa', '=', $sector)
+                    ->get();
+                $sheet->appendRow(1, array(
+                    'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
+                ));
+                $sheet->appendRow(2, array(
+                    $titulo
+                ));
+                $cabecera = [];
+                $cabecera[0]= 'No.';
+                $cabecera[1]= 'Unidad Academica';
+                $cabecera[2]= 'Carrera';
+                $cabecera[3]= 'Identificacion';
+                $cabecera[4]= 'Apellidos y Nombres del Estudiante';
+                $cabecera[5]= 'Fecha de Inicio Practica 1';
+                $cabecera[6]= 'Fecha de Finalizacion Practica 1';
+                $cabecera[7]= 'No. de Horas Practica 1';
+                $cabecera[8]= 'Centro de Practicas 1';
+                $cabecera[9]= 'Tipo de Intitucion 1';
+                $cabecera[10]= 'Sector Institucion 1';
+
+                $sheet->appendRow(4, $cabecera);
+                $numero = 1;
+                foreach ($estudiantes as $estudiante){
+
+
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $row = [];
+                    $row[0] = $numero++;
+                    $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
+                    $row[2] = $estudiante->carrera->nombrecarrera;
+                    $row[3] = $estudiante->cedulaestudiante;
+                    $row[4] = $estudiante->apellidosestudiante.' '.$estudiante->nombresestudiante;
+                    $columna =5;
+                    foreach ($practicas as $practica){
+                        $row[$columna++] = $practica->fechainiciopractica;
+                        $row[$columna++] = $practica->fechafinpractica;
+                        $row[$columna++] = $practica->horaspractica;
+                        $row[$columna++] = $practica->tutore->empresa->nombreempresa;
+                        $row[$columna++] = $practica->tutore->empresa->tipoempresa;
+                        $row[$columna++] = $practica->tutore->empresa->sectorempresa;
+                    }
+                    $sheet->appendRow($row);
+                }
+
+                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+            });
+        })->export('xlsx');
+
+        //return view('reportes.reporte1', compact('estudiantes', 'periodo'));
+    }
+
+    public function reporte6(Request $request)
+    {
+        $nivel = Nivel::where('idnivel', '=', request('nivel'))->first();
+        //$nivel = request('nivel');
+
+        $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+            ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->groupBy('estudiante.idestudiante')
+            ->where('practica.idnivel', '=', $nivel->idnivel)
+            ->get();
+        //var_dump($tipopractica); exit();
+
+        return view('reportes.reporte6', compact('estudiantes', 'nivel'));
+    }
+    public function descargaexcelr6(Nivel $nivel)
+    {
+
+        Excel::create('ReporteNivel'.$nivel->nombrenivel, function ($excel) use($nivel){
+            $excel->sheet('Reporte', function ($sheet) use ($nivel){
+                $sheet->mergeCells('A1:I1');
+                $sheet->mergeCells('A2:I2');
+                $sheet->cells('A1:I1', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(16);
+                });
+                $sheet->cells('A2:K2', function($cells) {
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(18);
+                });
+                $sheet->cells('A4:K4', function($cells) {
+
+                    $cells->setBackground('#B1A0C7');
+                    $cells->setFontWeight('bold');
+
+                });
+                $sheet->setFontFamily('Calibri');
+                $sheet->setFontSize(9);
+                $titulo = 'REPORTE DE PRACTICAS DE ESTUDIANTES QUE CURSABAN EL NIVEL '.$nivel->nombrenivel;
+                //var_dump($periodo->fechainicioperiodoacademico); exit();
+
+                $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                    ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                    ->groupBy('estudiante.idestudiante')
+                    ->where('practica.idnivel', '=', $nivel->idnivel)
+                    ->get();
+                $sheet->appendRow(1, array(
+                    'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
+                ));
+                $sheet->appendRow(2, array(
+                    $titulo
+                ));
+                $cabecera = [];
+                $cabecera[0]= 'No.';
+                $cabecera[1]= 'Unidad Academica';
+                $cabecera[2]= 'Carrera';
+                $cabecera[3]= 'Identificacion';
+                $cabecera[4]= 'Apellidos y Nombres del Estudiante';
+                $cabecera[5]= 'Fecha de Inicio Practica 1';
+                $cabecera[6]= 'Fecha de Finalizacion Practica 1';
+                $cabecera[7]= 'No. de Horas Practica 1';
+                $cabecera[8]= 'Centro de Practicas 1';
+                $cabecera[9]= 'Tipo de Intitucion 1';
+                $cabecera[10]= 'Sector Institucion 1';
+
+                $sheet->appendRow(4, $cabecera);
+                $numero = 1;
+                foreach ($estudiantes as $estudiante){
+
+
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $row = [];
+                    $row[0] = $numero++;
+                    $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
+                    $row[2] = $estudiante->carrera->nombrecarrera;
+                    $row[3] = $estudiante->cedulaestudiante;
+                    $row[4] = $estudiante->apellidosestudiante.' '.$estudiante->nombresestudiante;
+                    $columna =5;
+                    foreach ($practicas as $practica){
+                        $row[$columna++] = $practica->fechainiciopractica;
+                        $row[$columna++] = $practica->fechafinpractica;
+                        $row[$columna++] = $practica->horaspractica;
+                        $row[$columna++] = $practica->tutore->empresa->nombreempresa;
+                        $row[$columna++] = $practica->tutore->empresa->tipoempresa;
+                        $row[$columna++] = $practica->tutore->empresa->sectorempresa;
+                    }
+                    $sheet->appendRow($row);
+                }
+
+                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+            });
+        })->export('xlsx');
+
+        //return view('reportes.reporte1', compact('estudiantes', 'periodo'));
+    }
+
 }

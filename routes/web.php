@@ -163,6 +163,12 @@ Route::post('/reportes/r2', 'ReportesController@reporte2');
 Route::get('/reportes/{periodo}/descarga2', 'ReportesController@descargaexcelr2');
 Route::post('/reportes/r3', 'ReportesController@reporte3');
 Route::get('/reportes/{tipopractica}/descarga3', 'ReportesController@descargaexcelr3');
+Route::post('/reportes/r4', 'ReportesController@reporte4');
+Route::get('/reportes/{tipoempresa}/descarga4', 'ReportesController@descargaexcelr4');
+Route::post('/reportes/r5', 'ReportesController@reporte5');
+Route::get('/reportes/{sector}/descarga5', 'ReportesController@descargaexcelr5');
+Route::post('/reportes/r6', 'ReportesController@reporte6');
+Route::get('/reportes/{nivel}/descarga6', 'ReportesController@descargaexcelr6');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');

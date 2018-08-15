@@ -25,5 +25,8 @@ Route::get('totaldocs','ConsultasController@totaldocs');
 Route::get('consultar-practicas-por-estudiante','ConsultasController@consultarpracticasporestudiante');
 Route::get('consultar-practicas-por-periodo','ConsultasController@consultarpracticasporperiodo');
 Route::get('consultar-practicas-por-tipopractica','ConsultasController@consultarpracticasportipopractica');
+Route::get('consultar-practicas-por-tipoempresa','ConsultasController@consultarpracticasportipoempresa');
+Route::get('consultar-practicas-por-sector','ConsultasController@consultarpracticasporsector');
+Route::get('consultar-practicas-por-nivel','ConsultasController@consultarpracticaspornivel');
 Route::get('totalpracticas','ConsultasController@totalpracticas');
 Route::get('totalportipo','ConsultasController@totalportipo');

@@ -78,23 +78,36 @@ class PracticasController extends Controller
 
     public function store(Request $request)
     {
-        /*$rules = array(
+       /* $rules = array(
             'estudiante'       => 'required',
             'profesor'       => 'required',
             'empresa'       => 'required',
-            'tutore'    => 'required',
             'descripcion'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
             'salario'    => 'required',
             'periodo'    => 'required'
         );
-        $this->validate(request(), $rules);
-        $activa='TRUE';*/
+        $this->validate(request(), $rules);*/
+        $activa='TRUE';
 
+        $temp = DB::select("select min(nivel.idnivel)
+                from estudiante
+                join estudiantexasignatura on estudiantexasignatura.idestudiante = estudiante.idestudiante
+                join asignatura on estudiantexasignatura.idasignatura = asignatura.idasignatura
+                join nivel on nivel.idnivel = asignatura.idnivel
+                where estudiante.idestudiante = '".request('estudiante')."'
+                group by estudiante.idestudiante");
+        $lista = collect($temp)->map(function($x){ return (array) $x; })->toArray();
+        /*$nivel = DB::table('nivel')
+            ->groupBy('estudiante.idestudiante')
+            ->having('estudiante.idestudiante', '=', request('estudiante'))
+            ->first();*/
 
+        //echo($lista[0]['min']); exit();
+        $nivel  = $lista[0]['min'];
         // store
-        /*Practica::create([
+        Practica::create([
             'idestudiante'       => request('estudiante'),
             'idprofesor'      => request('profesor'),
             'idtutore'      => request('tutore'),
@@ -105,8 +118,9 @@ class PracticasController extends Controller
             'salariopractica'      => request('salario'),
             'idperiodoacademico'      => request('periodo'),
             'horaspractica'      => request('horas'),
-            'activapractica'      => $activa
-        ]);*/
+            'activapractica'      => $activa,
+            'idnivel'           => $nivel
+        ]);
         $aux = DB::table('role_user')->select('user_id')->where('role_id','=',5);
         $user = User::whereIn('id',$aux)->first();
 

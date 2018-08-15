@@ -87,6 +87,45 @@ class ConsultasController extends Controller
 
     }
 
+    public function consultarpracticasportipoempresa(Request $request)
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa', '=', request('tipoempresa'))
+            ->where('practica.idestudiante', '=', request('idestudiante'))
+            ->get();
+        return $practicas;
+
+    }
+
+    public function consultarpracticasporsector(Request $request)
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa', '=', request('sector'))
+            ->where('practica.idestudiante', '=', request('idestudiante'))
+            ->get();
+        return $practicas;
+
+    }
+
+    public function consultarpracticaspornivel(Request $request)
+    {
+        $practicas =DB::table('practica')
+            ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('practica.idnivel', '=', request('nivel'))
+            ->where('practica.idestudiante', '=', request('idestudiante'))
+            ->get();
+        return $practicas;
+
+    }
+
     public function totalpracticas()
     {
         return Practica::all()->count();

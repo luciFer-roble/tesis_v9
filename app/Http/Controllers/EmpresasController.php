@@ -58,8 +58,8 @@ class EmpresasController extends Controller
                 'telefonoempresa' => request('telefono'),
                 'tipoempresa' => request('tipo')
             ]);
-            \flash('PRUEBA1');
-            //Flash::success('La empresa fue creada correctamente');
+            //\flash('PRUEBA1');
+            Flash::success('La empresa fue creada correctamente');
             // redirect
             return redirect('empresas');
 

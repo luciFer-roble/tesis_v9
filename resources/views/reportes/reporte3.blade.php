@@ -27,8 +27,8 @@
 
                 <div class="table-responsive">
 
-                    <table class="table table-bordered p-0 m-0 border-0" id="dataTable" width="100%" style="table-layout: fixed;  display: table;">
-                        <thead>
+                    <table class="table table-bordered p-0 m-0 border-0" id="dataTable" width="100%" style="table-layout: fixed;  display: table; background-color: #54DAF6 ; color: white">
+                        {{--<thead>
                         <tr>
                             <th  style="width:  12%" class="p-1 m-0">Identificacion</th>
                             <th  style="width:  16%" class="p-1 m-0">Apellidos y Nombres</th>
@@ -38,7 +38,7 @@
                             <th  style="width:  14%" class="p-1 m-0">Correo</th>
                             <th  colspan="2"  style="width:  7.318912295584146%;" class="p-1 m-0">Horas</th>
                         </tr>
-                        </thead>
+                        </thead>--}}
                     </table>
                     @foreach($estudiantes as $estudiante)
                         <estudiante-tipopractica  :estudiante="{{ $estudiante }}" carrera="{{ $estudiante->carrera->nombrecarrera }}"

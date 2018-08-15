@@ -59,10 +59,10 @@
                         <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/profesores/' + item.idprofesor" >{{ item.nombresprofesor+' '+item.apellidosprofesor }}</a></td>
                         <td class="m-0 p-0"><a  class="btn btn-link  m-0 p-0" :href="'/tutores/' + item.idtutore" >{{ item.nombretutore+' '+item.apellidotutore }}</a></td>
 
-                        <td class="m-0 p-0 border-0">
+                        <td class="m-0 p-0">
 
-                            <button  type="button" class="btn btn-outline-info m-0 p-0" @click="editar(item.idpractica)">
-                                <i class="fa fa-fw fa-eye"></i>
+                            <button  type="button" class="btn btn-block btn-outline-success m-0 p-1 border-0" @click="editar(item.idpractica)">
+                                <i class="fa fa-external-link-alt"></i>
                             </button>
                         </td>
                     </tr>

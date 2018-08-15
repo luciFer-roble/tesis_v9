@@ -59,6 +59,7 @@ class RegistroPractica extends Notification
         return [
             'from' => $this->fromuser->id,
             'data' => $this->fromuser->name.' ha registrado una Practica nueva',
+            'link' => '/practicas',
         ];
     }
 }

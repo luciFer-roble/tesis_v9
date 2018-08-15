@@ -90,21 +90,25 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-danger navbar-badge">{{ Auth::user()->notifications->count() }}</span>
+
+                    @if(Auth::user()->unreadNotifications->count())
+                        <span class="badge badge-danger navbar-badge">{{ Auth::user()->unreadNotifications->count() }}</span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
-                    <span class="dropdown-item dropdown-header text-info">{{ Auth::user()->notifications->count() }} Notificaciones</span>
+                    <span class="dropdown-item dropdown-header text-info">{{ Auth::user()->unreadNotifications->count() }} Notificaciones</span>
                     <div class="dropdown-divider"></div>
-                    @foreach(Auth::user()->notifications as $notification)
-                        <a href="#" class="dropdown-item text-secondary">
+                    @foreach(Auth::user()->unreadNotifications as $notification)
+                        <a onclick="{{ $notification->markAsRead() }}" href="{{ $notification->data['link'] }}" class="dropdown-item text-secondary">
                             {{ $notification->data['data'] }}
                             <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
                     @endforeach
-
-                    <a href="#" class="dropdown-item dropdown-footer text-primary">Marcar como leidas</a>
+                    @if(Auth::user()->unreadNotifications->count())
+                        <a href="#" class="dropdown-item dropdown-footer text-primary">Marcar como leidas</a>
+                    @endif
                 </div>
             </li>
         @endauth

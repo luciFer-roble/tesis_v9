@@ -17,12 +17,7 @@
                 {{ csrf_field() }}
                 <div class="card-body">
                     @if(count($errors)> 0 )
-                            <div class="alert alert-danger alert-dismissible" style="background-color: #ff6666; color: #ff6666">
-                                <span>
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                     @include('layouts.errors')
-                                </span>
-                            </div>
 
                     @endif
 

@@ -10,6 +10,9 @@
                     alert-{{ $message['level'] }}
                     {{ $message['important'] ? 'alert-important' : '' }}"
                     role="alert"
+             @if($message['level']=='success')
+             style="color: black !important; background-color: #bbf7ca !important;border:#bbf7ca !important "
+             @endif
         >
             @if ($message['important'])
                 <button type="button"
@@ -18,8 +21,9 @@
                         aria-hidden="true"
                 >&times;</button>
             @endif
+                    {!! $message['message'] !!}
 
-            {!! $message['message'] !!}
+
         </div>
     @endif
 @endforeach

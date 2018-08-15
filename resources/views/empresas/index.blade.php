@@ -8,10 +8,24 @@
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
+            {{--<div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    @include('flash::message')
+                </div>
+
+            </div>--}}
+            <div class="container">
+                @include('flash::message')
+
+                <p>Welcome to my website...</p>
+            </div>
 
             <div class="row">
                 <div class="col-12" >
-                @include('flash::message')
                     <!-- Example DataTables Card-->
                     <div class="card mb-3">
                         <div class="card-header">

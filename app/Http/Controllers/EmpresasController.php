@@ -21,7 +21,8 @@ class EmpresasController extends Controller
         $tutores=TutorE::all();
         $convenios = Convenio::with('sede')->get();
         $empresas = Empresa::all();
-
+        \flash()->overlay('PRUENBA 2 DE OVERLAY','YAAAAY');
+        //Flash::success('La empresa fue creada exitosamente');
         return view('empresas.index', compact('empresas', 'convenios','tutores'));
     }
    /* public function index2()

@@ -49,12 +49,12 @@ to get the desired effect
 <script src="{{mix('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
+{{--<script>
     $('#flash-overlay-modal').modal();
-</script>
+</script>--}}
 <script>
 
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+        $('div.alert').not('.alert-danger').delay(3000).fadeOut(350);
 
 </script>
 </body>

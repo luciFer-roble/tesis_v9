@@ -8,6 +8,7 @@ use App\TutorE;
 use Illuminate\Http\Request;
 use App\Empresa;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class EmpresasController extends Controller
 {
@@ -57,8 +58,8 @@ class EmpresasController extends Controller
                 'telefonoempresa' => request('telefono'),
                 'tipoempresa' => request('tipo')
             ]);
-
-
+            \flash('PRUEBA1');
+            //Flash::success('La empresa fue creada correctamente');
             // redirect
             return redirect('empresas');
 

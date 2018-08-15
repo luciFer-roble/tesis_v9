@@ -53,7 +53,7 @@
                                         <label for="correo">Correo electronico:</label>
                                         <input type="email" class="form-control" id="correo" name="correo">
                                     </div>
-                                    <div class="form-group">
+                                   {{-- <div class="form-group">
                                         <label for="foto">Foto:</label>
                                         <div class="input-group">
                                             <div class="custom-file">
@@ -61,7 +61,7 @@
                                                 <label for="foto"></label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>--}}
 
                                 </div>
                                 <div class="col-sm-6">

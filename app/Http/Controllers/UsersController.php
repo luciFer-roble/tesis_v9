@@ -55,12 +55,12 @@ class UsersController extends Controller
         $image  =   $request->file('foto');
 
         $user=User::all()->where('id','=',$id)->first();
-        $oldavatar=public_path('/uploads/avatars/'.$user->avatar);
-        unlink($oldavatar);
+        if($user->avatar!='user.jpg'){
+            $oldavatar=public_path('/uploads/avatars/'.$user->avatar);
+            unlink($oldavatar);
+        }
 
-
-        list($nameorigin)=explode('.',$user->avatar,2);
-        $nameimage = $nameorigin.'.'.$image->getClientOriginalExtension();
+        $nameimage = $id.'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(300,300)->save(public_path('/uploads/avatars/'.$nameimage));
 
         User::updateOrCreate(['id'  => $id], [

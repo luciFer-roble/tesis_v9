@@ -76,9 +76,7 @@ class EstudiantesController extends Controller
 
         );
         $this->validate(request(), $rules);
-
-
-        //SI SE CARGA UNA IMAGEN SE LA GUARDA EN LA CARPETA PUBLIC Y SU NOMBRE SERA LA CEDULA.JPG
+        /*//SI SE CARGA UNA IMAGEN SE LA GUARDA EN LA CARPETA PUBLIC Y SU NOMBRE SERA LA CEDULA.JPG
         if($request->hasFile('foto'))
         {
             $image  =   $request->file('foto');
@@ -90,15 +88,14 @@ class EstudiantesController extends Controller
         //SI NO SE CARGA IMAGEN SE DEBERIA GUARDAR EL NOBRE DEL AVATAR POR DEFECTO: USER.JPG
         else{
             $nameimage="user.jpg";
-        }
-        //var_dump($nameimage); exit();
-
+        }*/
+        $nameimage="user.jpg";
         $name= request('nombres').' '.request('apellidos');
         $user = User::create([
             'name'     => $name,
             'email'    => request('correo'),
             'password' => bcrypt(request('cedula')),
-            'avatar' => $nameimage//AQUIIIII ESTOY GUARDANDO EL NOMBRE EN LA TABLA USERS PERO NO SE GUARDA NADA
+            'avatar' => $nameimage
         ]);
         $user->roles()->attach(Role::where('name','=', 'est')->first());
         $iduser=$user->id;

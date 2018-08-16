@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DocumentoP;
+use App\Estudiante;
 use App\Practica;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
@@ -16,8 +17,11 @@ class DocumentosPController extends Controller
     }
     public function index(Practica $practica)
     {
+        $carrera=$practica->estudiante->idcarrera;
+
         $documentosp = DocumentoP::all()->where('idpractica', '=' , $practica->idpractica );
-        $tiposdocumento = TipoDocumento::all();
+        $tiposdocumento = TipoDocumento::where('idcarrera','=',$carrera)->get();
+
         return view('documentos.index', compact('documentosp', 'tiposdocumento', 'practica'));
     }
 

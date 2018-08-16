@@ -21,8 +21,6 @@ class EmpresasController extends Controller
         $tutores=TutorE::all();
         $convenios = Convenio::with('sede')->get();
         $empresas = Empresa::all();
-        \flash()->overlay('PRUENBA 2 DE OVERLAY','YAAAAY');
-        //Flash::success('La empresa fue creada exitosamente');
         return view('empresas.index', compact('empresas', 'convenios','tutores'));
     }
    /* public function index2()
@@ -59,8 +57,8 @@ class EmpresasController extends Controller
                 'telefonoempresa' => request('telefono'),
                 'tipoempresa' => request('tipo')
             ]);
-            //\flash('PRUEBA1');
-            Flash::success('La empresa fue creada correctamente');
+
+            Flash::success('Ingresado Correctamente');
             // redirect
             return redirect('empresas');
 
@@ -103,6 +101,7 @@ class EmpresasController extends Controller
         ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('empresas');
     }

@@ -35,6 +35,8 @@ to get the desired effect
         <div class="content">
 
 
+            @include('flash::message')
+            @include('layouts.errors')
                     @yield('content')
 
 
@@ -54,7 +56,7 @@ to get the desired effect
 </script>
 <script>
 
-       // $('div.alert').not('.alert-danger').delay(3000).fadeOut(350);
+       $('div.alert').not('.alert-danger').delay(3000).fadeOut(350);
 
 </script>
 </body>

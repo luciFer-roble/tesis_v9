@@ -16,8 +16,6 @@
 
                 {{ csrf_field() }}
                 <div class="card-body">
-                    @include('flash::message')
-                    @include('layouts.errors')
                         <div class="formgroup" class="col-lg-6">
                         <label for="nombre">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facultad;
 use App\Sede;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class FacultadesController extends Controller
 {
@@ -57,6 +58,7 @@ class FacultadesController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('facultades');
 
@@ -98,6 +100,7 @@ class FacultadesController extends Controller
             'descripcionfacultad'      => request('descripcion')
         ]);
 
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('facultades');

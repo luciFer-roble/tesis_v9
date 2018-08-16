@@ -9,6 +9,7 @@ use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class ProfesoresController extends Controller
 {
@@ -69,6 +70,7 @@ class ProfesoresController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('profesores');
 
@@ -115,6 +117,7 @@ class ProfesoresController extends Controller
         ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('profesores');
     }

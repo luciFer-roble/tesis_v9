@@ -8,6 +8,7 @@ use App\Sede;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Laracasts\Flash\Flash;
 
 class ConveniosController extends Controller
 {
@@ -73,6 +74,7 @@ class ConveniosController extends Controller
 
         $file->storeAs($path, $name);
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('convenios');
 
@@ -138,6 +140,7 @@ class ConveniosController extends Controller
              ]);
          }
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('convenios');
     }

@@ -8,6 +8,7 @@ use App\Estudiante;
 use App\EstudiantexAsignatura;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class EstudiantexAsignaturaController extends Controller
 {
@@ -55,6 +56,7 @@ class EstudiantexAsignaturaController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('tutores');
     }

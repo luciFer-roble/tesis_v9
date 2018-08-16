@@ -18,6 +18,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Laracasts\Flash\Flash;
 
 class EstudiantesController extends Controller
 {
@@ -116,6 +117,7 @@ class EstudiantesController extends Controller
 
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('estudiantes');
 
@@ -175,6 +177,7 @@ class EstudiantesController extends Controller
         ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('estudiantes');
     }

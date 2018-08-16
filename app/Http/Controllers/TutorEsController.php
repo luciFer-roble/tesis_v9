@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\TutorE;
 use App\Empresa;
+use Laracasts\Flash\Flash;
 
 class TutorEsController extends Controller
 {
@@ -75,6 +76,7 @@ class TutorEsController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('tutores');
 
@@ -117,6 +119,7 @@ class TutorEsController extends Controller
             'correotutore' => request('correo')
         ]);
 
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('tutores');

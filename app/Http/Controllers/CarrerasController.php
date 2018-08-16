@@ -7,6 +7,7 @@ use App\Escuela;
 use App\Sede;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class CarrerasController extends Controller
 {
@@ -66,6 +67,7 @@ class CarrerasController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('carreras');
 
@@ -104,6 +106,7 @@ class CarrerasController extends Controller
         ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('carreras');
     }

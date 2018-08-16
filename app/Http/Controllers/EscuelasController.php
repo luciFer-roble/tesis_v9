@@ -7,6 +7,7 @@ use App\Facultad;
 use App\Sede;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class EscuelasController extends Controller
 {
@@ -78,6 +79,7 @@ class EscuelasController extends Controller
         ]);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('escuelas');
 
@@ -130,6 +132,7 @@ class EscuelasController extends Controller
         ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('escuelas');
     }

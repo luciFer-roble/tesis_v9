@@ -9,6 +9,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use function Symfony\Component\VarDumper\Tests\Fixtures\bar;
+use Laracasts\Flash\Flash;
 
 class CoordinadoresController extends Controller
 {
@@ -60,6 +61,7 @@ class CoordinadoresController extends Controller
         $user->roles()->attach(Role::where('name','=', 'coord')->first());
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('coordinadores');
 
@@ -127,6 +129,8 @@ class CoordinadoresController extends Controller
         $user=User::where('id','=',$profesor->iduser)->first();
         $user->roles()->detach();
         $user->roles()->attach(Role::where('name','=', 'prof')->first());
+
+        Flash::success('Actualizado Correctamente');
         return back();
 
 

@@ -26,9 +26,11 @@ class ReportesController extends Controller
         $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
             ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
             ->groupBy('estudiante.idestudiante')
-            ->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
-            ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)
+            /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+            ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
             ->havingRaw('SUM(practica.horaspractica) >= 120')
+            ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
+            ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
             ->get();
 
         return view('reportes.reporte1', compact('estudiantes', 'periodo'));

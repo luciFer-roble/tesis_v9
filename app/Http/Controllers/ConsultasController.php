@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\Estudiante;
 use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
@@ -134,6 +135,71 @@ class ConsultasController extends Controller
     {
         return Practica::where('tipopractica','=', Request('tipo'))->count();
     }
+
+    public function totalesporperiodo(){
+        $periodos = PeriodoAcademico::all();
+        $respuesta=array();
+        foreach ($periodos as $periodo){
+
+            $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
+                /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+                ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
+                ->havingRaw('SUM(practica.horaspractica) >= 120')
+                ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
+                ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
+                ->first();
+            //var_dump((string)$total);
+                $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+    public  function totalperiodos(){
+
+        $periodos = PeriodoAcademico::all();
+        return $periodos;
+    }
+
+    public function totalespornivel(){
+        $niveles = Nivel::all();
+        $respuesta=array();
+        foreach ($niveles as $nivel){
+
+            $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
+                /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+                ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
+                ->havingRaw('SUM(practica.horaspractica) >= 120')
+                ->havingRaw("practica.idnivel >= '".$nivel->idnivel."'")
+                ->first();
+            //var_dump((string)$total);
+            $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+
+    public function totalesporperiodo2(){
+        $periodos = PeriodoAcademico::all();
+        $respuesta=array();
+        foreach ($periodos as $periodo){
+
+            $total = Practica::select(DB::raw(' count(distinct(practica.idpractica)) as totalpracticas'))
+                ->groupBy('practica.idperiodoacademico')
+                //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
+                ->havingRaw("practica.idperiodoacademico = '".$periodo->idperiodoacademico."'")
+                ->first();
+            //var_dump((string)$total);
+            $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+    public  function totalniveles(){
+        $niveles = Nivel::all();
+        return $niveles;
+    }
+
     public function listarselect1(Request $request)
     {
         if($request->criterio == 'empresa'){

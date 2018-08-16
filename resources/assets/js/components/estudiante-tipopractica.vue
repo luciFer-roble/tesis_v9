@@ -12,7 +12,7 @@
         </tr>
         </thead>-->
         <tr style="background-color: white">
-            <th  style="width:  12%; background-color: #688ece ; color: white; text-align: center" class="p-1 m-0">Estudiante: </th>
+            <th  style="width:  12%; background-color:  #688ebe ; color: white; text-align: center" class="p-1 m-0">Estudiante: </th>
             <td style="width:  8%" class="p-1 m-0" >{{ estudiante.cedulaestudiante }}</td>
             <td style="width:  16%" class="p-1 m-0" >{{ estudiante.nombresestudiante }}  {{ estudiante.apellidosestudiante }}</td>
             <td style="width:  13%" class="p-1 m-0">{{ facultad }}</td>

@@ -15,6 +15,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Laracasts\Flash\Flash;
 
 class PracticasController extends Controller
 {
@@ -128,6 +129,7 @@ class PracticasController extends Controller
         $user->notify(new RegistroPractica(Auth::user()));
 
 
+        Flash::success('Ingresado Correctamente');
 
         // redirect
         return redirect('practicas');
@@ -188,6 +190,7 @@ class PracticasController extends Controller
             'activapractica'      => $activa
         ]);
 
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('practicas');

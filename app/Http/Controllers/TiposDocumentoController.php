@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Formato;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class TiposDocumentoController extends Controller
 {
@@ -44,6 +45,7 @@ class TiposDocumentoController extends Controller
         'archivoformato'      => request('archivo')
         ]);
 
+        Flash::success('Ingresado Correctamente');
 
         // redirect
         return redirect('tiposdocumento');
@@ -81,6 +83,7 @@ class TiposDocumentoController extends Controller
          ]);
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return redirect('tiposdocumento');
     }

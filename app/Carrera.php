@@ -28,4 +28,7 @@ class Carrera extends Model
     public function malla(){
         return $this->hasMany('App\Malla');
     }
+    public function tipodocumento(){
+        return $this->hasMany('App\TipoDocumento');
+    }
 }

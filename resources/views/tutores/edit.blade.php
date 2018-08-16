@@ -61,7 +61,6 @@
             </form>
             </div>
 
-            @include('layouts.errors')
             </div>
         </div>
         </div>

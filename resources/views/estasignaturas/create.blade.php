@@ -25,7 +25,6 @@
                         <a href="#" onclick="history.go(-1)" class="btn btn-primary float-left">OK</a>
                     </div>
                     </div>
-                @include('layouts.errors')
             </div>
 
 

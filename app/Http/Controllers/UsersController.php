@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Image;
 use Intervention\Image\File;
+use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
@@ -67,6 +68,7 @@ class UsersController extends Controller
             'avatar'      => $nameimage
         ]);
 
+        Flash::success('Actualizado Correctamente');
         return back();
     }
 

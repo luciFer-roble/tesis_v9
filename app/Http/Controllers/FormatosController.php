@@ -7,6 +7,7 @@ use App\TipoDocumento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Laracasts\Flash\Flash;
 
 class FormatosController extends Controller
 {
@@ -55,6 +56,7 @@ class FormatosController extends Controller
         $file->storeAs($path, $name);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('formatos');
 
@@ -108,6 +110,7 @@ class FormatosController extends Controller
             $file->storeAs($path, $name);
         }
 
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('formatos');

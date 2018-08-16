@@ -20,5 +20,7 @@ class TipoDocumento extends Model
     public function formato(){
         return $this->hasMany('App\Formato');
     }
-
+    public function carrera(){
+        return $this->belongsTo('App\Carrera', 'idcarrera', 'idcarrera');
+    }
 }

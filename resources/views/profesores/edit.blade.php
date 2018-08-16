@@ -69,7 +69,6 @@
 
                     {{Form::close()}}
 
-                    @include('layouts.errors')
                 </div>
             </div>
         </div>

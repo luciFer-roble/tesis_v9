@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DocumentoP;
+use App\Estudiante;
 use App\Practica;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class DocumentosPController extends Controller
 {
@@ -15,8 +17,11 @@ class DocumentosPController extends Controller
     }
     public function index(Practica $practica)
     {
+        $carrera=$practica->estudiante->idcarrera;
+
         $documentosp = DocumentoP::all()->where('idpractica', '=' , $practica->idpractica );
-        $tiposdocumento = TipoDocumento::all();
+        $tiposdocumento = TipoDocumento::where('idcarrera','=',$carrera)->get();
+
         return view('documentos.index', compact('documentosp', 'tiposdocumento', 'practica'));
     }
 
@@ -53,6 +58,7 @@ class DocumentosPController extends Controller
         $file->storeAs($path, $name);
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('documentosp');
 
@@ -96,6 +102,7 @@ class DocumentosPController extends Controller
             'archivodocumentop'      => request('archivo')
         ]);
 
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('documentosp');

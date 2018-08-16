@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-    <div class="col-lg-12">
-        <canvas id="estudiantestipopractica">
+        <div class="col-lg-12">
+            <canvas id="estudiantestipopractica">
 
-        </canvas>
-    </div>
+            </canvas>
+        </div>
     </div>
 </template>
 
@@ -89,9 +89,9 @@
                                 text: 'PRACTICAS POR TIPO'
                             },
                             responsive: true,
-                            cutoutPercentage: 0,
                             legend: {
-                                display: false
+                                display: true,
+                                position: 'right',
                             },
                             tooltips: {
                                 callbacks: {

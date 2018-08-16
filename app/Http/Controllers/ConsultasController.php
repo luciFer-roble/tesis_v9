@@ -162,6 +162,35 @@ class ConsultasController extends Controller
         return $respuesta;
     }
 
+    public function totalestudiantesporsectorempresa(Request $request)
+    {
+        $respuesta = 'vacio';
+        $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+            ->rightJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa', '=', request('sector'))
+            ->groupBy('empresa.tipoempresa')
+            ->first();
+        if ($total){
+            $respuesta = $total;
+        }
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+
+    public function totalpracticasporsectorempresa(Request $request)
+    {
+        $respuesta = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa', '=', request('sector'))
+            ->count();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
     public function totalesporperiodo(){
         $periodos = PeriodoAcademico::all();
         $respuesta=array();
@@ -192,13 +221,10 @@ class ConsultasController extends Controller
         $respuesta=array();
         foreach ($niveles as $nivel){
 
-            $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
-                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
-                ->groupBy('estudiante.idestudiante')
-                /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
-                ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
-                ->havingRaw('SUM(practica.horaspractica) >= 120')
-                ->havingRaw("practica.idnivel >= '".$nivel->idnivel."'")
+            $total = Practica::select(DB::raw(' count(distinct(practica.idpractica)) as totalpracticas'))
+                ->groupBy('practica.idnivel')
+                //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
+                ->havingRaw("practica.idnivel = '".$nivel->idnivel."'")
                 ->first();
             //var_dump((string)$total);
             $respuesta[] = $total;

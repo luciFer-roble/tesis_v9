@@ -61,7 +61,8 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                                    backgroundColor: "#a5bee7",
+                                    borderColor: "#80a0d6",
                                     data: this.totalesarray
                                 }
                             ]
@@ -69,7 +70,7 @@
                         options: {
                             title: {
                                 display: true,
-                                text: 'PRACTICAS CULMINADAS'
+                                text: 'PRACTICAS REALIZADAS POR PERIODO'
                             },
                             responsive: true,
                             cutoutPercentage: 0,

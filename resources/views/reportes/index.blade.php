@@ -22,9 +22,6 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r1" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                     <div class="small-box bg-warning col-md-3">
                         <div class="inner">
@@ -35,9 +32,6 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r2" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                     <div class="small-box bg-danger col-md-3">
                         <div class="inner">
@@ -48,9 +42,6 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r3" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                     <div class="small-box bg-success col-md-3">
                         <div class="inner">
@@ -61,9 +52,6 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r4" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                 </div>
 
@@ -81,9 +69,6 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r5" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                     <div class="small-box bg-primary col-md-3">
                         <div class="inner">
@@ -94,35 +79,16 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r6" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                     <div class="small-box bg-white col-md-3">
                         <div class="inner">
                             <h3>R7</h3>
 
-                            <p>Empresas con convenio</p>
+                            <p>Reporte generico numero 7</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r7" class="fa fa-baseball-ball"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                    <div class="small-box bg-success col-md-3">
-                        <div class="inner">
-                            <h3>R4</h3>
-
-                            <p>Estudiantes/practicas por tipo de empresa</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r4" class="fa fa-baseball-ball"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            info &nbsp;<i class="fa fa-arrow-circle-right"></i>
-                        </a>
                     </div>
                 </div>
 
@@ -174,7 +140,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/reportes/r2">
+                <form method="post" action="/reportes/r2p">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
@@ -210,7 +176,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/reportes/r3">
+                <form method="post" action="/reportes/r3p">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
@@ -244,7 +210,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/reportes/r4">
+                <form method="post" action="/reportes/r4p">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
@@ -279,7 +245,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/reportes/r5">
+                <form method="post" action="/reportes/r5p">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
@@ -313,7 +279,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="/reportes/r6">
+                <form method="post" action="/reportes/r6p">
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">

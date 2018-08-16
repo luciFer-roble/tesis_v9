@@ -22,14 +22,12 @@
         data:()=>({
             totaldocs:'5',
             total:0,
-            privadase:0,
-            privadasp:0,
-            publicase:0,
-            publicasp:0,
-            sinlucroe:0,
-            sinlucrop:0,
-            internacionalese:0,
-            internacionalesp:0
+            primarioe:0,
+            primariop:0,
+            secundarioe:0,
+            secundariop:0,
+            terciarioe:0,
+            terciariop:0
 
         }),
         methods: {
@@ -49,106 +47,85 @@
                     console.log(error);
                 });
             },
-            getprivadae:function (tipo) {
-                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
-                    params:{'tipo':tipo}
+            getprimarioe:function (sector) {
+                axios.get(window.location.origin+'/api/totalestudiantesporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.privadase=(0)+4;
+                    console.log(response.data);
+                    if(response.data != 'vacio'){
+                        this.primarioe=(response.data.totalestudiantes);
                     }else{
-                        this.privadase=(response.data.totalestudiantes)+4;
+                        this.primarioe=0;
                     }
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getprivadap:function (tipo) {
-                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
-                    params:{'tipo':tipo}
+            getprimariop:function (sector) {
+                axios.get(window.location.origin+'/api/totalpracticasporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    this.privadasp=(response.data)+8;
+                    this.primariop=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getpublicae:function (tipo) {
-                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
-                    params:{'tipo':tipo}
+            getsecundarioe:function (sector) {
+                axios.get(window.location.origin+'/api/totalestudiantesporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.publicase=(0)+4;
+                    if(response.data != 'vacio'){
+                        this.secundarioe=(response.data.totalestudiantes);
                     }else{
-                        this.publicase=(response.data.totalestudiantes)+4;
+                        this.secundarioe=0;
                     }
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getpublicap:function (tipo) {
-                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
-                    params:{'tipo':tipo}
+            getsecundariop:function (sector) {
+                axios.get(window.location.origin+'/api/totalpracticasporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    this.publicasp=(response.data)+9;
+                    this.secundariop=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getsinlucroe:function (tipo) {
-                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
-                    params:{'tipo':tipo}
+            getterciarioe:function (sector) {
+                axios.get(window.location.origin+'/api/totalestudiantesporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.sinlucroe=(0)+2;
+                    if(response.data != 'vacio'){
+                        this.terciarioe=(response.data.totalestudiantes);
                     }else{
-                        this.sinlucroe=(response.data.totalestudiantes)+2;
+                        this.terciarioe=0;
                     }
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getsinlucrop:function (tipo) {
-                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
-                    params:{'tipo':tipo}
+            getterciariop:function (sector) {
+                axios.get(window.location.origin+'/api/totalpracticasporsectorempresa',{
+                    params:{'sector':sector}
                 }).then((response)=>{
-                    this.sinlucrop=(response.data)+2;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getinternacionalese:function (tipo) {
-                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    if(this.data==null){
-                        this.internacionalese=(0)+4;
-                    }else{
-                        this.internacionalese=(response.data.totalestudiantes)+4;
-                    }
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getinternacionalesp:function (tipo) {
-                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    this.internacionalesp=(response.data)+5;
+                    this.terciariop=(response.data);
                     const data = {
                         type: 'polarArea',
                         data: {
-                            labels: ["Privada", "Publica", "Sin Fines De Lucro", "Organismo Internacional"],
+                            labels: ["Primario", "Secundario", "Terciario"],
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
-                                    data: [this.privadasp, this.publicasp, this.sinlucrop, this.internacionalesp]
+                                    backgroundColor: [ "#8eaee3", "#80a0d6", "#688ece"],
+                                    data: [this.primariop, this.secundariop, this.terciariop]
                                 }
                             ]
                         },
                         options: {
                             title: {
                                 display: true,
-                                text: 'PRACTICAS POR TIPO DE EMPRESA'
+                                text: 'PRACTICAS POR SECTOR DE EMPRESA'
                             },
                             responsive: true,
                             animation:{
@@ -157,7 +134,7 @@
                             },
                             legend: {
                                 display: true,
-                                position: 'right',
+                                position: 'left',
                             },
                             scale: {
                                 ticks: {
@@ -185,19 +162,19 @@
                     const data2 = {
                         type: 'polarArea',
                         data: {
-                            labels: ["Privada", "Publica", "Sin Fines De Lucro", "Organismo Internacional"],
+                            labels: ["Primario", "Secundario", "Terciario"],
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
-                                    data: [this.privadase, this.publicase, this.sinlucroe, this.internacionalese]
+                                    backgroundColor: [ "#8eaee3", "#80a0d6", "#688ece"],
+                                    data: [this.primarioe, this.secundarioe, this.terciarioe]
                                 }
                             ]
                         },
                         options: {
                             title: {
                                 display: true,
-                                text: 'ESTUDIANTES POR TIPO DE EMPRESA'
+                                text: 'ESTUDIANTES POR SECTOR DE EMPRESA'
                             },
                             responsive: true,
                             animation:{
@@ -206,7 +183,7 @@
                             },
                             legend: {
                                 display: true,
-                                position: 'right',
+                                position: 'left',
                             },
                             scale: {
                                 ticks: {
@@ -243,14 +220,12 @@
 
 
             this.getaall();
-            this.getprivadae('Privada');
-            this.getpublicae('Publica');
-            this.getsinlucroe('Empresa Sin Fines De Lucro');
-            this.getinternacionalese('Organismo Internacional');
-            this.getprivadap('Privada');
-            this.getpublicap('Publica');
-            this.getsinlucrop('Empresa Sin Fines De Lucro');
-            this.getinternacionalesp('Organismo Internacional');
+            this.getprimarioe('Primario');
+            this.getsecundarioe('Secundario');
+            this.getterciarioe('Terciario');
+            this.getprimariop('Primario');
+            this.getsecundariop('Secundario');
+            this.getterciariop('Terciario');
 
 
         }
@@ -258,4 +233,5 @@
 </script>
 
 <style scoped>
-    </style>
+
+</style>

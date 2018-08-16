@@ -50,8 +50,8 @@
                             console.log(0);
                             this.totalesarray.push(0);
                         }else{
-                            console.log(this.totales[i].totalestudiantes);
-                            this.totalesarray.push(this.totales[i].totalestudiantes);
+                            console.log(this.totales[i].totalpracticas);
+                            this.totalesarray.push(this.totales[i].totalpracticas);
                         }
                     }
                     const data = {
@@ -69,7 +69,7 @@
                         options: {
                             title: {
                                 display: true,
-                                text: 'PRACTICAS CULMINADAS'
+                                text: 'PRACTICAS POR NIVEL'
                             },
                             responsive: true,
                             cutoutPercentage: 0,

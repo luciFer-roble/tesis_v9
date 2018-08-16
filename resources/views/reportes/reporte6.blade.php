@@ -53,7 +53,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <chart-reporte3></chart-reporte3>
+                            <chart-reporte6></chart-reporte6>
                         </div>
                         <div class="modal-footer">
                             <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>

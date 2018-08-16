@@ -66,6 +66,7 @@ Vue.component('estudiante-sector', require('./components/estudiante-sector.vue')
 Vue.component('chart-reporte1', require('./components/chart-reporte1.vue'));
 Vue.component('chart-reporte2', require('./components/chart-reporte2.vue'));
 Vue.component('chart-reporte3', require('./components/chart-reporte3.vue'));
+Vue.component('chart-reporte4', require('./components/chart-reporte4.vue'));
 Vue.component('chart-reporte6', require('./components/chart-reporte6.vue'));
 const app = new Vue({
     el: '#app'

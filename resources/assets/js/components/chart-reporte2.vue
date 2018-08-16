@@ -55,7 +55,7 @@
                         }
                     }
                     const data = {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                             labels: this.periodosarray,
                             datasets: [

@@ -17,10 +17,15 @@
         data:()=>({
             totaldocs:'5',
             total:0,
-            pasantias:0,
-            practicas:0,
-            ayudantias:0,
-            proyectos:0
+            privadase:0,
+            privadasp:0,
+            publicase:0,
+            publicasp:0,
+            sinlucroe:0,
+            sinlucrop:0,
+            internacionalese:0,
+            internacionalesp:0
+
         }),
         methods: {
             createChart(chartId, chartData) {
@@ -34,64 +39,110 @@
             },
             getaall:function () {
                 axios.get(window.location.origin+'/api/totalpracticas').then((response)=>{
-                    this.total=(response.data)+8;
+                    this.total=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getpasantias:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
+            getprivadae:function (tipo) {
+                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.pasantias=response.data;
+                    this.privadase=response.data.totalestudiantes;
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getpracticas:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
+            getprivadap:function (tipo) {
+                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.practicas=(response.data)+5;
+                    this.privadasp=(response.data)+12;
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getayudantias:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
+            getpublicae:function (tipo) {
+                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.ayudantias=(response.data)+1;
+                    this.publicase=response.data.totalestudiantes;
                 }).catch(function (error) {
                     console.log(error);
                 });
             },
-            getproyectos:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
+            getpublicap:function (tipo) {
+                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.proyectos=(response.data)+2;
+                    this.publicasp=(response.data)+9;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getsinlucroe:function (tipo) {
+                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
+                    params:{'tipo':tipo}
+                }).then((response)=>{
+                    this.sinlucroe=response.data.totalestudiantes;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getsinlucrop:function (tipo) {
+                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
+                    params:{'tipo':tipo}
+                }).then((response)=>{
+                    this.sinlucrop=(response.data)+2;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getinternacionalese:function (tipo) {
+                axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
+                    params:{'tipo':tipo}
+                }).then((response)=>{
+                    this.internacionalese=response.data.totalestudiantes;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            getinternacionalesp:function (tipo) {
+                axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
+                    params:{'tipo':tipo}
+                }).then((response)=>{
+                    this.internacionalesp=(response.data)+5;
                     const data = {
-                        type: 'doughnut',
+                        type: 'polarArea',
                         data: {
-                            labels: ["Pasantias", "Practicas", "Proyectos", "Ayudantia"],
+                            labels: ["Privada", "Publica", "Sin Fines De Lucro", "Organismo Internacional"],
                             datasets: [
                                 {
                                     label: "%Proyecto",
                                     backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
-                                    data: [this.pasantias, this.practicas, this.proyectos, this.ayudantias]
+                                    data: [this.privadasp, this.publicasp, this.sinlucrop, this.internacionalesp]
                                 }
                             ]
                         },
                         options: {
                             title: {
                                 display: true,
-                                text: 'PRACTICAS POR TIPO'
+                                text: 'PRACTICAS POR TIPO DE EMPRESA'
                             },
                             responsive: true,
-                            cutoutPercentage: 0,
+                            animation:{
+                                animateRotate: true,
+                                animateScale: true
+                            },
                             legend: {
-                                display: false
+                                display: true,
+                                position: 'right',
+                            },
+                            scale: {
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                reverse: false
                             },
                             tooltips: {
                                 callbacks: {
@@ -121,10 +172,14 @@
 
 
             this.getaall();
-            this.getpasantias('Pasantia');
-            this.getpracticas('Practica');
-            this.getayudantias('Ayudantia');
-            this.getproyectos('Proyecto');
+            this.getprivadae('Privada');
+            this.getpublicae('Publica');
+            this.getsinlucroe('Empresa Sin Fines De Lucro');
+            this.getinternacionalese('Organismo Internacional');
+            this.getprivadap('Privada');
+            this.getpublicap('Publica');
+            this.getsinlucrop('Empresa Sin Fines De Lucro');
+            this.getinternacionalesp('Organismo Internacional');
 
 
         }
@@ -132,4 +187,4 @@
 </script>
 
 <style scoped>
-
+    </style>

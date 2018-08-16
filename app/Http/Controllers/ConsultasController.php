@@ -136,6 +136,32 @@ class ConsultasController extends Controller
         return Practica::where('tipopractica','=', Request('tipo'))->count();
     }
 
+
+    public function totalestudiantesportipoempresa(Request $request)
+    {
+        $respuesta = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+            ->rightJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa', '=', request('tipo'))
+            ->groupBy('empresa.tipoempresa')
+            ->first();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+
+    public function totalpracticasportipoempresa(Request $request)
+    {
+        $respuesta = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa', '=', request('tipo'))
+            ->count();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
     public function totalesporperiodo(){
         $periodos = PeriodoAcademico::all();
         $respuesta=array();

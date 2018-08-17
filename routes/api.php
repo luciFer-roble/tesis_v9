@@ -30,3 +30,12 @@ Route::get('consultar-practicas-por-sector','ConsultasController@consultarpracti
 Route::get('consultar-practicas-por-nivel','ConsultasController@consultarpracticaspornivel');
 Route::get('totalpracticas','ConsultasController@totalpracticas');
 Route::get('totalportipo','ConsultasController@totalportipo');
+Route::get('totalesporperiodo','ConsultasController@totalesporperiodo');
+Route::get('totalperiodos','ConsultasController@totalperiodos');
+Route::get('totalespornivel','ConsultasController@totalespornivel');
+Route::get('totalniveles','ConsultasController@totalniveles');
+Route::get('totalesporperiodo2','ConsultasController@totalesporperiodo2');
+Route::get('totalestudiantesportipoempresa','ConsultasController@totalestudiantesportipoempresa');
+Route::get('totalpracticasportipoempresa','ConsultasController@totalpracticasportipoempresa');
+Route::get('totalestudiantesporsectorempresa','ConsultasController@totalestudiantesporsectorempresa');
+Route::get('totalpracticasporsectorempresa','ConsultasController@totalpracticasporsectorempresa');

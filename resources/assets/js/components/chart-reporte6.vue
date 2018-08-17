@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <canvas id="estudiantestipopractica">
+            <canvas id="canvas1">
 
             </canvas>
         </div>
@@ -15,12 +15,10 @@
         props: {
         },
         data:()=>({
-            totaldocs:'5',
-            total:0,
-            pasantias:0,
-            practicas:0,
-            ayudantias:0,
-            proyectos:0
+            niveles:[],
+            totales:[],
+            nivelesarray:[],
+            totalesarray:[]
         }),
         methods: {
             createChart(chartId, chartData) {
@@ -32,66 +30,51 @@
                     options: chartData.options,
                 });
             },
-            getaall:function () {
-                axios.get(window.location.origin+'/api/totalpracticas').then((response)=>{
-                    this.total=(response.data)+8;
+            getniveles:function () {
+                axios.get(window.location.origin+'/api/totalniveles').then((response)=>{
+                    this.niveles=(response.data);
+                    for(var i=0; i<Object.keys(this.niveles).length; i++){
+                        console.log(this.niveles[i].nombrenivel);
+                        this.nivelesarray.push(this.niveles[i].nombrenivel);
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 });
+
             },
-            getpasantias:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    this.pasantias=response.data;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getpracticas:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    this.practicas=(response.data)+5;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getayudantias:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    this.ayudantias=(response.data)+1;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            },
-            getproyectos:function (tipo) {
-                axios.get(window.location.origin+'/api/totalportipo',{
-                    params:{'tipo':tipo}
-                }).then((response)=>{
-                    this.proyectos=(response.data)+2;
+            gettotales:function () {
+                axios.get(window.location.origin+'/api/totalespornivel').then((response)=>{
+                    this.totales=(response.data);
+                    for(var i=0; i<Object.keys(this.totales).length; i++){
+                        if(this.totales[i] == null){
+                            console.log(0);
+                            this.totalesarray.push(0);
+                        }else{
+                            console.log(this.totales[i].totalpracticas);
+                            this.totalesarray.push(this.totales[i].totalpracticas);
+                        }
+                    }
                     const data = {
-                        type: 'doughnut',
+                        type: 'bar',
                         data: {
-                            labels: ["Pasantias", "Practicas", "Proyectos", "Ayudantia"],
+                            labels: this.nivelesarray,
                             datasets: [
                                 {
                                     label: "%Proyecto",
                                     backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
-                                    data: [this.pasantias, this.practicas, this.proyectos, this.ayudantias]
+                                    data: this.totalesarray
                                 }
                             ]
                         },
                         options: {
                             title: {
                                 display: true,
-                                text: 'PRACTICAS POR TIPO'
+                                text: 'PRACTICAS POR NIVEL'
                             },
                             responsive: true,
+                            cutoutPercentage: 0,
                             legend: {
-                                display: true,
-                                position: 'right',
+                                display: false
                             },
                             tooltips: {
                                 callbacks: {
@@ -107,26 +90,31 @@
                                         return data.labels[tooltipItem[0].index];
                                     }
                                 }
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Niveles'
+                                    }
+                                }]
                             }
                         }
                     };
-                    this.createChart('estudiantestipopractica', data);
+                    this.createChart('canvas1', data);
                 }).catch(function (error) {
                     console.log(error);
                 });
             }
         },
         mounted() {
-
-
-
-            this.getaall();
-            this.getpasantias('Pasantia');
-            this.getpracticas('Practica');
-            this.getayudantias('Ayudantia');
-            this.getproyectos('Proyecto');
-
-
+            this.getniveles();
+            this.gettotales();
         }
     }
 </script>

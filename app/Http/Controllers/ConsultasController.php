@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\Estudiante;
 use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
@@ -134,6 +135,123 @@ class ConsultasController extends Controller
     {
         return Practica::where('tipopractica','=', Request('tipo'))->count();
     }
+
+
+    public function totalestudiantesportipoempresa(Request $request)
+    {
+        $respuesta = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+            ->rightJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa', '=', request('tipo'))
+            ->groupBy('empresa.tipoempresa')
+            ->first();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+
+    public function totalpracticasportipoempresa(Request $request)
+    {
+        $respuesta = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa', '=', request('tipo'))
+            ->count();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+    public function totalestudiantesporsectorempresa(Request $request)
+    {
+        $respuesta = 'vacio';
+        $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+            ->rightJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa', '=', request('sector'))
+            ->groupBy('empresa.tipoempresa')
+            ->first();
+        if ($total){
+            $respuesta = $total;
+        }
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+
+    public function totalpracticasporsectorempresa(Request $request)
+    {
+        $respuesta = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa', '=', request('sector'))
+            ->count();
+        //print_r($respuesta); exit();
+        return $respuesta;
+    }
+
+    public function totalesporperiodo(){
+        $periodos = PeriodoAcademico::all();
+        $respuesta=array();
+        foreach ($periodos as $periodo){
+
+            $total = Estudiante::select(DB::raw('count(distinct(estudiante.idestudiante)) as totalestudiantes'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
+                /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+                ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
+                ->havingRaw('SUM(practica.horaspractica) >= 120')
+                ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
+                ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
+                ->first();
+            //var_dump((string)$total);
+                $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+    public  function totalperiodos(){
+
+        $periodos = PeriodoAcademico::all();
+        return $periodos;
+    }
+
+    public function totalespornivel(){
+        $niveles = Nivel::all();
+        $respuesta=array();
+        foreach ($niveles as $nivel){
+
+            $total = Practica::select(DB::raw(' count(distinct(practica.idpractica)) as totalpracticas'))
+                ->groupBy('practica.idnivel')
+                //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
+                ->havingRaw("practica.idnivel = '".$nivel->idnivel."'")
+                ->first();
+            //var_dump((string)$total);
+            $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+
+    public function totalesporperiodo2(){
+        $periodos = PeriodoAcademico::all();
+        $respuesta=array();
+        foreach ($periodos as $periodo){
+
+            $total = Practica::select(DB::raw(' count(distinct(practica.idpractica)) as totalpracticas'))
+                ->groupBy('practica.idperiodoacademico')
+                //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
+                ->havingRaw("practica.idperiodoacademico = '".$periodo->idperiodoacademico."'")
+                ->first();
+            //var_dump((string)$total);
+            $respuesta[] = $total;
+        }
+        return $respuesta;
+    }
+    public  function totalniveles(){
+        $niveles = Nivel::all();
+        return $niveles;
+    }
+
     public function listarselect1(Request $request)
     {
         if($request->criterio == 'empresa'){

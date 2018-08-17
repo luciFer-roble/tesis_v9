@@ -26,9 +26,11 @@ class ReportesController extends Controller
         $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
             ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
             ->groupBy('estudiante.idestudiante')
-            ->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
-            ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)
+            /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+            ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
             ->havingRaw('SUM(practica.horaspractica) >= 120')
+            ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
+            ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
             ->get();
 
         return view('reportes.reporte1', compact('estudiantes', 'periodo'));
@@ -123,8 +125,7 @@ class ReportesController extends Controller
         $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
             ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
             ->groupBy('estudiante.idestudiante')
-            ->whereDate('fechainiciopractica','>=',$periodo->fechainicioperiodoacademico)
-            ->whereDate('fechainiciopractica','<=',$periodo->fechafinperiodoacademico)
+            ->where('practica.idperiodoacademico','>=',$periodo->idperiodoacademico)
             ->get();
 
         return view('reportes.reporte2', compact('estudiantes', 'periodo'));
@@ -157,9 +158,7 @@ class ReportesController extends Controller
                 $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
                     ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
                     ->groupBy('estudiante.idestudiante')
-                    ->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
-                    ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)
-                    ->havingRaw('SUM(practica.horaspractica) >= 120')
+                    ->where('practica.idperiodoacademico','>=',$periodo->idperiodoacademico)
                     ->get();
                 $sheet->appendRow(1, array(
                     'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
@@ -512,11 +511,47 @@ class ReportesController extends Controller
         $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
             ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
             ->groupBy('estudiante.idestudiante')
-            ->where('practica.idnivel', '=', $nivel->idnivel)
+            ->where('practica.idnivel','=',$nivel->idnivel)
             ->get();
         //var_dump($tipopractica); exit();
 
         return view('reportes.reporte6', compact('estudiantes', 'nivel'));
+    }
+    public function reporte2p(Request $request)
+    {
+        $periodo = PeriodoAcademico::where('idperiodoacademico', '=', request('periodor1'))->first();
+        $practicas = Practica::where('practica.idperiodoacademico','=',$periodo->idperiodoacademico)->get();
+        return view('reportes.reporte2p', compact('practicas', 'periodo'));
+    }
+    public function reporte3p(Request $request)
+    {
+        $tipopractica = request('tipopractica');
+        $practicas = Practica::where('practica.tipopractica','=',$tipopractica)->get();
+        return view('reportes.reporte3p', compact('practicas', 'tipopractica'));
+    }
+    public function reporte4p(Request $request)
+    {
+        $tipoempresa = request('tipoempresa');
+        $practicas = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.tipoempresa','=',$tipoempresa)->get();
+        return view('reportes.reporte4p', compact('practicas', 'tipoempresa'));
+    }
+    public function reporte5p(Request $request)
+    {
+        $sectorempresa = request('sector');
+        $practicas = DB::table('practica')
+            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+            ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('empresa.sectorempresa','=',$sectorempresa)->get();
+        return view('reportes.reporte5p', compact('practicas', 'sectorempresa'));
+    }
+    public function reporte6p(Request $request)
+    {
+        $nivel = Nivel::where('idnivel', '=', request('nivel'))->first();
+        $practicas = Practica::where('practica.idnivel','=',$nivel->idnivel)->get();
+        return view('reportes.reporte6p', compact('practicas', 'nivel'));
     }
     public function descargaexcelr6(Nivel $nivel)
     {

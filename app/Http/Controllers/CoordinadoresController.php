@@ -60,10 +60,19 @@ class CoordinadoresController extends Controller
         $user->roles()->detach();
         $user->roles()->attach(Role::where('name','=', 'coord')->first());
 
+        if(!empty(request('cambio'))){
+            $id=request('cambio');
+            return $this->update($id);
+        }
+        else{
 
-        Flash::success('Ingresado Correctamente');
-        // redirect
-        return redirect('coordinadores');
+            Flash::success('Ingresado Correctamente');
+            // redirect
+            return redirect('coordinadores');
+
+        }
+
+
 
     }
 
@@ -109,7 +118,7 @@ class CoordinadoresController extends Controller
         // redirect
         return redirect('coordinadores');
     }*/
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $rules = array(
             'fin'    => 'required',
@@ -131,7 +140,7 @@ class CoordinadoresController extends Controller
         $user->roles()->attach(Role::where('name','=', 'prof')->first());
 
         Flash::success('Actualizado Correctamente');
-        return back();
+        return redirect('coordinadores');
 
 
     }

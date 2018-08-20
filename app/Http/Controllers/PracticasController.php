@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DocumentoP;
+use App\TipoDocumento;
 use Illuminate\Notifications\Notification;
 use App\Convenio;
 use App\Empresa;
@@ -77,6 +79,56 @@ class PracticasController extends Controller
         return view('practicas.create')->with(compact('estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
     }
 
+    public function finalize(Request $request, $id)
+    {
+        $errores=0;
+        $practica=Practica::all()->where('idpractica','=',$id)->first();
+        $carrera=$practica->estudiante->idcarrera;
+        $tiposdocumento = TipoDocumento::where('idcarrera','=',$carrera)->pluck('idtipodocumento');
+        $documentos=DocumentoP::whereIn('idtipodocumento',$tiposdocumento)->get();
+        $docsrequeridos=count($tiposdocumento);
+        $docsregistrados=count($documentos);
+
+        $horassinaprobacion=DB::table('actividad')
+        ->where('idpractica','=',$id)
+        ->where('estadoactividad','=','FALSE')
+            ->count();
+        /*$totalhoras = DB::table('actividad')
+            ->where('idpractica','=',$id)
+            ->sum('horasactividad');
+        $horasenpractica=$practica->horaspractica;*/
+        if($docsregistrados != $docsrequeridos){
+            $mensaje1='Falta registrar documentos de la practica';
+            $errores=1;
+        }
+        if($horassinaprobacion > 0){
+            $mensaje2='Falta aprobacion de horas en actividades';
+            $errores=1;
+        }
+
+        if($errores >0){
+            Flash::overlay($mensaje1);
+           /* Flash::warning($mensaje1)->important();
+            Flash::warning($mensaje2)->important();*/
+            return back();
+        }
+
+      elseif($errores=0){
+            $activa='FALSE';
+
+          // store
+          Practica::updateOrCreate(['idpractica'  => $id], [
+              'activapractica'      => $activa
+          ]);
+
+          Flash::success('Se ha finalizado correctamente');
+
+          // redirect
+          return redirect('practicas');
+
+      }
+
+    }
     public function store(Request $request)
     {
        /* $rules = array(

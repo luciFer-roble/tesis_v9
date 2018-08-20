@@ -34,8 +34,11 @@ to get the desired effect
         <!-- Main content -->
         <div class="content">
 
-
-            @include('flash::message')
+            <div class="container">
+                <div class="col-sm-12">
+                    @include('flash::message')
+                </div>
+            </div>
             @include('layouts.errors')
                     @yield('content')
 
@@ -50,13 +53,12 @@ to get the desired effect
 </div>
 <script src="{{mix('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>{{--
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
 <script>
     $('#flash-overlay-modal').modal();
-</script>
-<script>
-
-       $('div.alert').not('.alert-danger').delay(3000).fadeOut(350);
+       $('div.alert').is('.alert-success').delay(3000).fadeOut(350);
 
 </script>
 </body>

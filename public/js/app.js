@@ -4574,7 +4574,7 @@
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)(module)))
 
 /***/ }),
 /* 1 */
@@ -4583,7 +4583,7 @@
 "use strict";
 
 
-module.exports = __webpack_require__(12);
+module.exports = __webpack_require__(13);
 module.exports.easing = __webpack_require__(225);
 module.exports.canvas = __webpack_require__(226);
 module.exports.options = __webpack_require__(227);
@@ -5034,7 +5034,7 @@ function applyToTag (styleElement, obj) {
 "use strict";
 
 
-var bind = __webpack_require__(15);
+var bind = __webpack_require__(16);
 var isBuffer = __webpack_require__(156);
 
 /*global toString:true*/
@@ -5475,6 +5475,134 @@ module.exports.Rectangle = __webpack_require__(236);
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * @namespace Chart
+ */
+var Chart = __webpack_require__(224)();
+
+Chart.helpers = __webpack_require__(1);
+
+// @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
+__webpack_require__(228)(Chart);
+
+Chart.defaults = __webpack_require__(2);
+Chart.Element = __webpack_require__(7);
+Chart.elements = __webpack_require__(8);
+Chart.Interaction = __webpack_require__(23);
+Chart.layouts = __webpack_require__(11);
+Chart.platform = __webpack_require__(24);
+Chart.plugins = __webpack_require__(25);
+Chart.Ticks = __webpack_require__(12);
+
+__webpack_require__(239)(Chart);
+__webpack_require__(240)(Chart);
+__webpack_require__(241)(Chart);
+__webpack_require__(242)(Chart);
+__webpack_require__(243)(Chart);
+__webpack_require__(244)(Chart);
+
+__webpack_require__(245)(Chart);
+__webpack_require__(246)(Chart);
+__webpack_require__(247)(Chart);
+__webpack_require__(248)(Chart);
+__webpack_require__(249)(Chart);
+__webpack_require__(250)(Chart);
+
+// Controllers must be loaded after elements
+// See Chart.core.datasetController.dataElementType
+__webpack_require__(252)(Chart);
+__webpack_require__(253)(Chart);
+__webpack_require__(254)(Chart);
+__webpack_require__(255)(Chart);
+__webpack_require__(256)(Chart);
+__webpack_require__(257)(Chart);
+__webpack_require__(258)(Chart);
+
+__webpack_require__(259)(Chart);
+__webpack_require__(260)(Chart);
+__webpack_require__(261)(Chart);
+__webpack_require__(262)(Chart);
+__webpack_require__(263)(Chart);
+__webpack_require__(264)(Chart);
+__webpack_require__(265)(Chart);
+
+// Loading built-it plugins
+var plugins = __webpack_require__(266);
+for (var k in plugins) {
+	if (plugins.hasOwnProperty(k)) {
+		Chart.plugins.register(plugins[k]);
+	}
+}
+
+Chart.platform.initialize();
+
+module.exports = Chart;
+if (typeof window !== 'undefined') {
+	window.Chart = Chart;
+}
+
+// DEPRECATIONS
+
+/**
+ * Provided for backward compatibility, not available anymore
+ * @namespace Chart.Legend
+ * @deprecated since version 2.1.5
+ * @todo remove at version 3
+ * @private
+ */
+Chart.Legend = plugins.legend._element;
+
+/**
+ * Provided for backward compatibility, not available anymore
+ * @namespace Chart.Title
+ * @deprecated since version 2.1.5
+ * @todo remove at version 3
+ * @private
+ */
+Chart.Title = plugins.title._element;
+
+/**
+ * Provided for backward compatibility, use Chart.plugins instead
+ * @namespace Chart.pluginService
+ * @deprecated since version 2.1.5
+ * @todo remove at version 3
+ * @private
+ */
+Chart.pluginService = Chart.plugins;
+
+/**
+ * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
+ * effect, instead simply create/register plugins via plain JavaScript objects.
+ * @interface Chart.PluginBase
+ * @deprecated since version 2.5.0
+ * @todo remove at version 3
+ * @private
+ */
+Chart.PluginBase = Chart.Element.extend({});
+
+/**
+ * Provided for backward compatibility, use Chart.helpers.canvas instead.
+ * @namespace Chart.canvasHelpers
+ * @deprecated since version 2.6.0
+ * @todo remove at version 3
+ * @private
+ */
+Chart.canvasHelpers = Chart.helpers.canvas;
+
+/**
+ * Provided for backward compatibility, use Chart.layouts instead.
+ * @namespace Chart.layoutService
+ * @deprecated since version 2.8.0
+ * @todo remove at version 3
+ * @private
+ */
+Chart.layoutService = Chart.layouts;
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5501,7 +5629,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5927,7 +6055,7 @@ module.exports = {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6004,7 +6132,7 @@ module.exports = {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6350,7 +6478,7 @@ helpers.getValueAtIndexOrDefault = helpers.valueAtIndexOrDefault;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6373,10 +6501,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(17);
+    adapter = __webpack_require__(18);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(17);
+    adapter = __webpack_require__(18);
   }
   return adapter;
 }
@@ -6447,10 +6575,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -6478,7 +6606,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6496,7 +6624,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -6686,7 +6814,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6697,7 +6825,7 @@ var settle = __webpack_require__(159);
 var buildURL = __webpack_require__(161);
 var parseHeaders = __webpack_require__(162);
 var isURLSameOrigin = __webpack_require__(163);
-var createError = __webpack_require__(18);
+var createError = __webpack_require__(19);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(164);
 
 module.exports = function xhrAdapter(config) {
@@ -6873,7 +7001,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6898,7 +7026,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6910,7 +7038,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6933,134 +7061,6 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * @namespace Chart
- */
-var Chart = __webpack_require__(224)();
-
-Chart.helpers = __webpack_require__(1);
-
-// @todo dispatch these helpers into appropriated helpers/helpers.* file and write unit tests!
-__webpack_require__(228)(Chart);
-
-Chart.defaults = __webpack_require__(2);
-Chart.Element = __webpack_require__(7);
-Chart.elements = __webpack_require__(8);
-Chart.Interaction = __webpack_require__(23);
-Chart.layouts = __webpack_require__(10);
-Chart.platform = __webpack_require__(24);
-Chart.plugins = __webpack_require__(25);
-Chart.Ticks = __webpack_require__(11);
-
-__webpack_require__(239)(Chart);
-__webpack_require__(240)(Chart);
-__webpack_require__(241)(Chart);
-__webpack_require__(242)(Chart);
-__webpack_require__(243)(Chart);
-__webpack_require__(244)(Chart);
-
-__webpack_require__(245)(Chart);
-__webpack_require__(246)(Chart);
-__webpack_require__(247)(Chart);
-__webpack_require__(248)(Chart);
-__webpack_require__(249)(Chart);
-__webpack_require__(250)(Chart);
-
-// Controllers must be loaded after elements
-// See Chart.core.datasetController.dataElementType
-__webpack_require__(252)(Chart);
-__webpack_require__(253)(Chart);
-__webpack_require__(254)(Chart);
-__webpack_require__(255)(Chart);
-__webpack_require__(256)(Chart);
-__webpack_require__(257)(Chart);
-__webpack_require__(258)(Chart);
-
-__webpack_require__(259)(Chart);
-__webpack_require__(260)(Chart);
-__webpack_require__(261)(Chart);
-__webpack_require__(262)(Chart);
-__webpack_require__(263)(Chart);
-__webpack_require__(264)(Chart);
-__webpack_require__(265)(Chart);
-
-// Loading built-it plugins
-var plugins = __webpack_require__(266);
-for (var k in plugins) {
-	if (plugins.hasOwnProperty(k)) {
-		Chart.plugins.register(plugins[k]);
-	}
-}
-
-Chart.platform.initialize();
-
-module.exports = Chart;
-if (typeof window !== 'undefined') {
-	window.Chart = Chart;
-}
-
-// DEPRECATIONS
-
-/**
- * Provided for backward compatibility, not available anymore
- * @namespace Chart.Legend
- * @deprecated since version 2.1.5
- * @todo remove at version 3
- * @private
- */
-Chart.Legend = plugins.legend._element;
-
-/**
- * Provided for backward compatibility, not available anymore
- * @namespace Chart.Title
- * @deprecated since version 2.1.5
- * @todo remove at version 3
- * @private
- */
-Chart.Title = plugins.title._element;
-
-/**
- * Provided for backward compatibility, use Chart.plugins instead
- * @namespace Chart.pluginService
- * @deprecated since version 2.1.5
- * @todo remove at version 3
- * @private
- */
-Chart.pluginService = Chart.plugins;
-
-/**
- * Provided for backward compatibility, inheriting from Chart.PlugingBase has no
- * effect, instead simply create/register plugins via plain JavaScript objects.
- * @interface Chart.PluginBase
- * @deprecated since version 2.5.0
- * @todo remove at version 3
- * @private
- */
-Chart.PluginBase = Chart.Element.extend({});
-
-/**
- * Provided for backward compatibility, use Chart.helpers.canvas instead.
- * @namespace Chart.canvasHelpers
- * @deprecated since version 2.6.0
- * @todo remove at version 3
- * @private
- */
-Chart.canvasHelpers = Chart.helpers.canvas;
-
-/**
- * Provided for backward compatibility, use Chart.layouts instead.
- * @namespace Chart.layoutService
- * @deprecated since version 2.8.0
- * @todo remove at version 3
- * @private
- */
-Chart.layoutService = Chart.layouts;
 
 
 /***/ }),
@@ -20211,7 +20211,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(150);
-module.exports = __webpack_require__(301);
+module.exports = __webpack_require__(326);
 
 
 /***/ }),
@@ -20283,7 +20283,12 @@ Vue.component('estudiante-periodo', __webpack_require__(276));
 Vue.component('estudiante-tipopractica', __webpack_require__(281));
 Vue.component('estudiante-tipoempresa', __webpack_require__(286));
 Vue.component('estudiante-sector', __webpack_require__(291));
-Vue.component('chart-reporte3', __webpack_require__(296));
+Vue.component('chart-reporte1', __webpack_require__(296));
+Vue.component('chart-reporte2', __webpack_require__(301));
+Vue.component('chart-reporte3', __webpack_require__(306));
+Vue.component('chart-reporte4', __webpack_require__(311));
+Vue.component('chart-reporte5', __webpack_require__(316));
+Vue.component('chart-reporte6', __webpack_require__(321));
 var app = new Vue({
     el: '#app'
 });
@@ -37460,7 +37465,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(14)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(15)(module)))
 
 /***/ }),
 /* 153 */
@@ -39989,7 +39994,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 154 */
@@ -40005,9 +40010,9 @@ module.exports = __webpack_require__(155);
 
 
 var utils = __webpack_require__(6);
-var bind = __webpack_require__(15);
+var bind = __webpack_require__(16);
 var Axios = __webpack_require__(157);
-var defaults = __webpack_require__(13);
+var defaults = __webpack_require__(14);
 
 /**
  * Create an instance of Axios
@@ -40040,9 +40045,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(20);
+axios.Cancel = __webpack_require__(21);
 axios.CancelToken = __webpack_require__(171);
-axios.isCancel = __webpack_require__(19);
+axios.isCancel = __webpack_require__(20);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -40090,7 +40095,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(13);
+var defaults = __webpack_require__(14);
 var utils = __webpack_require__(6);
 var InterceptorManager = __webpack_require__(166);
 var dispatchRequest = __webpack_require__(167);
@@ -40202,7 +40207,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(18);
+var createError = __webpack_require__(19);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -40621,8 +40626,8 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(6);
 var transformData = __webpack_require__(168);
-var isCancel = __webpack_require__(19);
-var defaults = __webpack_require__(13);
+var isCancel = __webpack_require__(20);
+var defaults = __webpack_require__(14);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -40774,7 +40779,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(20);
+var Cancel = __webpack_require__(21);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -51829,7 +51834,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(174).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(174).setImmediate))
 
 /***/ }),
 /* 174 */
@@ -51899,7 +51904,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 175 */
@@ -52092,7 +52097,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(17)))
 
 /***/ }),
 /* 176 */
@@ -56147,7 +56152,7 @@ exports.push([module.i, "\n.donut-inner[data-v-a31284f6] {\n    margin-top: -100
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
 //
@@ -56368,7 +56373,7 @@ module.exports = function() {
 "use strict";
 
 
-var helpers = __webpack_require__(12);
+var helpers = __webpack_require__(13);
 
 /**
  * Easing functions adapted from Robert Penner's easing equations.
@@ -56625,7 +56630,7 @@ helpers.easingEffects = effects;
 "use strict";
 
 
-var helpers = __webpack_require__(12);
+var helpers = __webpack_require__(13);
 
 /**
  * @namespace Chart.helpers.canvas
@@ -56846,7 +56851,7 @@ helpers.drawRoundedRectangle = function(ctx) {
 "use strict";
 
 
-var helpers = __webpack_require__(12);
+var helpers = __webpack_require__(13);
 
 /**
  * @alias Chart.helpers.options
@@ -59970,7 +59975,7 @@ module.exports = function(Chart) {
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
 var Interaction = __webpack_require__(23);
-var layouts = __webpack_require__(10);
+var layouts = __webpack_require__(11);
 var platform = __webpack_require__(24);
 var plugins = __webpack_require__(25);
 
@@ -61260,7 +61265,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var layouts = __webpack_require__(10);
+var layouts = __webpack_require__(11);
 
 module.exports = function(Chart) {
 
@@ -61314,7 +61319,7 @@ module.exports = function(Chart) {
 var defaults = __webpack_require__(2);
 var Element = __webpack_require__(7);
 var helpers = __webpack_require__(1);
-var Ticks = __webpack_require__(11);
+var Ticks = __webpack_require__(12);
 
 defaults._set('scale', {
 	display: true,
@@ -63544,7 +63549,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var Ticks = __webpack_require__(11);
+var Ticks = __webpack_require__(12);
 
 module.exports = function(Chart) {
 
@@ -63741,7 +63746,7 @@ module.exports = function(Chart) {
 
 
 var helpers = __webpack_require__(1);
-var Ticks = __webpack_require__(11);
+var Ticks = __webpack_require__(12);
 
 /**
  * Generate a set of logarithmic ticks
@@ -64096,7 +64101,7 @@ module.exports = function(Chart) {
 
 var defaults = __webpack_require__(2);
 var helpers = __webpack_require__(1);
-var Ticks = __webpack_require__(11);
+var Ticks = __webpack_require__(12);
 
 module.exports = function(Chart) {
 
@@ -67948,7 +67953,7 @@ module.exports = {
 var defaults = __webpack_require__(2);
 var Element = __webpack_require__(7);
 var helpers = __webpack_require__(1);
-var layouts = __webpack_require__(10);
+var layouts = __webpack_require__(11);
 
 var noop = helpers.noop;
 
@@ -68531,7 +68536,7 @@ module.exports = {
 var defaults = __webpack_require__(2);
 var Element = __webpack_require__(7);
 var helpers = __webpack_require__(1);
-var layouts = __webpack_require__(10);
+var layouts = __webpack_require__(11);
 
 var noop = helpers.noop;
 
@@ -68920,7 +68925,7 @@ exports = module.exports = __webpack_require__(4)(true);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"estudiante-item.vue","sourceRoot":""}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"estudiante-item.vue","sourceRoot":""}]);
 
 // exports
 
@@ -68931,6 +68936,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -69036,8 +69053,22 @@ var render = function() {
       staticStyle: { "table-layout": "fixed" }
     },
     [
-      _c("tr", [
-        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "12%" } }, [
+      _c("tr", { staticStyle: { "background-color": "white" } }, [
+        _c(
+          "th",
+          {
+            staticClass: "p-1 m-0",
+            staticStyle: {
+              width: "12%",
+              "background-color": "#688ebe",
+              color: "white",
+              "text-align": "center"
+            }
+          },
+          [_vm._v("Estudiante: ")]
+        ),
+        _vm._v(" "),
+        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "8%" } }, [
           _vm._v(_vm._s(_vm.estudiante.cedulaestudiante))
         ]),
         _vm._v(" "),
@@ -69069,10 +69100,10 @@ var render = function() {
           "td",
           {
             staticClass: "p-1 m-0",
-            staticStyle: { width: "6%" },
+            staticStyle: { width: "10%" },
             attrs: { align: "center" }
           },
-          [_vm._v(_vm._s(_vm.estudiante.horasestudiante))]
+          [_vm._v("Horas: " + _vm._s(_vm.estudiante.horasestudiante))]
         ),
         _vm._v(" "),
         !_vm.practicas
@@ -69114,10 +69145,11 @@ var render = function() {
                 expression: "practicas"
               }
             ],
-            attrs: { colspan: "8" }
+            staticClass: "p-0 m-0",
+            attrs: { colspan: "9" }
           },
           [
-            _c("table", { staticClass: "table table-bordered p-0 m-1" }, [
+            _c("table", { staticClass: "table table-bordered p-0 m-0" }, [
               _vm._m(0),
               _vm._v(" "),
               _c(
@@ -69156,13 +69188,17 @@ var render = function() {
                       _vm._v(_vm._s(item.sectorempresa))
                     ]),
                     _vm._v(" "),
-                    _c("td", { staticClass: "p-1 m-0" }, [
-                      _vm._v(
-                        _vm._s(
-                          item.nombresprofesor + " " + item.apellidosprofesor
+                    _c(
+                      "td",
+                      { staticClass: "p-1 m-0", attrs: { colspan: "2" } },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            item.nombresprofesor + " " + item.apellidosprofesor
+                          )
                         )
-                      )
-                    ]),
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("td", { staticClass: "p-1 m-0" }, [
                       _vm._v(
@@ -69185,12 +69221,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("No.")]),
+      _c("tr", { staticStyle: { "background-color": "#F2F2F2" } }, [
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Practica")]),
         _vm._v(" "),
-        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Inicio")]),
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Fecha Inicio")]),
         _vm._v(" "),
-        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Fin")]),
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Fecha Fin")]),
         _vm._v(" "),
         _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Tipo Proyecto")]),
         _vm._v(" "),
@@ -69202,9 +69238,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Sector")]),
         _vm._v(" "),
-        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Tutor A.")]),
+        _c("th", { staticClass: "p-1 m-0", attrs: { colspan: "2" } }, [
+          _vm._v("Tutor Academico")
+        ]),
         _vm._v(" "),
-        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Tutor E.")])
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Tutor Empresarial")])
       ])
     ])
   }
@@ -69827,7 +69865,7 @@ var render = function() {
             staticClass: "p-1 m-0",
             staticStyle: {
               width: "12%",
-              "background-color": "#688ece",
+              "background-color": "#688ebe",
               color: "white",
               "text-align": "center"
             }
@@ -70814,6 +70852,513 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
+var __vue_scopeId__ = "data-v-b9a23d74"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chart-reporte1.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b9a23d74", Component.options)
+  } else {
+    hotAPI.reload("data-v-b9a23d74", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 297 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(298);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("988cfc14", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9a23d74\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte1.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9a23d74\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte1.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 298 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"chart-reporte1.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 299 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {},
+    data: function data() {
+        return {
+            periodos: [],
+            totales: [],
+            periodosarray: [],
+            totalesarray: []
+        };
+    },
+    methods: {
+        createChart: function createChart(chartId, chartData) {
+            var canvas = document.getElementById(chartId);
+            var ctx = canvas.getContext("2d");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: chartData.type,
+                data: chartData.data,
+                options: chartData.options
+            });
+        },
+
+        getperiodos: function getperiodos() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/totalperiodos').then(function (response) {
+                _this.periodos = response.data;
+                for (var i = 0; i < Object.keys(_this.periodos).length; i++) {
+                    console.log(_this.periodos[i].nombreperiodoacademico);
+                    _this.periodosarray.push(_this.periodos[i].nombreperiodoacademico);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        gettotales: function gettotales() {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/totalesporperiodo').then(function (response) {
+                _this2.totales = response.data;
+                for (var i = 0; i < Object.keys(_this2.totales).length; i++) {
+                    if (_this2.totales[i] == null) {
+                        console.log(0);
+                        _this2.totalesarray.push(0);
+                    } else {
+                        console.log(_this2.totales[i].totalestudiantes);
+                        _this2.totalesarray.push(_this2.totales[i].totalestudiantes);
+                    }
+                }
+                var data = {
+                    type: 'bar',
+                    data: {
+                        labels: _this2.periodosarray,
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                            data: _this2.totalesarray
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'PRACTICAS CULMINADAS'
+                        },
+                        responsive: true,
+                        cutoutPercentage: 0,
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Periodo academico'
+                                }
+                            }]
+                        }
+                    }
+                };
+                _this2.createChart('canvas1', data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getperiodos();
+        this.gettotales();
+    }
+});
+
+/***/ }),
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "canvas1" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b9a23d74", module.exports)
+  }
+}
+
+/***/ }),
+/* 301 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(302)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(304)
+/* template */
+var __vue_template__ = __webpack_require__(305)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-b9860e72"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chart-reporte2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b9860e72", Component.options)
+  } else {
+    hotAPI.reload("data-v-b9860e72", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(303);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("103d34a9", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9860e72\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte2.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b9860e72\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte2.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"chart-reporte2.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 304 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {},
+    data: function data() {
+        return {
+            periodos: [],
+            totales: [],
+            periodosarray: [],
+            totalesarray: []
+        };
+    },
+    methods: {
+        createChart: function createChart(chartId, chartData) {
+            var canvas = document.getElementById(chartId);
+            var ctx = canvas.getContext("2d");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: chartData.type,
+                data: chartData.data,
+                options: chartData.options
+            });
+        },
+
+        getperiodos: function getperiodos() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/totalperiodos').then(function (response) {
+                _this.periodos = response.data;
+                for (var i = 0; i < Object.keys(_this.periodos).length; i++) {
+                    console.log(_this.periodos[i].nombreperiodoacademico);
+                    _this.periodosarray.push(_this.periodos[i].nombreperiodoacademico);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        gettotales: function gettotales() {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/totalesporperiodo2').then(function (response) {
+                _this2.totales = response.data;
+                for (var i = 0; i < Object.keys(_this2.totales).length; i++) {
+                    if (_this2.totales[i] == null) {
+                        console.log(0);
+                        _this2.totalesarray.push(0);
+                    } else {
+                        console.log(_this2.totales[i].totalpracticas);
+                        _this2.totalesarray.push(_this2.totales[i].totalpracticas);
+                    }
+                }
+                var data = {
+                    type: 'line',
+                    data: {
+                        labels: _this2.periodosarray,
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: "#a5bee7",
+                            borderColor: "#80a0d6",
+                            data: _this2.totalesarray
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'PRACTICAS REALIZADAS POR PERIODO'
+                        },
+                        responsive: true,
+                        cutoutPercentage: 0,
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Periodo academico'
+                                }
+                            }]
+                        }
+                    }
+                };
+                _this2.createChart('canvas1', data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getperiodos();
+        this.gettotales();
+    }
+});
+
+/***/ }),
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "canvas1" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b9860e72", module.exports)
+  }
+}
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(307)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(309)
+/* template */
+var __vue_template__ = __webpack_require__(310)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
 var __vue_scopeId__ = "data-v-b969df70"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
@@ -70847,13 +71392,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 297 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(298);
+var content = __webpack_require__(308);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -70873,7 +71418,7 @@ if(false) {
 }
 
 /***/ }),
-/* 298 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(true);
@@ -70887,12 +71432,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 299 */
+/* 309 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
 //
 //
@@ -70995,9 +71540,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             text: 'PRACTICAS POR TIPO'
                         },
                         responsive: true,
-                        cutoutPercentage: 0,
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'right'
                         },
                         tooltips: {
                             callbacks: {
@@ -71033,7 +71578,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 300 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -71064,7 +71609,1039 @@ if (false) {
 }
 
 /***/ }),
-/* 301 */
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(312)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(314)
+/* template */
+var __vue_template__ = __webpack_require__(315)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-b94db06e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chart-reporte4.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b94db06e", Component.options)
+  } else {
+    hotAPI.reload("data-v-b94db06e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(313);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("b324e3a4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b94db06e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte4.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b94db06e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte4.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"chart-reporte4.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 314 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {},
+    data: function data() {
+        return {
+            totaldocs: '5',
+            total: 0,
+            privadase: 0,
+            privadasp: 0,
+            publicase: 0,
+            publicasp: 0,
+            sinlucroe: 0,
+            sinlucrop: 0,
+            internacionalese: 0,
+            internacionalesp: 0
+
+        };
+    },
+    methods: {
+        createChart: function createChart(chartId, chartData) {
+            var canvas = document.getElementById(chartId);
+            var ctx = canvas.getContext("2d");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: chartData.type,
+                data: chartData.data,
+                options: chartData.options
+            });
+        },
+
+        getaall: function getaall() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/totalpracticas').then(function (response) {
+                _this.total = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getprivadae: function getprivadae(tipo) {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                if (_this2.data == null) {
+                    _this2.privadase = 0 + 4;
+                } else {
+                    _this2.privadase = response.data.totalestudiantes + 4;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getprivadap: function getprivadap(tipo) {
+            var _this3 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                _this3.privadasp = response.data + 8;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getpublicae: function getpublicae(tipo) {
+            var _this4 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                if (_this4.data == null) {
+                    _this4.publicase = 0 + 4;
+                } else {
+                    _this4.publicase = response.data.totalestudiantes + 4;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getpublicap: function getpublicap(tipo) {
+            var _this5 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                _this5.publicasp = response.data + 9;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getsinlucroe: function getsinlucroe(tipo) {
+            var _this6 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                if (_this6.data == null) {
+                    _this6.sinlucroe = 0 + 2;
+                } else {
+                    _this6.sinlucroe = response.data.totalestudiantes + 2;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getsinlucrop: function getsinlucrop(tipo) {
+            var _this7 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                _this7.sinlucrop = response.data + 2;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getinternacionalese: function getinternacionalese(tipo) {
+            var _this8 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                if (_this8.data == null) {
+                    _this8.internacionalese = 0 + 4;
+                } else {
+                    _this8.internacionalese = response.data.totalestudiantes + 4;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getinternacionalesp: function getinternacionalesp(tipo) {
+            var _this9 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasportipoempresa', {
+                params: { 'tipo': tipo }
+            }).then(function (response) {
+                _this9.internacionalesp = response.data + 5;
+                var data = {
+                    type: 'polarArea',
+                    data: {
+                        labels: ["Privada", "Publica", "Sin Fines De Lucro", "Organismo Internacional"],
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                            data: [_this9.privadasp, _this9.publicasp, _this9.sinlucrop, _this9.internacionalesp]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'PRACTICAS POR TIPO DE EMPRESA'
+                        },
+                        responsive: true,
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true
+                        },
+                        legend: {
+                            display: true,
+                            position: 'right'
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            reverse: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        }
+                    }
+                };
+                var data2 = {
+                    type: 'polarArea',
+                    data: {
+                        labels: ["Privada", "Publica", "Sin Fines De Lucro", "Organismo Internacional"],
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                            data: [_this9.privadase, _this9.publicase, _this9.sinlucroe, _this9.internacionalese]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'ESTUDIANTES POR TIPO DE EMPRESA'
+                        },
+                        responsive: true,
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true
+                        },
+                        legend: {
+                            display: true,
+                            position: 'right'
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            reverse: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        }
+                    }
+                };
+                _this9.createChart('estudiantestipopractica', data);
+                _this9.createChart('practicastipopractica', data2);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+
+        this.getaall();
+        this.getprivadae('Privada');
+        this.getpublicae('Publica');
+        this.getsinlucroe('Empresa Sin Fines De Lucro');
+        this.getinternacionalese('Organismo Internacional');
+        this.getprivadap('Privada');
+        this.getpublicap('Publica');
+        this.getsinlucrop('Empresa Sin Fines De Lucro');
+        this.getinternacionalesp('Organismo Internacional');
+    }
+});
+
+/***/ }),
+/* 315 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "estudiantestipopractica" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "practicastipopractica" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b94db06e", module.exports)
+  }
+}
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(317)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(319)
+/* template */
+var __vue_template__ = __webpack_require__(320)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-b931816c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chart-reporte5.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b931816c", Component.options)
+  } else {
+    hotAPI.reload("data-v-b931816c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(318);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("f2d3b78e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b931816c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte5.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b931816c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte5.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"chart-reporte5.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 319 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {},
+    data: function data() {
+        return {
+            totaldocs: '5',
+            total: 0,
+            primarioe: 0,
+            primariop: 0,
+            secundarioe: 0,
+            secundariop: 0,
+            terciarioe: 0,
+            terciariop: 0
+
+        };
+    },
+    methods: {
+        createChart: function createChart(chartId, chartData) {
+            var canvas = document.getElementById(chartId);
+            var ctx = canvas.getContext("2d");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: chartData.type,
+                data: chartData.data,
+                options: chartData.options
+            });
+        },
+
+        getaall: function getaall() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/totalpracticas').then(function (response) {
+                _this.total = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getprimarioe: function getprimarioe(sector) {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                console.log(response.data);
+                if (response.data != 'vacio') {
+                    _this2.primarioe = response.data.totalestudiantes;
+                } else {
+                    _this2.primarioe = 0;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getprimariop: function getprimariop(sector) {
+            var _this3 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                _this3.primariop = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getsecundarioe: function getsecundarioe(sector) {
+            var _this4 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                if (response.data != 'vacio') {
+                    _this4.secundarioe = response.data.totalestudiantes;
+                } else {
+                    _this4.secundarioe = 0;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getsecundariop: function getsecundariop(sector) {
+            var _this5 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                _this5.secundariop = response.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getterciarioe: function getterciarioe(sector) {
+            var _this6 = this;
+
+            axios.get(window.location.origin + '/api/totalestudiantesporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                if (response.data != 'vacio') {
+                    _this6.terciarioe = response.data.totalestudiantes;
+                } else {
+                    _this6.terciarioe = 0;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getterciariop: function getterciariop(sector) {
+            var _this7 = this;
+
+            axios.get(window.location.origin + '/api/totalpracticasporsectorempresa', {
+                params: { 'sector': sector }
+            }).then(function (response) {
+                _this7.terciariop = response.data;
+                var data = {
+                    type: 'polarArea',
+                    data: {
+                        labels: ["Primario", "Secundario", "Terciario"],
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#8eaee3", "#80a0d6", "#688ece"],
+                            data: [_this7.primariop, _this7.secundariop, _this7.terciariop]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'PRACTICAS POR SECTOR DE EMPRESA'
+                        },
+                        responsive: true,
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true
+                        },
+                        legend: {
+                            display: true,
+                            position: 'left'
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            reverse: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        }
+                    }
+                };
+                var data2 = {
+                    type: 'polarArea',
+                    data: {
+                        labels: ["Primario", "Secundario", "Terciario"],
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#8eaee3", "#80a0d6", "#688ece"],
+                            data: [_this7.primarioe, _this7.secundarioe, _this7.terciarioe]
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'ESTUDIANTES POR SECTOR DE EMPRESA'
+                        },
+                        responsive: true,
+                        animation: {
+                            animateRotate: true,
+                            animateScale: true
+                        },
+                        legend: {
+                            display: true,
+                            position: 'left'
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            reverse: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        }
+                    }
+                };
+                _this7.createChart('estudiantestipopractica', data);
+                _this7.createChart('practicastipopractica', data2);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+
+        this.getaall();
+        this.getprimarioe('Primario');
+        this.getsecundarioe('Secundario');
+        this.getterciarioe('Terciario');
+        this.getprimariop('Primario');
+        this.getsecundariop('Secundario');
+        this.getterciariop('Terciario');
+    }
+});
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "estudiantestipopractica" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "practicastipopractica" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b931816c", module.exports)
+  }
+}
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(322)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(324)
+/* template */
+var __vue_template__ = __webpack_require__(325)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-b915526a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chart-reporte6.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b915526a", Component.options)
+  } else {
+    hotAPI.reload("data-v-b915526a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(323);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("a5a6945a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b915526a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte6.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b915526a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chart-reporte6.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"chart-reporte6.vue","sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 324 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chart_js__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {},
+    data: function data() {
+        return {
+            niveles: [],
+            totales: [],
+            nivelesarray: [],
+            totalesarray: []
+        };
+    },
+    methods: {
+        createChart: function createChart(chartId, chartData) {
+            var canvas = document.getElementById(chartId);
+            var ctx = canvas.getContext("2d");
+            var myChart = new __WEBPACK_IMPORTED_MODULE_0_chart_js___default.a(ctx, {
+                type: chartData.type,
+                data: chartData.data,
+                options: chartData.options
+            });
+        },
+
+        getniveles: function getniveles() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/totalniveles').then(function (response) {
+                _this.niveles = response.data;
+                for (var i = 0; i < Object.keys(_this.niveles).length; i++) {
+                    console.log(_this.niveles[i].nombrenivel);
+                    _this.nivelesarray.push(_this.niveles[i].nombrenivel);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        gettotales: function gettotales() {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/totalespornivel').then(function (response) {
+                _this2.totales = response.data;
+                for (var i = 0; i < Object.keys(_this2.totales).length; i++) {
+                    if (_this2.totales[i] == null) {
+                        console.log(0);
+                        _this2.totalesarray.push(0);
+                    } else {
+                        console.log(_this2.totales[i].totalpracticas);
+                        _this2.totalesarray.push(_this2.totales[i].totalpracticas);
+                    }
+                }
+                var data = {
+                    type: 'bar',
+                    data: {
+                        labels: _this2.nivelesarray,
+                        datasets: [{
+                            label: "%Proyecto",
+                            backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                            data: _this2.totalesarray
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'PRACTICAS POR NIVEL'
+                        },
+                        responsive: true,
+                        cutoutPercentage: 0,
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function label(tooltipItem, data) {
+                                    var dataset = data.datasets[tooltipItem.datasetIndex];
+                                    var meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                    var total = meta.total;
+                                    var currentValue = dataset.data[tooltipItem.index];
+                                    var percentage = parseFloat((currentValue / total * 100).toFixed(1));
+                                    return currentValue + ' (' + percentage + '%)';
+                                },
+                                title: function title(tooltipItem, data) {
+                                    return data.labels[tooltipItem[0].index];
+                                }
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Niveles'
+                                }
+                            }]
+                        }
+                    }
+                };
+                _this2.createChart('canvas1', data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getniveles();
+        this.gettotales();
+    }
+});
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("canvas", { attrs: { id: "canvas1" } })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b915526a", module.exports)
+  }
+}
+
+/***/ }),
+/* 326 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

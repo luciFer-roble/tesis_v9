@@ -170,7 +170,7 @@
                 </div>
 
             <div class="col-md-6">
-                <div class="card card-warning">
+                <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Opciones</h3>
                     </div>
@@ -193,7 +193,15 @@
                             <div class="form-group">
                                 <div class="col-5">
                                 <span >
-                                 <a href="#"  class="btn btn-danger btn-lg btn-block">FINALIZAR</a></span></span>
+                                    {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas/".$practica->idpractica."/finalize")]) }}
+
+
+                                    {{ csrf_field() }}
+
+                                 <button type="submit"class="btn btn-danger btn-lg btn-block">FINALIZAR</button></span></span>
+
+                                    {{Form::close()}}
+
                                 </div>
                             </div>
                         </div>
@@ -202,8 +210,6 @@
                 </div>
             </div>
             </div>
-            </div>
 
-        </div>
-    </div>
+            </div>
 @stop

@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <th>Nombre</th>
-                            <td colspan="2">{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</td>
+                            <td colspan="2">{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
 
                         </tr>
                         <tr>
@@ -34,16 +34,12 @@
                         </tr>
                         <tr>
                             <th>Fecha de Fin</th>
-                            {{Form::open( ['method'=>"PUT", 'url'=>array("/coordinadores", $coordinador->idcoordinador)])}}
                             <td>
                                 <input  style="width: 50%;display: inline" type="text" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
 
-                                <input  type="hidden" class="form-control" id="activo" name="activo" value="FALSE">
 
-                                <button type="submit" class="btn btn-sm btn-outline-secondary">Finalizar Termino</button>
+                                <button  data-toggle="modal" data-target="#f1" class="btn btn-sm btn-outline-secondary">Finalizar Termino</button>
 
-
-                                {{ Form::close() }}
                             </td>
 
                         </tr>
@@ -54,7 +50,87 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+
+            <div class="modal fade" id="f1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ingreso de Nuevo Coordinador</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form method="POST" action="/coordinadores">
+
+                            {{ csrf_field() }}
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th for="carrera">Carrera</th>
+                                        <td colspan="2">
+                                            <input type="text" class="form-control" id="nombrecarrera" name="nombrecarrera" value="{{ $coordinador->carrera->nombrecarrera }}"disabled>
+                                        </td>
+                                        <input type="hidden" class="form-control" id="carrera" name="carrera" value="{{ $coordinador->carrera->idcarrera }}">
+                                        <input  type="hidden" class="form-control" id="cambio" name="cambio" value="{{$coordinador->idcoordinador}}">
+                                        <input  type="hidden" class="form-control" id="activo" name="activo" value="FALSE">
+
+                                    </tr>
+                                    <tr>
+                                        <th for="profesor">Profesor</th>
+                                        <td colspan="2"><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
+                                                @if (empty($profesor))
+                                                    @foreach($profesores as $profesor)
+                                                        <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombresprofesor }} {{ $profesor->apellidosprofesor }} </option>
+                                                    @endforeach
+                                                @else
+                                                    @foreach($profesores as $prof)
+                                                        <option value="{{ $prof->idprofesor }}"
+                                                                @if($prof->idprofesor == $profesor->idprofesor)
+                                                                selected
+                                                                @endif
+                                                        >{{ $prof->nombresprofesor }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th for="inicio">Fecha de Inicio</th>
+                                        <td colspan="2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th for="fin">Fecha de Fin</th>
+                                        <td colspan="2">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                                <input id="fin" name="fin" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {{--<div class="row">
             <div class="col-12">
             <div class="card card-info">
                 <div class="card-header">
@@ -78,7 +154,7 @@
                                 <td colspan="2"><select id="profesor" name="profesor" class="form-control select2" style="width: 100%;" >
                                         @if (empty($profesor))
                                             @foreach($profesores as $profesor)
-                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombre1profesor }} {{ $profesor->nombre2profesor }} {{ $profesor->apellido1profesor }} {{ $profesor->apellido2profesor }}</option>
+                                                <option value="{{ (string)$profesor->idprofesor }}">{{ $profesor->nombresprofesor }} {{ $profesor->nombre2profesor }} {{ $profesor->apellido1profesor }} {{ $profesor->apellido2profesor }}</option>
                                             @endforeach
                                         @else
                                             @foreach($profesores as $prof)
@@ -86,7 +162,7 @@
                                                         @if($prof->idprofesor == $profesor->idprofesor)
                                                         selected
                                                         @endif
-                                                >{{ $prof->nombre1profesor }}</option>
+                                                >{{ $prof->nombresprofesor }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -127,7 +203,7 @@
                 </form>
             </div>
             </div>
-            </div>
+            </div>--}}
 
         </div>
 

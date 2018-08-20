@@ -40,7 +40,7 @@
                                     <tbody>
                                     @foreach($coordinadores as $coordinador)
                                         <tr>
-                                            <td>{{ $coordinador->profesor->nombre1profesor }} {{ $coordinador->profesor->nombre2profesor }} {{ $coordinador->profesor->apellido1profesor }} {{ $coordinador->profesor->apellido2profesor }}</td>
+                                            <td>{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
                                             <td>{{ $coordinador->carrera->nombrecarrera }}</td>
                                             <td>{{ $coordinador->fechainiciocoordinador }}</td>
                                             <td>{{ $coordinador->fechafincoordinador }}</td>

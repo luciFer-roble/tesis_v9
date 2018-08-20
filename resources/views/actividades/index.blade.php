@@ -39,7 +39,7 @@
                                         <th>Descripcion de Actividades</th>
                                         <th>Control</th>
                                         <th>Comentario</th>
-                                        <th>Horas</th>
+                                        {{--<th>Horas</th>--}}
 
                                     </tr>
                                     </thead>
@@ -113,7 +113,13 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                        <div class="card-footer small text-muted">
+                            <form method="post" action="/actividades/descargar">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="practica" value="{{ $practica->idpractica }}"/>
+                                <input type="hidden" name="pagina" value="{{ $actividades->currentPage() }}"/>
+                                <button type="submit" class="btn btn-primary">Imprimir</button>
+                            </form></div>
                     </div>
 
                 </div>

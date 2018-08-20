@@ -20,4 +20,7 @@ class Nivel extends Model
     public function asignatura(){
         return $this->hasMany('App\Asignatura');
     }
+    public function practica(){
+        return $this->hasMany('App\Practica');
+    }
 }

@@ -16,9 +16,9 @@
             <input class="form-control" type="text" name="comentario" id="comentario" v-model="comentario" @blur="insertar" :disabled="check">
         </td>
 
-        <td style="width:  6%">
+        <!--<td style="width:  6%">
             <input class="form-control" type="text" name="horas" id="horas" v-model="horas" @blur="insertar" :disabled="false">
-        </td>
+        </td>-->
     </tr>
 </template>
 
@@ -44,7 +44,7 @@
                     descripcion: this.descripcion,
                     comentario: this.comentario,
                     estado: this.check,
-                    horas: this.horas
+                    //horas: this.horas
                 })
                     .then(function (response) {
                         console.log(response);

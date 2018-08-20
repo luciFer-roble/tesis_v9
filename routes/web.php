@@ -179,6 +179,7 @@ Route::get('/reportes/{nivel}/descarga6', 'ReportesController@descargaexcelr6');
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');
 Route::get('/actividades/{practica}/{total}', 'ActividadesController@store');
 Route::put('/actividades/{actividad}', 'ActividadesController@update');
+Route::post('/actividades/descargar', 'ActividadesController@descargar');
 
 
 Route::get('/documentos/{practica}/list', 'DocumentosPController@index');

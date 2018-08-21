@@ -40,7 +40,7 @@
                                         <option  :key="item.idtutore" v-for="item in tutores" :value="item.idtutore">{{item.nombretutore+' '+item.apellidotutore}}</option>
                                     </select>
                                     <div class="input-group-append">
-                                            <span class="input-group-text">
+                                            <span class="input-group-text btn btn-link">
                                                 <i data-toggle="modal" data-target="#modal1" class="fa fa-fw fa-plus"></i>
                                             </span>
                                     </div>
@@ -131,7 +131,7 @@
 
             </div>
         </div>
-        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="vuemodal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -254,12 +254,13 @@
                 })
                     .then(function (response) {
                         console.log('insertado');
-                        this.gettutores();
-                        document.getElementById(modal1).modal('toggle');
                     })
                     .catch(error => {
                         module.status = error.response.data.status;
                     });
+
+                this.gettutores();
+                $(this.$refs.vuemodal).modal('hide');
             },
             setestudiante:function(idestudiante, nombresestudiante, apellidosestudiante){
                 this.estudiante = nombresestudiante+' '+apellidosestudiante;
@@ -335,7 +336,7 @@
     }
 
     .autocomplete-result:hover {
-        background-color: #4AAE9B;
+        background-color: #007bff80;
         color: white;
     }
 </style>

@@ -78,7 +78,7 @@
                         <span class="text-info btn p-0 m-0 border-0"><label>Nivel:</label></span>
                     </div>
                     <div class="col-md-3">
-                        <label class="btn p-0 m-0 border-0 text-secondary">Octavo</label>
+                        <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->nivel->nombrenivel }}</label>
                     </div>
                 </div>
                 <div class="row card-body p-0 m-0">

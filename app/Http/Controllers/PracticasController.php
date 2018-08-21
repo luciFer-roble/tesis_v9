@@ -93,10 +93,10 @@ class PracticasController extends Controller
         ->where('idpractica','=',$id)
         ->where('estadoactividad','=','FALSE')
             ->count();
-        /*$totalhoras = DB::table('actividad')
+        $totalhoras = DB::table('actividad')
             ->where('idpractica','=',$id)
             ->sum('horasactividad');
-        $horasenpractica=$practica->horaspractica;*/
+        $horasenpractica=$practica->horaspractica;
         if($docsregistrados != $docsrequeridos){
             $mensaje1='Falta registrar documentos de la practica';
             $errores=1;
@@ -107,24 +107,29 @@ class PracticasController extends Controller
         }
 
         if($errores >0){
-            Flash::overlay($mensaje1);
-           /* Flash::warning($mensaje1)->important();
-            Flash::warning($mensaje2)->important();*/
-            return back();
+            $modal='1';
+            return back()->with('modal',$modal);
+            /*$mensaje= nl2br($mensaje1."\n".$mensaje2);
+            Flash::overlay($mensaje,'No se ha podido finalizar');
+
+            return back();*/
         }
 
       elseif($errores=0){
+            $modal=true;
+            return $modal;/*
             $activa='FALSE';
 
           // store
           Practica::updateOrCreate(['idpractica'  => $id], [
-              'activapractica'      => $activa
+              'activapractica'      => $activa,
+              'horaspractica'       =>$totalhoras
           ]);
 
           Flash::success('Se ha finalizado correctamente');
 
           // redirect
-          return redirect('practicas');
+          return redirect('practicas');*/
 
       }
 

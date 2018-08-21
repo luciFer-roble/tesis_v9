@@ -32,7 +32,9 @@
                                         <th>Id</th>
                                         <th>Descripcion</th>
                                         <th>Archivos</th>
+                                        @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
                                         <td></td>
+                                            @endif
 
                                     </tr>
                                     </thead>

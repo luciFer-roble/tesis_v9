@@ -196,6 +196,7 @@
                                     <button  data-toggle="modal" data-target="#f1" class="btn btn-danger btn-lg btn-block">FINALIZAR</button>
                                 </div>
                             </div>
+                                @endif
                         </div>
 
                     </div>

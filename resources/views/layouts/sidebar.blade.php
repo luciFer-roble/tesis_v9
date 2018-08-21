@@ -141,29 +141,22 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fa fa-book-open"></i>
-                        <p>
-                            Practicas
-                            <i class="fa fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/practicas" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Listar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/formatos" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Formatos</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/practicas" class="nav-link">
+                            <i class="fa fa-book-open"></i>
+                            <p>
+                                Practicas
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="/formatos" class="nav-link">
+                            <i class="fa fa-file"></i>
+                            <p>
+                                Formatos
+                            </p>
+                        </a>
+                    </li>
 
                 @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
                 <li class="nav-item has-treeview">

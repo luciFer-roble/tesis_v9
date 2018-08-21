@@ -1,39 +1,39 @@
 <template>
-    <tr v-show="!borrado">
-        <td>{{ empresa.nombreempresa }}</td>
-        <td>{{ empresa.direccionempresa }}</td>
-        <td>{{ empresa.sectorempresa }}</td>
-        <td>{{ empresa.telefonoempresa }}</td>
-        <td><button class="btn btn-link"  >{{ convenio }}</button></td>
-        <td>{{ sede }}</td>
-        <td>
-            <div class="row">
-                <button  type="button" class="btn btn-success" @click="tutores">
-                    Ver
-                </button>
-                <!--INTENTO DE CONDICION EN BOTONES DE TUTOR:-->
-                <!--@foreach(tutores as tutor)
-                @if(tutor->idempresa == empresa->idempresa )
-                hastutores=true
-                @break
-                @endif
-                @endforeach
-                @if(hastutores == true)
-                <button  type="button" class="btn btn-success" @click="tutores">
-                    Ver
-                </button>
-
-                @else
-                <button  type="button" class="btn btn-success" >
-                    Sin asignar
-                </button>
-
-                @endif-->
-
-            </div>
-
+    <table class="table table-bordered p-0 m-0" style="table-layout: fixed">
+    <tr style="background-color: white">
+        <th  style="width:  12%; background-color:  #688ebe ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
+        <td  class="p-1 m-0">{{ empresa.direccionempresa }}</td>
+        <td  class="p-1 m-0">{{ empresa.sectorempresa }}</td>
+        <td  class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
+        <td  class="p-1 m-0"><button class="btn btn-link"  >{{ convenio }}</button></td>
+        <td  class="p-1 m-0">{{ sede }}</td>
+        <td style="width: 19px" v-if="!tutores && llena" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
+        <td style="width: 19px" v-else-if="tutores && llena" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
+        <td style="width: 19px" v-else-if="!llena" class="p-1 m-0"></td>
+    </tr>
+    <tr>
+        <td v-show="tutores" colspan="9" class="p-0 m-0">
+            <table class="table table-bordered p-0 m-0">
+                <thead>
+                <tr style="background-color: #F2F2F2">
+                    <th class="p-1 m-0">Nombre</th>
+                    <th class="p-1 m-0">Apellido</th>
+                    <th class="p-1 m-0">Celular</th>
+                    <th class="p-1 m-0">Correo</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in lista">
+                    <td class="p-1 m-0">P{{item.nombretutore}}</td>
+                    <td class="p-1 m-0">{{item.apellidotutore}}</td>
+                    <td class="p-1 m-0">{{item.celulartutore}}</td>
+                    <td class="p-1 m-0">{{item.correotutore}}</td>
+                </tr>
+                </tbody>
+            </table>
         </td>
     </tr>
+    </table>
 </template>
 
 <script>
@@ -45,14 +45,17 @@
             convenios: {
                 type: Array
             },
-            tutores: {
+            /*tutores: {
                 type: Array
-            },
+            },*/
             hastutores:{
                 type:String
             }
         },
         data:()=>({
+          lista:[],
+          tutores: false,
+            llena:false,
             borrado: false,
             convenio: '',
             sede: '',
@@ -60,6 +63,22 @@
         }),
 
         methods:{
+            cargardatos:function () {
+                axios.get(window.location.origin+'/api/consultar-tutores-por-empresa',{
+                    params:{'idempresa':this.empresa.idempresa}
+                }).then((response)=>{
+                    this.lista=response.data;
+                    if(this.lista.length>0){
+                        this.llena=true;
+                    }
+                    else{
+                        this.llena=false;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            },
             descargar:function () {
                 axios({
                     url: '/convenios/'+this.codigo+'/descargar',
@@ -81,11 +100,17 @@
                     });
 
             },
-            tutores:function () {
-                window.location.href = '/tutores/'+this.empresa.idempresa+'/list';
-            }
+        vertutores:function() {
+            this.tutores = true;
+        },
+        ocultartutores:function() {
+            this.tutores = false;
+        }
         },
 
+        created() {
+            this.cargardatos();
+        },
         mounted(){
             for (let i = 0; i< Object.keys(this.convenios).length; i++){
                if (this.convenios[i].idempresa == this.empresa.idempresa){

@@ -169,7 +169,7 @@
 
                 </div>
 
-            <div class="col-md-6">
+            {{--<div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Opciones</h3>
@@ -201,36 +201,9 @@
 
                     </div>
                 </div>
+            </div>--}}
             </div>
-            </div>
 
-        <div class="modal fade" id="f1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 
-             aria-hidden="true">
-
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ingreso de Nuevo Coordinador</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas/".$practica->idpractica."/finalize")]) }}
-
-                    {{ csrf_field() }}
-                        <div class="card-body">
-                            Se registraran {{$totalhoras}} horas.<BR>
-                            Desea continuar?
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Si</button>
-                            <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
             </div>
 @stop

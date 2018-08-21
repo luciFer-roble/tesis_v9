@@ -64,7 +64,14 @@ class ConsultasController extends Controller
             ->where('practica.idestudiante', '=', request('idestudiante'))->get();
         return $practicas;
 
-    }
+    } public function consultartutoresporempresa(Request $request)
+{
+    $tutores =DB::table('tutore')
+        ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+        ->where('tutore.idempresa', '=', request('idempresa'))->get();
+    return $tutores;
+
+}
     public function consultarpracticasporperiodo(Request $request)
     {
         $practicas =DB::table('practica')

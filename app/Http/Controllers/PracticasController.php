@@ -195,8 +195,13 @@ class PracticasController extends Controller
         $totalhoras = DB::table('actividad')
             ->where('idpractica','=',$practica->idpractica)
             ->sum('horasactividad');
-
+        if(Auth::user()->hasRole('admin')){
+            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
+        }
+        else{
             return view('practicas.show')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos','totalhoras',$totalhoras));
+
+        }
 
     }
 

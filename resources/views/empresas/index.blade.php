@@ -23,7 +23,7 @@
                                     @endif
                         </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" id="app">
 
                                 @if(Auth::user()->hasRole('admin'))
                                 <div class="table-responsive" id="app">
@@ -73,8 +73,8 @@
                                 </div>
                                 @else
 
-                                        <div class="table-responsive" id="app">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <div class="table-responsive">
+                                        {{--<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                             <tr>
                                                 <th>Empresa</th>
@@ -87,16 +87,15 @@
 
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody>--}}
                                             @foreach($empresas as $empresa)
 
                                                 {{--@php--}}
                                                     {{--var_dump($empresa); exit();--}}
                                                 {{--@endphp--}}
-                                                <tr is="empresa-item"  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :tutores="{{$tutores}}"
-                                                    hastutores="false">
+                                                <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}">
 
-                                                </tr>
+                                                </empresa-item>
                                             @endforeach
 
                                             {{--lo comentado de abajo es para probar el join:--}}
@@ -112,8 +111,8 @@
 
                                                  </tr>
                                              @endforeach--}}
-                                            </tbody>
-                                        </table>
+                                            {{--</tbody>
+                                        </table>--}}
 
                                         </div>
                                 @endif

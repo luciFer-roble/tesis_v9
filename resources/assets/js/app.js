@@ -69,6 +69,7 @@ Vue.component('chart-reporte3', require('./components/chart-reporte3.vue'));
 Vue.component('chart-reporte4', require('./components/chart-reporte4.vue'));
 Vue.component('chart-reporte5', require('./components/chart-reporte5.vue'));
 Vue.component('chart-reporte6', require('./components/chart-reporte6.vue'));
+Vue.component('nueva-practica', require('./components/nueva-practica.vue'));
 const app = new Vue({
     el: '#app'
 });

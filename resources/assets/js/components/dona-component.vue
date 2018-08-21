@@ -58,8 +58,9 @@
                 window.location.href = '/documentos/'+this.practica.idpractica+'/list';
             },
             gettotaldocs: function () {
-                axios.get(window.location.origin+'/api/totaldocs'
-                ).then((response)=>{
+                axios.get(window.location.origin+'/api/totaldocs',{
+                        params:{'carrera':this.practica.estudiante.carrera.idcarrera}
+                }).then((response)=>{
                     this.totaldocs=response.data;
 
                 }).catch(function (error) {

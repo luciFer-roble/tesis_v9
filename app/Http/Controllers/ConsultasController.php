@@ -7,7 +7,9 @@ use App\Estudiante;
 use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
+use App\Profesor;
 use App\TipoDocumento;
+use App\TutorE;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,8 +29,8 @@ class ConsultasController extends Controller
 
     }
 
-    public function totaldocs(){
-        return (string)DB::table('tipodocumento')->count();
+    public function totaldocs(Request $request){
+        return (string)DB::table('tipodocumento')->where('idcarrera', '=', $request->carrera)->count();
     }
 
     public function todaslaspracticas(){
@@ -304,5 +306,21 @@ class ConsultasController extends Controller
             }
         }
         return $practicas;
+    }
+    public function getprofesores(){
+        return Profesor::all();
+    }
+    public function getempresas(){
+        return Empresa::all();
+    }
+    public function getperiodos(){
+        return PeriodoAcademico::all();
+    }
+    public function gettutores(Request $request){
+        return TutorE::where('idempresa','=', $request->empresa)->get();
+    }
+    public function getestudiantes(Request $request){
+        return Estudiante::where('nombresestudiante','like', '%'.$request->estudiante.'%')
+            ->orWhere('apellidosestudiante','like', '%'.$request->estudiante.'%')->get();
     }
 }

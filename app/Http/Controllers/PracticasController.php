@@ -122,17 +122,15 @@ class PracticasController extends Controller
     }
     public function store(Request $request)
     {
-       /* $rules = array(
+       $rules = array(
             'estudiante'       => 'required',
             'profesor'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
-            'salario'    => 'required',
             'periodo'    => 'required'
         );
-        $this->validate(request(), $rules);*/
+        $this->validate(request(), $rules);
         $activa='TRUE';
 
         $temp = DB::select("select min(nivel.idnivel)
@@ -143,10 +141,7 @@ class PracticasController extends Controller
                 where estudiante.idestudiante = '".request('estudiante')."'
                 group by estudiante.idestudiante");
         $lista = collect($temp)->map(function($x){ return (array) $x; })->toArray();
-        /*$nivel = DB::table('nivel')
-            ->groupBy('estudiante.idestudiante')
-            ->having('estudiante.idestudiante', '=', request('estudiante'))
-            ->first();*/
+
 
         //echo($lista[0]['min']); exit();
         $nivel  = $lista[0]['min'];
@@ -162,6 +157,7 @@ class PracticasController extends Controller
             'salariopractica'      => request('salario'),
             'idperiodoacademico'      => request('periodo'),
             'horaspractica'      => request('horas'),
+            'horariopractica'      => request('horario'),
             'activapractica'      => $activa,
             'idnivel'           => $nivel
         ]);

@@ -39,3 +39,8 @@ Route::get('totalestudiantesportipoempresa','ConsultasController@totalestudiante
 Route::get('totalpracticasportipoempresa','ConsultasController@totalpracticasportipoempresa');
 Route::get('totalestudiantesporsectorempresa','ConsultasController@totalestudiantesporsectorempresa');
 Route::get('totalpracticasporsectorempresa','ConsultasController@totalpracticasporsectorempresa');
+Route::get('getprofesores','ConsultasController@getprofesores');
+Route::get('getempresas','ConsultasController@getempresas');
+Route::get('getperiodos','ConsultasController@getperiodos');
+Route::get('gettutores','ConsultasController@gettutores');
+Route::get('getestudiantes','ConsultasController@getestudiantes');

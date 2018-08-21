@@ -18,9 +18,12 @@
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>FORMATOS</h1></div>
+
+                                @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
                             <div class="btn-group mr-2">
                                 <input type="button" onClick="location.href = 'formatos/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                             </div>
+                                    @endif
                         </div>
                         </div>
                         <div class="card-body" id="app">

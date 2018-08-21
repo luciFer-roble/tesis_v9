@@ -1,18 +1,19 @@
 <template>
     <table class="table table-bordered p-0 m-0" style="table-layout: fixed">
     <tr style="background-color: white">
-        <th  style="width:  12%; background-color:  #688ebe ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
-        <td  class="p-1 m-0">{{ empresa.direccionempresa }}</td>
-        <td  class="p-1 m-0">{{ empresa.sectorempresa }}</td>
-        <td  class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  class="p-1 m-0"><button class="btn btn-link"  >{{ convenio }}</button></td>
-        <td  class="p-1 m-0">{{ sede }}</td>
+        <th  style="width:  14%; background-color:  #688ebe ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
+        <td  style="width:  18%"class="p-1 m-0">{{ empresa.direccionempresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
+        <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0" v-if="convenio"><button class="btn btn-link"  >{{ convenio }}</button></td>
+        <td  style="width:  10%"class="p-1 m-0" v-else-if="!convenio"><button class="btn btn-outline-primary btn-sm" @click="agregar_convenio" >Agregar Convenio</button></td>
+        <td style="width:  10%" class="p-1 m-0">{{ sede }}</td>
         <td style="width: 19px" v-if="!tutores && llena" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
         <td style="width: 19px" v-else-if="tutores && llena" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
         <td style="width: 19px" v-else-if="!llena" class="p-1 m-0"></td>
     </tr>
     <tr>
-        <td v-show="tutores" colspan="9" class="p-0 m-0">
+        <td v-show="tutores" colspan="7" class="p-0 m-0">
             <table class="table table-bordered p-0 m-0">
                 <thead>
                 <tr style="background-color: #F2F2F2">
@@ -24,7 +25,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="item in lista">
-                    <td class="p-1 m-0">P{{item.nombretutore}}</td>
+                    <td class="p-1 m-0">{{item.nombretutore}}</td>
                     <td class="p-1 m-0">{{item.apellidotutore}}</td>
                     <td class="p-1 m-0">{{item.celulartutore}}</td>
                     <td class="p-1 m-0">{{item.correotutore}}</td>
@@ -78,6 +79,9 @@
                     console.log(error);
                 });
 
+            },
+            agregar_convenio:function () {
+                window.location.href = '/convenios/'+this.empresa.idempresa+'/create1';
             },
             descargar:function () {
                 axios({

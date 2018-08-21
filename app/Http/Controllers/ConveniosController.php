@@ -42,6 +42,12 @@ class ConveniosController extends Controller
         $empresas =Empresa::all();
         return view('convenios.create')->with(compact('sede', 'sedes','empresas'));
     }
+    public function createfromempresa(Empresa $empresa)
+    {
+        $sedes =Sede::all();
+        $empresas =Empresa::all();
+        return view('convenios.create')->with(compact('empresa', 'empresas','sedes'));
+    }
 
     public function store(Request $request)
     {

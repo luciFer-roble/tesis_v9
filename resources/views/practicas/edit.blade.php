@@ -190,20 +190,13 @@
                                 <a href="/documentos/{{ $practica->idpractica .'/list'}}"  class="btn btn-info btn-lg btn-block">DOCUMENTOS</a></span>
                                 </div>
                             </div>
+                            @if(!(Auth::user()->hasRole('tut')) or !(Auth::user()->hasRole('prof')) )
                             <div class="form-group">
                                 <div class="col-5">
-                                <span >
-                                    {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas/".$practica->idpractica."/finalize")]) }}
-
-
-                                    {{ csrf_field() }}
-
-                                 <button type="submit"class="btn btn-danger btn-lg btn-block">FINALIZAR</button></span></span>
-
-                                    {{Form::close()}}
-
+                                    <button  data-toggle="modal" data-target="#f1" class="btn btn-danger btn-lg btn-block">FINALIZAR</button>
                                 </div>
                             </div>
+                                @endif
                         </div>
 
                     </div>
@@ -213,12 +206,7 @@
 
         <div class="modal fade" id="f1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 
-             aria-hidden="false">
-            {{-- @if (empty($modal))
-                  false
-              @else
-                     true
-             @endif--}}
+             aria-hidden="true">
 
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -228,22 +216,16 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/coordinadores">
+                    {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas/".$practica->idpractica."/finalize")]) }}
 
-                        {{ csrf_field() }}
+                    {{ csrf_field() }}
                         <div class="card-body">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th for="carrera">Carrera</th>
-                                    <td colspan="2">
-                                    </td>
-                                </tr>
-
-                            </table>
+                            Se registraran {{$totalhoras}} horas.<BR>
+                            Desea continuar?
                         </div>
 
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Si</button>
                             <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
                         </div>
                     </form>

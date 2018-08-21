@@ -88,51 +88,37 @@ class PracticasController extends Controller
         $documentos=DocumentoP::whereIn('idtipodocumento',$tiposdocumento)->get();
         $docsrequeridos=count($tiposdocumento);
         $docsregistrados=count($documentos);
-
+        $totalhoras = DB::table('actividad')
+            ->where('idpractica','=',$practica->idpractica)
+            ->sum('horasactividad');
         $horassinaprobacion=DB::table('actividad')
         ->where('idpractica','=',$id)
         ->where('estadoactividad','=','FALSE')
             ->count();
-        $totalhoras = DB::table('actividad')
-            ->where('idpractica','=',$id)
-            ->sum('horasactividad');
-        $horasenpractica=$practica->horaspractica;
         if($docsregistrados != $docsrequeridos){
-            $mensaje1='Falta registrar documentos de la practica';
+            $mensaje1='Falta registrar documentos de la practica.';
             $errores=1;
         }
         if($horassinaprobacion > 0){
-            $mensaje2='Falta aprobacion de horas en actividades';
+            $mensaje2='Falta aprobacion de horas en actividades.';
             $errores=1;
         }
 
         if($errores >0){
-            $modal='1';
-            return back()->with('modal',$modal);
-            /*$mensaje= nl2br($mensaje1."\n".$mensaje2);
+            $mensaje= nl2br($mensaje1."\n".$mensaje2);
             Flash::overlay($mensaje,'No se ha podido finalizar');
-
-            return back();*/
+            return back();
         }
 
       elseif($errores=0){
-            $modal=true;
-            return $modal;/*
             $activa='FALSE';
-
-          // store
           Practica::updateOrCreate(['idpractica'  => $id], [
               'activapractica'      => $activa,
               'horaspractica'       =>$totalhoras
           ]);
-
           Flash::success('Se ha finalizado correctamente');
-
-          // redirect
-          return redirect('practicas');*/
-
+          return redirect('practicas');
       }
-
     }
     public function store(Request $request)
     {
@@ -197,19 +183,21 @@ class PracticasController extends Controller
     }
 
 
-    public function edit(Practica $practica)
+    public function edit(Request $request,Practica $practica)
     {
+        $request->user()->authorizeRoles(['admin', 'est','prof','tut', 'coord']);
         $estudiantes =Estudiante::all();
         $profesores = Profesor::all();
         $empresas = Empresa::all();
         $tutores = TutorE::all();
         $periodos = PeriodoAcademico::all();
-        if(Auth::user()->hasRole('admin') ){
-            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
-        }
-        if(Auth::user()->hasRole('coord') ){
-            return view('practicas.show')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
-        }
+
+        $totalhoras = DB::table('actividad')
+            ->where('idpractica','=',$practica->idpractica)
+            ->sum('horasactividad');
+
+            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos','totalhoras',$totalhoras));
+
     }
 
 

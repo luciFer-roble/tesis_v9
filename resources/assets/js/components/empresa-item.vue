@@ -5,12 +5,12 @@
         <td  style="width:  18%"class="p-1 m-0">{{ empresa.direccionempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  style="width:  10%"class="p-1 m-0" v-if="convenio"><button class="btn btn-link"  >{{ convenio }}</button></td>
-        <td  style="width:  10%"class="p-1 m-0" v-else-if="!convenio"><button class="btn btn-outline-primary btn-sm" @click="agregar_convenio" >Agregar Convenio</button></td>
-        <td style="width:  10%" class="p-1 m-0">{{ sede }}</td>
-        <td style="width: 19px" v-if="!tutores && llena" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
-        <td style="width: 19px" v-else-if="tutores && llena" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
-        <td style="width: 19px" v-else-if="!llena" class="p-1 m-0"></td>
+        <td  style="width:  10%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link"  >{{ convenio }}</button></td>
+        <td  style="width:  10%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-outline-primary btn-sm" @click="agregar_convenio" >Agregar Convenio</button></td>
+        <td style="width:  8%" class="p-1 m-0">{{ sede }}</td>
+        <td style="width: 2%" v-if="!tutores && llena" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
+        <td style="width: 2%" v-else-if="tutores && llena" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
+        <td style="width: 2%" v-else-if="!llena" class="p-1 m-0"></td>
     </tr>
     <tr>
         <td v-show="tutores" colspan="7" class="p-0 m-0">

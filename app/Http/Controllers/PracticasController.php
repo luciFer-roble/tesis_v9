@@ -196,7 +196,7 @@ class PracticasController extends Controller
             ->where('idpractica','=',$practica->idpractica)
             ->sum('horasactividad');
 
-            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos','totalhoras',$totalhoras));
+            return view('practicas.show')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos','totalhoras',$totalhoras));
 
     }
 

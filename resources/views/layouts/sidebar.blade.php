@@ -160,13 +160,12 @@
 
                 @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="/reportes" class="nav-link">
                         <i class="nav-icon fa fa-pie-chart"></i>
                         <p>Reportes
-                            <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
+                   {{-- <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="pages/mailbox/mailbox.html" class="nav-link">
                                 <i class="right fa fa-angle-right"></i>
@@ -179,7 +178,7 @@
                                 <p>Practicas por Horas</p>
                             </a>
                         </li>
-                    </ul>
+                    </ul>--}}
                 </li>
                 @endif
             </ul>

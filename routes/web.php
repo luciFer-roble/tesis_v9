@@ -149,6 +149,7 @@ Route::get('/practicas/{practica}', 'PracticasController@show');
 Route::post('/practicas', 'PracticasController@store');
 Route::get('/practicas/{practica}/edit', 'PracticasController@edit');
 Route::put('/practicas/{practica}', 'PracticasController@update');
+Route::put('/practicas/{practica}/finalize', 'PracticasController@finalize');
 Route::delete('/practicas/{practica}', 'PracticasController@destroy');
 Route::get('/consultas/practicas', 'PracticasController@consultas');
 Route::get('/consultas2/practicas', 'PracticasController@consultas2');

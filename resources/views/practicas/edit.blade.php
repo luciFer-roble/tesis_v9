@@ -170,7 +170,7 @@
                 </div>
 
             <div class="col-md-6">
-                <div class="card card-warning">
+                <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Opciones</h3>
                     </div>
@@ -193,7 +193,15 @@
                             <div class="form-group">
                                 <div class="col-5">
                                 <span >
-                                 <a href="#"  class="btn btn-danger btn-lg btn-block">FINALIZAR</a></span></span>
+                                    {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas/".$practica->idpractica."/finalize")]) }}
+
+
+                                    {{ csrf_field() }}
+
+                                 <button type="submit"class="btn btn-danger btn-lg btn-block">FINALIZAR</button></span></span>
+
+                                    {{Form::close()}}
+
                                 </div>
                             </div>
                         </div>
@@ -202,8 +210,45 @@
                 </div>
             </div>
             </div>
-            </div>
 
+        <div class="modal fade" id="f1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+             aria-hidden="false">
+            {{-- @if (empty($modal))
+                  false
+              @else
+                     true
+             @endif--}}
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ingreso de Nuevo Coordinador</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" action="/coordinadores">
+
+                        {{ csrf_field() }}
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th for="carrera">Carrera</th>
+                                    <td colspan="2">
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+            </div>
 @stop

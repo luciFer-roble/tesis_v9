@@ -131,7 +131,7 @@
 
                     </li>
                     @endif
-                @if(!(Auth::user()->hasRole('coord')))
+                @if(!(Auth::user()->hasRole('est')))
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
                         <i class="fa fa-user"></i>

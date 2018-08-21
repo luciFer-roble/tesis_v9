@@ -103,7 +103,6 @@
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                             <tr>
-                                                <th class="m-0 p-0">No.</th>
                                                 <th class="m-0 p-0">Estudiante</th>
                                                 <th class="m-0 p-0">Inicio</th>
                                                 <th class="m-0 p-0">Fin</th>
@@ -114,14 +113,13 @@
                                                 <th class="m-0 p-0">Sector</th>
                                                 <th class="m-0 p-0">Tutor Academico</th>
                                                 <th class="m-0 p-0">Tutor Empresarial</th>
+                                                <th class="m-0 p-0"></th>
                                             </tr>
                                             </thead>
                                             <tbody style="font-size: 10%">
                                             @foreach($practicas as $practica)
 
                                                 <tr >
-                                                    <td class="m-0 p-0"><span
-                                                                class="btn border-0  m-0 p-0">{{ $practica->idpractica }}</span></td>
                                                     <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
                                                                            href="{{ URL::to('estudiantes/' . $practica->idestudiante) }}">{{ $practica->estudiante->nombresestudiante}} {{$practica->estudiante->apellidosestudiante}} {{$practica->estudiante->apellido2estudiante}}</a>
                                                     </td>
@@ -148,7 +146,7 @@
                                                     <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
                                                                            href="{{ URL::to('tutores/' . $practica->idtutore) }}">{{ $practica->tutore->nombretutore}} {{$practica->tutore->apellidotutore }}</a>
                                                     </td>
-                                                    <td class="m-0 p-0 border-0">
+                                                    <td class="m-0 p-0 ">
 
                                                         <a class="btn btn-outline-info m-0 p-0"
                                                                 href="{{ URL::to('practicas/' . $practica->idpractica).'/edit'}}">

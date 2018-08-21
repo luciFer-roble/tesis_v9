@@ -61,7 +61,7 @@ to get the desired effect
         $('#flash-overlay-modal').modal();
     });
     //$('#flash-overlay-modal').modal();
-       $('div.alert').is('.alert-success').delay(3000).fadeOut(350);
+       $('div.alert').not('.alert-danger').delay(3000).fadeOut(350);
 
 </script>
 </body>

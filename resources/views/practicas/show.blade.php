@@ -256,7 +256,7 @@
             </div>
             <div class="col-md-0"></div>
             <div class="col-md-3 card pt-2" id="app">
-                <dona-item :practica="{{ $practica }}"  suma="{{ $practica->actividad->sum('horasactividad') }}" docs="{{ count($practica->documentop) }}"></dona-item>
+                <dona-item :practica="{{ $practica }}"  suma="{{ $totalhoras }}" docs="{{ count($practica->documentop) }}"></dona-item>
             </div>
             <div class="col-md-0"></div>
 

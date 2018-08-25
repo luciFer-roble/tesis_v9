@@ -20211,7 +20211,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(150);
-module.exports = __webpack_require__(326);
+module.exports = __webpack_require__(332);
 
 
 /***/ }),
@@ -20289,6 +20289,7 @@ Vue.component('chart-reporte3', __webpack_require__(306));
 Vue.component('chart-reporte4', __webpack_require__(311));
 Vue.component('chart-reporte5', __webpack_require__(316));
 Vue.component('chart-reporte6', __webpack_require__(321));
+Vue.component('nueva-practica', __webpack_require__(326));
 var app = new Vue({
     el: '#app'
 });
@@ -52453,7 +52454,7 @@ exports = module.exports = __webpack_require__(4)(true);
 
 
 // module
-exports.push([module.i, "\n.img-item[data-v-578d1136]{\n    height:37px !important;\n    cursor:pointer;\n}\n.fa-heart[data-v-578d1136]{\n    color: red;\n    cursor:pointer;\n}\n.fa-heart-o[data-v-578d1136]{\n    color:black;\n    cursor:pointer;\n}\na[data-v-578d1136]{\n    cursor:pointer;\n}\n\n\n", "", {"version":3,"sources":["C:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AA6UA;IACA,uBAAA;IACA,eAAA;CACA;AACA;IACA,WAAA;IACA,eAAA;CACA;AACA;IACA,YAAA;IACA,eAAA;CACA;AACA;IACA,eAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div>\r\n        <div class=\"container\">\r\n            <div class=\"form-group m-form__group\">\r\n                <textarea class=\"form-control m-input m-input--solid\" rows=\"3\" maxlength=\"500\" placeholder=\"Escriba\" v-model=\"comentario\"></textarea>\r\n                <div class=\"d-flex\">\r\n                    <div class=\"p-2\" style=\"width:80%\">\r\n                        <div id=\"mis-fotos\">\r\n                            <img :src=\"parsearArchivo(item.file)\" :data-src=\"parsearArchivo(item.file)\" class=\"img-item\" v-for=\"(item,index) in subidas\" v-show=\"index<19\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"ml-auto p-2\">\r\n                        <vue-dropzone  id=\"fotos\" :options=\"dropzoneOptions\" v-on:vdropzone-error=\"errores\" v-on:vdropzone-success=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" ref=\"fotos\" class=\"btn btn-secondary m-btn m-btn--icon\"/>\r\n                        <button type=\"reset\" class=\"btn btn-success btn-sm m-btn \tm-btn m-btn--icon\" v-on:click=\"enviar(null)\">\r\n                            <span>Enviar<span class=\"la la-send\"></span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"m-timeline-1 m-timeline-1--fixed\">\r\n            <div class=\"m-timeline-1__items\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <div class=\"m-timeline-1__item\" v-for=\"(item, index) in noticias\" v-bind:class=\"index % 2===0?'m-timeline-1__item--left': 'm-timeline-1__item--right'\">\r\n                    <div class=\"m-timeline-1__item-circle\">\r\n                        <div class=\"m--bg-danger\"></div>\r\n                    </div>\r\n                    <div class=\"m-timeline-1__item-arrow\"></div>\r\n                    <span class=\"m-timeline-1__item-time m--font-brand\">{{item.fecha}}</span>\r\n                    <div class=\"m-timeline-1__item-content\">\r\n                        <template v-if=\"item.code\">\r\n                                <div class=\"m-timeline-1__item-body\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"item.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <span class=\"m-widget3__username\">{{item.usuario}}</span><br>\r\n                                                    <b class=\"m-widget3__time\">{{item.org}}</b>\r\n                                                    <span class=\"m-widget3__status m--font-info\">\r\n                                                        <span class=\"fa\" v-bind:class=\"item.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(item)\" data-skin=\"dark\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+item.likes+'</b>'\"></span>\r\n                                                    </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{item.comentario}}\r\n                                                </p>\r\n                                                <div :id=\"item.code\">\r\n                                                    <img :src=\"imagen.down\" :data-src=\"imagen.down\" class=\"img-item\" v-for=\"(imagen,index) in item.fotos\" v-show=\"index<3\" v-on:mouseover=\"renderizarId(item.code)\"/>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                        </template>\r\n                        <template v-else>\r\n                            <div class=\"m-timeline-1__item-title\">\r\n                                {{item.proyecto.titulo_pr}}<br>\r\n                                <b>{{item.proyecto.org.ncomercial_or || item.proyecto.org.rsocial_or}}</b>\r\n                            </div>\r\n                            <div class=\"m-timeline-1__item-body\">{{item.proyecto.objgeneral_pr}}</div>\r\n                            <div class=\"m-timeline-1__item-actions\">\r\n                                <button class=\"btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom\" v-on:click=\"cargarProyecto(item.p)\">\r\n                                    Leer más..\r\n                                </button>\r\n                            </div>\r\n                        </template>\r\n                        <div class=\"m-timeline-1__item-actions\">\r\n                            <template v-if=\"item.hijos\">\r\n                                <div v-if=\"item.mostrando\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\" v-for=\"itemChill in item.listaHijos\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"itemChill.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <div class=\"d-flex\">\r\n                                                        <div class=\"p-2\">\r\n                                                            <span class=\"m-widget3__username\">{{itemChill.usuario}}</span><br>\r\n                                                            <b class=\"m-widget3__time\">{{itemChill.org}}</b>\r\n                                                        </div>\r\n                                                        <div class=\"ml-auto p-2\"><small class=\"text-muted\">{{itemChill.fecha}}</small></div>\r\n                                                        <span class=\"m-widget3__status m--font-info\">\r\n                                                            <span class=\"fa\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+itemChill.likes+'</b>'\" v-bind:class=\"itemChill.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(itemChill)\"></span>\r\n                                                        </span>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{itemChill.comentario}}\r\n                                                </p>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <a type=\"button\" class=\"m-nav__link btn-sm\" v-else v-on:click=\"mostrarComentarios(item)\">{{item.hijos}} Comentarios </a>\r\n                            </template>\r\n                            <div class=\"input-group m-input-group m-input-group--pill\">\r\n                                <input class=\"form-control m-input form-control-sm\" placeholder=\"Escribe un comentario. . .\" type=\"text\" v-model=\"item.texto\" v-on:keyup.13=\"enviarHijo(item)\" maxlength=\"500\"/>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"m-scroll-top m-scroll-top--skin-top\" data-toggle=\"m-scroll-top\" data-scroll-offset=\"500\" data-scroll-speed=\"300\">\r\n                    <i class=\"la la-arrow-up\"></i>\r\n                </div>\r\n            </div>\r\n            <infinite-loading @infinite=\"cargarMasNoticias\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <span slot=\"no-more\">\r\n                <div class=\"row\">\r\n                    <div class=\"col m--align-center\">\r\n                        <div class=\"btn btn-sm m-btn--custom m-btn--pill  btn-metal\">\r\n                            No existen más Noticias\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </span>\r\n                <span slot=\"no-results\">\r\n                No existen Noticias\r\n            </span>\r\n            </infinite-loading>\r\n            <proyecto :id=\"proyectoSele\" :clic=\"tiempo\"></proyecto>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import InfiniteLoading from 'vue-infinite-loading';\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    export default {\r\n        name: \"noticias\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone,\r\n            InfiniteLoading,\r\n        },\r\n        data: () => ({\r\n            subidas:[],\r\n            comentario:'',\r\n            noticias:[],\r\n\r\n            dropzoneOptions: {\r\n                url:'/consulta/upload',\r\n                maxFiles:30,\r\n                maxFilesize: 5,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: '<i class=\"la la-photo\"></i>',\r\n                previewTemplate:'<i><i/>',\r\n                acceptedFiles:'image/*',\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"Solo se admiten imágenes.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"A superado el límite de imágenes.\",\r\n            },\r\n            pagina:0,\r\n\r\n            proyectoSele:null,\r\n            tiempo:1,\r\n        }),\r\n        methods:{\r\n            cargarProyecto(codigo){\r\n                this.tiempo=moment();\r\n                this.proyectoSele=codigo;\r\n            },\r\n            parsearArchivo:function(archivo){\r\n                return ('/consulta/imagen?nombre='+archivo+'&p='+moment());\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: '/consulta/upload',\r\n                }).then((response) => {\r\n                    this.subidas=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href='/consulta/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: '/consulta/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            errores:function(file,meesage,xhr){\r\n                toastr.error(meesage, \"Error\");\r\n            },\r\n            enviar:function(){\r\n                if(this.comentario.length>10){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':this.comentario,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            toastr.info(\"Se publicó su comentario\", \"Éxito\");\r\n                            this.cargarPrimerasNoticias();\r\n                            this.comentario='';\r\n                            this.cargarArchivos();\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n                }else{\r\n                    toastr.error(\"El texto no puede estar vacío\", \"Error\");\r\n                }\r\n            },\r\n            enviarHijo:function(comentario){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':comentario.texto,\r\n                            'id':comentario.code,\r\n                            'p':comentario.p,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            comentario.texto='';\r\n                            comentario.hijos++;\r\n                            if(comentario.mostrando)\r\n                                this.cargarHijos(comentario);\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n            },\r\n            mostrarComentarios:function(comentario){\r\n                if(!comentario.mostrando){\r\n                    //Object.assign(comentario, {'mostrando':true});\r\n                    comentario.mostrando=true;\r\n                    this.cargarHijos(comentario);\r\n                }\r\n\r\n            },\r\n            cargarHijos:function(comentario){\r\n                let parametro   =   comentario.code ? comentario.code : comentario.p;\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url:window.location.href+'/'+parametro,\r\n                }).then((response) => {\r\n                    Object.assign(comentario, {'listaHijos':response.data});\r\n                });\r\n            },\r\n            cargarPrimerasNoticias:function(){\r\n                axios.options(window.location.href)\r\n                    .then((response) => {\r\n                        this.noticias = response.data;\r\n                    }).catch((error) => {\r\n                        if(error.status===500)\r\n                            this.cargarPrimerasNoticias();\r\n                    });\r\n            },\r\n            cargarMasNoticias:function($state){\r\n                let pagina  =   this.noticias.length / 5 + 1;\r\n                    pagina  =   pagina.toFixed(0);\r\n\r\n                if(pagina===this.pagina)\r\n                    pagina++;\r\n                axios.options(window.location.href, {\r\n                    params: {\r\n                        page: pagina,\r\n                    },\r\n                }).then((response) => {\r\n                    if (response.data.length) {\r\n                        this.noticias = this.noticias.concat(response.data);\r\n                        this.pagina=pagina;\r\n                        $state.loaded();\r\n                        /*\r\n                        if (this.noticias.length===response.data) {\r\n                            $state.complete();\r\n                        }*/\r\n                    } else {\r\n                        $state.complete();\r\n                    }\r\n                }).catch((error) => {\r\n                    if(error.status===500)\r\n                        this.cargarMasNoticias();\r\n                });\r\n            },\r\n            renderizarId:function(id){\r\n                lightGallery(document.getElementById(id),{\r\n                    download: false,\r\n                });\r\n            },\r\n            enviarLike:function(comentario){\r\n                axios({\r\n                    method: 'PUT',\r\n                    url:window.location.href,\r\n                    params:{\r\n                        'id':comentario.code,\r\n                    }\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        comentario.meLike=response.data.like;\r\n                        if(response.data.like)\r\n                            comentario.likes++;\r\n                        else\r\n                            comentario.likes--;\r\n                    }else{\r\n                        toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                    }\r\n                });\r\n            }\r\n        },\r\n        mounted(){\r\n            $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');\r\n            this.cargarArchivos();\r\n        },\r\n        updated(){\r\n            this.renderizarId('mis-fotos');\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .img-item{\r\n        height:37px !important;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart{\r\n        color: red;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart-o{\r\n        color:black;\r\n        cursor:pointer;\r\n    }\r\n    a{\r\n        cursor:pointer;\r\n    }\r\n\r\n\r\n</style>"],"sourceRoot":""}]);
+exports.push([module.i, "\n.img-item[data-v-578d1136]{\n    height:37px !important;\n    cursor:pointer;\n}\n.fa-heart[data-v-578d1136]{\n    color: red;\n    cursor:pointer;\n}\n.fa-heart-o[data-v-578d1136]{\n    color:black;\n    cursor:pointer;\n}\na[data-v-578d1136]{\n    cursor:pointer;\n}\n\n\n", "", {"version":3,"sources":["D:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/noticias.vue"],"names":[],"mappings":";AA6UA;IACA,uBAAA;IACA,eAAA;CACA;AACA;IACA,WAAA;IACA,eAAA;CACA;AACA;IACA,YAAA;IACA,eAAA;CACA;AACA;IACA,eAAA;CACA","file":"noticias.vue","sourcesContent":["<template>\r\n    <div>\r\n        <div class=\"container\">\r\n            <div class=\"form-group m-form__group\">\r\n                <textarea class=\"form-control m-input m-input--solid\" rows=\"3\" maxlength=\"500\" placeholder=\"Escriba\" v-model=\"comentario\"></textarea>\r\n                <div class=\"d-flex\">\r\n                    <div class=\"p-2\" style=\"width:80%\">\r\n                        <div id=\"mis-fotos\">\r\n                            <img :src=\"parsearArchivo(item.file)\" :data-src=\"parsearArchivo(item.file)\" class=\"img-item\" v-for=\"(item,index) in subidas\" v-show=\"index<19\"/>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"ml-auto p-2\">\r\n                        <vue-dropzone  id=\"fotos\" :options=\"dropzoneOptions\" v-on:vdropzone-error=\"errores\" v-on:vdropzone-success=\"cargarArchivos\" v-on:sending=\"cargarArchivos\" ref=\"fotos\" class=\"btn btn-secondary m-btn m-btn--icon\"/>\r\n                        <button type=\"reset\" class=\"btn btn-success btn-sm m-btn \tm-btn m-btn--icon\" v-on:click=\"enviar(null)\">\r\n                            <span>Enviar<span class=\"la la-send\"></span></span>\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"m-timeline-1 m-timeline-1--fixed\">\r\n            <div class=\"m-timeline-1__items\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <div class=\"m-timeline-1__item\" v-for=\"(item, index) in noticias\" v-bind:class=\"index % 2===0?'m-timeline-1__item--left': 'm-timeline-1__item--right'\">\r\n                    <div class=\"m-timeline-1__item-circle\">\r\n                        <div class=\"m--bg-danger\"></div>\r\n                    </div>\r\n                    <div class=\"m-timeline-1__item-arrow\"></div>\r\n                    <span class=\"m-timeline-1__item-time m--font-brand\">{{item.fecha}}</span>\r\n                    <div class=\"m-timeline-1__item-content\">\r\n                        <template v-if=\"item.code\">\r\n                                <div class=\"m-timeline-1__item-body\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"item.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <span class=\"m-widget3__username\">{{item.usuario}}</span><br>\r\n                                                    <b class=\"m-widget3__time\">{{item.org}}</b>\r\n                                                    <span class=\"m-widget3__status m--font-info\">\r\n                                                        <span class=\"fa\" v-bind:class=\"item.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(item)\" data-skin=\"dark\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+item.likes+'</b>'\"></span>\r\n                                                    </span>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{item.comentario}}\r\n                                                </p>\r\n                                                <div :id=\"item.code\">\r\n                                                    <img :src=\"imagen.down\" :data-src=\"imagen.down\" class=\"img-item\" v-for=\"(imagen,index) in item.fotos\" v-show=\"index<3\" v-on:mouseover=\"renderizarId(item.code)\"/>\r\n                                                </div>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                        </template>\r\n                        <template v-else>\r\n                            <div class=\"m-timeline-1__item-title\">\r\n                                {{item.proyecto.titulo_pr}}<br>\r\n                                <b>{{item.proyecto.org.ncomercial_or || item.proyecto.org.rsocial_or}}</b>\r\n                            </div>\r\n                            <div class=\"m-timeline-1__item-body\">{{item.proyecto.objgeneral_pr}}</div>\r\n                            <div class=\"m-timeline-1__item-actions\">\r\n                                <button class=\"btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom\" v-on:click=\"cargarProyecto(item.p)\">\r\n                                    Leer más..\r\n                                </button>\r\n                            </div>\r\n                        </template>\r\n                        <div class=\"m-timeline-1__item-actions\">\r\n                            <template v-if=\"item.hijos\">\r\n                                <div v-if=\"item.mostrando\">\r\n                                    <div class=\"m-widget3\">\r\n                                        <div class=\"m-widget3__item\" v-for=\"itemChill in item.listaHijos\">\r\n                                            <div class=\"m-widget3__header\">\r\n                                                <div class=\"m-widget3__user-img\">\r\n                                                    <img class=\"m-widget3__img\" :src=\"itemChill.avatar\"/>\r\n                                                </div>\r\n                                                <div class=\"m-widget3__info\">\r\n                                                    <div class=\"d-flex\">\r\n                                                        <div class=\"p-2\">\r\n                                                            <span class=\"m-widget3__username\">{{itemChill.usuario}}</span><br>\r\n                                                            <b class=\"m-widget3__time\">{{itemChill.org}}</b>\r\n                                                        </div>\r\n                                                        <div class=\"ml-auto p-2\"><small class=\"text-muted\">{{itemChill.fecha}}</small></div>\r\n                                                        <span class=\"m-widget3__status m--font-info\">\r\n                                                            <span class=\"fa\" data-toggle=\"m-tooltip\" title=\"Me gusta\" data-html=\"true\" :data-content=\"'<b>'+itemChill.likes+'</b>'\" v-bind:class=\"itemChill.meLike ? 'fa-heart' : 'fa fa-heart-o'\" v-on:click=\"enviarLike(itemChill)\"></span>\r\n                                                        </span>\r\n                                                    </div>\r\n                                                </div>\r\n                                            </div>\r\n                                            <div class=\"m-widget3__body\">\r\n                                                <p class=\"m-widget3__text\">\r\n                                                    {{itemChill.comentario}}\r\n                                                </p>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <a type=\"button\" class=\"m-nav__link btn-sm\" v-else v-on:click=\"mostrarComentarios(item)\">{{item.hijos}} Comentarios </a>\r\n                            </template>\r\n                            <div class=\"input-group m-input-group m-input-group--pill\">\r\n                                <input class=\"form-control m-input form-control-sm\" placeholder=\"Escribe un comentario. . .\" type=\"text\" v-model=\"item.texto\" v-on:keyup.13=\"enviarHijo(item)\" maxlength=\"500\"/>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"m-scroll-top m-scroll-top--skin-top\" data-toggle=\"m-scroll-top\" data-scroll-offset=\"500\" data-scroll-speed=\"300\">\r\n                    <i class=\"la la-arrow-up\"></i>\r\n                </div>\r\n            </div>\r\n            <infinite-loading @infinite=\"cargarMasNoticias\">\r\n                <div class=\"m-timeline-1__marker\"></div>\r\n                <span slot=\"no-more\">\r\n                <div class=\"row\">\r\n                    <div class=\"col m--align-center\">\r\n                        <div class=\"btn btn-sm m-btn--custom m-btn--pill  btn-metal\">\r\n                            No existen más Noticias\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </span>\r\n                <span slot=\"no-results\">\r\n                No existen Noticias\r\n            </span>\r\n            </infinite-loading>\r\n            <proyecto :id=\"proyectoSele\" :clic=\"tiempo\"></proyecto>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n    import InfiniteLoading from 'vue-infinite-loading';\r\n    import vue2Dropzone from 'vue2-dropzone';\r\n    export default {\r\n        name: \"noticias\",\r\n        components: {\r\n            vueDropzone: vue2Dropzone,\r\n            InfiniteLoading,\r\n        },\r\n        data: () => ({\r\n            subidas:[],\r\n            comentario:'',\r\n            noticias:[],\r\n\r\n            dropzoneOptions: {\r\n                url:'/consulta/upload',\r\n                maxFiles:30,\r\n                maxFilesize: 5,\r\n                headers: { \"X-CSRF-TOKEN\": window.axios.defaults.headers.common['X-CSRF-TOKEN'] },\r\n                uploadMultiple:true,\r\n                dictDefaultMessage: '<i class=\"la la-photo\"></i>',\r\n                previewTemplate:'<i><i/>',\r\n                acceptedFiles:'image/*',\r\n                dictFallbackMessage:\"Su navegador no soporta este componente.\",\r\n                dictFileTooBig:\"El archivo es muy grande.\",\r\n                dictInvalidFileType:\"Solo se admiten imágenes.\",\r\n                dictResponseError:\"Error al enviar el archivo.\",\r\n                dictMaxFilesExceeded:\"A superado el límite de imágenes.\",\r\n            },\r\n            pagina:0,\r\n\r\n            proyectoSele:null,\r\n            tiempo:1,\r\n        }),\r\n        methods:{\r\n            cargarProyecto(codigo){\r\n                this.tiempo=moment();\r\n                this.proyectoSele=codigo;\r\n            },\r\n            parsearArchivo:function(archivo){\r\n                return ('/consulta/imagen?nombre='+archivo+'&p='+moment());\r\n            },\r\n            cargarArchivos:function(){\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url: '/consulta/upload',\r\n                }).then((response) => {\r\n                    this.subidas=response.data;\r\n                });\r\n            },\r\n            descargarArchivo:function(archivo,nombre){\r\n                //window.open(this.con+'/upload?nombre='+archivo,\"_blank\");\r\n                window.location.href='/consulta/upload?nombre='+archivo;\r\n                toastr.info(\"Se descargo \"+nombre, \"Éxito\");\r\n            },\r\n            eliminarArchivo:function(archivo){\r\n                axios({\r\n                    method: 'DELETE',\r\n                    url: '/consulta/upload',\r\n                    params:{\r\n                        'nombre':archivo.file\r\n                    }\r\n                }).then((response) => {\r\n                    toastr.info(\"Se eliminó \"+archivo.name, \"Éxito\");\r\n                    this.cargarArchivos();\r\n                });\r\n            },\r\n            errores:function(file,meesage,xhr){\r\n                toastr.error(meesage, \"Error\");\r\n            },\r\n            enviar:function(){\r\n                if(this.comentario.length>10){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':this.comentario,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            toastr.info(\"Se publicó su comentario\", \"Éxito\");\r\n                            this.cargarPrimerasNoticias();\r\n                            this.comentario='';\r\n                            this.cargarArchivos();\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n                }else{\r\n                    toastr.error(\"El texto no puede estar vacío\", \"Error\");\r\n                }\r\n            },\r\n            enviarHijo:function(comentario){\r\n                    axios({\r\n                        method: 'POST',\r\n                        url:window.location.href,\r\n                        params:{\r\n                            'comentario':comentario.texto,\r\n                            'id':comentario.code,\r\n                            'p':comentario.p,\r\n                        }\r\n                    }).then((response) => {\r\n                        if(response.data.val){\r\n                            comentario.texto='';\r\n                            comentario.hijos++;\r\n                            if(comentario.mostrando)\r\n                                this.cargarHijos(comentario);\r\n                        }else{\r\n                            toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                        }\r\n                    });\r\n            },\r\n            mostrarComentarios:function(comentario){\r\n                if(!comentario.mostrando){\r\n                    //Object.assign(comentario, {'mostrando':true});\r\n                    comentario.mostrando=true;\r\n                    this.cargarHijos(comentario);\r\n                }\r\n\r\n            },\r\n            cargarHijos:function(comentario){\r\n                let parametro   =   comentario.code ? comentario.code : comentario.p;\r\n                axios({\r\n                    method: 'OPTIONS',\r\n                    url:window.location.href+'/'+parametro,\r\n                }).then((response) => {\r\n                    Object.assign(comentario, {'listaHijos':response.data});\r\n                });\r\n            },\r\n            cargarPrimerasNoticias:function(){\r\n                axios.options(window.location.href)\r\n                    .then((response) => {\r\n                        this.noticias = response.data;\r\n                    }).catch((error) => {\r\n                        if(error.status===500)\r\n                            this.cargarPrimerasNoticias();\r\n                    });\r\n            },\r\n            cargarMasNoticias:function($state){\r\n                let pagina  =   this.noticias.length / 5 + 1;\r\n                    pagina  =   pagina.toFixed(0);\r\n\r\n                if(pagina===this.pagina)\r\n                    pagina++;\r\n                axios.options(window.location.href, {\r\n                    params: {\r\n                        page: pagina,\r\n                    },\r\n                }).then((response) => {\r\n                    if (response.data.length) {\r\n                        this.noticias = this.noticias.concat(response.data);\r\n                        this.pagina=pagina;\r\n                        $state.loaded();\r\n                        /*\r\n                        if (this.noticias.length===response.data) {\r\n                            $state.complete();\r\n                        }*/\r\n                    } else {\r\n                        $state.complete();\r\n                    }\r\n                }).catch((error) => {\r\n                    if(error.status===500)\r\n                        this.cargarMasNoticias();\r\n                });\r\n            },\r\n            renderizarId:function(id){\r\n                lightGallery(document.getElementById(id),{\r\n                    download: false,\r\n                });\r\n            },\r\n            enviarLike:function(comentario){\r\n                axios({\r\n                    method: 'PUT',\r\n                    url:window.location.href,\r\n                    params:{\r\n                        'id':comentario.code,\r\n                    }\r\n                }).then((response) => {\r\n                    if(response.data.val){\r\n                        comentario.meLike=response.data.like;\r\n                        if(response.data.like)\r\n                            comentario.likes++;\r\n                        else\r\n                            comentario.likes--;\r\n                    }else{\r\n                        toastr.error(\"Ha ocurrido un error vuelva a intentar\", \"Error\");\r\n                    }\r\n                });\r\n            }\r\n        },\r\n        mounted(){\r\n            $('#fotos').removeClass('vue-dropzone dropzone dz-clickable');\r\n            this.cargarArchivos();\r\n        },\r\n        updated(){\r\n            this.renderizarId('mis-fotos');\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .img-item{\r\n        height:37px !important;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart{\r\n        color: red;\r\n        cursor:pointer;\r\n    }\r\n    .fa-heart-o{\r\n        color:black;\r\n        cursor:pointer;\r\n    }\r\n    a{\r\n        cursor:pointer;\r\n    }\r\n\r\n\r\n</style>"],"sourceRoot":""}]);
 
 // exports
 
@@ -53621,8 +53622,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 fecha: this.fecha,
                 descripcion: this.descripcion,
                 comentario: this.comentario,
-                estado: this.check,
-                horas: this.horas
+                estado: this.check
+                //horas: this.horas
             }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
@@ -53782,31 +53783,6 @@ var render = function() {
               return
             }
             _vm.comentario = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("td", { staticStyle: { width: "6%" } }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.horas,
-            expression: "horas"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "text", name: "horas", id: "horas", disabled: false },
-        domProps: { value: _vm.horas },
-        on: {
-          blur: _vm.insertar,
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.horas = $event.target.value
           }
         }
       })
@@ -54433,7 +54409,7 @@ exports = module.exports = __webpack_require__(4)(true);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"empresa-item.vue","sourceRoot":""}]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"empresa-item.vue","sourceRoot":""}]);
 
 // exports
 
@@ -54482,6 +54458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -54491,15 +54468,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         convenios: {
             type: Array
         },
-        tutores: {
+        /*tutores: {
             type: Array
-        },
+        },*/
         hastutores: {
             type: String
         }
     },
     data: function data() {
         return {
+            lista: [],
+            tutores: false,
+            llena: false,
             borrado: false,
             convenio: '',
             sede: '',
@@ -54508,8 +54488,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        descargar: function descargar() {
+        cargardatos: function cargardatos() {
             var _this = this;
+
+            axios.get(window.location.origin + '/api/consultar-tutores-por-empresa', {
+                params: { 'idempresa': this.empresa.idempresa }
+            }).then(function (response) {
+                _this.lista = response.data;
+                if (_this.lista.length > 0) {
+                    _this.llena = true;
+                } else {
+                    _this.llena = false;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        agregar_convenio: function agregar_convenio() {
+            window.location.href = '/convenios/' + this.empresa.idempresa + '/create1';
+        },
+        descargar: function descargar() {
+            var _this2 = this;
 
             axios({
                 url: '/convenios/' + this.codigo + '/descargar',
@@ -54519,7 +54518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var url = window.URL.createObjectURL(new Blob([response.data]));
                 var link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', _this.convenio); //or any other extension
+                link.setAttribute('download', _this2.convenio); //or any other extension
                 document.body.appendChild(link);
                 link.click();
 
@@ -54528,11 +54527,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
-        tutores: function tutores() {
-            window.location.href = '/tutores/' + this.empresa.idempresa + '/list';
+        vertutores: function vertutores() {
+            this.tutores = true;
+        },
+        ocultartutores: function ocultartutores() {
+            this.tutores = false;
         }
     },
 
+    created: function created() {
+        this.cargardatos();
+    },
     mounted: function mounted() {
         for (var i = 0; i < Object.keys(this.convenios).length; i++) {
             if (this.convenios[i].idempresa == this.empresa.idempresa) {
@@ -54553,51 +54558,157 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "tr",
+    "table",
     {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: !_vm.borrado,
-          expression: "!borrado"
-        }
-      ]
+      staticClass: "table table-bordered p-0 m-0",
+      staticStyle: { "table-layout": "fixed" }
     },
     [
-      _c("td", [_vm._v(_vm._s(_vm.empresa.nombreempresa))]),
-      _vm._v(" "),
-      _c("td", [_vm._v(_vm._s(_vm.empresa.direccionempresa))]),
-      _vm._v(" "),
-      _c("td", [_vm._v(_vm._s(_vm.empresa.sectorempresa))]),
-      _vm._v(" "),
-      _c("td", [_vm._v(_vm._s(_vm.empresa.telefonoempresa))]),
-      _vm._v(" "),
-      _c("td", [
-        _c("button", { staticClass: "btn btn-link" }, [
-          _vm._v(_vm._s(_vm.convenio))
-        ])
+      _c("tr", { staticStyle: { "background-color": "white" } }, [
+        _c(
+          "th",
+          {
+            staticClass: "p-1 m-0",
+            staticStyle: {
+              width: "14%",
+              "background-color": "#688ebe",
+              color: "white",
+              "text-align": "center"
+            }
+          },
+          [_vm._v(_vm._s(_vm.empresa.nombreempresa))]
+        ),
+        _vm._v(" "),
+        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "18%" } }, [
+          _vm._v(_vm._s(_vm.empresa.direccionempresa))
+        ]),
+        _vm._v(" "),
+        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "10%" } }, [
+          _vm._v(_vm._s(_vm.empresa.sectorempresa))
+        ]),
+        _vm._v(" "),
+        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "10%" } }, [
+          _vm._v(_vm._s(_vm.empresa.telefonoempresa))
+        ]),
+        _vm._v(" "),
+        _vm.convenio
+          ? _c(
+              "td",
+              { staticClass: "p-0 m-0", staticStyle: { width: "10%" } },
+              [
+                _c("button", { staticClass: "btn btn-link" }, [
+                  _vm._v(_vm._s(_vm.convenio))
+                ])
+              ]
+            )
+          : !_vm.convenio
+            ? _c(
+                "td",
+                { staticClass: "p-0 m-0", staticStyle: { width: "10%" } },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-link",
+                      on: { click: _vm.agregar_convenio }
+                    },
+                    [_vm._v("Agregar Convenio")]
+                  )
+                ]
+              )
+            : _vm._e(),
+        _vm._v(" "),
+        _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "8%" } }, [
+          _vm._v(_vm._s(_vm.sede))
+        ]),
+        _vm._v(" "),
+        !_vm.tutores
+          ? _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "2%" } }, [
+              _c("i", {
+                staticClass: "fa fa-angle-down ",
+                on: { click: _vm.vertutores }
+              })
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.tutores
+          ? _c("td", { staticClass: "p-1 m-0", staticStyle: { width: "2%" } }, [
+              _c("i", {
+                staticClass: "fa fa-angle-up ",
+                on: { click: _vm.ocultartutores }
+              })
+            ])
+          : _vm._e()
       ]),
       _vm._v(" "),
-      _c("td", [_vm._v(_vm._s(_vm.sede))]),
-      _vm._v(" "),
-      _c("td", [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: { click: _vm.tutores }
-            },
-            [_vm._v("\n                Ver\n            ")]
-          )
-        ])
+      _c("tr", [
+        _vm.llena
+          ? _c(
+              "td",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.tutores,
+                    expression: "tutores"
+                  }
+                ],
+                staticClass: "p-0 m-0",
+                attrs: { colspan: "7" }
+              },
+              [
+                _c("table", { staticClass: "table table-bordered p-0 m-0" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.lista, function(item) {
+                      return _c("tr", [
+                        _c("td", { staticClass: "p-1 m-0" }, [
+                          _vm._v(_vm._s(item.nombretutore))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "p-1 m-0" }, [
+                          _vm._v(_vm._s(item.apellidotutore))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "p-1 m-0" }, [
+                          _vm._v(_vm._s(item.celulartutore))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "p-1 m-0" }, [
+                          _vm._v(_vm._s(item.correotutore))
+                        ])
+                      ])
+                    })
+                  )
+                ])
+              ]
+            )
+          : _vm._e()
       ])
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticStyle: { "background-color": "#F2F2F2" } }, [
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Celular")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "p-1 m-0" }, [_vm._v("Correo")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56141,7 +56252,7 @@ exports = module.exports = __webpack_require__(4)(true);
 
 
 // module
-exports.push([module.i, "\n.donut-inner[data-v-a31284f6] {\n    margin-top: -100px;\n    margin-bottom: 100px;\n    padding-top: 22px;\n    text-align: center;\n}\n.donut-inner h5[data-v-a31284f6] {\n    margin-bottom: 5px;\n    margin-top: 0;\n}\n.donut-inner span[data-v-a31284f6] {\n    font-size: 12px;\n}\n", "", {"version":3,"sources":["C:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/dona-component.vue"],"names":[],"mappings":";AAiKA;IACA,mBAAA;IACA,qBAAA;IACA,kBAAA;IACA,mBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;CACA;AACA;IACA,gBAAA;CACA","file":"dona-component.vue","sourcesContent":["<template>\r\n    <div>\r\n\r\n        <div class=\"convas1\">\r\n            <canvas id=\"avancechart\">\r\n            </canvas>\r\n\r\n            <div class=\"donut-inner\">\r\n                <h5 class=\"btn text-primary porcentaje\" >\r\n                    <button class=\"btn border-0 btn-link text-primary\" @click=\"actividades\">{{(suma*100)/practica.horaspractica }}%</button>\r\n                </h5>\r\n            </div>\r\n        </div>\r\n        <div class=\"convas2\">\r\n            <canvas id=\"documentoschart\">\r\n            </canvas>\r\n\r\n            <div class=\"donut-inner\">\r\n                <h5 class=\"btn text-primary porcentaje\" >\r\n                    <button class=\"btn border-0 btn-link text-primary\" @click=\"documentos\">{{(docs*100)/totaldocs }}%</button>\r\n                </h5>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n\r\n    import Chart from 'chart.js';\r\n    export default {\r\n        props: {\r\n\r\n            practica: {\r\n                type: Object\r\n            },\r\n            suma: Number,\r\n            docs: Number\r\n        },\r\n        data:()=>({\r\n            totaldocs:'5'\r\n        }),\r\n        methods: {\r\n            createChart(chartId, chartData) {\r\n                var canvas = document.getElementById(chartId);\r\n                var ctx = canvas.getContext(\"2d\");\r\n                const myChart = new Chart(ctx, {\r\n                    type: chartData.type,\r\n                    data: chartData.data,\r\n                    options: chartData.options,\r\n                });\r\n            },\r\n\r\n            actividades:function () {\r\n                window.location.href = '/actividades/'+this.practica.idpractica+'/list';\r\n            },\r\n\r\n            documentos:function () {\r\n                window.location.href = '/documentos/'+this.practica.idpractica+'/list';\r\n            },\r\n            gettotaldocs: function () {\r\n                axios.get(window.location.origin+'/api/totaldocs'\r\n                ).then((response)=>{\r\n                    this.totaldocs=response.data;\r\n\r\n                }).catch(function (error) {\r\n                    console.log(error);\r\n                });\r\n            }\r\n        },\r\n        mounted() {\r\n\r\n            const data = {\r\n                type: 'doughnut',\r\n                data: {\r\n                    labels: [\"Completo\", \"Incompleto\"],\r\n                    datasets: [\r\n                        {\r\n                            label: \"%Proyecto\",\r\n                            backgroundColor: [\"#e843b9\", \"#ddd\"],\r\n                            data: [this.suma,(this.practica.horaspractica-this.suma)]\r\n                        }\r\n                    ]\r\n                },\r\n                options: {\r\n                    title: {\r\n                        display: true,\r\n                        text: '% Avance'\r\n                    },\r\n                    responsive: true,\r\n                    cutoutPercentage: 90,\r\n                    legend: {\r\n                        display: false\r\n                    },\r\n                    tooltips: {\r\n                        callbacks: {\r\n                            label: function(tooltipItem, data) {\r\n                                var dataset = data.datasets[tooltipItem.datasetIndex];\r\n                                var meta = dataset._meta[Object.keys(dataset._meta)[0]];\r\n                                var total = meta.total;\r\n                                var currentValue = dataset.data[tooltipItem.index];\r\n                                var percentage = parseFloat((currentValue/total*100).toFixed(1));\r\n                                return currentValue + ' (' + percentage + '%)';\r\n                            },\r\n                            title: function(tooltipItem, data) {\r\n                                return data.labels[tooltipItem[0].index];\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            };\r\n            const data2 = {\r\n                type: 'doughnut',\r\n                data: {\r\n                    labels: [\"Completo\", \"Incompleto\"],\r\n                    datasets: [\r\n                        {\r\n                            label: \"%Documentos\",\r\n                            backgroundColor: [\"#3e95cd\",\"#ddd\"],\r\n                            data: [this.docs,(this.totaldocs-this.docs)]\r\n                        }\r\n                    ]\r\n                },\r\n                options: {\r\n                    title: {\r\n                        display: true,\r\n                        text: '% Documentos'\r\n                    },\r\n                    responsive: true,\r\n                    cutoutPercentage: 90,\r\n                    legend: {\r\n                        display: false\r\n                    },\r\n                    tooltips: {\r\n                        callbacks: {\r\n                            label: function(tooltipItem, data) {\r\n                                var dataset = data.datasets[tooltipItem.datasetIndex];\r\n                                var meta = dataset._meta[Object.keys(dataset._meta)[0]];\r\n                                var total = meta.total;\r\n                                var currentValue = dataset.data[tooltipItem.index];\r\n                                var percentage = parseFloat((currentValue/total*100).toFixed(1));\r\n                                return currentValue + ' (' + percentage + '%)';\r\n                            },\r\n                            title: function(tooltipItem, data) {\r\n                                return data.labels[tooltipItem[0].index];\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            };\r\n\r\n            this.gettotaldocs();\r\n            this.createChart('avancechart', data);\r\n            this.createChart('documentoschart', data2);\r\n            console.log(this.docs);\r\n\r\n\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .donut-inner {\r\n        margin-top: -100px;\r\n        margin-bottom: 100px;\r\n        padding-top: 22px;\r\n        text-align: center;\r\n    }\r\n    .donut-inner h5 {\r\n        margin-bottom: 5px;\r\n        margin-top: 0;\r\n    }\r\n    .donut-inner span {\r\n        font-size: 12px;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+exports.push([module.i, "\n.donut-inner[data-v-a31284f6] {\n    margin-top: -100px;\n    margin-bottom: 100px;\n    padding-top: 22px;\n    text-align: center;\n}\n.donut-inner h5[data-v-a31284f6] {\n    margin-bottom: 5px;\n    margin-top: 0;\n}\n.donut-inner span[data-v-a31284f6] {\n    font-size: 12px;\n}\n", "", {"version":3,"sources":["D:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/dona-component.vue"],"names":[],"mappings":";AAkKA;IACA,mBAAA;IACA,qBAAA;IACA,kBAAA;IACA,mBAAA;CACA;AACA;IACA,mBAAA;IACA,cAAA;CACA;AACA;IACA,gBAAA;CACA","file":"dona-component.vue","sourcesContent":["<template>\r\n    <div>\r\n\r\n        <div class=\"convas1\">\r\n            <canvas id=\"avancechart\">\r\n            </canvas>\r\n\r\n            <div class=\"donut-inner\">\r\n                <h5 class=\"btn text-primary porcentaje\" >\r\n                    <button class=\"btn border-0 btn-link text-primary\" @click=\"actividades\">{{(suma*100)/practica.horaspractica }}%</button>\r\n                </h5>\r\n            </div>\r\n        </div>\r\n        <div class=\"convas2\">\r\n            <canvas id=\"documentoschart\">\r\n            </canvas>\r\n\r\n            <div class=\"donut-inner\">\r\n                <h5 class=\"btn text-primary porcentaje\" >\r\n                    <button class=\"btn border-0 btn-link text-primary\" @click=\"documentos\">{{(docs*100)/totaldocs }}%</button>\r\n                </h5>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n\r\n    import Chart from 'chart.js';\r\n    export default {\r\n        props: {\r\n\r\n            practica: {\r\n                type: Object\r\n            },\r\n            suma: Number,\r\n            docs: Number\r\n        },\r\n        data:()=>({\r\n            totaldocs:'5'\r\n        }),\r\n        methods: {\r\n            createChart(chartId, chartData) {\r\n                var canvas = document.getElementById(chartId);\r\n                var ctx = canvas.getContext(\"2d\");\r\n                const myChart = new Chart(ctx, {\r\n                    type: chartData.type,\r\n                    data: chartData.data,\r\n                    options: chartData.options,\r\n                });\r\n            },\r\n\r\n            actividades:function () {\r\n                window.location.href = '/actividades/'+this.practica.idpractica+'/list';\r\n            },\r\n\r\n            documentos:function () {\r\n                window.location.href = '/documentos/'+this.practica.idpractica+'/list';\r\n            },\r\n            gettotaldocs: function () {\r\n                axios.get(window.location.origin+'/api/totaldocs',{\r\n                        params:{'carrera':this.practica.estudiante.carrera.idcarrera}\r\n                }).then((response)=>{\r\n                    this.totaldocs=response.data;\r\n\r\n                }).catch(function (error) {\r\n                    console.log(error);\r\n                });\r\n            }\r\n        },\r\n        mounted() {\r\n\r\n            const data = {\r\n                type: 'doughnut',\r\n                data: {\r\n                    labels: [\"Completo\", \"Incompleto\"],\r\n                    datasets: [\r\n                        {\r\n                            label: \"%Proyecto\",\r\n                            backgroundColor: [\"#e843b9\", \"#ddd\"],\r\n                            data: [this.suma,(this.practica.horaspractica-this.suma)]\r\n                        }\r\n                    ]\r\n                },\r\n                options: {\r\n                    title: {\r\n                        display: true,\r\n                        text: '% Avance'\r\n                    },\r\n                    responsive: true,\r\n                    cutoutPercentage: 90,\r\n                    legend: {\r\n                        display: false\r\n                    },\r\n                    tooltips: {\r\n                        callbacks: {\r\n                            label: function(tooltipItem, data) {\r\n                                var dataset = data.datasets[tooltipItem.datasetIndex];\r\n                                var meta = dataset._meta[Object.keys(dataset._meta)[0]];\r\n                                var total = meta.total;\r\n                                var currentValue = dataset.data[tooltipItem.index];\r\n                                var percentage = parseFloat((currentValue/total*100).toFixed(1));\r\n                                return currentValue + ' (' + percentage + '%)';\r\n                            },\r\n                            title: function(tooltipItem, data) {\r\n                                return data.labels[tooltipItem[0].index];\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            };\r\n            const data2 = {\r\n                type: 'doughnut',\r\n                data: {\r\n                    labels: [\"Completo\", \"Incompleto\"],\r\n                    datasets: [\r\n                        {\r\n                            label: \"%Documentos\",\r\n                            backgroundColor: [\"#3e95cd\",\"#ddd\"],\r\n                            data: [this.docs,(this.totaldocs-this.docs)]\r\n                        }\r\n                    ]\r\n                },\r\n                options: {\r\n                    title: {\r\n                        display: true,\r\n                        text: '% Documentos'\r\n                    },\r\n                    responsive: true,\r\n                    cutoutPercentage: 90,\r\n                    legend: {\r\n                        display: false\r\n                    },\r\n                    tooltips: {\r\n                        callbacks: {\r\n                            label: function(tooltipItem, data) {\r\n                                var dataset = data.datasets[tooltipItem.datasetIndex];\r\n                                var meta = dataset._meta[Object.keys(dataset._meta)[0]];\r\n                                var total = meta.total;\r\n                                var currentValue = dataset.data[tooltipItem.index];\r\n                                var percentage = parseFloat((currentValue/total*100).toFixed(1));\r\n                                return currentValue + ' (' + percentage + '%)';\r\n                            },\r\n                            title: function(tooltipItem, data) {\r\n                                return data.labels[tooltipItem[0].index];\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            };\r\n\r\n            this.gettotaldocs();\r\n            this.createChart('avancechart', data);\r\n            this.createChart('documentoschart', data2);\r\n            console.log(this.docs);\r\n\r\n\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .donut-inner {\r\n        margin-top: -100px;\r\n        margin-bottom: 100px;\r\n        padding-top: 22px;\r\n        text-align: center;\r\n    }\r\n    .donut-inner h5 {\r\n        margin-bottom: 5px;\r\n        margin-top: 0;\r\n    }\r\n    .donut-inner span {\r\n        font-size: 12px;\r\n    }\r\n</style>"],"sourceRoot":""}]);
 
 // exports
 
@@ -56219,7 +56330,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         gettotaldocs: function gettotaldocs() {
             var _this = this;
 
-            axios.get(window.location.origin + '/api/totaldocs').then(function (response) {
+            axios.get(window.location.origin + '/api/totaldocs', {
+                params: { 'carrera': this.practica.estudiante.carrera.idcarrera }
+            }).then(function (response) {
                 _this.totaldocs = response.data;
             }).catch(function (error) {
                 console.log(error);
@@ -72642,6 +72755,1359 @@ if (false) {
 
 /***/ }),
 /* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(327)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(329)
+/* template */
+var __vue_template__ = __webpack_require__(331)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1e228172"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\nueva-practica.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1e228172", Component.options)
+  } else {
+    hotAPI.reload("data-v-1e228172", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(328);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("60964a48", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1e228172\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nueva-practica.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js?sourceMap!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1e228172\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nueva-practica.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(true);
+// imports
+
+
+// module
+exports.push([module.i, "\n.autocomplete[data-v-1e228172] {\n    position: relative;\n}\n.autocomplete-results[data-v-1e228172] {\n    padding: 0;\n    margin: 0;\n    border: 1px solid #eeeeee;\n    overflow: auto;\n}\n.autocomplete-result[data-v-1e228172] {\n    list-style: none;\n    text-align: left;\n    padding: 4px 2px;\n    cursor: pointer;\n}\n.autocomplete-result[data-v-1e228172]:hover {\n    background-color: #007bff80;\n    color: white;\n}\n", "", {"version":3,"sources":["D:/xampp/htdocs/tesis_v9/resources/assets/js/components/resources/assets/js/components/nueva-practica.vue"],"names":[],"mappings":";AA+TA;IACA,mBAAA;CACA;AAEA;IACA,WAAA;IACA,UAAA;IACA,0BAAA;IACA,eAAA;CACA;AAEA;IACA,iBAAA;IACA,iBAAA;IACA,iBAAA;IACA,gBAAA;CACA;AAEA;IACA,4BAAA;IACA,aAAA;CACA","file":"nueva-practica.vue","sourcesContent":["<template>\r\n    <div class=\"row\">\r\n\r\n        <div class=\"col-md-12\">\r\n            <div class=\"card\">\r\n                <form method=\"post\" action=\"/practicas\">\r\n                    <input type=\"hidden\" name=\"_token\" :value=\"csrf\">\r\n                    <div class=\"card-body\">\r\n                        <div class=\"form-group autocomplete\">\r\n                            <label class=\"col-sm-8 control-label\">Estudiante:</label>\r\n                            <div class=\"col-lg-8\">\r\n                                <input @keyup=\"autoComplete\" type=\"text\" class=\"form-control\" name=\"estudainte\" v-model=\"estudiante\" placeholder=\"Ingrese el nombre o apellido del Estudiante\"/>\r\n                            </div>\r\n                            <div class=\"panel-footer\" v-if=\"estudiantes.length\">\r\n                                <ul class=\"list-group autocomplete-results\">\r\n                                    <li class=\"list-group-item autocomplete-result\" v-for=\"item in estudiantes\" @click=\"setestudiante(item.idestudiante, item.nombresestudiante, item.apellidosestudiante)\">\r\n                                        {{ item.nombresestudiante+' '+item.apellidosestudiante }}\r\n                                    </li>\r\n                                </ul>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"row\">\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\">Empresa:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <select v-model=\"empresa\" name=\"empresa\" class=\"form-control\" @change=\"gettutores\">\r\n                                    <option value=\"\">-Seleccione-</option>\r\n                                    <option  :key=\"item.idempresa\" v-for=\"item in empresas\" :value=\"item.idempresa\">{{item.nombreempresa}}</option>\r\n                                </select>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label text-primary\" style=\"font-weight: normal !important;\">Tutor Empresarial:</label>\r\n\r\n                            <div class=\"col-lg-12\">\r\n                                <div class=\"input-group\">\r\n                                    <select v-model=\"tutore\" name=\"tutore\" class=\"form-control\">\r\n                                        <option value=\"\">-Seleccione-</option>\r\n                                        <option  :key=\"item.idtutore\" v-for=\"item in tutores\" :value=\"item.idtutore\">{{item.nombretutore+' '+item.apellidotutore}}</option>\r\n                                    </select>\r\n                                    <div class=\"input-group-append\">\r\n                                            <span class=\"input-group-text btn btn-link\">\r\n                                                <i data-toggle=\"modal\" data-target=\"#modal1\" class=\"fa fa-fw fa-plus\"></i>\r\n                                            </span>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\">Tutor Academico:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <select v-model=\"profesor\" name=\"profesor\" class=\"form-control\">\r\n                                    <option value=\"\">-Seleccione-</option>\r\n                                    <option  :key=\"item.idprofesor\" v-for=\"item in profesores\" :value=\"item.idprofesor\">{{item.nombresprofesor+' '+item.apellidosprofesor}}</option>\r\n                                </select>\r\n                            </div>\r\n                        </div>\r\n                        </div>\r\n                        <div class=\"row\">\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\" >Tipo de practica:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <select v-model=\"tipo\" name=\"tipo\" class=\"form-control\">\r\n                                    <option value=\"\">-Seleccione-</option>\r\n                                    <option value=\"Practica\">Practica Pre-Profesional</option>\r\n                                    <option value=\"Pasantia\">Pasantia</option>\r\n                                    <option value=\"Ayudantia\">Ayudantia</option>\r\n                                    <option value=\"Proyecto\">Proyecto</option>\r\n                                </select>\r\n                            </div>\r\n                        </div>\r\n\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\" >Fecha de Inicio:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <input type=\"date\" class=\"form-control\" v-model=\"inicio\" name=\"inicio\">\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\" >Fecha de finalizacion:</label>\r\n                            <div class=\"col-lg-12\">\r\n                            <input type=\"date\" class=\"form-control\" v-model=\"fin\" name=\"fin\">\r\n                            </div>\r\n                        </div>\r\n                        </div>\r\n                        <div class=\"row\">\r\n                        <div class=\"form-group col-md-3\">\r\n                            <label class=\"col-sm-12 control-label\" >Periodo Academico:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <select v-model=\"periodo\" name=\"periodo\" class=\"form-control\">\r\n                                    <option value=\"\">-Seleccione-</option>\r\n                                    <option  :key=\"item.idperiodoacademico\" v-for=\"item in periodos\" :value=\"item.idperiodoacademico\">{{item.nombreperiodoacademico}}</option>\r\n                                </select>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-3\">\r\n                            <label class=\"col-sm-12 control-label\" >Sueldo/salario:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <input type=\"text\" class=\"form-control\" v-model=\"salario\" name=\"salario\" placeholder=\"$000\">\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label class=\"col-sm-12 control-label\" >Horario:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <input type=\"text\" class=\"form-control\" v-model=\"horario\" name=\"horario\" placeholder=\"HH:MM - HH-MM\" >\r\n\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-2\">\r\n                            <label class=\"col-sm-12 control-label\" >Horas:</label>\r\n                            <div class=\"col-lg-12\">\r\n                                <input type=\"text\" class=\"form-control\" v-model=\"horas\" name=\"horas\" >\r\n\r\n                            </div>\r\n                        </div>\r\n                        </div>\r\n                        <div class=\"form-group\">\r\n                            <label class=\"col-sm-8 control-label\">Descripcion:</label>\r\n                            <div class=\"col-lg-8\">\r\n                                <textarea  class=\"form-control\" v-model=\"descripcion\" name=\"descripcion\" ></textarea>\r\n                            </div>\r\n                        </div>\r\n\r\n                    </div>\r\n                    <div class=\"card-footer\">\r\n                        <button type=\"submit\"  class=\"btn btn-primary\">Guardar</button>\r\n\r\n                    </div>\r\n                </form>\r\n\r\n            </div>\r\n        </div>\r\n        <div class=\"modal fade\" id=\"modal1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" ref=\"vuemodal\">\r\n            <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Nuevo Tutor</h5>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                            <span aria-hidden=\"true\">&times;</span>\r\n                        </button>\r\n                    </div>\r\n                        <div class=\"modal-body\">\r\n                            <div class=\"form-group\">\r\n                                <label class=\"col-sm-10 control-label\">Empresa:</label>\r\n                                <div class=\"col-lg-11\">\r\n                                    <select v-model=\"empresa\" name=\"empresa\" class=\"form-control\">\r\n                                        <option value=\"\">-Seleccione-</option>\r\n                                        <option  :key=\"item.idempresa\" v-for=\"item in empresas\" :value=\"item.idempresa\">{{item.nombreempresa}}</option>\r\n                                    </select>\r\n                                </div>\r\n                                <div class=\"formgroup\" width=\"100%\">\r\n                                    <label>Cedula:</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"cedula\" name=\"cedula\">\r\n                                </div>\r\n                                <div class=\"formgroup\" width=\"100\">\r\n                                    <label>Nombre:</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"nombre\" name=\"nombre\">\r\n                                </div>\r\n\r\n                                <div class=\"formgroup\">\r\n                                    <label>Apellido:</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"apellido\" name=\"apellido\">\r\n                                </div>\r\n\r\n                                <div class=\"formgroup\">\r\n                                    <label>Celular:</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"celular\" name=\"celular\">\r\n                                </div>\r\n\r\n                                <div class=\"formgroup\">\r\n                                    <label>Correo:</label>\r\n                                    <input type=\"text\" class=\"form-control\" v-model=\"correo\" name=\"correo\">\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                            <a class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancelar</a>\r\n                            <button type=\"button\" @click=\"save\" class=\"btn btn-primary\">Insertar</button>\r\n                        </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n\r\n    export default {\r\n        name: \"nueva-practica\",\r\n        props: {\r\n            /*csrf_token:{\r\n                type: String\r\n            }*/\r\n        },\r\n        data:()=>({\r\n            periodos: [],\r\n            tutores: [],\r\n            empresas: [],\r\n            profesores: [],\r\n            estudiantes: [],\r\n            estudiante: '',\r\n            codigo:'',\r\n            empresa: '',\r\n            tutore: '',\r\n            profesor: '',\r\n            tipo: '',\r\n            inicio: '',\r\n            fin: '',\r\n            periodo: '',\r\n            salario: '',\r\n            horario: '',\r\n            horas: '',\r\n            descripcion: '',\r\n            csrf: \"\",\r\n            cedula: \"\",\r\n            nombre: \"\",\r\n            apellido: \"\",\r\n            celular: \"\",\r\n            correo: \"\"\r\n        }),\r\n        methods:{\r\n            insertar:function () {\r\n                axios.post('/practicas/', {\r\n                    estudiante: this.codigo,\r\n                    empresa: this.empresa,\r\n                    tutore: this.tutore,\r\n                    profesor: this.profesor,\r\n                    tipo: this.tipo,\r\n                    inicio: this.inicio,\r\n                    fin: this.fin,\r\n                    periodo: this.periodo,\r\n                    salario: this.salario,\r\n                    horario: this.horario,\r\n                    horas: this.horas,\r\n                    descripcion: this.descripcion\r\n                })\r\n                    .then(function (response) {\r\n                        window.location.replace = response.data.redirect;\r\n                    })\r\n                    .catch(error => {\r\n                    module.status = error.response.data.status;\r\n                    });\r\n\r\n            },\r\n            save: function () {\r\n                axios.post('/tutores/', {\r\n                    cedula: this.cedula,\r\n                    nombre: this.nombre,\r\n                    apellido: this.apellido,\r\n                    celular: this.celular,\r\n                    correo: this.correo,\r\n                    empresa: this.empresa\r\n                })\r\n                    .then(function (response) {\r\n                        console.log('insertado');\r\n                    })\r\n                    .catch(error => {\r\n                        module.status = error.response.data.status;\r\n                    });\r\n\r\n                this.gettutores();\r\n                $(this.$refs.vuemodal).modal('hide');\r\n            },\r\n            setestudiante:function(idestudiante, nombresestudiante, apellidosestudiante){\r\n                this.estudiante = nombresestudiante+' '+apellidosestudiante;\r\n                this.codigo = idestudiante;\r\n                this.estudiantes =[];\r\n            },\r\n            getprofesores:function () {\r\n                axios.get(window.location.origin+'/api/getprofesores').then((response)=>{\r\n                    this.profesores=response.data;\r\n                })\r\n\r\n            },\r\n            getempresas:function () {\r\n                axios.get(window.location.origin+'/api/getempresas').then((response)=>{\r\n                    this.empresas=response.data;\r\n                })\r\n\r\n            },\r\n            getperiodos:function () {\r\n                axios.get(window.location.origin+'/api/getperiodos').then((response)=>{\r\n                    this.periodos=response.data;\r\n                })\r\n\r\n            },\r\n            gettutores:function () {\r\n                axios.get(window.location.origin+'/api/gettutores',{\r\n                    params:{'empresa':this.empresa}\r\n                }).then((response)=>{\r\n                    this.tutores=response.data;\r\n                })\r\n\r\n            },\r\n            autoComplete(){\r\n                //this.results = [];\r\n                if(this.estudiante.length > 1){\r\n                    axios.get('/api/getestudiantes',{\r\n                        params: {'estudiante': this.estudiante}\r\n                    }).then(response => {\r\n                        this.estudiantes = response.data;\r\n                    });\r\n                }\r\n            }\r\n        },\r\n        /*computed:{\r\n            csrfToken() { window.Laravel.csrfToken; }\r\n        },*/\r\n        created() {\r\n            this.getperiodos();\r\n            this.getempresas();\r\n            this.getprofesores();\r\n            this.csrf = window.Laravel.csrfToken;\r\n        }\r\n    }\r\n</script>\r\n\r\n<style scoped>\r\n    .autocomplete {\r\n        position: relative;\r\n    }\r\n\r\n    .autocomplete-results {\r\n        padding: 0;\r\n        margin: 0;\r\n        border: 1px solid #eeeeee;\r\n        overflow: auto;\r\n    }\r\n\r\n    .autocomplete-result {\r\n        list-style: none;\r\n        text-align: left;\r\n        padding: 4px 2px;\r\n        cursor: pointer;\r\n    }\r\n\r\n    .autocomplete-result:hover {\r\n        background-color: #007bff80;\r\n        color: white;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+
+// exports
+
+
+/***/ }),
+/* 329 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(module) {//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "nueva-practica",
+    props: {
+        /*csrf_token:{
+            type: String
+        }*/
+    },
+    data: function data() {
+        return {
+            periodos: [],
+            tutores: [],
+            empresas: [],
+            profesores: [],
+            estudiantes: [],
+            estudiante: '',
+            codigo: '',
+            empresa: '',
+            tutore: '',
+            profesor: '',
+            tipo: '',
+            inicio: '',
+            fin: '',
+            periodo: '',
+            salario: '',
+            horario: '',
+            horas: '',
+            descripcion: '',
+            csrf: "",
+            cedula: "",
+            nombre: "",
+            apellido: "",
+            celular: "",
+            correo: ""
+        };
+    },
+    methods: {
+        insertar: function insertar() {
+            axios.post('/practicas/', {
+                estudiante: this.codigo,
+                empresa: this.empresa,
+                tutore: this.tutore,
+                profesor: this.profesor,
+                tipo: this.tipo,
+                inicio: this.inicio,
+                fin: this.fin,
+                periodo: this.periodo,
+                salario: this.salario,
+                horario: this.horario,
+                horas: this.horas,
+                descripcion: this.descripcion
+            }).then(function (response) {
+                window.location.replace = response.data.redirect;
+            }).catch(function (error) {
+                module.status = error.response.data.status;
+            });
+        },
+        save: function save() {
+            axios.post('/tutores/', {
+                cedula: this.cedula,
+                nombre: this.nombre,
+                apellido: this.apellido,
+                celular: this.celular,
+                correo: this.correo,
+                empresa: this.empresa
+            }).then(function (response) {
+                console.log('insertado');
+            }).catch(function (error) {
+                module.status = error.response.data.status;
+            });
+
+            this.gettutores();
+            $(this.$refs.vuemodal).modal('hide');
+        },
+        setestudiante: function setestudiante(idestudiante, nombresestudiante, apellidosestudiante) {
+            this.estudiante = nombresestudiante + ' ' + apellidosestudiante;
+            this.codigo = idestudiante;
+            this.estudiantes = [];
+        },
+        getprofesores: function getprofesores() {
+            var _this = this;
+
+            axios.get(window.location.origin + '/api/getprofesores').then(function (response) {
+                _this.profesores = response.data;
+            });
+        },
+        getempresas: function getempresas() {
+            var _this2 = this;
+
+            axios.get(window.location.origin + '/api/getempresas').then(function (response) {
+                _this2.empresas = response.data;
+            });
+        },
+        getperiodos: function getperiodos() {
+            var _this3 = this;
+
+            axios.get(window.location.origin + '/api/getperiodos').then(function (response) {
+                _this3.periodos = response.data;
+            });
+        },
+        gettutores: function gettutores() {
+            var _this4 = this;
+
+            axios.get(window.location.origin + '/api/gettutores', {
+                params: { 'empresa': this.empresa }
+            }).then(function (response) {
+                _this4.tutores = response.data;
+            });
+        },
+        autoComplete: function autoComplete() {
+            var _this5 = this;
+
+            //this.results = [];
+            if (this.estudiante.length > 1) {
+                axios.get('/api/getestudiantes', {
+                    params: { 'estudiante': this.estudiante }
+                }).then(function (response) {
+                    _this5.estudiantes = response.data;
+                });
+            }
+        }
+    },
+    /*computed:{
+        csrfToken() { window.Laravel.csrfToken; }
+    },*/
+    created: function created() {
+        this.getperiodos();
+        this.getempresas();
+        this.getprofesores();
+        this.csrf = window.Laravel.csrfToken;
+    }
+});
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(330)(module)))
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("form", { attrs: { method: "post", action: "/practicas" } }, [
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.csrf }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group autocomplete" }, [
+              _c("label", { staticClass: "col-sm-8 control-label" }, [
+                _vm._v("Estudiante:")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-8" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.estudiante,
+                      expression: "estudiante"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "estudainte",
+                    placeholder: "Ingrese el nombre o apellido del Estudiante"
+                  },
+                  domProps: { value: _vm.estudiante },
+                  on: {
+                    keyup: _vm.autoComplete,
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.estudiante = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm.estudiantes.length
+                ? _c("div", { staticClass: "panel-footer" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "list-group autocomplete-results" },
+                      _vm._l(_vm.estudiantes, function(item) {
+                        return _c(
+                          "li",
+                          {
+                            staticClass: "list-group-item autocomplete-result",
+                            on: {
+                              click: function($event) {
+                                _vm.setestudiante(
+                                  item.idestudiante,
+                                  item.nombresestudiante,
+                                  item.apellidosestudiante
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(
+                                  item.nombresestudiante +
+                                    " " +
+                                    item.apellidosestudiante
+                                ) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      })
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Empresa:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.empresa,
+                          expression: "empresa"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "empresa" },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.empresa = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.gettutores
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("-Seleccione-")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.empresas, function(item) {
+                        return _c(
+                          "option",
+                          {
+                            key: item.idempresa,
+                            domProps: { value: item.idempresa }
+                          },
+                          [_vm._v(_vm._s(item.nombreempresa))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-12 control-label text-primary",
+                    staticStyle: { "font-weight": "normal !important" }
+                  },
+                  [_vm._v("Tutor Empresarial:")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.tutore,
+                            expression: "tutore"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { name: "tutore" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.tutore = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("-Seleccione-")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.tutores, function(item) {
+                          return _c(
+                            "option",
+                            {
+                              key: item.idtutore,
+                              domProps: { value: item.idtutore }
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  item.nombretutore + " " + item.apellidotutore
+                                )
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Tutor Academico:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.profesor,
+                          expression: "profesor"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "profesor" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.profesor = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("-Seleccione-")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.profesores, function(item) {
+                        return _c(
+                          "option",
+                          {
+                            key: item.idprofesor,
+                            domProps: { value: item.idprofesor }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                item.nombresprofesor +
+                                  " " +
+                                  item.apellidosprofesor
+                              )
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Tipo de practica:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tipo,
+                          expression: "tipo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "tipo" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.tipo = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("-Seleccione-")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Practica" } }, [
+                        _vm._v("Practica Pre-Profesional")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Pasantia" } }, [
+                        _vm._v("Pasantia")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Ayudantia" } }, [
+                        _vm._v("Ayudantia")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Proyecto" } }, [
+                        _vm._v("Proyecto")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Fecha de Inicio:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.inicio,
+                        expression: "inicio"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", name: "inicio" },
+                    domProps: { value: _vm.inicio },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.inicio = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Fecha de finalizacion:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fin,
+                        expression: "fin"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date", name: "fin" },
+                    domProps: { value: _vm.fin },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.fin = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Periodo Academico:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.periodo,
+                          expression: "periodo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "periodo" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.periodo = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "" } }, [
+                        _vm._v("-Seleccione-")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.periodos, function(item) {
+                        return _c(
+                          "option",
+                          {
+                            key: item.idperiodoacademico,
+                            domProps: { value: item.idperiodoacademico }
+                          },
+                          [_vm._v(_vm._s(item.nombreperiodoacademico))]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-3" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Sueldo/salario:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.salario,
+                        expression: "salario"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "salario",
+                      placeholder: "$000"
+                    },
+                    domProps: { value: _vm.salario },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.salario = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-4" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Horario:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.horario,
+                        expression: "horario"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "horario",
+                      placeholder: "HH:MM - HH-MM"
+                    },
+                    domProps: { value: _vm.horario },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.horario = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group col-md-2" }, [
+                _c("label", { staticClass: "col-sm-12 control-label" }, [
+                  _vm._v("Horas:")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-12" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.horas,
+                        expression: "horas"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", name: "horas" },
+                    domProps: { value: _vm.horas },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.horas = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { staticClass: "col-sm-8 control-label" }, [
+                _vm._v("Descripcion:")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-8" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.descripcion,
+                      expression: "descripcion"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "descripcion" },
+                  domProps: { value: _vm.descripcion },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.descripcion = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        ref: "vuemodal",
+        staticClass: "modal fade",
+        attrs: {
+          id: "modal1",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "col-sm-10 control-label" }, [
+                    _vm._v("Empresa:")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-11" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.empresa,
+                            expression: "empresa"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { name: "empresa" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.empresa = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("-Seleccione-")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.empresas, function(item) {
+                          return _c(
+                            "option",
+                            {
+                              key: item.idempresa,
+                              domProps: { value: item.idempresa }
+                            },
+                            [_vm._v(_vm._s(item.nombreempresa))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "formgroup", attrs: { width: "100%" } },
+                    [
+                      _c("label", [_vm._v("Cedula:")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.cedula,
+                            expression: "cedula"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "cedula" },
+                        domProps: { value: _vm.cedula },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.cedula = $event.target.value
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "formgroup", attrs: { width: "100" } },
+                    [
+                      _c("label", [_vm._v("Nombre:")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.nombre,
+                            expression: "nombre"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "nombre" },
+                        domProps: { value: _vm.nombre },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.nombre = $event.target.value
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "formgroup" }, [
+                    _c("label", [_vm._v("Apellido:")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.apellido,
+                          expression: "apellido"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "apellido" },
+                      domProps: { value: _vm.apellido },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.apellido = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "formgroup" }, [
+                    _c("label", [_vm._v("Celular:")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.celular,
+                          expression: "celular"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "celular" },
+                      domProps: { value: _vm.celular },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.celular = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "formgroup" }, [
+                    _c("label", [_vm._v("Correo:")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.correo,
+                          expression: "correo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "correo" },
+                      domProps: { value: _vm.correo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.correo = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cancelar")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.save }
+                  },
+                  [_vm._v("Insertar")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("span", { staticClass: "input-group-text btn btn-link" }, [
+        _c("i", {
+          staticClass: "fa fa-fw fa-plus",
+          attrs: { "data-toggle": "modal", "data-target": "#modal1" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Nuevo Tutor")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1e228172", module.exports)
+  }
+}
+
+/***/ }),
+/* 332 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -69,7 +69,7 @@ class PracticasController extends Controller
     }
     public function create(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'coord']);
+        $request->user()->authorizeRoles(['admin', 'coord', 'est']);
         $estudiantes =Estudiante::all();
         $empresasconvenio = Convenio::pluck('idempresa')->all();
         $empresas = Empresa::whereIn('idempresa', $empresasconvenio)->select('idempresa','nombreempresa')->get();
@@ -178,7 +178,7 @@ class PracticasController extends Controller
 
     public function show(Practica $practica)
     {
-        return view('practicas.show')->with('practica', $practica);
+        return view('practicas.show')->with(compact('practica'));
 
     }
 
@@ -193,8 +193,10 @@ class PracticasController extends Controller
         $periodos = PeriodoAcademico::all();
 
         $totalhoras = DB::table('actividad')
-            ->where('idpractica','=',$practica->idpractica)
-            ->sum('horasactividad');
+        ->where('idpractica','=',$practica->idpractica)
+            ->whereNotNull('descripcionactividad')
+        ->sum('horasactividad');
+
         if(Auth::user()->hasRole('admin')){
             return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
         }
@@ -209,9 +211,6 @@ class PracticasController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
-            'estudiante'       => 'required',
-            'profesor'       => 'required',
-            'tutore'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
             'salario'    => 'required',

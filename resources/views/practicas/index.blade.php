@@ -12,7 +12,7 @@
                 <div class="col-12" id="app">
                     <!-- Example DataTables Card-->
 
-                    @if(Auth::user()->hasRole('admin'))
+                    @if(!Auth::user()->hasRole('tutore') and !Auth::user()->hasRole('prof'))
                     <div class="card mb-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">

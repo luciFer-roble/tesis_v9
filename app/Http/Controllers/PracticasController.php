@@ -69,7 +69,7 @@ class PracticasController extends Controller
     }
     public function create(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'coord']);
+        $request->user()->authorizeRoles(['admin', 'coord', 'est']);
         $estudiantes =Estudiante::all();
         $empresasconvenio = Convenio::pluck('idempresa')->all();
         $empresas = Empresa::whereIn('idempresa', $empresasconvenio)->select('idempresa','nombreempresa')->get();

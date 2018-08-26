@@ -74,6 +74,10 @@ Vue.component('sedes-componente', require('./components/sedes-componente.vue'));
 Vue.component('sedes-nuevo', require('./components/sedes-nuevo.vue'));
 Vue.component('facultades-componente', require('./components/facultades-componente.vue'));
 Vue.component('facultades-nuevo', require('./components/facultades-nuevo.vue'));
+Vue.component('escuelas-componente', require('./components/escuelas-componente.vue'));
+Vue.component('escuelas-nuevo', require('./components/escuelas-nuevo.vue'));
+Vue.component('carreras-componente', require('./components/carreras-componente.vue'));
+Vue.component('carreras-nuevo', require('./components/carreras-nuevo.vue'));
 const app = new Vue({
     el: '#app'
 });

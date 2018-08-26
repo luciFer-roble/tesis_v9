@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Empresa;
+use App\Escuela;
 use App\Estudiante;
+use App\Facultad;
 use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
@@ -330,6 +332,12 @@ class ConsultasController extends Controller
     }
     public function getsedes(){
         return Sede::all();
+    }
+    public function getfacultades(){
+        return Facultad::all();
+    }
+    public function getescuelas(){
+        return Escuela::all();
     }
     public function gettutores(Request $request){
         return TutorE::where('idempresa','=', $request->empresa)->get();

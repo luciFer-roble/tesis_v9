@@ -13,14 +13,14 @@
                 <div class="col-12">
 
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3" id="app">
                         <div class="card-header">
 
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <h1>CARRERAS</h1></div>
                                 <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'carreras/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                <carreras-nuevo></carreras-nuevo>
                                 </div>
                         </div>
                         </div>
@@ -40,38 +40,8 @@
                                     </thead>
                                     <tbody>
                                     @foreach($carreras as $carrera)
-                                        <tr>
-                                            <td class="p-0 m-0">{{ $carrera->idcarrera }}</td>
-                                            <td class="p-0 m-0">{{ $carrera->nombrecarrera }}</td>
-                                            <td class="p-0 m-0">{{ $carrera->descripcioncarrera }}</td>
-                                            <td class="p-0 m-0">{{ $carrera->escuela->nombreescuela }}</td>
-                                            <td class="p-0 m-0" style="width: 7%">
+                                        <tr is="carreras-componente" :carrera="{{ $carrera }}" :escuela="{{ $carrera->escuela }}"></tr>
 
-
-
-                                                <!-- show the nerd (uses the show method found at GET /nerds/{id}
-                                                <a class="btn btn-small btn-success" href="{{ URL::to('carreras/' . $carrera->idcarrera) }}">ver
-                                                </a>-->
-                                                <div class="row p-0 m-0">
-                                                <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col">
-                                                <a  class="btn btn-link p-0 m-0" href="{{ URL::to('carreras/' . $carrera->idcarrera . '/edit') }}">
-
-                                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                                </a></div>
-
-                                                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                                <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col">
-                                                {{ Form::open(array('url' => 'carreras/' . $carrera->idcarrera, 'class' => '')) }}
-                                                {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                {{ Form::close() }}
-                                                    </div>
-                                                </div>
-
-                                            </td>
-                                        </tr>
                                     @endforeach
                                     </tbody>
                                 </table>

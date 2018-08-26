@@ -69,7 +69,7 @@ class CarrerasController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('carreras');
+        return ['redirect' => route('carreras.index')];
 
     }
 
@@ -108,7 +108,7 @@ class CarrerasController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('carreras');
+        return ['redirect' => route('carreras.index')];
     }
 
 

@@ -1,12 +1,16 @@
 <template>
     <table class="table table-bordered p-0 m-0" style="table-layout: fixed">
     <tr style="background-color: white">
-        <th  style="width:  14%; background-color:  #688ebe ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
+        <th  style="width:  14%; background-color:  #007bff ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
         <td  style="width:  18%"class="p-1 m-0">{{ empresa.direccionempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  style="width:  10%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link"  >{{ convenio }}</button></td>
-        <td  style="width:  10%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link" @click="agregar_convenio" >Agregar Convenio</button></td>
+        <td  style="width: 1.7%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link"  :title="convenio">
+            <i v-if="excel" class=" text-success far fa-file-excel"></i>
+            <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
+            <i v-if="doc" class="far fa-file-word"></i>
+        </button></td>
+        <td  style="width:  1.7%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link" @click="agregar_convenio" ><i class="fa fa-plus"></i></button></td>
         <td style="width:  8%" class="p-1 m-0">{{ sede }}</td>
         <td style="width: 2%" v-if="!tutores" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
         <td style="width: 2%" v-if="tutores" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
@@ -60,7 +64,10 @@
             borrado: false,
             convenio: '',
             sede: '',
-            codigo: ''
+            codigo: '',
+            excel: false,
+            pdf: false,
+            doc: false
         }),
 
         methods:{
@@ -121,6 +128,24 @@
                    this.convenio = this.convenios[i].archivoconvenio;
                    this.sede = this.convenios[i].sede.nombresede;
                    this.codigo = this.convenios[i].idconvenio;
+
+                   if(this.convenio.split('.')[1] === 'xlsx'){
+                       this.excel = true;
+                       this.pdf = false;
+                       this.doc = false;
+                   }
+                   if(this.convenio.split('.')[1] === 'pdf'){
+                       this.excel = false;
+                       this.pdf = true;
+                       this.doc = false;
+                   }
+                   if(this.convenio.split('.')[1] === 'doc' || this.convenio.split('.')[1] === 'docx'){
+                       this.excel = false;
+                       this.pdf = false;
+                       this.doc = true;
+                   }
+
+
                }
             }
         }

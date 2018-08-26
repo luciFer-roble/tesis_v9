@@ -8,8 +8,9 @@
                     <div class="card-body">
                         <div class="form-group autocomplete">
                             <label class="col-sm-8 control-label">Estudiante:</label>
+                            <input type="hidden" v-model="codigo" name="codigo" />
                             <div class="col-lg-8">
-                                <input @keyup="autoComplete" type="text" class="form-control" name="estudainte" v-model="estudiante" placeholder="Ingrese el nombre o apellido del Estudiante"/>
+                                <input @keyup="autoComplete" type="text" class="form-control" name="estudiante" v-model="estudiante" placeholder="Ingrese el nombre o apellido del Estudiante"/>
                             </div>
                             <div class="panel-footer" v-if="estudiantes.length">
                                 <ul class="list-group autocomplete-results">

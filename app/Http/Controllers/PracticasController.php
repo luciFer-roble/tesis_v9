@@ -123,7 +123,7 @@ class PracticasController extends Controller
     public function store(Request $request)
     {
        $rules = array(
-            'estudiante'       => 'required',
+            'codigo'       => 'required',
             'profesor'       => 'required',
             'empresa'       => 'required',
             'inicio'    => 'required',
@@ -132,13 +132,13 @@ class PracticasController extends Controller
         );
         $this->validate(request(), $rules);
         $activa='TRUE';
-
+        //var_dump($request->codigo); exit();
         $temp = DB::select("select min(nivel.idnivel)
                 from estudiante
                 join estudiantexasignatura on estudiantexasignatura.idestudiante = estudiante.idestudiante
                 join asignatura on estudiantexasignatura.idasignatura = asignatura.idasignatura
                 join nivel on nivel.idnivel = asignatura.idnivel
-                where estudiante.idestudiante = '".request('estudiante')."'
+                where estudiante.idestudiante = '".request('codigo')."'
                 group by estudiante.idestudiante");
         $lista = collect($temp)->map(function($x){ return (array) $x; })->toArray();
 
@@ -147,7 +147,7 @@ class PracticasController extends Controller
         $nivel  = $lista[0]['min'];
         // store
         Practica::create([
-            'idestudiante'       => request('estudiante'),
+            'idestudiante'       => request('codigo'),
             'idprofesor'      => request('profesor'),
             'idtutore'      => request('tutore'),
             'descripcionpractica'      => request('descripcion'),

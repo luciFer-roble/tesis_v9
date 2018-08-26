@@ -54,7 +54,11 @@ class ConsultasController extends Controller
             ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
             ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
             ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-            ->where($request->criterio.'.nombre1'.$request->criterio, 'like', $request->parametro.'%')->get();
+            ->where($request->criterio.'.nombres'.$request->criterio, 'like', '%'.$request->parametro.'%')
+            ->orWhere($request->criterio.'.apellidos'.$request->criterio, 'like', '%'.$request->parametro.'%')
+            ->orWhere($request->criterio.'.nombres'.$request->criterio, 'like', '%'.ucwords(strtolower($request->parametro)).'%')
+            ->orWhere($request->criterio.'.apellidos'.$request->criterio, 'like', '%'.ucwords(strtolower($request->parametro)).'%')
+            ->get();
         return $practicas;
 
     }
@@ -345,5 +349,18 @@ class ConsultasController extends Controller
     public function getestudiantes(Request $request){
         return Estudiante::where('nombresestudiante','like', '%'.$request->estudiante.'%')
             ->orWhere('apellidosestudiante','like', '%'.$request->estudiante.'%')->get();
+    }
+    public function getestudiante(Request $request){
+        return Estudiante::join('carrera', 'carrera.idcarrera', '=', 'estudiante.idcarrera')
+            ->where('idestudiante','=', $request->id)->first();
+    }
+    public function getempresa(Request $request){
+        return Empresa::where('idestudiante','=', $request->id)->first();
+    }
+    public function getprofesor(Request $request){
+        return Profesor::where('idestudiante','=', $request->id)->first();
+    }
+    public function gettutore(Request $request){
+        return TutorE::where('idestudiante','=', $request->id)->first();
     }
 }

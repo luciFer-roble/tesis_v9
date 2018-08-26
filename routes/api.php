@@ -49,3 +49,7 @@ Route::get('getsedes','ConsultasController@getsedes');
 Route::get('getfacultades','ConsultasController@getfacultades');
 Route::get('getescuelas','ConsultasController@getescuelas');
 Route::get('getestudiantes','ConsultasController@getestudiantes');
+Route::get('getestudiante','ConsultasController@getestudiante');
+Route::get('getempresa','ConsultasController@getempresa');
+Route::get('getprofesor','ConsultasController@getprofesor');
+Route::get('gettutore','ConsultasController@gettutore');

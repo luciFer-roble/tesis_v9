@@ -60,7 +60,7 @@ class FacultadesController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('facultades');
+        return ['redirect' => route('facultades.index')];
 
     }
 
@@ -103,7 +103,7 @@ class FacultadesController extends Controller
         Flash::success('Actualizado Correctamente');
 
         // redirect
-        return redirect('facultades');
+        return ['redirect' => route('facultades.index')];
     }
 
 

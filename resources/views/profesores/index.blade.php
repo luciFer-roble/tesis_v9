@@ -40,7 +40,7 @@
                                         <th class="p-0 m-0" style="width: 7%">Oficina</th>
                                         <th class="p-0 m-0">Escuela</th>
                                         @if (Auth::user()->hasRole('coord'))
-                                        <th class="p-0 m-0">Tutorias</th>
+                                        <th class="p-0 m-0">Tutor</th>
                                         @endif
                                         @if(Auth::user()->hasRole('admin'))
                                         <td  class="p-0 m-0"></td>
@@ -68,11 +68,13 @@
                                                         @endif
                                                     @endforeach
                                                     @if($haspracticas == true)
-                                                            <a href="/practicas/{{ $profesor->idprofesor .'/list'}}"  class="btn btn-outline-success " style="width: 7%">Ver</a>
-
-
+                                                            <a href="/practicas/{{ $profesor->idprofesor .'/list'}}"  title="Ver Tutorias" class=" btn btn-link  " style="width: 7%">
+                                                                <i class="text-success fa fa-check-square" ></i>
+                                                            </a>
                                                          @else
-                                                        <a class="btn btn-outline-danger " href=# style="width: 7%">Sin asignar</a>
+                                                        <a class="btn " style="width: 7%">
+                                                            <i class="text-danger fa fa-times" ></i>
+                                                        </a>
 
                                                     @endif
 

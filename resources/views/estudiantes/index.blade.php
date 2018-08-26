@@ -31,20 +31,18 @@
                                 @if(Auth::user()->hasRole('admin'))
                                 <table class="table table-bordered" style="table-layout: inherit"  >
 
-                                    <tbody style="font-size: 10px" >
+                                    <tbody style="font-size: 12px" >
                                     <tr>
-                                    <th >Cedula</th>
-                                    <th >Nombres</th>
-                                    <th >Apellidos</th>
-                                    <th >Tipo</th>
-                                    <th >Celular</th>
-                                    <th >Correo</th>
-                                    <th >Fecha de Nacimiento</th>
-                                    <th >Genero</th>
-                                    <th >Facultad</th>
-                                    <th >Escuela</th>
-                                    <th >Carrera</th>
-                                    <td colspan="3" ></td>
+                                    <th class="p-0 m-0" >Cedula</th>
+                                    <th class="p-0 m-0" >Nombres</th>
+                                    <th class="p-0 m-0" >Apellidos</th>
+                                    <th class="p-0 m-0" >Tipo</th>
+                                    <th class="p-0 m-0" >Celular</th>
+                                    <th class="p-0 m-0" >Correo</th>
+                                    <th class="p-0 m-0" >Fecha de Nacimiento</th>
+                                    <th class="p-0 m-0"  >Genero</th>
+                                    <th class="p-0 m-0"  >Carrera</th>
+                                    <td class="p-0 m-0" ></td>
 
 
                                 </tr>
@@ -52,36 +50,42 @@
 
                                     @foreach($estudiantes as $estudiante)
                                         <tr>
-                                            <td class="p-1 m-0" >{{ $estudiante->cedulaestudiante }}</td>
-                                            <td class="p-1 m-0" >{{ $estudiante->nombresestudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->apellidosestudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->tipoestudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
-                                            <td  class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
-                                            <td class="p-1 m-0">{{ $estudiante->fechanacimientoestudiante }}</td>
-                                            <td align="center" class="p-1 m-0">@if($estudiante->generoestudiante=='1')
+                                            <td class="p-0 m-0" >{{ $estudiante->cedulaestudiante }}</td>
+                                            <td class="p-0 m-0" >{{ $estudiante->nombresestudiante }}</td>
+                                            <td class="p-0 m-0">{{ $estudiante->apellidosestudiante }}</td>
+                                            <td class="p-0 m-0">{{ $estudiante->tipoestudiante }}</td>
+                                            <td class="p-0 m-0">{{ $estudiante->celularestudiante }}</td>
+                                            <td  class="p-0 m-0">{{ $estudiante->correoestudiante }}</td>
+                                            <td class="p-0 m-0">{{ $estudiante->fechanacimientoestudiante }}</td>
+                                            <td align="center" class="p-0 m-0">@if($estudiante->generoestudiante=='1')
                                             F
                                             @else M
                                             @endif</td>
-                                            <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
-                                            <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->escuela->nombreescuela }}</td>
-                                            <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
+                                            <td style="min-width: 100px" class="p-0 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
 
-                                            <td class="p-0 m-0" style="vertical-align: middle">
+                                            <td class="p-0 m-0" style="width: 9%">
+                                                <div class="row p-0 m-0">
+                                                    <div class="col p-0 m-0">
+                                                        <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
+                                                            <i class="fa fa-fw fa-pencil-alt"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col p-0 m-0">
+                                                        {{ Form::open(array('url' => 'estudiantes/' . $estudiante->idestudiante, 'class' => '')) }}
+                                                        {{ Form::hidden('_method', 'DELETE') }}
+                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                        {{ Form::close() }}
+                                                    </div>
+                                                    <div class="col p-0 m-0">
+                                                        <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estasignaturas/' . $estudiante->carrera->idcarrera . '/create/' . $estudiante->idestudiante) }}">
 
-                                                    <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
-                                                        <i class="fa fa-fw fa-pencil-alt"></i>
-                                                    </a></td>
-                                            <td class="p-0 m-0" style="vertical-align: middle">
-                                                    {{ Form::open(array('url' => 'estudiantes/' . $estudiante->idestudiante, 'class' => '')) }}
-                                                    {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                    {{ Form::close() }}
-                                            </td>
-                                            <td class="p-0 m-0" style="vertical-align: middle">
-                                                    <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estasignaturas/' . $estudiante->carrera->idcarrera . '/create/' . $estudiante->idestudiante) }}">
+                                                            <i class="fa fa-fw fa-clipboard-list"></i></a>
+                                                    </div>
 
-                                                        <i class="fa fa-fw fa-clipboard-list"></i></a>
+
+                                                </div>
+
+
 
                                             </td>
                                         </tr>
@@ -90,7 +94,7 @@
                                             {{ csrf_field() }}
 
                                             <tr >
-                                                <td class="p-0 m-0"><input   style="font-size: 10px " type="text" class="form-control" id="cedula" name="cedula"></td>
+                                                <td class="p-0 m-0"><input   style="font-size: 10px; max-width: 90px "  type="text" class="form-control" id="cedula" name="cedula"></td>
                                                 <td class="p-0 m-0"><input   style="font-size: 10px " type="text" class="form-control" id="nombres" name="nombres"></td>
                                                 <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="apellidos" name="apellidos"></td>
                                                 <td class="p-0 m-0"><select  style="font-size:10px; height: 10%" id="tipo" name="tipo" class="form-control">
@@ -99,25 +103,14 @@
                                                         <option value="semi">Semi-Presencial</option>
                                                         <option value="distancia">Distancia</option>
                                                     </select></td>
-                                                <td class="p-0 m-0"><input  style="font-size: 10px " type="text" class="form-control" id="celular" name="celular"></td>
+                                                <td class="p-0 m-0"><input  style="font-size: 10px; max-width: 90px "  type="text" class="form-control" id="celular" name="celular"></td>
                                                 <td class="p-0 m-0"><input  style="font-size: 10px "type="text" class="form-control" id="correo" name="correo"></td>
                                                 <td class="p-0 m-0"><input style="font-size: 10px; max-width: 100px " type="date" class="form-control" id="fechanacimiento" name="fechanacimiento"></td>
-                                                <td class="p-0 m-0" style="vertical-align: middle"><fieldset class="p-1 m-0" style="font-size: 10px; height: 10% "id="genero" name="genero" class="form-control">
+                                                <td class="p-0 m-0" style="vertical-align: middle;width: 5%"><fieldset class="p-0 m-0" style="font-size: 10px; height: 10% "id="genero" name="genero" class="form-control">
                                                         <input type="radio" value="0" name="genero">M</input>
                                                         <input type="radio" value="1" name="genero">F</input>
                                                     </fieldset></td>
-                                                <td class="p-0 m-0"><select  style="font-size: 10px; height: 10% "id="facultad" name="facultad" class="form-control">
-                                                        <option  value="0">Facultad</option>
-                                                        @foreach($facultades as $facultad)
-                                                            <option value="{{ $facultad->idfacultad }}">{{ $facultad->nombrefacultad }}</option>
-                                                        @endforeach
-                                                    </select></td>
-                                                <td class="p-0 m-0"><select  style="font-size: 10px; height: 10% "id="escuela" name="escuela" class="form-control">
-                                                        <option  value="0">Escuela</option>
-                                                        @foreach($escuelas as $escuela)
-                                                            <option value="{{ $escuela->idescuela }}">{{ $escuela->nombreescuela }}</option>
-                                                        @endforeach
-                                                    </select></td>
+
                                                 <td class="p-0 m-0"><select  style="font-size: 10px; height: 10% "id="carrera" name="carrera" class="form-control">
                                                         <option  value="0">Carrera</option>
                                                         @foreach($carreras as $carrera)
@@ -134,13 +127,13 @@
 
                                         <tbody>
                                         <tr>
-                                            <th >Cedula</th>
-                                            <th >Nombre</th>
-                                            <th >Celular</th>
-                                            <th >Correo</th>
-                                            <th >Facultad</th>
-                                            <th >Carrera</th>
-                                            <th >Horas</th>
+                                            <th class="p-0 m-0">Cedula</th>
+                                            <th class="p-0 m-0">Nombre</th>
+                                            <th class="p-0 m-0">Celular</th>
+                                            <th class="p-0 m-0">Correo</th>
+                                            <th class="p-0 m-0">Facultad</th>
+                                            <th class="p-0 m-0" >Carrera</th>
+                                            <th class="p-0 m-0" >Horas</th>
 
 
                                         </tr>
@@ -148,13 +141,13 @@
 
                                         @foreach($estudiantes as $estudiante)
                                             <tr>
-                                                <td class="p-1 m-0" >{{ $estudiante->cedulaestudiante }}</td>
-                                                <td class="p-1 m-0" >{{ $estudiante->nombresestudiante }} {{ $estudiante->apellidosestudiante }} </td>
-                                                <td class="p-1 m-0">{{ $estudiante->celularestudiante }}</td>
-                                                <td  class="p-1 m-0">{{ $estudiante->correoestudiante }}</td>
-                                                <td style="min-width: 90px" class="p-1 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
-                                                <td style="min-width: 100px" class="p-1 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
-                                                <td  class="p-1 m-0" align="center">
+                                                <td class="p-0 m-0" >{{ $estudiante->cedulaestudiante }}</td>
+                                                <td class="p-0 m-0" >{{ $estudiante->nombresestudiante }} {{ $estudiante->apellidosestudiante }} </td>
+                                                <td class="p-0 m-0">{{ $estudiante->celularestudiante }}</td>
+                                                <td  class="p-0 m-0">{{ $estudiante->correoestudiante }}</td>
+                                                <td style="min-width: 90px" class="p-0 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
+                                                <td style="min-width: 100px" class="p-0 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
+                                                <td  class="p-0 m-0" align="center">
                                                     @if(!empty($estudiante->horasestudiante ))
                                                         <a href="/practicas/{{ $estudiante->idestudiante .'/list2'}}"  class="btn btn-outline-success " style="width: 100%">{{$estudiante->horasestudiante}}</a>
 

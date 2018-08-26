@@ -30,11 +30,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Direccion</th>
-                                        <th>Sector</th>
-                                        <th>Telefono</th>
-                                        <td></td>
+                                        <th class="p-0 m-0">Nombre</th>
+                                        <th class="p-0 m-0">Direccion</th>
+                                        <th class="p-0 m-0">Sector</th>
+                                        <th class="p-0 m-0">Telefono</th>
+                                        <td class="p-0 m-0"></td>
 
                                     </tr>
                                     </thead>
@@ -42,25 +42,25 @@
 
                                         @foreach($empresas as $empresa)
                                             <tr>
-                                                <td>{{ $empresa->nombreempresa }}</td>
-                                                <td>{{ $empresa->direccionempresa }}</td>
-                                                <td>{{ $empresa->sectorempresa }}</td>
-                                                <td>{{ $empresa->telefonoempresa }}</td>
-                                                <td>
-                                                    <div class="row">
+                                                <td class="p-0 m-0">{{ $empresa->nombreempresa }}</td>
+                                                <td class="p-0 m-0">{{ $empresa->direccionempresa }}</td>
+                                                <td class="p-0 m-0">{{ $empresa->sectorempresa }}</td>
+                                                <td class="p-0 m-0">{{ $empresa->telefonoempresa }}</td>
+                                                <td class="p-0 m-0" style="width: 7%">
+                                                    <div class="row p-0 m-0">
                                                     <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                        <div class="col-sm1">
-                                                    <a  class="btn btn-link" href="{{ URL::to('empresas/' . $empresa->idempresa . '/edit') }}">
+                                                        <div class="col">
+                                                    <a  class="btn btn-link p-0 m-0" href="{{ URL::to('empresas/' . $empresa->idempresa . '/edit') }}">
 
                                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                                     </a></div>
 
                                                     <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                     <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                        <div class="col-sm1">
+                                                        <div class="col">
                                                     {{ Form::open(array('url' => 'empresas/' . $empresa->idempresa, 'class' => '')) }}
                                                     {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                     {{ Form::close() }}
                                                         </div>
                                                     </div>

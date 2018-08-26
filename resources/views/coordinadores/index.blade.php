@@ -29,39 +29,41 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Carrera</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
-                                        <td></td>
+                                        <th class="p-0 m-0">Nombre</th>
+                                        <th class="p-0 m-0">Carrera</th>
+                                        <th class="p-0 m-0">Fecha Inicio</th>
+                                        <th class="p-0 m-0">Fecha Fin</th>
+                                        <td class="p-0 m-0"></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($coordinadores as $coordinador)
                                         <tr>
-                                            <td>{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
-                                            <td>{{ $coordinador->carrera->nombrecarrera }}</td>
-                                            <td>{{ $coordinador->fechainiciocoordinador }}</td>
-                                            <td>{{ $coordinador->fechafincoordinador }}</td>
+                                            <td class="p-0 m-0">{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $coordinador->carrera->nombrecarrera }}</td>
+                                            <td class="p-0 m-0">{{ $coordinador->fechainiciocoordinador }}</td>
+                                            <td class="p-0 m-0">{{ $coordinador->fechafincoordinador }}</td>
 
-                                            <td>
+                                            <td class="p-0 m-0" style="width: 7%">
 
 
 
                                                 <!-- show the nerd (uses the show method found at GET /nerds/{id}
                                                 <a class="btn btn-small btn-success" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador) }}">ver
                                                 </a>-->
-                                                <div class="row">
+                                                <div class="row p-0 m-0">
                                                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador )}}">
+                                                    <div class="col">
+                                                <a  class="btn btn-link p-0 m-0" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador )}}">
 
-                                                    <i class="fa fa-fw fa-eye"></i>
+                                                    <i class="fa fa-external-link-alt" ></i>
                                                 </a>
-                                                <a  class="btn btn-link" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador . '/change') }}">
+                                                    </div>
+                                                    <div class="col">
+                                                <a  class="btn btn-link p-0 m-0" href="{{ URL::to('coordinadores/' . $coordinador->idcoordinador . '/change') }}">
 
-                                                    <i class="fa fa-fw fa-exchange"></i>
+                                                    <i class="fa fa-toggle-off" title="Cambiar de Coordinador"></i>
                                                 </a>
                                                     </div>
                                                 </div>

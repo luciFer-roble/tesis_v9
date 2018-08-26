@@ -14,6 +14,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group" v-if="mostrar">
+                            <div class="alert alert-danger" style="opacity: 0.7 !important;">
+                                <ul v-for="error in errors">
+                                    <li>{{ error[0]  }}</li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
                                 <label>Id:</label>
@@ -58,11 +65,16 @@
                 universidadselect: '',
                 universidades: [],
                 actualizando: false,
-                boton1: 'Guardar'
+                boton1: 'Guardar',
+                errors: [],
+                mostrar: false
             }
         },
         methods:{
             create:function () {
+                this.errors = [];
+                this.mostrar = false;
+                this.actualizando = false;
                 axios.get(window.location.origin+'/api/getuniversidades'
                 ).then((response)=>{
                     this.universidades=response.data;
@@ -87,7 +99,10 @@
                     })
                     .catch(error => {
                         this.actualizando = false;
+                        this.boton1 = 'Guardar';
                         module.status = error.response.data.status;
+                        this.errors = error.response.data;
+                        this.mostrar = true;
                     });
 
 

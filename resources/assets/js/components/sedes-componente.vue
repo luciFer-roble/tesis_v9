@@ -47,6 +47,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        <div class="form-group" v-if="mostrar">
+                            <div class="alert alert-danger" style="opacity: 0.7 !important;">
+                                <ul v-for="error in errors">
+                                    <li>{{ error[0]  }}</li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
                                 <label>Id:</label>
@@ -99,11 +107,15 @@
                 universidades: [],
                 actualizando: false,
                 boton1: 'Actualizar',
-                boton2: 'Borrar'
+                boton2: 'Borrar',
+                errors: [],
+                mostrar: false
             }
         },
         methods:{
             edit:function () {
+                this.errors = [];
+                this.mostrar = false;
                 this.actualizando = false;
                 axios.get(window.location.origin+'/api/getuniversidades'
                 ).then((response)=>{
@@ -135,7 +147,10 @@
                     })
                     .catch(error => {
                         this.actualizando = false;
+                        this.boton1 = 'Actualizar';
                         module.status = error.response.data.status;
+                        this.errors = error.response.data;
+                        this.mostrar = true;
                     });
 
 

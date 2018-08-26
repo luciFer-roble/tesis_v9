@@ -37,9 +37,9 @@ class SedesController extends Controller
     public function store(Request $request)
     {
         $rules = array(
+            'id'       => 'required',
             'universidad'       => 'required',
-            'nombre'       => 'required',
-            'descripcion'    => 'required'
+            'nombre'       => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -55,7 +55,7 @@ class SedesController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('sedes');
+        return ['redirect' => route('sedes.index')];
 
     }
 
@@ -94,7 +94,7 @@ class SedesController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('sedes');
+        return ['redirect' => route('sedes.index')];
     }
 
 
@@ -102,7 +102,7 @@ class SedesController extends Controller
     {
         Sede::find($sede)
             ->delete();
-
-        return redirect('sedes');
+        Flash::success('Eliminado Correctamente');
+        return ['redirect' => route('sedes.index')];
     }
 }

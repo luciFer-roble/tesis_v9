@@ -91,7 +91,7 @@ Route::delete('/facultades/{facultad}', 'FacultadesController@destroy');
 Route::get('/facultades/{sede}/create', 'FacultadesController@createfrom');
 Route::get('/facultades/{sede}/list', 'FacultadesController@indexfrom');
 
-Route::get('/sedes', 'SedesController@index');
+Route::get('/sedes', 'SedesController@index')->name('sedes.index');
 Route::get('/sedes/create', 'SedesController@create');
 Route::get('/sedes/{sede}', 'SedesController@show');
 Route::post('/sedes', 'SedesController@store');

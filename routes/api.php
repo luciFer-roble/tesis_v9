@@ -46,3 +46,7 @@ Route::get('getperiodos','ConsultasController@getperiodos');
 Route::get('gettutores','ConsultasController@gettutores');
 Route::get('getuniversidades','ConsultasController@getuniversidades');
 Route::get('getestudiantes','ConsultasController@getestudiantes');
+Route::get('getestudiante','ConsultasController@getestudiante');
+Route::get('getempresa','ConsultasController@getempresa');
+Route::get('getprofesor','ConsultasController@getprofesor');
+Route::get('gettutore','ConsultasController@gettutore');

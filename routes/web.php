@@ -101,7 +101,7 @@ Route::delete('/sedes/{sede}', 'SedesController@destroy');
 Route::get('/sedes/{universidad}/create', 'SedesController@createfrom');
 Route::get('/sedes/{universidad}/list', 'SedesController@indexfrom');
 
-Route::get('/tutores', 'TutorEsController@index');
+Route::get('/tutores', 'TutorEsController@index')->name('tutores.index');
 Route::get('/tutores/create', 'TutorEsController@create');
 Route::get('/tutores/{tutore}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');

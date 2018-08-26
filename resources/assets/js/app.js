@@ -78,6 +78,8 @@ Vue.component('escuelas-componente', require('./components/escuelas-componente.v
 Vue.component('escuelas-nuevo', require('./components/escuelas-nuevo.vue'));
 Vue.component('carreras-componente', require('./components/carreras-componente.vue'));
 Vue.component('carreras-nuevo', require('./components/carreras-nuevo.vue'));
+Vue.component('tutores-componente', require('./components/tutores-componente.vue'));
+Vue.component('tutores-nuevo', require('./components/tutores-nuevo.vue'));
 const app = new Vue({
     el: '#app'
 });

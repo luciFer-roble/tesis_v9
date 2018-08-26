@@ -32,11 +32,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Descripcion</th>
-                                        <th>Archivos</th>
+                                        <th class="p-0 m-0">Id</th>
+                                        <th class="p-0 m-0">Descripcion</th>
+                                        <th class="p-0 m-0">Archivos</th>
                                         @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
-                                        <td></td>
+                                        <th class="p-0 m-0"></th>
                                             @endif
 
                                     </tr>

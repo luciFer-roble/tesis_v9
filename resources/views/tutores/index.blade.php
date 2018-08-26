@@ -30,13 +30,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Empresa</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Celular</th>
-                                        <th>Correo</th>
+                                        <th class="p-0 m-0">Empresa</th>
+                                        <th class="p-0 m-0">Nombre</th>
+                                        <th class="p-0 m-0">Apellido</th>
+                                        <th class="p-0 m-0">Celular</th>
+                                        <th class="p-0 m-0">Correo</th>
                                         @if(Auth::user()->hasRole('admin'))
-                                        <td></td>
+                                        <td class="p-0 m-0"></td>
                                             @endif
 
                                     </tr>
@@ -44,28 +44,28 @@
                                     <tbody>
                                     @foreach($tutores as $tutore)
                                         <tr>
-                                            <td>{{ $tutore->empresa->nombreempresa }}</td>
-                                            <td>{{ $tutore->nombretutore }}</td>
-                                            <td>{{ $tutore->apellidotutore }}</td>
-                                            <td>{{ $tutore->celulartutore }}</td>
-                                            <td>{{ $tutore->correotutore }}</td>
+                                            <td class="p-0 m-0">{{ $tutore->empresa->nombreempresa }}</td>
+                                            <td class="p-0 m-0">{{ $tutore->nombretutore }}</td>
+                                            <td class="p-0 m-0">{{ $tutore->apellidotutore }}</td>
+                                            <td class="p-0 m-0">{{ $tutore->celulartutore }}</td>
+                                            <td class="p-0 m-0">{{ $tutore->correotutore }}</td>
                                             @if(Auth::user()->hasRole('admin'))
-                                            <td>
+                                            <td class="p-0 m-0" style="width: 7%">
 
-                                                <div class="row">
+                                                <div class="row p-0 m-0">
                                                     <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                        <a  class="btn btn-link" href="{{ URL::to('tutores/' . $tutore->idtutore . '/edit') }}">
+                                                    <div class="col">
+                                                        <a  class="btn btn-link p-0 m-0" href="{{ URL::to('tutores/' . $tutore->idtutore . '/edit') }}">
 
                                                             <i class="fa fa-fw fa-pencil-alt"></i>
                                                         </a></div>
 
                                                     <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                     <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
+                                                    <div class="col">
                                                         {{ Form::open(array('url' => 'tutores/' . $tutore->idtutore, 'class' => '')) }}
                                                         {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                         {{ Form::close() }}
                                                     </div>
                                                 </div>

@@ -12,7 +12,7 @@
                 <div class="col-12" id="app">
                     <!-- Example DataTables Card-->
 
-                    @if(!Auth::user()->hasRole('tutore') and !Auth::user()->hasRole('prof'))
+                    @if(Auth::user()->hasRole('admin'))
                     <div class="card mb-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
@@ -95,6 +95,10 @@
                                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                             <div class="btn-toolbar mb-2 mb-md-0">
                                                 <h1>PRACTICAS</h1></div>
+                                            <div class="btn-group mr-2">
+                                                <input type="button" onClick="location.href = 'practicas/create'"
+                                                       class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-body">

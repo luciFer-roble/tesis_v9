@@ -29,17 +29,17 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Facultad</th>
-                                        <th>Titulacion</th>
-                                        <th>Mision</th>
-                                        <th>Vision</th>
-                                        <th>Duracion</th>
-                                        <th>Modalidad</th>
-                                        <th>Campo</th>
-                                        <th>Titulo</th>
+                                        <th  class="p-0 m-0">Codigo</th>
+                                        <th  class="p-0 m-0">Nombre</th>
+                                        <th  class="p-0 m-0">Descripcion</th>
+                                        <th  class="p-0 m-0">Facultad</th>
+                                        <th  class="p-0 m-0">Titulacion</th>
+                                        <th  class="p-0 m-0">Mision</th>
+                                        <th  class="p-0 m-0">Vision</th>
+                                        <th  class="p-0 m-0">Duracion</th>
+                                        <th  class="p-0 m-0">Modalidad</th>
+                                        <th  class="p-0 m-0">Campo</th>
+                                        <th  class="p-0 m-0">Titulo</th>
 
 
                                         <td></td>
@@ -49,38 +49,38 @@
                                     <tbody>
                                     @foreach($escuelas as $escuela)
                                         <tr>
-                                            <td>{{ $escuela->idescuela }}</td>
-                                            <td>{{ $escuela->nombreescuela }}</td>
-                                            <td>{{ $escuela->descripcionescuela }}</td>
-                                            <td>{{ $escuela->nombrefacultad }}</td>
-                                            <td>{{ $escuela->titulacionescuela }}</td>
-                                            <td>{{ $escuela->misionescuela }}</td>
-                                            <td>{{ $escuela->visionescuela }}</td>
-                                            <td>{{ $escuela->duracionescuela }}</td>
-                                            <td>{{ $escuela->modalidadescuela }}</td>
-                                            <td>{{ $escuela->campoescuela }}</td>
-                                            <td>{{ $escuela->tituloescuela }}</td>
-                                            <td>
+                                            <td  class="p-0 m-0">{{ $escuela->idescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->nombreescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->descripcionescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->facultad->nombrefacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->titulacionescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->misionescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->visionescuela }}</td>
+                                            <td  class="p-0 m-0" ></td>{{ $escuela->duracionescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->modalidadescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->campoescuela }}</td>
+                                            <td  class="p-0 m-0">{{ $escuela->tituloescuela }}</td>
+                                            <td  class="p-0 m-0" style="width: 7%">
 
 
 
                                                 <!-- show the nerd (uses the show method found at GET /nerds/{id}
                                                 <a class="btn btn-small btn-success" href="{{ URL::to('escuelas/' . $escuela->idescuela) }}">ver
                                                 </a>-->
-                                                <div class="row">
+                                                <div class="row p-0 m-0">
                                                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('escuelas/' . $escuela->idescuela . '/edit') }}">
+                                                    <div class="col">
+                                                <a  class="btn btn-link p-0 m-0" href="{{ URL::to('escuelas/' . $escuela->idescuela . '/edit') }}">
 
-                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-fw fa-pencil-alt"></i>
                                                 </a></div>
 
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                 <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
+                                                    <div class="col">
                                                 {{ Form::open(array('url' => 'escuelas/' . $escuela->idescuela, 'class' => '')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-trash" style="color: #f10407"></i></button>
+                                                    <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                 {{ Form::close() }}
                                                     </div>
                                                 </div>

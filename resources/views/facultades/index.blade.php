@@ -29,42 +29,42 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Mision</th>
-                                        <th>Vision</th>
-                                        <th>Sede</th>
-                                        <td></td>
+                                        <th  class="p-0 m-0">Codigo</th>
+                                        <th  class="p-0 m-0">Nombre</th>
+                                        <th  class="p-0 m-0">Descripcion</th>
+                                        <th  class="p-0 m-0">Mision</th>
+                                        <th  class="p-0 m-0">Vision</th>
+                                        <th  class="p-0 m-0">Sede</th>
+                                        <td  class="p-0 m-0"></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($facultades as $facultad)
                                         <tr>
-                                            <td>{{ $facultad->idfacultad }}</td>
-                                            <td>{{ $facultad->nombrefacultad }}</td>
-                                            <td>{{ $facultad->descripcionfacultad }}</td>
-                                            <td>{{ $facultad->misionfacultad }}</td>
-                                            <td>{{ $facultad->visionfacultad }}</td>
-                                            <td>{{ $facultad->sede->nombresede }}</td>
-                                            <td> <!-- show the nerd (uses the show method found at GET /nerds/{id}
+                                            <td  class="p-0 m-0">{{ $facultad->idfacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $facultad->nombrefacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $facultad->descripcionfacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $facultad->misionfacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $facultad->visionfacultad }}</td>
+                                            <td  class="p-0 m-0">{{ $facultad->sede->nombresede }}</td>
+                                            <td  class="p-0 m-0" style="width:7%"> <!-- show the nerd (uses the show method found at GET /nerds/{id}
                                                 <a class="btn btn-small btn-success" href="{{ URL::to('facultades/' . $facultad->idfacultad) }}">ver
                                                 </a>-->
-                                                <div class="row">
+                                                <div class="row p-0 m-0">
                                                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('facultades/' . $facultad->idfacultad . '/edit') }}">
+                                                    <div class="col">
+                                                <a  class="btn btn-link p-0 m-0" href="{{ URL::to('facultades/' . $facultad->idfacultad . '/edit') }}">
 
                                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                                 </a></div>
 
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                 <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
+                                                    <div class="col">
                                                 {{ Form::open(array('url' => 'facultades/' . $facultad->idfacultad, 'class' => '')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                    <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                 {{ Form::close() }}
                                                     </div>
                                                 </div>

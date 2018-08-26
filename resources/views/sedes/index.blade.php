@@ -29,42 +29,42 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Universidad</th>
-                                        <td></td>
+                                        <th class="p-0 m-0">Codigo</th>
+                                        <th class="p-0 m-0">Nombre</th>
+                                        <th class="p-0 m-0">Descripcion</th>
+                                        <th class="p-0 m-0">Universidad</th>
+                                        <td ></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($sedes as $sede)
                                         <tr>
-                                            <td>{{ $sede->idsede }}</td>
-                                            <td>{{ $sede->nombresede }}</td>
-                                            <td>{{ $sede->descripcionsede }}</td>
-                                            <td>{{ $sede->universidad->nombreuniversidad }}</td>
-                                            <td>
+                                            <td class="p-0 m-0">{{ $sede->idsede }}</td>
+                                            <td class="p-0 m-0">{{ $sede->nombresede }}</td>
+                                            <td class="p-0 m-0">{{ $sede->descripcionsede }}</td>
+                                            <td class="p-0 m-0">{{ $sede->universidad->nombreuniversidad }}</td>
+                                            <td class="p-0 m-0" style="width: 7%">
 
 
 
                                                 <!-- show the nerd (uses the show method found at GET /nerds/{id}
                                                 <a class="btn btn-small btn-success" href="{{ URL::to('sedes/' . $sede->idsede) }}">ver
                                                 </a>-->
-                                                <div class="row">
+                                                <div class="row p-0 m-0"  >
                                                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col-sm1">
-                                                <a  class="btn btn-link" href="{{ URL::to('sedes/' . $sede->idsede . '/edit') }}">
+                                                    <div class="col"  >
+                                                <a   class="btn btn-link p-0 m-0" href="{{ URL::to('sedes/' . $sede->idsede . '/edit') }}">
 
                                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                                 </a></div>
 
                                                 <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                                                 <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col-sm1">
+                                                    <div class="col >
                                                 {{ Form::open(array('url' => 'sedes/' . $sede->idsede, 'class' => '')) }}
                                                 {{ Form::hidden('_method', 'DELETE') }}
-                                                    <button type="submit" class="btn btn-link"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
+                                                    <button  type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                 {{ Form::close() }}
                                                     </div>
                                                 </div>

@@ -32,49 +32,39 @@
                      with font-awesome or any other icon font library -->
                 @if(!empty(Auth::user()))
                 @if(Auth::user()->hasRole('admin'))
-                <li class="nav-item has-treeview ">
-                    <a href="#" class="nav-link ">
-                        <i class="fa fa-university"></i>
-                        <p>
-                            Sedes
-                            <i class="right fa fa-angle-left"></i>
-                        </p>
-                    </a>
-                    @foreach($sedes as $sede)
-                    <ul class="nav-item nav-treeview">
-                        <a href="#" class="nav-link ">
-                            <i class="right fa fa-angle-right"></i>
-                            <p>
-                                {{ $sede->nombresede }}
-                            </p>
-                        </a>
-                        <ul class="nav-item nav-treeview ">
-                            <ul class="nav-item">
-                                <a href="{{ URL::to('facultades/' . $sede->idsede . '/list') }}"  class="nav-link">
-                                    <p>Facultades</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="{{ URL::to('escuelas/' . $sede->idsede . '/list2') }}" class="nav-link">
-                                    <p>Escuelas</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="{{ URL::to('carreras/' . $sede->idsede . '/list2') }}" class="nav-link ">
-                                    <p>Carreras</p>
-                                </a>
-                            </ul>
-                            <ul class="nav-item">
-                                <a href="{{ URL::to('convenios/' . $sede->idsede . '/list') }}" class="nav-link active">
-                                    <p>Convenios</p>
-                                </a>
-                            </ul>
-                         </ul>
-                    </ul>
-                    @endforeach
-                </li>
-                @endif
-                @if(Auth::user()->hasRole('admin'))
+                        <li class="nav-item has-treeview ">
+                            <a href="/sedes" class="nav-link ">
+                                <i class="fa fa-university"></i>
+                                <p>
+                                    Sedes
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview ">
+                            <a href="/facultades" class="nav-link ">
+                                <i class="fa fa-archway"></i>
+                                <p>
+                                    Facultades
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview ">
+                            <a href="/escuelas" class="nav-link ">
+                                <i class="fa fa-school"></i>
+                                <p>
+                                    Escuelas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview ">
+                            <a href="/carreras" class="nav-link ">
+                                <i class="fa fa-stethoscope"></i>
+                                <p>
+                                    Carreras
+                                </p>
+                            </a>
+                        </li>
+
                 <li class="nav-item has-treeview">
                     <a href="/coordinadores" class="nav-link">
                         <i class="fa fa-clipboard"></i>
@@ -96,34 +86,19 @@
                 </li>
                 @if(Auth::user()->hasRole('admin'))
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="/tutores" class="nav-link">
                         <i class="fa fa-briefcase"></i>
                         <p>
-                            Tutores
-                            <i class="fa fa-angle-left right"></i>
+                            Tutores Empresariales
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/profesores" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Tutores Academicos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/tutores" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Tutores Empresariales</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 @endif
 
-                @if(Auth::user()->hasRole('coord'))
+                @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord') )
                     <li class="nav-item has-treeview">
                         <a href="/profesores" class="nav-link">
-                            <i class="fa fa-briefcase"></i>
+                            <i class="fa fa-chalkboard-teacher"></i>
                             <p>
                                 Profesores
                             </p>
@@ -165,20 +140,6 @@
                         <p>Reportes
                         </p>
                     </a>
-                   {{-- <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Practicas por Nivel</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
-                                <i class="right fa fa-angle-right"></i>
-                                <p>Practicas por Horas</p>
-                            </a>
-                        </li>
-                    </ul>--}}
                 </li>
                 @endif
             </ul>

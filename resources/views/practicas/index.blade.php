@@ -95,6 +95,10 @@
                                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                             <div class="btn-toolbar mb-2 mb-md-0">
                                                 <h1>PRACTICAS</h1></div>
+                                            <div class="btn-group mr-2">
+                                                <input type="button" onClick="location.href = 'practicas/create'"
+                                                       class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-body">

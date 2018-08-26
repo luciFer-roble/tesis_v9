@@ -347,12 +347,14 @@ class ConsultasController extends Controller
             ->where('idestudiante','=', $request->id)->first();
     }
     public function getempresa(Request $request){
-        return Empresa::where('idestudiante','=', $request->id)->first();
+        return Empresa::where('idempresa','=', $request->id)->first();
     }
     public function getprofesor(Request $request){
-        return Profesor::where('idestudiante','=', $request->id)->first();
+        return Profesor::join('escuela', 'escuela.idescuela', '=', 'profesor.idescuela')
+            ->where('idprofesor','=', $request->id)->first();
     }
     public function gettutore(Request $request){
-        return TutorE::where('idestudiante','=', $request->id)->first();
+        return TutorE::join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->where('idtutore','=', $request->id)->first();
     }
 }

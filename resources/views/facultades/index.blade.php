@@ -13,13 +13,14 @@
                 <div class="col-12">
 
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3" id="app">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <h1>FACULTADES</h1></div>
-                                    <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'facultades/create'" class="btn btn-sm btn-outline-success" value="NUEVA"></input>
+                                <div class="btn-group mr-2">
+                                    <facultades-nuevo></facultades-nuevo>
+
                                 </div>
                             </div>
                         </div>
@@ -41,6 +42,10 @@
                                     </thead>
                                     <tbody>
                                     @foreach($facultades as $facultad)
+                                        <tr is="facultades-componente" :facultad="{{ $facultad }}" :sede="{{ $facultad->sede }}"></tr>
+
+                                    @endforeach
+                                    {{--@foreach($facultades as $facultad)
                                         <tr>
                                             <td  class="p-0 m-0">{{ $facultad->idfacultad }}</td>
                                             <td  class="p-0 m-0">{{ $facultad->nombrefacultad }}</td>
@@ -71,7 +76,7 @@
 
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach--}}
                                     </tbody>
                                 </table>
                             </div>

@@ -81,7 +81,7 @@ Route::get('/escuelas/{facultad}/create', 'EscuelasController@createfrom');
 Route::get('/escuelas/{facultad}/list', 'EscuelasController@indexfrom');
 Route::get('/escuelas/{sede}/list2', 'EscuelasController@indexfromsede');
 
-Route::get('/facultades', 'FacultadesController@index');
+Route::get('/facultades', 'FacultadesController@index')->name('facultades.index');
 Route::get('/facultades/create', 'FacultadesController@create');
 Route::get('/facultades/{sede}', 'FacultadesController@show');
 Route::post('/facultades', 'FacultadesController@store');

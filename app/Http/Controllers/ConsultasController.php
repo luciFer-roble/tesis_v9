@@ -8,6 +8,7 @@ use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
 use App\Profesor;
+use App\Sede;
 use App\TipoDocumento;
 use App\TutorE;
 use App\Universidad;
@@ -326,6 +327,9 @@ class ConsultasController extends Controller
     }
     public function getuniversidades(){
         return Universidad::all();
+    }
+    public function getsedes(){
+        return Sede::all();
     }
     public function gettutores(Request $request){
         return TutorE::where('idempresa','=', $request->empresa)->get();

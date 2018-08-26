@@ -10,6 +10,7 @@ use App\Practica;
 use App\Profesor;
 use App\TipoDocumento;
 use App\TutorE;
+use App\Universidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -322,6 +323,9 @@ class ConsultasController extends Controller
     }
     public function getperiodos(){
         return PeriodoAcademico::all();
+    }
+    public function getuniversidades(){
+        return Universidad::all();
     }
     public function gettutores(Request $request){
         return TutorE::where('idempresa','=', $request->empresa)->get();

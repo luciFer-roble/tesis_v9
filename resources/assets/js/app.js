@@ -80,6 +80,8 @@ Vue.component('carreras-componente', require('./components/carreras-componente.v
 Vue.component('carreras-nuevo', require('./components/carreras-nuevo.vue'));
 Vue.component('tutores-componente', require('./components/tutores-componente.vue'));
 Vue.component('tutores-nuevo', require('./components/tutores-nuevo.vue'));
+Vue.component('coordinadores-componente', require('./components/coordinadores-componente.vue'));
+Vue.component('coordinadores-nuevo', require('./components/coordinadores-nuevo.vue'));
 const app = new Vue({
     el: '#app'
 });

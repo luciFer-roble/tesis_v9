@@ -20,7 +20,7 @@ class EmpresasController extends Controller
     {
         $tutores=TutorE::all();
         $convenios = Convenio::with('sede')->get();
-        $empresas = Empresa::all();
+        $empresas = Empresa::paginate(10);
         return view('empresas.index', compact('empresas', 'convenios','tutores'));
     }
    /* public function index2()
@@ -60,7 +60,7 @@ class EmpresasController extends Controller
 
             Flash::success('Ingresado Correctamente');
             // redirect
-            return redirect('empresas');
+        return ['redirect' => route('empresas.index')];
 
     }
 
@@ -103,7 +103,7 @@ class EmpresasController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('empresas');
+        return ['redirect' => route('empresas.index')];
     }
 
 
@@ -112,6 +112,6 @@ class EmpresasController extends Controller
         Empresa::find($empresa)
             ->delete();
 
-        return redirect('empresas');
+        return ['redirect' => route('empresas.index')];
     }
 }

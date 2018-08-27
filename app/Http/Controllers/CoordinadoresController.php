@@ -122,6 +122,28 @@ class CoordinadoresController extends Controller
     {
         $rules = array(
             'fin'    => 'required',
+            'inicio'    => 'required'
+
+        );
+        $this->validate(request(), $rules);
+        $coordinador=Coordinador::where('idcoordinador','=',$id)->first();
+
+        // store
+        Coordinador::updateOrCreate(['idcoordinador'  => $id], [
+            'fechafincoordinador'      => request('fin'),
+            'fechainiciocoordinador'      => request('inicio')
+        ]);
+
+        Flash::success('Actualizado Correctamente');
+
+        return ['redirect' => route('coordinadores.index')];
+
+
+    }
+    public function finalize($id)
+    {
+        $rules = array(
+            'fin'    => 'required',
             'activo'    => 'required'
 
         );
@@ -140,7 +162,8 @@ class CoordinadoresController extends Controller
         $user->roles()->attach(Role::where('name','=', 'prof')->first());
 
         Flash::success('Actualizado Correctamente');
-        return redirect('coordinadores');
+
+        return ['redirect' => route('coordinadores.index')];
 
 
     }

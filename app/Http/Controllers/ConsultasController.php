@@ -345,6 +345,9 @@ class ConsultasController extends Controller
     public function getescuelas(){
         return Escuela::all();
     }
+    public function getcarreras(){
+        return Carrera::all();
+    }
     public function getcarrerassincoordinador(){
         $carrerasutilizadas = Coordinador::pluck('idcarrera')->all();
         return Carrera::whereNotIn('idcarrera', $carrerasutilizadas)->select('idcarrera','nombrecarrera')->get();

@@ -41,7 +41,7 @@
                         </tr>
                         <tr>
                             <th style="width: 25%" >Fecha de Fin:</th>
-                           
+
                             <td colspan="3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">

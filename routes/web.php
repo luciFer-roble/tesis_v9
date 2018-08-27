@@ -60,7 +60,7 @@ Route::get('/profesores/{profesor}/edit', 'ProfesoresController@edit');
 Route::put('/profesores/{profesor}', 'ProfesoresController@update');
 Route::delete('/profesores/{profesor}', 'ProfesoresController@destroy');
 
-Route::get('/coordinadores', 'CoordinadoresController@index')->name('coordinadores.index');
+Route::get('/coordinadores', 'CoordinadoresController@index');
 Route::get('/coordinadores/create', 'CoordinadoresController@create');
 Route::get('/coordinadores/{coordinador}', 'CoordinadoresController@show');
 Route::post('/coordinadores', 'CoordinadoresController@store');

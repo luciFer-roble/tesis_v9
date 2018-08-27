@@ -83,6 +83,7 @@ Vue.component('tutores-nuevo', require('./components/tutores-nuevo.vue'));
 Vue.component('coordinadores-componente', require('./components/coordinadores-componente.vue'));
 Vue.component('coordinadores-nuevo', require('./components/coordinadores-nuevo.vue'));
 Vue.component('empresa-nuevo', require('./components/empresa-nuevo.vue'));
+
 const app = new Vue({
     el: '#app'
 });

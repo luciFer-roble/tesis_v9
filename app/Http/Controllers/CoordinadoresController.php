@@ -68,7 +68,7 @@ class CoordinadoresController extends Controller
 
             Flash::success('Ingresado Correctamente');
             // redirect
-            return redirect('coordinadores');
+            return ['redirect' => route('coordinadores.index')];
 
         }
 

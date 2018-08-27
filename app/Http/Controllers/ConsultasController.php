@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Carrera;
+use App\Coordinador;
 use App\Empresa;
 use App\Escuela;
 use App\Estudiante;
@@ -343,6 +345,11 @@ class ConsultasController extends Controller
     public function getescuelas(){
         return Escuela::all();
     }
+    public function getcarrerassincoordinador(){
+        $carrerasutilizadas = Coordinador::pluck('idcarrera')->all();
+        return Carrera::whereNotIn('idcarrera', $carrerasutilizadas)->select('idcarrera','nombrecarrera')->get();
+
+    }
     public function gettutores(Request $request){
         return TutorE::where('idempresa','=', $request->empresa)->get();
     }
@@ -358,7 +365,8 @@ class ConsultasController extends Controller
         return Empresa::where('idestudiante','=', $request->id)->first();
     }
     public function getprofesor(Request $request){
-        return Profesor::where('idestudiante','=', $request->id)->first();
+        return Profesor::join('escuela', 'escuela.idescuela', '=', 'profesor.idescuela')
+            ->where('idprofesor','=', $request->id)->first();
     }
     public function gettutore(Request $request){
         return TutorE::where('idestudiante','=', $request->id)->first();

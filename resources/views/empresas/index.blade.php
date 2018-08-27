@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12" >
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3" id="app">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
@@ -21,11 +21,11 @@
                                         <input type="button" onClick="location.href = 'tutores'" class="btn btn-sm btn-light" value="Administrar Convenios">
                                         &nbsp; &nbsp;
                                 @endif
-                                    <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA">
+                                    <empresa-nuevo></empresa-nuevo>
                                 </div>
                         </div>
                         </div>
-                        <div class="card-body" id="app">
+                        <div class="card-body" >
                                 @if(Auth::user()->hasRole('admin'))
                                 <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

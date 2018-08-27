@@ -143,12 +143,12 @@
                 }).catch(function (error) {
                     console.log(error);
                 });
-                axios.get(window.location.origin+'/api/getprofesores'
+                /*axios.get(window.location.origin+'/api/getprofesores'
                 ).then((response)=>{
                     this.profesores=response.data;
                 }).catch(function (error) {
                     console.log(error);
-                });
+                });*/
                 this.carreraselect = this.coordinador.idcarrera;
                 this.profesorselect = this.coordinador.idprofesor;
                 this.inicio = this.coordinador.fechainiciocoordinador;

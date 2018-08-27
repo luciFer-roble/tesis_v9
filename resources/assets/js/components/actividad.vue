@@ -1,19 +1,25 @@
 <template>
-    <tr >
+    <tr v-bind:class="{ 'fondoverde': check }">
         <td style="width:  12%">
-            <input class="form-control" type="date" name="fecha" id="fecha"  v-model="fecha" @blur="insertar" :disabled="check">
+            <input class="form-control border-0" type="date" name="fecha" id="fecha"  v-model="fecha" @blur="insertar" :disabled="check">
         </td>
         <td class="p-0 m-0">
-            <textarea class="form-control " name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check"></textarea>
+            <textarea class="form-control border-0" name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check"></textarea>
         </td>
-        <td style="width:  7%"><div class="form-check">
-            <label>
-                <input class="form-control custom-checkbox " type="checkbox"  v-model="check" :disabled="check" @change="insertar">
-
-            </label>
-        </div></td>
-        <td>
-            <input class="form-control" type="text" name="comentario" id="comentario" v-model="comentario" @blur="insertar" :disabled="check">
+        <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="check && (rol.name === 'tut' || rol.name === 'prof')">
+                <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
+            <span class="btn"><i class="text-success  fas fa-check-circle fa-2x"  @click="ponerfalse"></i></span>
+        </td>
+        <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="!check && listo && (rol.name === 'tut' || rol.name === 'prof')">
+            <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
+            <span class="btn"><i class=" text-success far fa-circle fa-2x"  @click="ponertrue" ></i></span>
+        </td>
+        <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="!check && !listo && (rol.name === 'tut' || rol.name === 'prof')">
+            <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
+            <span class="btn"><i class=" text-success far fa-circle fa-2x fa-disabled"  ></i></span>
+        </td>
+        <td class="p-0 m-0">
+            <textarea class="form-control border-0" name="comentario" id="comentario" cols="14" v-model="comentario" @blur="insertar" :disabled="check"></textarea>
         </td>
 
         <!--<td style="width:  6%">
@@ -28,6 +34,9 @@
         props: {
             actividad: {
                 type: Object
+            },
+            rol: {
+                type: Object
             }
         },
         data:()=>({
@@ -35,9 +44,19 @@
             descripcion: '',
             comentario: '',
             check: '',
-            horas: ''
+            horas: '',
+            desactivar: false,
+            listo: false
         }),
         methods:{
+            ponertrue:function () {
+                this.check = true;
+                //insertar();
+            },
+            ponerfalse:function () {
+                this.check = false;
+                //insertar();
+            },
             insertar:function () {
                 axios.put('/actividades/'+this.actividad.idactividad, {
                     fecha: this.fecha,
@@ -62,6 +81,29 @@
             this.comentario = this.actividad.comentarioactividad;
             this.check = this.actividad.estadoactividad;
             this.horas = this.actividad.horasactividad;
+            if(this.fecha !== null && this.descripcion !== null){
+                this.listo =true;
+            }
         }
     }
 </script>
+<style scoped>
+    input[disabled] {
+        background-color: #ccffcc;
+    }
+    textarea[disabled] {
+         background-color: #ccffcc ;
+     }
+    textarea{
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+    }
+    .fondoverde{
+        background-color: #ccffcc;
+    }
+    .fa-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+</style>

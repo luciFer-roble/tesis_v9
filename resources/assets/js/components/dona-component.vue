@@ -7,7 +7,7 @@
 
             <div class="donut-inner">
                 <h5 class="btn text-primary porcentaje" >
-                    <button class="btn border-0 btn-link text-primary" @click="actividades">{{(suma*100)/practica.horaspractica }}%</button>
+                    <button class="btn border-0 btn-link text-primary" @click="actividades">{{ Math.round((suma*100)/practica.horaspractica) }}%</button>
                 </h5>
             </div>
         </div>
@@ -17,7 +17,7 @@
 
             <div class="donut-inner">
                 <h5 class="btn text-primary porcentaje" >
-                    <button class="btn border-0 btn-link text-primary" @click="documentos">{{(docs*100)/totaldocs }}%</button>
+                    <button class="btn border-0 btn-link text-primary" @click="documentos">{{ Math.round((docs*100)/totaldocs) }}%</button>
                 </h5>
             </div>
         </div>

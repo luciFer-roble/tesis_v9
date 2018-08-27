@@ -222,9 +222,7 @@ class PracticasController extends Controller
 
         // store
         Practica::updateOrCreate(['idpractica'  => $id], [
-            'idestudiante'       => request('estudiante'),
             'idprofesor'      => request('profesor'),
-            'idtutore'      => request('tutore'),
             'descripcionpractica'      => request('descripcion'),
             'fechainiciopractica'      => request('inicio'),
             'fechafinpractica'      => request('fin'),
@@ -232,13 +230,14 @@ class PracticasController extends Controller
             'salariopractica'      => request('salario'),
             'idperiodoacademico'      => request('periodo'),
             'horaspractica'      => request('horas'),
-            'activapractica'      => $activa
+            'activapractica'      => $activa,
+            'horariopractica'    => request('horario')
         ]);
 
         Flash::success('Actualizado Correctamente');
 
         // redirect
-        return redirect('practicas');
+        return redirect('practicas/'.$id.'/edit');
     }
 
 

@@ -1,9 +1,7 @@
 <template>
     <div>
 
-        <div class="col"  >
-            <button type="button"  class="btn btn-outline-success" @click="create" >NUEVA</button>
-        </div>
+            <input type="button"  class="btn btn-sm btn-outline-success" @click="create" value="NUEVA">
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modaledit">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

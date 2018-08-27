@@ -17,34 +17,48 @@
                     <h3 class="card-title">Coordinador Actual</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table">
                         <tr>
-                            <th>Carrera:</th>
-                            <td colspan="2"> {{ $coordinador->carrera->nombrecarrera }}</td>
+                            <th style="width: 25%">Carrera:</th>
+                            <td colspan="3"> {{ $coordinador->carrera->nombrecarrera }}</td>
                         </tr>
                         <tr>
-                            <th>Nombre:</th>
-                            <td colspan="2">{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
-
-                        </tr>
-                        <tr>
-                            <th>Fecha de Inicio:</th>
-                            <td colspan="2">{{ $coordinador->fechainiciocoordinador }}</td>
+                            <th style="width: 25%">Nombre:</th>
+                            <td colspan="3">{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
 
                         </tr>
                         <tr>
-                            <th>Fecha de Fin:</th>
-                            <td>
-                                <input  style="width: 60%;display: inline" type="date" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
-
-
-                                <button  style="vertical-align: middle" data-toggle="modal" data-target="#f1" class="btn btn-sm btn-outline-danger">Finalizar</button>
-
+                            <th style="width: 25%">Fecha de Inicio:</th>
+                            <td colspan="3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <input id="inicio" name="inicio" type="date" class="form-control" value="{{ $coordinador->fechainiciocoordinador }}" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                </div>
                             </td>
+
+                        </tr>
+                        <tr>
+                            <th style="width: 25%" >Fecha de Fin:</th>
+                           
+                            <td colspan="3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                    <input id="fin" name="fin" type="date" class="form-control" value="{{ $coordinador->fechafincoordinador }}" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                </div>
+                            </td>
+
 
                         </tr>
 
                     </table>
+                </div>
+                <div class="card-footer">
+                    <button  style="vertical-align: middle" data-toggle="modal" data-target="#f1" class="btn btn-outline-danger float-right">Finalizar</button>
+
                 </div>
 
                     </div>

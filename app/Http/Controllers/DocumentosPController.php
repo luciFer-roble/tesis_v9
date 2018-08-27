@@ -7,6 +7,7 @@ use App\Estudiante;
 use App\Practica;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class DocumentosPController extends Controller
 {
@@ -56,6 +57,8 @@ class DocumentosPController extends Controller
 
         $file->storeAs($path, $name);
 
+
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('documentosp');
 
@@ -98,6 +101,8 @@ class DocumentosPController extends Controller
             'idpractica'       => request('practica'),
             'archivodocumentop'      => request('archivo')
         ]);
+
+        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('documentosp');

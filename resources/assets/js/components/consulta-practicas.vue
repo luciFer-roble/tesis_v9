@@ -2,7 +2,8 @@
     <!-- DataTable Card-->
     <div class="card mb-3">
         <div class="card-header ">
-            <div class="form-inline mr-2">
+            <div class=" row d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                <div class="col-md-2 btn-toolbar mb-2 mb-md-0"  >
                 <select  class="form-control" v-model="criterio" @change="cargarselect">
                     <option value="0">-Seleccione-</option>
                     <option value="estudiante">Estudiante</option>
@@ -11,16 +12,34 @@
                     <option value="empresa">Empresa</option>
                     <option value="nivel">Nivel</option>
                 </select>
-                <span>&nbsp; </span>
+                    </div>
+                <div class="col-md-3 btn-toolbar mb-2 mb-md-0"  >
                 <input class=" form-control" :disabled="isperiodo || isnivel || isempresa" type="search" v-model="parametro" @keyup="cargardatos" placeholder="Buscar..." aria-label="Search">
-                <span>&nbsp;  o &nbsp; </span>
+                </div>
+                <div class="col-md-2 btn-toolbar mb-2 mb-md-0"  >
                 <select class="form-control float-right" :disabled="criterio === 'estudiante' || criterio === 'profesor'" v-model="parametro2" @change="cargardatos2">
                     <option value="0">-Seleccione-</option>
                     <option v-if="isperiodo" v-for="item in lista2" :value="item.idperiodoacademico">{{ item.facultad.nombrefacultad+' '+item.nombreperiodoacademico}}</option>
                     <option v-if="isempresa" v-for="item in lista2" :value="item.idempresa">{{ item.nombreempresa }}</option>
                     <option v-if="isnivel" v-for="item in lista2" :value="item.idnivel">{{ item.nombrenivel }}</option>
                 </select>
+                    </div>
+                <div class="col-md-1 btn-toolbar  mb-2 mb-md-0"  >
+                    <div class="btn-group">
+                        <input type="button"  @click="mostrartodo" class="btn btn-light" value="Ver todos">
+                    </div>
+                </div>
+
+                <div class="col-md-3 btn-toolbar mb-2 mb-md-0"  >
+                    </div>
+                <div class="col-md-1 btn-toolbar  float-right"  >
+                        <div class="btn-group float-right">
+                            <input type="button"  @click="nueva" class="btn btn-sm btn-outline-success" value="NUEVA">
+                        </div>
+                </div>
             </div>
+
+
         </div>
         <div class="card-body" id="app">
             <div class="table-responsive">
@@ -39,6 +58,7 @@
                         <th class="m-0 p-0">Sector</th>
                         <th class="m-0 p-0">Tutor Academico</th>
                         <th class="m-0 p-0">Tutor Empresarial</th>
+                        <th></th>
                     </tr>
                     <tr v-show="vacio">
                         No se encontraron coincidencias
@@ -60,10 +80,13 @@
                         <td class="m-0 p-0"><button  @click="vertutore(item.idtutore)" class="btn btn-link  m-0 p-0" >{{ item.nombretutore+' '+item.apellidotutore }}</button></td>
 
                         <td class="m-0 p-0">
-
-                            <button  type="button" class="btn btn-block btn-outline-success m-0 p-1 border-0" @click="editar(item.idpractica)">
-                                <i class="fa fa-external-link-alt"></i>
-                            </button>
+                            <div class="row p-0 m-0"  >
+                                <div class="col"  >
+                                    <span   class="btn text-info p-0 m-0">
+                                        <i class="fa fa-external-link-alt"  @click="editar(item.idpractica)" title="Ir a la Practica"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
@@ -99,18 +122,17 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel2">{{estudiante.apellidosestudiante+' '+estudiante.nombresestudiante }}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel2">{{empresa.nombreempresa }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times; </span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <p>
-                                <strong>Carrera:</strong> {{ estudiante.nombrecarrera }}<br>
-                                <strong>Cedula:</strong> {{ estudiante.cedulaestudiante }}<br>
-                                <strong>Celular:</strong> {{ estudiante.celularestudiante }}<br>
-                                <strong>Correo Electronico:</strong> {{ estudiante.correoestudiante }}<br>
-                                <strong>Fecha de Nacimiento:</strong> {{ estudiante.fechanacimientoestudiante }}
+                                <strong>Direccion:</strong> {{ empresa.direccionempresa }}<br>
+                                <strong>Telefono:</strong> {{ empresa.telefonoempresa }}<br>
+                                <strong>Tipo:</strong> {{ empresa.tipoempresa }}<br>
+                                <strong>Sector:</strong> {{ empresa.sectorempresa }}
                             </p>
                         </div>
                     </div>
@@ -122,18 +144,17 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel3">{{estudiante.apellidosestudiante+' '+estudiante.nombresestudiante }}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel3">{{profesor.apellidosprofesor+' '+profesor.nombresprofesor }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <p>
-                                <strong>Carrera:</strong> {{ estudiante.nombrecarrera }}<br>
-                                <strong>Cedula:</strong> {{ estudiante.cedulaestudiante }}<br>
-                                <strong>Celular:</strong> {{ estudiante.celularestudiante }}<br>
-                                <strong>Correo Electronico:</strong> {{ estudiante.correoestudiante }}<br>
-                                <strong>Fecha de Nacimiento:</strong> {{ estudiante.fechanacimientoestudiante }}
+                                <strong>Escuela:</strong> {{ profesor.nombreescuela }}<br>
+                                <strong>Correo:</strong> {{ profesor.correoprofesor }}<br>
+                                <strong>Celular:</strong> {{ profesor.celularprofesor }}<br>
+                                <strong>Oficina:</strong> {{ profesor.oficinaprofesor }}<br>
                             </p>
                         </div>
                     </div>
@@ -145,18 +166,16 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel4">{{estudiante.apellidosestudiante+' '+estudiante.nombresestudiante }}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <h5 class="modal-title" id="exampleModalLabel4">{{tutore.nombretutore +' '+tutore.apellidotutore }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Clos e">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <p>
-                                <strong>Carrera:</strong> {{ estudiante.nombrecarrera }}<br>
-                                <strong>Cedula:</strong> {{ estudiante.cedulaestudiante }}<br>
-                                <strong>Celular:</strong> {{ estudiante.celularestudiante }}<br>
-                                <strong>Correo Electronico:</strong> {{ estudiante.correoestudiante }}<br>
-                                <strong>Fecha de Nacimiento:</strong> {{ estudiante.fechanacimientoestudiante }}
+                                <strong>Empresa:</strong> {{ tutore.nombreempresa }}<br>
+                                <strong>Correo:</strong> {{ tutore.correotutore }}<br>
+                                <strong>Celular:</strong> {{ tutore.celulartutore }}<br>
                             </p>
                         </div>
                     </div>
@@ -207,7 +226,7 @@
                 axios.get(window.location.origin+'/api/getempresa',{
                     params:{'id':id}
                 }).then((response)=>{
-                    this.estudiante=response.data;
+                    this.empresa=response.data;
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -219,7 +238,7 @@
                 axios.get(window.location.origin+'/api/getprofesor',{
                     params:{'id':id}
                 }).then((response)=>{
-                    this.estudiante=response.data;
+                    this.profesor=response.data;
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -231,7 +250,7 @@
                 axios.get(window.location.origin+'/api/gettutore',{
                     params:{'id':id}
                 }).then((response)=>{
-                    this.estudiante=response.data;
+                    this.tutore=response.data;
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -343,6 +362,9 @@
             },
             editar:function (id) {
                 window.location.href = '/practicas/'+id+'/edit';
+            },
+            nueva:function () {
+                window.location.href = '/practicas/create';
             }
         },
         created() {

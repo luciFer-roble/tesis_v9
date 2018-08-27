@@ -24,7 +24,7 @@
                         </div>
                         </div>
                         <div class="card-body" id="app">
-
+                            {{ $empresas->links() }}
                                 @if(Auth::user()->hasRole('admin'))
                                 <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -72,50 +72,14 @@
 
                                 </div>
                                 @else
-
                                         <div class="table-responsive">
-                                        {{--<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                            <tr>
-                                                <th>Empresa</th>
-                                                <th>Direccion</th>
-                                                <th>Sector</th>
-                                                <th>Telefono</th>
-                                                <th>Convenio</th>
-                                                <th>Sede</th>
-                                                <th>Tutores</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>--}}
                                             @foreach($empresas as $empresa)
-
-                                                {{--@php--}}
-                                                    {{--var_dump($empresa); exit();--}}
-                                                {{--@endphp--}}
                                                 <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}">
-
                                                 </empresa-item>
                                             @endforeach
-
-                                            {{--lo comentado de abajo es para probar el join:--}}
-                                            {{-- @foreach($empresas as $empresa)
-                                                  <tr>
-                                                     <td>{{ $empresa->nombreempresa }}</td>
-                                                     <td>{{ $empresa->direccionempresa }}</td>
-                                                     <td>{{ $empresa->sectorempresa }}</td>
-                                                      <td>{{ $empresa->telefonoempresa }}</td>
-                                                      <td>{{ $empresa->idconvenio }}</td>
-                                                      <td>{{ $empresa->nombresede }}</td>
-
-
-                                                 </tr>
-                                             @endforeach--}}
-                                            {{--</tbody>
-                                        </table>--}}
-
                                         </div>
                                 @endif
+
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>

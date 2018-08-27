@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actividad;
 use App\Practica;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPExcel_Worksheet_Drawing;
 
@@ -33,6 +34,7 @@ class ActividadesController extends Controller
         }
 
 
+        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('actividades/'.$practica.'/list?page='.($total+1));
 
@@ -52,6 +54,7 @@ class ActividadesController extends Controller
 
 
 
+        Flash::success('Actualizado Correctamente');
         // redirect
         return true;
     }

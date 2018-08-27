@@ -6,11 +6,11 @@
         <td class="p-0 m-0">{{ coordinador.fechafincoordinador }}</td>
 
         <td class="p-0 m-0" style="width: 4%">
-                <div class="col" >
+            <div class="col" >
                     <span   class="btn text-danger p-0 m-0">
                         <i  class="fa fa-pencil-alt" title="Modificar Coordinador" @click="edit"></i>
                     </span>
-                </div>
+            </div>
 
         </td>
 

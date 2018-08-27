@@ -12,16 +12,14 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3" id="app">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>TUTORES</h1></div>
-                                @if(Auth::user()->hasRole('admin'))
                             <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'tutores/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
+                            <tutores-nuevo></tutores-nuevo>
                             </div>
-                                    @endif
                         </div>
                         </div>
                         <div class="card-body">
@@ -35,44 +33,14 @@
                                         <th class="p-0 m-0">Apellido</th>
                                         <th class="p-0 m-0">Celular</th>
                                         <th class="p-0 m-0">Correo</th>
-                                        @if(Auth::user()->hasRole('admin'))
                                         <td class="p-0 m-0"></td>
-                                            @endif
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($tutores as $tutore)
-                                        <tr>
-                                            <td class="p-0 m-0">{{ $tutore->empresa->nombreempresa }}</td>
-                                            <td class="p-0 m-0">{{ $tutore->nombretutore }}</td>
-                                            <td class="p-0 m-0">{{ $tutore->apellidotutore }}</td>
-                                            <td class="p-0 m-0">{{ $tutore->celulartutore }}</td>
-                                            <td class="p-0 m-0">{{ $tutore->correotutore }}</td>
-                                            @if(Auth::user()->hasRole('admin'))
-                                            <td class="p-0 m-0" style="width: 7%">
 
-                                                <div class="row p-0 m-0">
-                                                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                    <div class="col">
-                                                        <a  class="btn btn-link p-0 m-0" href="{{ URL::to('tutores/' . $tutore->idtutore . '/edit') }}">
-
-                                                            <i class="fa fa-fw fa-pencil-alt"></i>
-                                                        </a></div>
-
-                                                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                                    <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                    <div class="col">
-                                                        {{ Form::open(array('url' => 'tutores/' . $tutore->idtutore, 'class' => '')) }}
-                                                        {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                        {{ Form::close() }}
-                                                    </div>
-                                                </div>
-
-                                            </td>
-                                            @endif
-                                        </tr>
+                                        <tr is="tutores-componente" :tutore="{{ $tutore }}" :empresa="{{ $tutore->empresa }}"></tr>
                                     @endforeach
                                     </tbody>
                                 </table>

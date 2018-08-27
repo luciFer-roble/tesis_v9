@@ -40,7 +40,7 @@ Route::put('/empresas/{empresa}', 'EmpresasController@update');
 Route::delete('/empresas/{empresa}', 'EmpresasController@destroy');
 
 
-Route::get('/carreras', 'CarrerasController@index');
+Route::get('/carreras', 'CarrerasController@index')->name('carreras.index');
 Route::get('/carreras/create', 'CarrerasController@create');
 Route::get('/carreras/{escuela}', 'CarrerasController@show');
 Route::post('/carreras', 'CarrerasController@store');
@@ -70,7 +70,7 @@ Route::delete('/coordinadores/{coordinador}', 'CoordinadoresController@destroy')
 Route::get('/coordinadores/{carrera}/create', 'CoordinadoresController@createfrom');
 //Route::get('/coordinadores/{carrera}/list', 'CoordinadoresController@indexfrom');
 
-Route::get('/escuelas', 'EscuelasController@index');
+Route::get('/escuelas', 'EscuelasController@index')->name('escuelas.index');
 Route::get('/escuelas/create', 'EscuelasController@create');
 Route::get('/escuelas/{escuela}', 'EscuelasController@show');
 Route::post('/escuelas', 'EscuelasController@store');
@@ -101,7 +101,7 @@ Route::delete('/sedes/{sede}', 'SedesController@destroy');
 Route::get('/sedes/{universidad}/create', 'SedesController@createfrom');
 Route::get('/sedes/{universidad}/list', 'SedesController@indexfrom');
 
-Route::get('/tutores', 'TutorEsController@index');
+Route::get('/tutores', 'TutorEsController@index')->name('tutores.index');
 Route::get('/tutores/create', 'TutorEsController@create');
 Route::get('/tutores/{tutore}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');

@@ -78,7 +78,7 @@ class TutorEsController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('tutores');
+        return ['redirect' => route('tutores.index')];
 
     }
 
@@ -122,7 +122,7 @@ class TutorEsController extends Controller
         Flash::success('Actualizado Correctamente');
 
         // redirect
-        return redirect('tutores');
+        return ['redirect' => route('tutores.index')];
     }
 
 

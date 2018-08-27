@@ -81,7 +81,7 @@ class EscuelasController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('escuelas');
+        return ['redirect' => route('escuelas.index')];
 
     }
 
@@ -134,7 +134,7 @@ class EscuelasController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('escuelas');
+        return ['redirect' => route('escuelas.index')];
     }
 
 

@@ -36,7 +36,7 @@
                                         <th  class="p-0 m-0">Mision</th>
                                         <th  class="p-0 m-0">Vision</th>
                                         <th  class="p-0 m-0">Sede</th>
-                                        <td  class="p-0 m-0"></td>
+                                        <th  class="p-0 m-0"></th>
 
                                     </tr>
                                     </thead>

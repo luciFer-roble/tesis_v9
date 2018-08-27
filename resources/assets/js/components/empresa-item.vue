@@ -4,22 +4,23 @@
     <tr style="background-color: white">
         <th  style="width:  14%; background-color:  #007bff ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
         <td  style="width:  18%"class="p-1 m-0">{{ empresa.direccionempresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.tipoempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  style="width: 1.7%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link" :title="convenio" @click="descargar">
+        <td style="width:  7%" class="p-1 m-0">{{ sede }}</td>
+        <td  style="width: 2.2%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link" :title="convenio" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
             <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
             <i v-if="doc" class="far fa-file-word"></i>
         </button></td>
-        <td  style="width:  1.7%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link" @click="agregar_convenio" ><i class="fa fa-plus"></i></button></td>
-        <td style="width:  6%" class="p-1 m-0">{{ sede }}</td>
+        <td  style="width: 2.2%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link" @click="agregar_convenio" title="AÑADIR CONVENIO" ><i class="fa fa-plus"></i></button></td>
+        <td style="width: 2.2%" class="p-0 m-0"><button class="btn btn-link" @click="edit" title="EDITAR"><i class="text-info fa fa-pencil-alt"></i></button></td>
+        <td style="width: 2.2%" class="p-0 m-0"><button class="btn btn-link" @click="agregartutor" title="AÑADIR TUTOR"><i class=" text-info fas fa-user-plus"></i></button></td>
         <td style="width: 1%" v-if="!tutores" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
         <td style="width: 1%" v-if="tutores" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
-        <td style="width: 1.7%" class="p-1 m-0"><span class="btn btn-link"><i @click="edit" class="fa fa-pencil-alt"></i></span></td>
-        <td style="width: 1.7%" class="p-1 m-0"><span class="btn btn-link"><i @click="agregartutor" class="fa fa-plus"></i></span></td>
     </tr>
     <tr>
-        <td v-if="llena" v-show="tutores" colspan="7" class="p-0 m-0">
+        <td v-if="llena" v-show="tutores" colspan="10" class="p-0 m-0">
             <table class="table table-bordered p-0 m-0">
                 <thead>
                 <tr style="background-color: #F2F2F2">
@@ -302,9 +303,7 @@
                     empresa: this.empresa.idempresa
                 })
                     .then(function (response) {
-                        console.log('insertado');
-                        $(this.$refs.modaltutore).modal('hide');
-                        this.tutores = true;
+                        window.location = response.data.redirect;
                     })
                     .catch(error => {
                         this.actualizando = false;

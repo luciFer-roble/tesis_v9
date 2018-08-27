@@ -16,15 +16,16 @@
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>EMPRESAS</h1></div>
-                                @if(Auth::user()->hasRole('admin'))
-                            <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA">
-                            </div>
-                                    @endif
+                                <div class="btn-group mr-2 justify-content-end">
+                                @if(Auth::user()->hasRole('coord'))
+                                        <input type="button" onClick="location.href = 'tutores'" class="btn btn-sm btn-light" value="Administrar Convenios">
+                                        &nbsp; &nbsp;
+                                @endif
+                                    <input type="button" onClick="location.href = 'empresas/create'" class="btn btn-sm btn-outline-success" value="NUEVA">
+                                </div>
                         </div>
                         </div>
                         <div class="card-body" id="app">
-                            {{ $empresas->links() }}
                                 @if(Auth::user()->hasRole('admin'))
                                 <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -81,6 +82,12 @@
                                 @endif
 
                         </div>
+
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                {{$empresas->links('vendor.pagination.bootstrap-4')}}
+                            </ul>
+                        </nav>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>
 

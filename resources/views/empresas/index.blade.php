@@ -8,7 +8,7 @@
 
         <div class="container-fluid">
             <!-- Breadcrumbs-->
-            <div class="row">
+            <div class="row" >
                 <div class="col-12" >
                     <!-- Example DataTables Card-->
                     <div class="card mb-3" id="app">

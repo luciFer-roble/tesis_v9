@@ -6,11 +6,11 @@
         <td class="p-0 m-0">{{ coordinador.fechafincoordinador }}</td>
 
         <td class="p-0 m-0" style="width: 4%">
-                <div class="col" >
+            <div class="col" >
                     <span   class="btn text-danger p-0 m-0">
                         <i  class="fa fa-pencil-alt" title="Modificar Coordinador" @click="edit"></i>
                     </span>
-                </div>
+            </div>
 
         </td>
 
@@ -143,12 +143,12 @@
                 }).catch(function (error) {
                     console.log(error);
                 });
-                axios.get(window.location.origin+'/api/getprofesores'
+                /*axios.get(window.location.origin+'/api/getprofesores'
                 ).then((response)=>{
                     this.profesores=response.data;
                 }).catch(function (error) {
                     console.log(error);
-                });
+                });*/
                 this.carreraselect = this.coordinador.idcarrera;
                 this.profesorselect = this.coordinador.idprofesor;
                 this.inicio = this.coordinador.fechainiciocoordinador;

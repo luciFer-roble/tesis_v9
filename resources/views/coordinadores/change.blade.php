@@ -11,7 +11,7 @@
 
         <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
             <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title">Coordinador Actual</h3>
@@ -19,26 +19,26 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tr>
-                            <th>Carrera</th>
+                            <th>Carrera:</th>
                             <td colspan="2"> {{ $coordinador->carrera->nombrecarrera }}</td>
                         </tr>
                         <tr>
-                            <th>Nombre</th>
+                            <th>Nombre:</th>
                             <td colspan="2">{{ $coordinador->profesor->nombresprofesor }} {{ $coordinador->profesor->apellidosprofesor }}</td>
 
                         </tr>
                         <tr>
-                            <th>Fecha de Inicio</th>
+                            <th>Fecha de Inicio:</th>
                             <td colspan="2">{{ $coordinador->fechainiciocoordinador }}</td>
 
                         </tr>
                         <tr>
-                            <th>Fecha de Fin</th>
+                            <th>Fecha de Fin:</th>
                             <td>
-                                <input  style="width: 50%;display: inline" type="text" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
+                                <input  style="width: 60%;display: inline" type="date" class="form-control" id="fin" name="fin" value="{{ $coordinador->fechafincoordinador }}">
 
 
-                                <button  data-toggle="modal" data-target="#f1" class="btn btn-sm btn-outline-secondary">Finalizar Termino</button>
+                                <button  style="vertical-align: middle" data-toggle="modal" data-target="#f1" class="btn btn-sm btn-outline-danger">Finalizar</button>
 
                             </td>
 
@@ -102,7 +102,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </div>
-                                                <input type="text" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                                <input type="date" class="form-control"id="inicio" name="inicio" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                                             </div>
                                         </td>
                                     </tr>
@@ -114,7 +114,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                 </div>
-                                                <input id="fin" name="fin" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                                <input id="fin" name="fin" type="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                                             </div>
                                         </td>
                                     </tr>

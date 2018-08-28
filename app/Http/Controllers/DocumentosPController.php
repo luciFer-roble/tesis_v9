@@ -56,7 +56,7 @@ class DocumentosPController extends Controller
         $path   =   "practicas/";
 
         $file->storeAs($path, $name);
-    
+
         // redirect
         return redirect('documentosp');
 

@@ -84,6 +84,7 @@ Vue.component('coordinadores-componente', require('./components/coordinadores-co
 Vue.component('coordinadores-nuevo', require('./components/coordinadores-nuevo.vue'));
 Vue.component('empresa-nuevo', require('./components/empresa-nuevo.vue'));;
 Vue.component('empresas-componente', require('./components/empresas-componente.vue'));
+Vue.component('formato-nuevo', require('./components/formato-nuevo.vue'));
 const app = new Vue({
     el: '#app'
 });

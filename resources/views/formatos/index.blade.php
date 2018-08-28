@@ -13,7 +13,7 @@
                 <div class="col-12">
 
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3"  id="app">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
@@ -21,18 +21,21 @@
 
                                 @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
                             <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'formatos/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
+                                <formato-nuevo :rol="{{ Auth::user()->roles->first()}}" ></formato-nuevo>
                             </div>
                                     @endif
                         </div>
                         </div>
-                        <div class="card-body" id="app">
+                        <div class="card-body">
                             <div class="table-responsive">
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
                                         <th class="p-0 m-0 pl-1">Codigo</th>
+                                        @if(Auth::user()->hasRole('admin'))
+                                            <th class="p-0 m-0 pl-1">Carrera</th>
+                                        @endif
                                         <th class="p-0 m-0 pl-1">Descripcion</th>
                                         <th class="p-0 m-0 pl-3">Archivos</th>
                                         @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
@@ -43,7 +46,8 @@
                                     </thead>
                                     <tbody>
                                     @foreach($formatos as $formato)
-                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcionn="{{ $formato->tipodocumento->descripciontipodocumento }}">
+                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcionn="{{ $formato->tipodocumento->descripciontipodocumento }}"
+                                            :rol="{{ Auth::user()->roles->first()}}" >
 
                                         </tr>
                                     @endforeach

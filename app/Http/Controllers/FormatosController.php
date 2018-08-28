@@ -32,7 +32,8 @@ class FormatosController extends Controller
         $rules = array(
             'id'       => 'required',
             'descripcion'       => 'required',
-            'archivo'       => 'required'
+            'archivo'       => 'required',
+            'carrera'      => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -44,7 +45,8 @@ class FormatosController extends Controller
         // store
         TipoDocumento::create([
             'idtipodocumento'       => request('id'),
-            'descripciontipodocumento'      => request('descripcion')
+            'descripciontipodocumento'      => request('descripcion'),
+            'idcarrera'      => request('carrera')
         ]);
         Formato::create([
             'idtipodocumento'       => request('id'),

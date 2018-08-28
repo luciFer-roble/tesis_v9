@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <div class="formgroup">
                                 <label>Carrera:</label>
-                                <select class="form-control" name="carrera" v-model="carreraselect">
+                                <select class="form-control" name="carrera" v-model="carreraselect" :disabled="rol.name==='coord'" >
                                     <option v-for="item in carreras" :key="item.idcarrera" :value="item.idcarrera">{{ item.nombrecarrera }}</option>
                                 </select>
                             </div>
@@ -82,10 +82,21 @@
                 archivo: '',
                 file: '',
                 carreraselect: '',
-                carreras: []
+                carreras: [],
+                carrerauser: ''
             }
         },
         methods:{
+            getcarrerauser:function () {
+                console.log(this.rol.pivot.user_id);
+                axios.get(window.location.origin+'/api/getcarrerauser',{
+                        params:{'id':this.rol.pivot.user_id}
+                }).then((response)=>{
+                    this.carrerauser=response.data;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
             create:function () {
                 this.errors = [];
                 this.mostrar = false;
@@ -94,6 +105,9 @@
                 ).then((response)=>{
                     this.carreras=response.data;
                     this.carreraselect=this.carreras[0].idcarrera;
+                    if(this.rol.name === 'coord'){
+                        this.carreraselect = this.carrerauser[0].idcarrera;
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -135,7 +149,7 @@
 
         },
         created() {
-
+            this.getcarrerauser();
         }
     }
 </script>

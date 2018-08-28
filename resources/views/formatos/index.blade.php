@@ -33,7 +33,7 @@
                                     <thead>
                                     <tr>
                                         <th class="p-0 m-0 pl-1">Codigo</th>
-                                        @if(Auth::user()->hasRole('admin'))
+                                        @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('prof'))
                                             <th class="p-0 m-0 pl-1">Carrera</th>
                                         @endif
                                         <th class="p-0 m-0 pl-1">Descripcion</th>
@@ -46,7 +46,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($formatos as $formato)
-                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcionn="{{ $formato->tipodocumento->descripciontipodocumento }}"
+                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcionn="{{ $formato->descripciontipodocumento }}"
                                             :rol="{{ Auth::user()->roles->first()}}" >
 
                                         </tr>

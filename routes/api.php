@@ -56,3 +56,4 @@ Route::get('getestudiante','ConsultasController@getestudiante');
 Route::get('getempresa','ConsultasController@getempresa');
 Route::get('getprofesor','ConsultasController@getprofesor');
 Route::get('gettutore','ConsultasController@gettutore');
+Route::get('getcarrerauser','ConsultasController@getcarrerauser');

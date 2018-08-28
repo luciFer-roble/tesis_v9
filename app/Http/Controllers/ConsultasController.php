@@ -380,4 +380,13 @@ class ConsultasController extends Controller
         return TutorE::join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
             ->where('idtutore','=', $request->id)->first();
     }
+    public function getcarrerauser(Request $request){
+        return DB::table('profesor')
+            ->join('coordinador', 'profesor.idprofesor', '=', 'coordinador.idprofesor')
+            ->join('carrera', 'carrera.idcarrera', '=', 'coordinador.idcarrera')
+            ->select('carrera.idcarrera')
+            ->where('profesor.iduser', '=',$request->id)
+            ->where('coordinador.activocoordinador', '=', 'TRUE')->get();
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Formato;
 use App\TipoDocumento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Laracasts\Flash\Flash;
@@ -17,8 +18,55 @@ class FormatosController extends Controller
     }
     public function index()
     {
+        if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('tut')){
+            $formatos = Formato::
+                join('tipodocumento', 'formato.idtipodocumento', '=', 'tipodocumento.idtipodocumento')
+                ->join('carrera', 'carrera.idcarrera', '=', 'tipodocumento.idcarrera')
+                ->orderby('idformato')->get();
+        }
+        elseif(Auth::user()->hasRole('coord')){
+            $carrera = DB::table('profesor')
+                ->join('coordinador', 'profesor.idprofesor', '=', 'coordinador.idprofesor')
+                ->join('carrera', 'carrera.idcarrera', '=', 'coordinador.idcarrera')
+                ->select('carrera.idcarrera')
+                ->where('profesor.iduser', '=', Auth::user()->id)
+                ->where('coordinador.activocoordinador', '=', 'TRUE');
+            //var_dump($carrera); exit();
+            $formatos = Formato::
+                join('tipodocumento', 'formato.idtipodocumento', '=', 'tipodocumento.idtipodocumento')
+                ->join('carrera', 'carrera.idcarrera', '=', 'tipodocumento.idcarrera')
+                ->whereIn('carrera.idcarrera', $carrera)
+                ->orderby('idformato')->get();
+            //var_dump($formatos); exit();
+        }
+        elseif(Auth::user()->hasRole('prof')){
+            $carrera = DB::table('profesor')
+                ->join('escuela', 'profesor.idescuela', '=', 'escuela.idescuela')
+                ->join('carrera', 'carrera.idescuela', '=', 'escuela.idescuela')
+                ->select('carrera.idcarrera')
+                ->where('profesor.iduser', '=', Auth::user()->id);
+            //var_dump($carrera); exit();
+            $formatos = Formato::
+                join('tipodocumento', 'formato.idtipodocumento', '=', 'tipodocumento.idtipodocumento')
+                ->join('carrera', 'carrera.idcarrera', '=', 'tipodocumento.idcarrera')
+                ->whereIn('carrera.idcarrera', $carrera)
+                ->orderby('idformato')->get();
+            //var_dump($formatos); exit();
+        }
+        elseif(Auth::user()->hasRole('est')){
+            $carrera = DB::table('estudiante')
+                ->join('carrera', 'carrera.idcarrera', '=', 'estudiante.idcarrera')
+                ->select('carrera.idcarrera')
+                ->where('estudiante.iduser', '=', Auth::user()->id);
+            //var_dump($carrera); exit();
+            $formatos = Formato::
+                join('tipodocumento', 'formato.idtipodocumento', '=', 'tipodocumento.idtipodocumento')
+                ->join('carrera', 'carrera.idcarrera', '=', 'tipodocumento.idcarrera')
+                ->whereIn('carrera.idcarrera', $carrera)
+                ->orderby('idformato')->get();
+            //var_dump($formatos); exit();
+        }
         $tiposdocumento = TipoDocumento::orderby('idtipodocumento')->get();
-        $formatos = Formato::orderby('idformato')->get();
         return view('formatos.index', compact('tiposdocumento','formatos'));
     }
 

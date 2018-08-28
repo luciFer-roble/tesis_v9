@@ -1,6 +1,7 @@
     <template>
     <tr v-show="!borrado">
         <td class="p-0 m-0 pl-1">{{ formato.idtipodocumento }}</td>
+        <td v-if="rol.name === 'admin' || rol.name === 'prof'" class="p-0 m-0 pl-1">{{ formato.nombrecarrera }}</td>
         <td class="p-0 m-0 pl-1">{{ descripcionn }}</td>
         <td class="p-0 m-0 pl-0" style="width:7%"><button class="btn btn-link " :title="formato.archivoformato" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
@@ -97,6 +98,9 @@
     export default {
         props: {
             formato: {
+                type: Object
+            },
+            rol: {
                 type: Object
             },
             descripcionn: String

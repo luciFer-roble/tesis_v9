@@ -55,13 +55,10 @@
                                     @foreach($practicas as $practica)
                                         <tr>
                                             <td class="p-0  m-0">{{ $practica->idpractica }}</td>
-                                            <td class="p-0  m-0">{{ $practica->estudiante->nombresestudiante .' '. $practica->estudiante->apellidosestudiante }}
-                                            </td>
+                                            <td class="p-0  m-0">{{ $practica->estudiante->nombresestudiante .' '. $practica->estudiante->apellidosestudiante }}</td>
                                             <td class="p-0  m-0">{{ $practica->tutore->empresa->nombreempresa }}</td>
-                                            <td class="p-0  m-0">{{ $practica->profesor->nombresprofesor .' '. $practica->profesor->apellidosprofesor }}
-                                            </td>
-                                            <td class="p-0  m-0">{{ $practica->tutore->nombretutore .' '. $practica->tutore->apellidotutore }}
-                                            </td>
+                                            <td class="p-0  m-0">{{ $practica->profesor->nombresprofesor .' '. $practica->profesor->apellidosprofesor }}</td>
+                                            <td class="p-0  m-0">{{ $practica->tutore->nombretutore .' '. $practica->tutore->apellidotutore }}</td>
                                             <td class="p-0  m-0">{{ $practica->tipopractica }}</td>
                                             <td class="p-0  m-0">{{ $practica->descripcionpractica }}</td>
                                             <td class="p-0  m-0">{{ $practica->periodoacademico->nombreperiodoacademico }}</td>

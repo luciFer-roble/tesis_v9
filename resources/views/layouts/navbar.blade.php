@@ -85,20 +85,12 @@
                         <span class="badge badge-danger navbar-badge">{{ Auth::user()->unreadNotifications->count() }}</span>
                     @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" >
 
                     <span class="dropdown-item dropdown-header text-info">{{ Auth::user()->unreadNotifications->count() }} Notificaciones</span>
-                    <div class="dropdown-divider"
-                         style="white-space: pre;
-                            white-space: pre-wrap;      /* CSS 2.1 */
-                            white-space: pre-line;      /* CSS 3.0 */
-                            white-space: -o-pre-wrap;   /* Opera 7 */
-                            white-space: -moz-pre-wrap; /* Mozilla */
-                            word-wrap: break-word;      /* IE 5+ */"></div>
+                    <div class="dropdown-divider"></div>
                     @foreach(Auth::user()->unreadNotifications as $notification)
-                        <a onclick="{{ $notification->markAsRead() }}" href="{{ $notification->data['link'] }}" class="dropdown-item text-secondary">
-                            {{ $notification->data['data'] }}
-                            <span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                        <a style="white-space: pre-line; white-space: pre-wrap; word-wrap: break-word;" onclick="{{ $notification->markAsRead() }}" href="{{ $notification->data['link'] }}" class="dropdown-item text-secondary">{{ $notification->data['data'] }}<span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
                     @endforeach

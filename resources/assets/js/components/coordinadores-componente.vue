@@ -58,15 +58,11 @@
                         <div class="form-group">
                             <div class="formgroup">
                                 <label>Carrera:</label>
-                                <select class="form-control" name="carrera" v-model="carreraselect" >
-                                    <option v-for="item in carreras" :key="item.idcarrera" :value="item.idcarrera">{{ item.nombrecarrera }}</option>
-                                </select>
+                                <input type="text" class="form-control" v-model="carre" name="carrera" />
                             </div>
                             <div class="formgroup">
                                 <label>Profesor:</label>
-                                <select class="form-control" name="profesor" v-model="profesorselect" disabled>
-                                    <option v-for="item in profesores" :key="item.idprofesor" :value="item.idprofesor">{{ item.nombresprofesor }} {{ item.apellidosprofesor }}</option>
-                                </select>
+                                <input type="text" class="form-control" v-model="nombre" name="profesor" />
                             </div>
                             <div class="formgroup" width="100">
                                 <label>Inicio:</label>
@@ -81,7 +77,7 @@
                     <div class="modal-footer">
                         <a class="btn btn-light" data-dismiss="modal" v-bind:class="{ disabled: actualizando }" >Cancelar</a>
                         <button type="button"  v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-primary' : !actualizando }" @click="update" class="btn " >{{ boton1 }}</button>
-                        <button type="button"  v-bind:class="{ disabled: finalizando, 'btn-danger': finalizando, 'btn-danger' : !finalizando }" @click="finalizar" class="btn " >{{ boton2 }}</button>
+                        <button type="button"  v-bind:class="{ disabled: finalizando, 'btn-danger': finalizando, 'btn-danger' : !finalizando }"  class="btn " >{{ boton2 }}</button>
                     </div>
                 </div>
             </div>
@@ -116,7 +112,11 @@
                 boton1: 'Actualizar',
                 boton2: 'Finalizar',
                 errors: [],
-                mostrar: false
+                mostrar: false,
+                nombre: '',
+                carre: '',
+                profesor2: Object,
+                finalizando: false
             }
         },
         methods:{
@@ -125,7 +125,7 @@
                 axios.get(window.location.origin+'/api/getprofesor',{
                     params:{'id':id}
                 }).then((response)=>{
-                    this.profesor=response.data;
+                    this.profesor2=response.data;
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -137,20 +137,8 @@
                 this.errors = [];
                 this.mostrar = false;
                 this.actualizando = false;
-                axios.get(window.location.origin+'/api/getcarreras'
-                ).then((response)=>{
-                    this.carreras=response.data;
-                }).catch(function (error) {
-                    console.log(error);
-                });
-                /*axios.get(window.location.origin+'/api/getprofesores'
-                ).then((response)=>{
-                    this.profesores=response.data;
-                }).catch(function (error) {
-                    console.log(error);
-                });*/
-                this.carreraselect = this.coordinador.idcarrera;
-                this.profesorselect = this.coordinador.idprofesor;
+                this.carre = this.carrera.nombrecarrera;
+                this.nombre = this.profesor.nombresprofesor+' '+this.profesor.apellidosprofesor;
                 this.inicio = this.coordinador.fechainiciocoordinador;
                 this.fin = this.coordinador.fechafincoordinador;
                 $(this.$refs.modaledit).modal('show');

@@ -30,14 +30,84 @@
                             </div>
                         </div>
                         <div class="card-body" id="app">
-                            <div class="table-responsive">
+                            <div class="">
+                                <div class="row">
+                                <div class="col-1">
+                                    <form method="post" action="/actividades/descargar">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="practica" value="{{ $practica->idpractica }}"/>
+                                        <input type="hidden" name="pagina" value="{{ $actividades->currentPage() }}"/>
+                                        <button title="DESCARGAR SEMANA" type="submit" class="btn btn-outline-info"><i class="fas fa-download"></i>&nbsp; Imprimir</button>
+                                    </form>
+                                </div>
+                                <div class="col-11">
+                                    <?php $pagination_range = 2; ?>
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination justify-content-end">
+
+                                            <li class="page-item {{ $actividades->previousPageUrl()==null ? 'disabled' : '' }}">
+                                                <a class="page-link" href="{{ $actividades->previousPageUrl() ?? '#' }}">Anterior</a>
+                                            </li>
+
+
+                                            @if ($actividades->currentPage() > 1+$pagination_range )
+
+                                                <li class="page-item">
+                                                    <a class="page-link" href="{{ $actividades->url(1) ?? '#' }}">{{ 1 }}</a>
+                                                </li>
+
+                                                @if ($actividades->currentPage() > 1+$pagination_range+1 )
+                                                    <li class="page-item disabled">
+                                                        <span class="page-link">&hellip;</span>
+                                                    </li>
+                                                @endif
+
+                                            @endif
+
+                                            @for ($i=-$pagination_range; $i<=$pagination_range; $i++)
+
+                                                @if ($actividades->currentPage()+$i > 0 && $actividades->currentPage()+$i <= $actividades->lastPage())
+                                                    <li class="page-item {{ $i==0 ? 'active' : '' }}">
+                                                        <a class="page-link" href="{{ $actividades->url($actividades->currentPage()+$i) }}">{{ 'Semana '.($actividades->currentPage()+$i) }}</a>
+                                                    </li>
+                                                @endif
+
+                                            @endfor
+
+                                            @if ($actividades->currentPage() < $actividades->lastPage()-$pagination_range )
+
+                                                @if ($actividades->currentPage() < $actividades->lastPage()-$pagination_range-1 )
+                                                    <li class="page-item disabled">
+                                                        <span class="page-link">&hellip;</span>
+                                                    </li>
+                                                @endif
+
+                                                <li class="page-item">
+                                                    <a class="page-link" href="{{ $actividades->url($actividades->lastPage()) ?? '#' }}">{{ $actividades->lastPage() }}</a>
+                                                </li>
+
+                                            @endif
+
+                                            <li class="page-item {{ $actividades->nextPageUrl()==null ? 'disabled' : '' }}">
+                                                <a class="page-link" href="{{ $actividades->nextPageUrl() ?? '#' }}">Siguiente</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="/actividades/{{ $practica->idpractica }}/{{ ($actividades->total())/5 }}">Nueva</a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                                </div>
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Descripcion de Actividades</th>
-                                        <th>Control</th>
+                                        @if(Auth::user()->hasRole('tut') || Auth::user()->hasRole('prof'))
+                                            <th>Control</th>
+                                        @endif
                                         <th>Comentario</th>
                                         {{--<th>Horas</th>--}}
 
@@ -45,81 +115,21 @@
                                     </thead>
                                     <tbody>
                                     @foreach($actividades as $actividad)
-                                        <tr is="actividad" practica="{{ $practica->idpractica }}" :actividad="{{ $actividad }}" >
+                                        <tr is="actividad" practica="{{ $practica->idpractica }}" :actividad="{{ $actividad }}"
+                                            :rol="{{ Auth::user()->roles->first() }}">
 
                                         </tr>
                                     @endforeach
 
                                     </tbody>
-                                    <div>
-                                        <?php $pagination_range = 2; ?>
-                                        <nav aria-label="Page navigation">
-                                            <ul class="pagination justify-content-end">
 
-                                                <li class="page-item {{ $actividades->previousPageUrl()==null ? 'disabled' : '' }}">
-                                                    <a class="page-link" href="{{ $actividades->previousPageUrl() ?? '#' }}">Anterior</a>
-                                                </li>
-
-
-                                                @if ($actividades->currentPage() > 1+$pagination_range )
-
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="{{ $actividades->url(1) ?? '#' }}">{{ 1 }}</a>
-                                                    </li>
-
-                                                    @if ($actividades->currentPage() > 1+$pagination_range+1 )
-                                                        <li class="page-item disabled">
-                                                            <span class="page-link">&hellip;</span>
-                                                        </li>
-                                                    @endif
-
-                                                @endif
-
-                                                @for ($i=-$pagination_range; $i<=$pagination_range; $i++)
-
-                                                    @if ($actividades->currentPage()+$i > 0 && $actividades->currentPage()+$i <= $actividades->lastPage())
-                                                        <li class="page-item {{ $i==0 ? 'active' : '' }}">
-                                                            <a class="page-link" href="{{ $actividades->url($actividades->currentPage()+$i) }}">{{ 'Semana '.($actividades->currentPage()+$i) }}</a>
-                                                        </li>
-                                                    @endif
-
-                                                @endfor
-
-                                                @if ($actividades->currentPage() < $actividades->lastPage()-$pagination_range )
-
-                                                    @if ($actividades->currentPage() < $actividades->lastPage()-$pagination_range-1 )
-                                                        <li class="page-item disabled">
-                                                            <span class="page-link">&hellip;</span>
-                                                        </li>
-                                                    @endif
-
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="{{ $actividades->url($actividades->lastPage()) ?? '#' }}">{{ $actividades->lastPage() }}</a>
-                                                    </li>
-
-                                                @endif
-
-                                                <li class="page-item {{ $actividades->nextPageUrl()==null ? 'disabled' : '' }}">
-                                                    <a class="page-link" href="{{ $actividades->nextPageUrl() ?? '#' }}">Siguiente</a>
-                                                </li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="/actividades/{{ $practica->idpractica }}/{{ ($actividades->total())/5 }}">Nueva</a>
-                                                </li>
-
-                                            </ul>
-                                        </nav>
-                                    </div>
 
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer small text-muted">
-                            <form method="post" action="/actividades/descargar">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="practica" value="{{ $practica->idpractica }}"/>
-                                <input type="hidden" name="pagina" value="{{ $actividades->currentPage() }}"/>
-                                <button type="submit" class="btn btn-primary">Imprimir</button>
-                            </form></div>
+                        <div class="card-footer small justify-content-end">
+                            <a  href="{{ URL::to('practicas/' . $practica->idpractica . '/edit') }}" class="btn btn-secondary"><i class="fas fa-backward"></i>&nbsp; Regresar</a>
+                        </div>
                     </div>
 
                 </div>

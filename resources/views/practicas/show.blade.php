@@ -184,9 +184,9 @@
                         </div>
                     </div>
                     <div class="form-group p-0 m-0 col-md-6">
-                        <label class="col-sm-12 control-label" for="inicio">Fecha de Finalizacion:</label>
+                        <label class="col-sm-12 control-label" for="fin">Fecha de Finalizacion:</label>
                         <div class="col-lg-12">
-                            <input type="date" class="form-control" id="inicio" name="inicio" value="{{ $practica->fechafinpractica }}">
+                            <input type="date" class="form-control" id="fin" name="fin" value="{{ $practica->fechafinpractica }}">
                         </div>
                     </div>
                 </div>
@@ -226,9 +226,9 @@
                         </div>
                     </div>
                     <div class="form-group p-0 m-0 col-md-5">
-                        <label class="col-sm-12 control-label" for="horas">Horario:</label>
+                        <label class="col-sm-12 control-label" for="horario">Horario:</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="horas" name="horas" value="{{ $practica->horariopractica }}">
+                            <input type="text" class="form-control" id="horario" name="horario" value="{{ $practica->horariopractica }}">
 
                         </div>
                     </div>

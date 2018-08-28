@@ -128,7 +128,8 @@ class PracticasController extends Controller
             'empresa'       => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
-            'periodo'    => 'required'
+            'periodo'    => 'required',
+           'tutore'  => 'required'
         );
         $this->validate(request(), $rules);
         $activa='TRUE';

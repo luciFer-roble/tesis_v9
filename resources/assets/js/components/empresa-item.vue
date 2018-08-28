@@ -8,16 +8,16 @@
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
         <td style="width:  7%" class="p-1 m-0">{{ sede }}</td>
-        <td  style="width: 2.2%"class="p-0 m-0" v-if="convenio"><button class="btn btn-link" :title="convenio" @click="descargar">
+        <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="convenio"><button class="btn btn-link p-0 m-0" :title="convenio" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
             <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
             <i v-if="doc" class="far fa-file-word"></i>
         </button></td>
-        <td  style="width: 2.2%"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link" @click="agregar_convenio" title="AÑADIR CONVENIO" ><i class="fa fa-plus"></i></button></td>
-        <td style="width: 2.2%" class="p-0 m-0"><button class="btn btn-link" @click="edit" title="EDITAR"><i class="text-info fa fa-pencil-alt"></i></button></td>
-        <td style="width: 2.2%" class="p-0 m-0"><button class="btn btn-link" @click="agregartutor" title="AÑADIR TUTOR"><i class=" text-info fas fa-user-plus"></i></button></td>
-        <td style="width: 1%" v-if="!tutores" class="p-1 m-0"><i @click="vertutores" class="fa fa-angle-down "></i></td>
-        <td style="width: 1%" v-if="tutores" class="p-1 m-0"><i @click="ocultartutores" class="fa fa-angle-up "></i></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link p-0 m-0" @click="agregar_convenio" title="AÑADIR CONVENIO" ><i class="fa fa-plus"></i></button></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0"><button class="btn btn-link p-0 m-0" @click="edit" title="EDITAR"><i class="text-info fa fa-pencil-alt"></i></button></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0"><button class="btn btn-link p-0 m-0" @click="agregartutor" title="AÑADIR TUTOR"><i class=" text-info fas fa-user-plus"></i></button></td>
+        <td align="center" style="width: 1%; vertical-align: middle" v-if="!tutores" class="p-0 m-0"><i @click="vertutores" class="fa fa-angle-down p-0 m-0 "></i></td>
+        <td align="center" style="width: 1%; vertical-align: middle" v-if="tutores" class="p-0 m-0"><i @click="ocultartutores" class="fa fa-angle-up p-0 m-0 "></i></td>
     </tr>
     <tr>
         <td v-if="llena" v-show="tutores" colspan="10" class="p-0 m-0">

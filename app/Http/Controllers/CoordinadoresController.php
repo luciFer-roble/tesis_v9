@@ -25,9 +25,11 @@ class CoordinadoresController extends Controller
 
     public function create()
     {
-        $carrerasutilizadas = Coordinador::pluck('idcarrera')->all();
+        $carrerasutilizadas = Coordinador::where('activocoordinador','=','TRUE')->pluck('idcarrera');
         $carreras = Carrera::whereNotIn('idcarrera', $carrerasutilizadas)->select('idcarrera','nombrecarrera')->get();
-        $profesores = Profesor::all();
+        $profesoresutilizados = Coordinador::where('activocoordinador','=','TRUE')->pluck('idprofesor');
+        $profesores= Profesor::whereNotIn('idprofesor', $profesoresutilizados)->select('idprofesor','nombresprofesor', 'apellidosprofesor')->get();
+
         return view('coordinadores.create')->with(compact('carreras', 'profesores'));
     }
     public function change(Coordinador $coordinador)
@@ -62,7 +64,7 @@ class CoordinadoresController extends Controller
 
         if(!empty(request('cambio'))){
             $id=request('cambio');
-            return $this->update($id);
+            return $this->finalize($id);
         }
         else{
 
@@ -126,8 +128,6 @@ class CoordinadoresController extends Controller
 
         );
         $this->validate(request(), $rules);
-        $coordinador=Coordinador::where('idcoordinador','=',$id)->first();
-
         // store
         Coordinador::updateOrCreate(['idcoordinador'  => $id], [
             'fechafincoordinador'      => request('fin'),
@@ -144,16 +144,17 @@ class CoordinadoresController extends Controller
     {
         $rules = array(
             'fin'    => 'required',
-            'activo'    => 'required'
+            'inicio' => 'required'
 
         );
         $this->validate(request(), $rules);
         $coordinador=Coordinador::where('idcoordinador','=',$id)->first();
-
+        $activo='FALSE';
         // store
         Coordinador::updateOrCreate(['idcoordinador'  => $id], [
             'fechafincoordinador'      => request('fin'),
-            'activocoordinador'      => request('activo')
+            'fechainiciocoordinador'      => request('inicio'),
+            'activocoordinador'      => $activo
         ]);
 
         $profesor=Profesor::where('idprofesor','=',$coordinador->idprofesor)->first();

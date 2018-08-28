@@ -91,7 +91,7 @@
                                                     <div class="col">
                                                         {{ Form::open(array('url' => 'profesores/' . $profesor->idprofesor, 'class' => '')) }}
                                                         {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #0aeff1"></i></button>
+                                                        <button type="submit" class="btn text-danger btn-link text-danger p-0 m-0"><i class="fa fa-fw fa-trash-alt" ></i></button>
                                                         {{ Form::close() }}
                                                     </div>
 

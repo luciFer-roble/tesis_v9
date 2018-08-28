@@ -143,8 +143,8 @@
                     </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="col-sm-10 control-label">Empresa:</label>
-                                <div class="col-lg-11">
+                                <div class="formgroup" width="100%">
+                                    <label>Empresa:</label>
                                     <select v-model="empresa" name="empresa" class="form-control">
                                         <option value="">-Seleccione-</option>
                                         <option  :key="item.idempresa" v-for="item in empresas" :value="item.idempresa">{{item.nombreempresa}}</option>

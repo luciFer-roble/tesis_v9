@@ -87,7 +87,7 @@
                 }).catch(function (error) {
                     console.log(error);
                 });
-                axios.get(window.location.origin+'/api/getprofesores'
+                axios.get(window.location.origin+'/api/getprofesoresnocoordinadores'
                 ).then((response)=>{
                     this.profesores=response.data;
                     this.profesorselect=this.profesores[0].idprofesor;

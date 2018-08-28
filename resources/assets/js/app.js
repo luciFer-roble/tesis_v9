@@ -82,7 +82,8 @@ Vue.component('tutores-componente', require('./components/tutores-componente.vue
 Vue.component('tutores-nuevo', require('./components/tutores-nuevo.vue'));
 Vue.component('coordinadores-componente', require('./components/coordinadores-componente.vue'));
 Vue.component('coordinadores-nuevo', require('./components/coordinadores-nuevo.vue'));
-Vue.component('empresa-nuevo', require('./components/empresa-nuevo.vue'));
+Vue.component('empresa-nuevo', require('./components/empresa-nuevo.vue'));;
+Vue.component('empresas-componente', require('./components/empresas-componente.vue'));
 const app = new Vue({
     el: '#app'
 });

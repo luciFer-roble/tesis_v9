@@ -65,19 +65,19 @@
 
                                             <td class="p-0 m-0" style="width: 9%">
                                                 <div class="row p-0 m-0">
-                                                    <div class="col p-0 m-0">
+                                                    <div class="col p-0 m-0" align="center">
                                                         <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estudiantes/' . $estudiante->idestudiante . '/edit') }}">
                                                             <i class="fa fa-fw fa-pencil-alt"></i>
                                                         </a>
                                                     </div>
-                                                    <div class="col p-0 m-0">
+                                                    <div class="col p-0 m-0" align="center">
                                                         {{ Form::open(array('url' => 'estudiantes/' . $estudiante->idestudiante, 'class' => '')) }}
                                                         {{ Form::hidden('_method', 'DELETE') }}
                                                         <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
                                                         {{ Form::close() }}
                                                     </div>
-                                                    <div class="col p-0 m-0">
-                                                        <a  class="btn btn-link p-0 m-0" href="{{ URL::to('estasignaturas/' . $estudiante->carrera->idcarrera . '/create/' . $estudiante->idestudiante) }}">
+                                                    <div class="col p-0 m-0" align="center">
+                                                        <a title="Ver asignaturas" class="btn btn-link p-0 m-0" href="{{ URL::to('estasignaturas/' . $estudiante->carrera->idcarrera . '/create/' . $estudiante->idestudiante) }}">
 
                                                             <i class="fa fa-fw fa-clipboard-list"></i></a>
                                                     </div>

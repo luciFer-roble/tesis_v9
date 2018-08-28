@@ -33,6 +33,7 @@
                                     <tr>
                                         <th class="p-0 m-0">Nombre</th>
                                         <th class="p-0 m-0">Direccion</th>
+                                        <th class="p-0 m-0">Tipo</th>
                                         <th class="p-0 m-0">Sector</th>
                                         <th class="p-0 m-0">Telefono</th>
                                         <td class="p-0 m-0"></td>
@@ -42,31 +43,8 @@
                                     <tbody>
 
                                         @foreach($empresas as $empresa)
-                                            <tr>
-                                                <td class="p-0 m-0">{{ $empresa->nombreempresa }}</td>
-                                                <td class="p-0 m-0">{{ $empresa->direccionempresa }}</td>
-                                                <td class="p-0 m-0">{{ $empresa->sectorempresa }}</td>
-                                                <td class="p-0 m-0">{{ $empresa->telefonoempresa }}</td>
-                                                <td class="p-0 m-0" style="width: 7%">
-                                                    <div class="row p-0 m-0">
-                                                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                                                        <div class="col">
-                                                    <a  class="btn btn-link p-0 m-0" href="{{ URL::to('empresas/' . $empresa->idempresa . '/edit') }}">
+                                            <tr is="empresas-componente" :empresa="{{ $empresa }}" ></tr>
 
-                                                        <i class="fa fa-fw fa-pencil-alt"></i>
-                                                    </a></div>
-
-                                                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                                                    <!-- we will add this later since its a little more complicated than the other two buttons -->
-                                                        <div class="col">
-                                                    {{ Form::open(array('url' => 'empresas/' . $empresa->idempresa, 'class' => '')) }}
-                                                    {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit" class="btn btn-link p-0 m-0"><i class="fa fa-fw fa-trash-alt" style="color: #f10407"></i></button>
-                                                    {{ Form::close() }}
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

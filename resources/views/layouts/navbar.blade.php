@@ -90,7 +90,7 @@
                     <span class="dropdown-item dropdown-header text-info">{{ Auth::user()->unreadNotifications->count() }} Notificaciones</span>
                     <div class="dropdown-divider"></div>
                     @foreach(Auth::user()->unreadNotifications as $notification)
-                        <a style="white-space: pre-line; white-space: pre-wrap; word-wrap: break-word;" onclick="{{ $notification->markAsRead() }}" href="{{ $notification->data['link'] }}" class="dropdown-item text-secondary">{{ $notification->data['data'] }}<span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                        <a style="white-space: pre-line; white-space: pre-wrap; word-wrap: break-word;"  href="{{url('notifications/'.$notification->id)}}" class="dropdown-item text-secondary">{{ $notification->data['data'] }}<span class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
                     @endforeach

@@ -48,7 +48,7 @@
                                                     @if (empty($profesor))
                                                         @foreach($profesores as $profesor)
                                                             <option value="{{ (string)$profesor->idprofesor }}">
-                                                                {{ $profesor->nombre1profesor }} {{ $profesor->nombre2profesor }} {{ $profesor->apellido1profesor }} {{ $profesor->apellido2profesor }}
+                                                                {{ $profesor->nombresprofesor }} {{ $profesor->apellidosprofesor }}
                                                             </option>
                                                         @endforeach
                                                     @else

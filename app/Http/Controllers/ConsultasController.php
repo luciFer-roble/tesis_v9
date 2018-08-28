@@ -349,8 +349,13 @@ class ConsultasController extends Controller
         return Carrera::all();
     }
     public function getcarrerassincoordinador(){
-        $carrerasutilizadas = Coordinador::pluck('idcarrera')->all();
+        $carrerasutilizadas = Coordinador::where('activocoordinador','=','TRUE')->pluck('idcarrera');
         return Carrera::whereNotIn('idcarrera', $carrerasutilizadas)->select('idcarrera','nombrecarrera')->get();
+
+    }
+    public function getprofesoresnocoordinadores(){
+        $profesoresutilizados = Coordinador::where('activocoordinador','=','TRUE')->pluck('idprofesor');
+        return Profesor::whereNotIn('idprofesor', $profesoresutilizados)->select('idprofesor','nombresprofesor','apellidosprofesor')->get();
 
     }
     public function gettutores(Request $request){

@@ -66,6 +66,7 @@ Route::get('/coordinadores/{coordinador}', 'CoordinadoresController@show');
 Route::post('/coordinadores', 'CoordinadoresController@store');
 Route::get('/coordinadores/{coordinador}/change', 'CoordinadoresController@change');
 Route::put('/coordinadores/{coordinador}', 'CoordinadoresController@update');
+Route::put('/coordinadores/{coordinador}/finalize', 'CoordinadoresController@finalize');
 Route::delete('/coordinadores/{coordinador}', 'CoordinadoresController@destroy');
 Route::get('/coordinadores/{carrera}/create', 'CoordinadoresController@createfrom');
 //Route::get('/coordinadores/{carrera}/list', 'CoordinadoresController@indexfrom');

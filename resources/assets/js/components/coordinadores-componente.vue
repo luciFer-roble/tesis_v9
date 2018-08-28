@@ -5,9 +5,9 @@
         <td class="p-0 m-0">{{ coordinador.fechainiciocoordinador }}</td>
         <td class="p-0 m-0">{{ coordinador.fechafincoordinador }}</td>
 
-        <td class="p-0 m-0" style="width: 4%">
-            <div class="col" >
-                    <span   class="btn text-danger p-0 m-0">
+        <td class="p-0 m-0" style="width: 4%" >
+            <div class="col" align="center">
+                    <span   class="btn text-primary p-0 m-0">
                         <i  class="fa fa-pencil-alt" title="Modificar Coordinador" @click="edit"></i>
                     </span>
             </div>
@@ -58,11 +58,11 @@
                         <div class="form-group">
                             <div class="formgroup">
                                 <label>Carrera:</label>
-                                <input type="text" class="form-control" v-model="carre" name="carrera" />
+                                <input type="text" class="form-control" v-model="carre" name="carrera" disabled />
                             </div>
                             <div class="formgroup">
                                 <label>Profesor:</label>
-                                <input type="text" class="form-control" v-model="nombre" name="profesor" />
+                                <input type="text" class="form-control" v-model="nombre" name="profesor" disabled/>
                             </div>
                             <div class="formgroup" width="100">
                                 <label>Inicio:</label>
@@ -77,7 +77,7 @@
                     <div class="modal-footer">
                         <a class="btn btn-light" data-dismiss="modal" v-bind:class="{ disabled: actualizando }" >Cancelar</a>
                         <button type="button"  v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-primary' : !actualizando }" @click="update" class="btn " >{{ boton1 }}</button>
-                        <button type="button"  v-bind:class="{ disabled: finalizando, 'btn-danger': finalizando, 'btn-danger' : !finalizando }"  class="btn " >{{ boton2 }}</button>
+                        <button type="button"  v-bind:class="{ disabled: finalizando, 'btn-danger': finalizando, 'btn-danger' : !finalizando }"  class="btn " @click="finalize" >{{ boton2 }}</button>
                     </div>
                 </div>
             </div>
@@ -102,6 +102,7 @@
         },
         data: function () {
             return {
+                cambio:'',
                 inicio: '',
                 fin: '',
                 profesorselect: '',
@@ -111,6 +112,7 @@
                 actualizando: false,
                 boton1: 'Actualizar',
                 boton2: 'Finalizar',
+                boton3:'Guardar',
                 errors: [],
                 mostrar: false,
                 nombre: '',
@@ -143,12 +145,34 @@
                 this.fin = this.coordinador.fechafincoordinador;
                 $(this.$refs.modaledit).modal('show');
             },
+            finalize:function () {
+
+                this.actualizando = true;
+                this.boton2 = 'Finalizando';
+                axios.put('/coordinadores/'+this.coordinador.idcoordinador+'/finalize', {
+                    profesor: this.profesorselect,
+                    carrera:this.carre,
+                    inicio: this.inicio,
+                    fin: this.fin
+                })
+                    .then(function (response) {
+                        //$(this.$refs.modaledit).modal('hide');
+                        window.location = response.data.redirect;
+                    })
+                    .catch(error => {
+                        this.actualizando = false;
+                        this.boton1 = 'Actualizar';
+                        module.status = error.response.data.status;
+                        this.errors = error.response.data;
+                        this.mostrar = true;
+                    });
+            },
             update:function () {
                 this.actualizando = true;
                 this.boton1 = 'Actualizando';
                 axios.put('/coordinadores/'+this.coordinador.idcoordinador, {
                     profesor: this.profesorselect,
-                    carrera:this.carreraselect,
+                    carrera:this.carre,
                     inicio: this.inicio,
                     fin: this.fin
                 })
@@ -165,7 +189,7 @@
                     });
 
 
-            },
+            }
 
         },
         created() {

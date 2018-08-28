@@ -58,7 +58,8 @@ class FormatosController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('formatos');
+
+        return ['redirect' => route('formatos.index')];
 
     }
 
@@ -85,9 +86,11 @@ class FormatosController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
+            'id'       => 'required',
             'descripcion'       => 'required'
         );
         $this->validate(request(), $rules);
+        //var_dump($request->descripcion); exit();
         $file  =   $request->file('archivo');
 
         if($file<>null){
@@ -109,11 +112,16 @@ class FormatosController extends Controller
             Storage::disk('formatos')->delete($nameorigin->archivoformato);
             $file->storeAs($path, $name);
         }
+        else{
+            TipoDocumento::updateOrCreate(['idtipodocumento'  => $id], [
+                'descripciontipodocumento'      => request('descripcion')
+            ]);
+        }
 
         Flash::success('Actualizado Correctamente');
 
         // redirect
-        return redirect('formatos');
+        return ['redirect' => route('formatos.index')];
     }
 
 

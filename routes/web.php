@@ -107,7 +107,7 @@ Route::get('/tutores/{tutore}', 'TutorEsController@show');
 Route::post('/tutores', 'TutorEsController@store');
 Route::get('/tutores/{tutore}/edit', 'TutorEsController@edit');
 
-Route::get('/formatos', 'FormatosController@index');
+Route::get('/formatos', 'FormatosController@index')->name('formatos.index');
 Route::get('/formatos/create', 'FormatosController@create');
 Route::get('/formatos/{formato}', 'FormatosController@show');
 Route::post('/formatos', 'FormatosController@store');

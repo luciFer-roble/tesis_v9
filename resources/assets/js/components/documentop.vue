@@ -14,12 +14,14 @@
         <td class="p-0 m-0" v-if="mostrar">
             <button class="btn btn-link" @click="descargar" >{{ archivo }}</button>
         </td>
-        <td><div class="form-check">
-            <label>
-                <input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">
-
-            </label>
-        </div></td>
+        <td style="width: 4%; vertical-align: middle" class="align-items-center fa-disabled" v-if="mostrar">
+            <!--<input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">-->
+            <span class="btn"><i class=" text-success fas fa-check fa-disabled"  ></i></span>
+        </td>
+        <td style="width: 4%; vertical-align: middle" class="align-items-center" v-if="!mostrar">
+            <!--<input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">-->
+            <span class="btn"><i class=" text-danger fas fa-times fa-disabled"  ></i></span>
+        </td>
     </tr>
 </template>
 
@@ -79,15 +81,13 @@
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
-                    })
-                    .then(function (response) {
-                        console.log(response);
-                    })
-                    .catch(function (error) {
+                    }).then((response)=>{
+                        this.archivo=response.data;
+                    }).catch(function (error) {
                         console.log(error);
                     });
                 this.mostrar = true;
-                this.archivo= this.practica.idestudiante+this.tipo.idtipodocumento+'P'+this.practica.idpractica;
+                //this.archivo= this.practica.idestudiante+this.tipo.idtipodocumento+'P'+this.practica.idpractica;
             },
             editar:function () {
                 window.location.href = '/formatos/'+this.formato.idformato+'/edit';
@@ -103,6 +103,13 @@
     }
 </script>
 
-<style scoped>
 
+<style scoped>
+    .fondoverde{
+        background-color: #ccffcc;
+    }
+    .fa-disabled {
+        opacity: 0.8;
+        cursor: default;
+    }
 </style>

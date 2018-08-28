@@ -32,9 +32,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th class="p-0 m-0">Id</th>
-                                        <th class="p-0 m-0">Descripcion</th>
-                                        <th class="p-0 m-0">Archivos</th>
+                                        <th class="p-0 m-0 pl-1">Codigo</th>
+                                        <th class="p-0 m-0 pl-1">Descripcion</th>
+                                        <th class="p-0 m-0 pl-3">Archivos</th>
                                         @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
                                         <th class="p-0 m-0"></th>
                                             @endif
@@ -43,7 +43,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($formatos as $formato)
-                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcion="{{ $formato->tipodocumento->descripciontipodocumento }}">
+                                        <tr is="documento-item"  :formato="{{ $formato }}" descripcionn="{{ $formato->tipodocumento->descripciontipodocumento }}">
 
                                         </tr>
                                     @endforeach

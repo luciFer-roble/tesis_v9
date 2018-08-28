@@ -58,9 +58,9 @@ class DocumentosPController extends Controller
         $file->storeAs($path, $name);
 
 
-        Flash::success('Ingresado Correctamente');
+        //Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('documentosp');
+        return $name;
 
     }
 

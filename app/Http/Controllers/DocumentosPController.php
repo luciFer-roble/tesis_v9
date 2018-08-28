@@ -56,9 +56,7 @@ class DocumentosPController extends Controller
         $path   =   "practicas/";
 
         $file->storeAs($path, $name);
-
-
-        Flash::success('Ingresado Correctamente');
+    
         // redirect
         return redirect('documentosp');
 
@@ -101,8 +99,6 @@ class DocumentosPController extends Controller
             'idpractica'       => request('practica'),
             'archivodocumentop'      => request('archivo')
         ]);
-
-        Flash::success('Actualizado Correctamente');
 
         // redirect
         return redirect('documentosp');

@@ -33,8 +33,6 @@ class ActividadesController extends Controller
             ]);
         }
 
-
-        Flash::success('Ingresado Correctamente');
         // redirect
         return redirect('actividades/'.$practica.'/list?page='.($total+1));
 
@@ -52,9 +50,6 @@ class ActividadesController extends Controller
             //'horasactividad'      => request('horas')
         ]);
 
-
-
-        Flash::success('Actualizado Correctamente');
         // redirect
         return true;
     }

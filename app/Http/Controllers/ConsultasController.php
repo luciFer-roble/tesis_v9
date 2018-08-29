@@ -45,6 +45,7 @@ class ConsultasController extends Controller
             ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
             ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
             ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+            ->orderBy('practica.idpractica', 'desc')
             ->get();
         return $practicas;
     }
@@ -60,6 +61,7 @@ class ConsultasController extends Controller
             ->orWhere($request->criterio.'.apellidos'.$request->criterio, 'like', '%'.$request->parametro.'%')
             ->orWhere($request->criterio.'.nombres'.$request->criterio, 'like', '%'.ucwords(strtolower($request->parametro)).'%')
             ->orWhere($request->criterio.'.apellidos'.$request->criterio, 'like', '%'.ucwords(strtolower($request->parametro)).'%')
+            ->orderBy('practica.idpractica', 'desc')
             ->get();
         return $practicas;
 

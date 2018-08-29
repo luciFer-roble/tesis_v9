@@ -38,7 +38,7 @@ class PracticasController extends Controller
         $request->user()->authorizeRoles(['admin', 'est','prof','tut', 'coord']);
 
         if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord')){
-            $practicas = Practica::all();
+            $practicas = Practica::orderBy('idpractica', 'desc')->get();
             return view('practicas.index', compact('practicas'));
         }
         if(Auth::user()->hasRole('est')){

@@ -9,76 +9,85 @@
     <div class="container-fluid">
         <!-- Breadcrumbs-->
 
-        <div class="row">
-            <div class="col-lg-12">
+
                 <div class="row">
                     <!-- small card -->
-                    <div class="small-box bg-info col-md-3">
-                        <div class="inner">
-                            <h3>R1</h3>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="small-box col-lf-4" style="background-color: #ffdd93">
+                            <div class="inner">
+                                <h3>R1</h3>
 
-                            <p>Estudiantes que finalizaron Prácticas</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r1" class="fa fa-baseball-ball"></i>
+                                <p>Estudiantes que finalizaron Prácticas</p>
+                            </div>
+                            <div class="icon">
+                                <i  data-toggle="modal" data-target="#r1" class="fa fa-chart-bar"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="small-box bg-warning col-md-3">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="small-box col-lf-4" style="background-color: #58dada">
                         <div class="inner">
                             <h3>R2</h3>
 
                             <p>Prácticas por Periodo Académico</p>
                         </div>
                         <div class="icon">
-                            <i  data-toggle="modal" data-target="#r2" class="fa fa-baseball-ball"></i>
+                            <i  data-toggle="modal" data-target="#r2" class="fa fa-chart-line"></i>
                         </div>
                     </div>
-                    <div class="small-box bg-danger col-md-3">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="small-box  col-lf-4" style="background-color: #1ca2bb">
                         <div class="inner">
                             <h3>R3</h3>
 
                             <p>Prácticas por Tipo de Proyecto</p>
                         </div>
                         <div class="icon">
-                            <i  data-toggle="modal" data-target="#r3" class="fa fa-baseball-ball"></i>
+                            <i  data-toggle="modal" data-target="#r3" class="fa fa-bar-chart-o"></i>
                         </div>
                     </div>
-                    <div class="small-box bg-success col-md-3">
+
+                </div>
+                </div>
+
+                <div class="row">
+                    <!-- small card -->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="small-box col-lf-4" style="background-color: #1fffff">
                         <div class="inner">
                             <h3>R4</h3>
 
                             <p>Prácticas por Tipo de Empresa</p>
                         </div>
                         <div class="icon">
-                            <i  data-toggle="modal" data-target="#r4" class="fa fa-baseball-ball"></i>
+                            <i  data-toggle="modal" data-target="#r4" class="fa fa-file-contract"></i>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div><div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <!-- small card -->
-                    <div class="small-box bg-secondary col-md-3">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="small-box col-lf-4" style="background-color: #ff9d76">
                         <div class="inner">
                             <h3>R5</h3>
 
                             <p>Prácticas por Sector de la Empresa</p>
                         </div>
                         <div class="icon">
-                            <i  data-toggle="modal" data-target="#r5" class="fa fa-baseball-ball"></i>
+                            <i  data-toggle="modal" data-target="#r5" class="fa fa-chart-area"></i>
                         </div>
                     </div>
-                    <div class="small-box bg-primary col-md-3">
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="small-box col-lf-4" style="background-color: #ff4273">
                         <div class="inner">
                             <h3>R6</h3>
 
                             <p>Prácticas por Nivel </p>
                         </div>
                         <div class="icon">
-                            <i  data-toggle="modal" data-target="#r6" class="fa fa-baseball-ball"></i>
+                            <i  data-toggle="modal" data-target="#r6" class="fa fa-pie-chart"></i>
                         </div>
+                    </div>
                     </div>
                     {{--<div class="small-box bg-white col-md-3">
                         <div class="inner">
@@ -93,8 +102,6 @@
                 </div>
 
             </div>
-        </div>
-    </div>
 
     <!-- Modal reporte 1-->
     <div class="modal fade" id="r1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

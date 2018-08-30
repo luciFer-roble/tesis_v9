@@ -149,11 +149,11 @@
                                             <td class="m-0 p-0"><a class="btn btn-link m-0 p-0"
                                                                    href="{{ URL::to('tutores/' . $practica->idtutore) }}">{{ $practica->tutore->nombretutore}} {{$practica->tutore->apellidotutore }}</a>
                                             </td>
-                                            <td class="m-0 p-0 ">
+                                            <td class="m-0 p-0 " align="center">
 
-                                                <a class="btn btn-outline-info m-0 p-0"
+                                                <a class="btn text-info p-0 m-0"
                                                    href="{{ URL::to('practicas/' . $practica->idpractica).'/edit'}}">
-                                                    <i class="fa fa-fw fa-eye"></i>
+                                                    <i class="fa fa-external-link-alt"></i>
                                                 </a>
                                             </td>
                                         </tr>

@@ -32,7 +32,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th class="p-0 m-0" style="width: 7%">Id</th>
+                                        <th class="p-0 m-0" style="width: 7%">Codigo</th>
                                         <th class="p-0 m-0">Nombres</th>
                                         <th class="p-0 m-0">Apellidos</th>
                                         <th class="p-0 m-0">Correo</th>
@@ -40,7 +40,7 @@
                                         <th class="p-0 m-0" style="width: 7%">Oficina</th>
                                         <th class="p-0 m-0">Escuela</th>
                                         @if (Auth::user()->hasRole('coord'))
-                                        <th class="p-0 m-0">Tutor</th>
+                                        <th class="p-0 m-0" style="width: 4%">Tutor</th>
                                         @endif
                                         @if(Auth::user()->hasRole('admin'))
                                         <td  class="p-0 m-0"></td>
@@ -68,14 +68,17 @@
                                                         @endif
                                                     @endforeach
                                                     @if($haspracticas == true)
-                                                            <a href="/practicas/{{ $profesor->idprofesor .'/list'}}"  title="Ver Tutorias" class=" btn btn-link  " style="width: 7%">
+                                                        <div class="col" align="center">
+                                                            <a href="/practicas/{{ $profesor->idprofesor .'/list'}}"  title="Ver Tutorias" class=" btn btn-link p-0 m-0 " >
                                                                 <i class="text-success fa fa-check-square" ></i>
                                                             </a>
+                                                        </div>
                                                          @else
-                                                        <a class="btn " style="width: 7%">
-                                                            <i class="text-danger fa fa-times" ></i>
-                                                        </a>
-
+                                                        <div class="col" align="center">
+                                                            <a class="btn p-0 m-0 ">
+                                                                <i class="text-danger fa fa-times" ></i>
+                                                            </a>
+                                                        </div>
                                                     @endif
 
                                             </td>
@@ -83,12 +86,12 @@
                                             @if(Auth::user()->hasRole('admin'))
                                             <td class="p-0 m-0">
                                                 <div class="row p-0 m-0">
-                                                    <div class="col">
+                                                    <div class="col" align="center">
                                                         <a  class="btn btn-link p-0 m-0" href="{{ URL::to('profesores/' . $profesor->idprofesor . '/edit') }}">
 
                                                             <i class="fa fa-fw fa-pencil-alt"></i></a>
                                                     </div>
-                                                    <div class="col">
+                                                    <div class="col" align="center">
                                                         {{ Form::open(array('url' => 'profesores/' . $profesor->idprofesor, 'class' => '')) }}
                                                         {{ Form::hidden('_method', 'DELETE') }}
                                                         <button type="submit" class="btn text-danger btn-link text-danger p-0 m-0"><i class="fa fa-fw fa-trash-alt" ></i></button>

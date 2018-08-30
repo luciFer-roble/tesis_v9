@@ -11,14 +11,14 @@
         </button></td>
         <td class="p-0 m-0" style="width: 7%">
             <div class="row p-0 m-0">
-                <div class="col">
-                    <span  type="button" class="btn btn-link p-0 m-0" >
-                        <i class="fa fa-fw fa-pencil-alt" @click="edit" ></i>
+                <div class="col" align="center">
+                    <span   class="btn btn-link p-0 m-0">
+                        <i  class="fa fa-fw fa-pencil-alt" @click="edit"></i>
                     </span>
                 </div>
                 <div class="col">
-                    <span type="submit" class="btn btn-link p-0 m-0">
-                        <i class=" text-danger fa fa-fw fa-trash-alt" @click="confirm" ></i>
+                    <span   class="btn text-danger p-0 m-0">
+                        <i  class="fa fa-fw fa-trash-alt" @click="confirm"></i>
                     </span>
                 </div>
             </div>

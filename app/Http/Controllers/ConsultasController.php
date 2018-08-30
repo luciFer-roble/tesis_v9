@@ -225,10 +225,11 @@ class ConsultasController extends Controller
                 ->havingRaw('SUM(practica.horaspractica) >= 120')
                 ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
                 ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
-                ->first();
-            //var_dump((string)$total);
+                ->count();
+                //var_dump((string)count($total)); exit();
                 $respuesta[] = $total;
         }
+        //var_dump($respuesta); exit();
         return $respuesta;
     }
     public  function totalperiodos(){
@@ -246,7 +247,7 @@ class ConsultasController extends Controller
                 ->groupBy('practica.idnivel')
                 //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
                 ->havingRaw("practica.idnivel = '".$nivel->idnivel."'")
-                ->first();
+                ->count();
             //var_dump((string)$total);
             $respuesta[] = $total;
         }
@@ -262,7 +263,7 @@ class ConsultasController extends Controller
                 ->groupBy('practica.idperiodoacademico')
                 //->where("practica.idperiodoacademico" ,'=', $periodo->idperiodoacademico)
                 ->havingRaw("practica.idperiodoacademico = '".$periodo->idperiodoacademico."'")
-                ->first();
+                ->count();
             //var_dump((string)$total);
             $respuesta[] = $total;
         }

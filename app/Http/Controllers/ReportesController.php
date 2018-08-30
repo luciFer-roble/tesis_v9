@@ -51,7 +51,7 @@ class ReportesController extends Controller
                    $cells->setFontWeight('bold');
                    $cells->setFontSize(18);
                });
-               $sheet->cells('A4:K4', function($cells) {
+               $sheet->cells('A4:W4', function($cells) {
 
                    $cells->setBackground('#B1A0C7');
                    $cells->setFontWeight('bold');
@@ -59,33 +59,47 @@ class ReportesController extends Controller
                });
                $sheet->setFontFamily('Calibri');
                $sheet->setFontSize(9);
-                $titulo = 'REPORTE DE PRACTICA PREPROFESIONALES'.$periodo->nombreperiodoacademico;
+                $titulo = 'REPORTE DE PRÁCTICAS PREPROFESIONALES '.$periodo->nombreperiodoacademico;
                 //var_dump($periodo->fechainicioperiodoacademico); exit();
                $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
                    ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
                    ->groupBy('estudiante.idestudiante')
-                   ->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
-                   ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)
+                   /*->whereDate('fechafinpractica','>=',$periodo->fechainicioperiodoacademico)
+                   ->whereDate('fechafinpractica','<=',$periodo->fechafinperiodoacademico)*/
                    ->havingRaw('SUM(practica.horaspractica) >= 120')
+                   ->havingRaw("max(practica.fechafinpractica) >= '".$periodo->fechainicioperiodoacademico."'")
+                   ->havingRaw("max(practica.fechafinpractica) <= '".$periodo->fechafinperiodoacademico."'")
                    ->get();
                $sheet->appendRow(1, array(
-                   'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
+                   'PONTIFICIA UNIVERSIDAD CATÓLICA DEL ECUADOR'
                ));
                $sheet->appendRow(2, array(
                    $titulo
                ));
                $cabecera = [];
                $cabecera[0]= 'No.';
-               $cabecera[1]= 'Unidad Academica';
+               $cabecera[1]= 'Unidad Académica';
                $cabecera[2]= 'Carrera';
-               $cabecera[3]= 'Identificacion';
+               $cabecera[3]= 'Identificación';
                $cabecera[4]= 'Apellidos y Nombres del Estudiante';
-               $cabecera[5]= 'Fecha de Inicio Practica 1';
-               $cabecera[6]= 'Fecha de Finalizacion Practica 1';
-               $cabecera[7]= 'No. de Horas Practica 1';
-               $cabecera[8]= 'Centro de Practicas 1';
-               $cabecera[9]= 'Tipo de Intitucion 1';
-               $cabecera[10]= 'Sector Institucion 1';
+               $cabecera[5]= 'Fecha de Inicio Práctica 1';
+               $cabecera[6]= 'Fecha de Finalizacion Práctica 1';
+               $cabecera[7]= 'No. de Horas Práctica 1';
+               $cabecera[8]= 'Centro de Prácticas 1';
+               $cabecera[9]= 'Tipo de Intitución 1';
+               $cabecera[10]= 'Sector Institución 1';
+               $cabecera[11]= 'Fecha de Inicio Práctica 2';
+               $cabecera[12]= 'Fecha de Finalizacion Práctica 2';
+               $cabecera[13]= 'No. de Horas Práctica 2';
+               $cabecera[14]= 'Centro de Prácticas 2';
+               $cabecera[15]= 'Tipo de Intitución 2';
+               $cabecera[16]= 'Sector Institución 2';
+               $cabecera[17]= 'Fecha de Inicio Práctica 3';
+               $cabecera[18]= 'Fecha de Finalizacion Práctica 3';
+               $cabecera[19]= 'No. de Horas Práctica 3';
+               $cabecera[20]= 'Centro de Prácticas 3';
+               $cabecera[21]= 'Tipo de Intitución 3';
+               $cabecera[22]= 'Sector Institución 3';
 
                $sheet->appendRow(4, $cabecera);
                $numero = 1;
@@ -111,7 +125,7 @@ class ReportesController extends Controller
                    $sheet->appendRow($row);
                }
 
-               $sheet->setBorder('A4:K'.($numero+3), 'thin');
+               $sheet->setBorder('A4:W'.($numero+3), 'thin');
            });
         })->export('xlsx');
 
@@ -145,7 +159,7 @@ class ReportesController extends Controller
                     $cells->setFontWeight('bold');
                     $cells->setFontSize(18);
                 });
-                $sheet->cells('A4:K4', function($cells) {
+                $sheet->cells('A4:W4', function($cells) {
 
                     $cells->setBackground('#B1A0C7');
                     $cells->setFontWeight('bold');
@@ -153,12 +167,12 @@ class ReportesController extends Controller
                 });
                 $sheet->setFontFamily('Calibri');
                 $sheet->setFontSize(9);
-                $titulo = 'REPORTE DE PRACTICA PREPROFESIONALES'.$periodo->nombreperiodoacademico;
+                $titulo = 'REPORTE DE PRACTICA PREPROFESIONALES '.$periodo->nombreperiodoacademico;
                 //var_dump($periodo->fechainicioperiodoacademico); exit();
                 $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
                     ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
                     ->groupBy('estudiante.idestudiante')
-                    ->where('practica.idperiodoacademico','>=',$periodo->idperiodoacademico)
+                    ->where('practica.idperiodoacademico','=',$periodo->idperiodoacademico)
                     ->get();
                 $sheet->appendRow(1, array(
                     'PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR'
@@ -178,13 +192,26 @@ class ReportesController extends Controller
                 $cabecera[8]= 'Centro de Practicas 1';
                 $cabecera[9]= 'Tipo de Intitucion 1';
                 $cabecera[10]= 'Sector Institucion 1';
+                $cabecera[11]= 'Fecha de Inicio Practica 2';
+                $cabecera[12]= 'Fecha de Finalizacion Practica 2';
+                $cabecera[13]= 'No. de Horas Practica 2';
+                $cabecera[14]= 'Centro de Practicas 2';
+                $cabecera[15]= 'Tipo de Intitucion 2';
+                $cabecera[16]= 'Sector Institucion 2';
+                $cabecera[17]= 'Fecha de Inicio Practica 3';
+                $cabecera[18]= 'Fecha de Finalizacion Practica 3';
+                $cabecera[19]= 'No. de Horas Practica 3';
+                $cabecera[20]= 'Centro de Practicas 3';
+                $cabecera[21]= 'Tipo de Intitucion 3';
+                $cabecera[22]= 'Sector Institucion 3';
 
                 $sheet->appendRow(4, $cabecera);
                 $numero = 1;
                 foreach ($estudiantes as $estudiante){
 
 
-                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)
+                        ->where('practica.idperiodoacademico', '=', $periodo->idperiodoacademico)->get();
                     $row = [];
                     $row[0] = $numero++;
                     $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
@@ -203,7 +230,7 @@ class ReportesController extends Controller
                     $sheet->appendRow($row);
                 }
 
-                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+                $sheet->setBorder('A4:W'.($numero+3), 'thin');
             });
         })->export('xlsx');
 
@@ -239,7 +266,7 @@ class ReportesController extends Controller
                     $cells->setFontWeight('bold');
                     $cells->setFontSize(18);
                 });
-                $sheet->cells('A4:K4', function($cells) {
+                $sheet->cells('A4:W4', function($cells) {
 
                     $cells->setBackground('#B1A0C7');
                     $cells->setFontWeight('bold');
@@ -273,13 +300,26 @@ class ReportesController extends Controller
                 $cabecera[8]= 'Centro de Practicas 1';
                 $cabecera[9]= 'Tipo de Intitucion 1';
                 $cabecera[10]= 'Sector Institucion 1';
+                $cabecera[11]= 'Fecha de Inicio Practica 2';
+                $cabecera[12]= 'Fecha de Finalizacion Practica 2';
+                $cabecera[13]= 'No. de Horas Practica 2';
+                $cabecera[14]= 'Centro de Practicas 2';
+                $cabecera[15]= 'Tipo de Intitucion 2';
+                $cabecera[16]= 'Sector Institucion 2';
+                $cabecera[17]= 'Fecha de Inicio Practica 3';
+                $cabecera[18]= 'Fecha de Finalizacion Practica 3';
+                $cabecera[19]= 'No. de Horas Practica 3';
+                $cabecera[20]= 'Centro de Practicas 3';
+                $cabecera[21]= 'Tipo de Intitucion 3';
+                $cabecera[22]= 'Sector Institucion 3';
 
                 $sheet->appendRow(4, $cabecera);
                 $numero = 1;
                 foreach ($estudiantes as $estudiante){
 
 
-                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)
+                        ->where('practica.tipopractica', '=', $tipopractica)->get();
                     $row = [];
                     $row[0] = $numero++;
                     $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
@@ -298,7 +338,7 @@ class ReportesController extends Controller
                     $sheet->appendRow($row);
                 }
 
-                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+                $sheet->setBorder('A4:W'.($numero+3), 'thin');
             });
         })->export('xlsx');
 
@@ -336,7 +376,7 @@ class ReportesController extends Controller
                     $cells->setFontWeight('bold');
                     $cells->setFontSize(18);
                 });
-                $sheet->cells('A4:K4', function($cells) {
+                $sheet->cells('A4:W4', function($cells) {
 
                     $cells->setBackground('#B1A0C7');
                     $cells->setFontWeight('bold');
@@ -372,13 +412,30 @@ class ReportesController extends Controller
                 $cabecera[8]= 'Centro de Practicas 1';
                 $cabecera[9]= 'Tipo de Intitucion 1';
                 $cabecera[10]= 'Sector Institucion 1';
+                $cabecera[11]= 'Fecha de Inicio Practica 2';
+                $cabecera[12]= 'Fecha de Finalizacion Practica 2';
+                $cabecera[13]= 'No. de Horas Practica 2';
+                $cabecera[14]= 'Centro de Practicas 2';
+                $cabecera[15]= 'Tipo de Intitucion 2';
+                $cabecera[16]= 'Sector Institucion 2';
+                $cabecera[17]= 'Fecha de Inicio Practica 3';
+                $cabecera[18]= 'Fecha de Finalizacion Practica 3';
+                $cabecera[19]= 'No. de Horas Practica 3';
+                $cabecera[20]= 'Centro de Practicas 3';
+                $cabecera[21]= 'Tipo de Intitucion 3';
+                $cabecera[22]= 'Sector Institucion 3';
+
 
                 $sheet->appendRow(4, $cabecera);
                 $numero = 1;
                 foreach ($estudiantes as $estudiante){
 
 
-                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $practicas = Practica::
+                        join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                        ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                        ->where('idestudiante', '=', $estudiante->idestudiante)
+                        ->where('empresa.tipoempresa', '=', $tipoempresa)->get();
                     $row = [];
                     $row[0] = $numero++;
                     $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
@@ -397,7 +454,7 @@ class ReportesController extends Controller
                     $sheet->appendRow($row);
                 }
 
-                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+                $sheet->setBorder('A4:W'.($numero+3), 'thin');
             });
         })->export('xlsx');
 
@@ -435,7 +492,7 @@ class ReportesController extends Controller
                     $cells->setFontWeight('bold');
                     $cells->setFontSize(18);
                 });
-                $sheet->cells('A4:K4', function($cells) {
+                $sheet->cells('A4:W4', function($cells) {
 
                     $cells->setBackground('#B1A0C7');
                     $cells->setFontWeight('bold');
@@ -471,13 +528,29 @@ class ReportesController extends Controller
                 $cabecera[8]= 'Centro de Practicas 1';
                 $cabecera[9]= 'Tipo de Intitucion 1';
                 $cabecera[10]= 'Sector Institucion 1';
+                $cabecera[11]= 'Fecha de Inicio Practica 2';
+                $cabecera[12]= 'Fecha de Finalizacion Practica 2';
+                $cabecera[13]= 'No. de Horas Practica 2';
+                $cabecera[14]= 'Centro de Practicas 2';
+                $cabecera[15]= 'Tipo de Intitucion 2';
+                $cabecera[16]= 'Sector Institucion 2';
+                $cabecera[17]= 'Fecha de Inicio Practica 3';
+                $cabecera[18]= 'Fecha de Finalizacion Practica 3';
+                $cabecera[19]= 'No. de Horas Practica 3';
+                $cabecera[20]= 'Centro de Practicas 3';
+                $cabecera[21]= 'Tipo de Intitucion 3';
+                $cabecera[22]= 'Sector Institucion 3';
 
                 $sheet->appendRow(4, $cabecera);
                 $numero = 1;
                 foreach ($estudiantes as $estudiante){
 
 
-                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $practicas = Practica::
+                        leftJoin('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+                        ->leftJoin('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
+                        ->where('empresa.sectorempresa', '=', $sector)
+                        ->where('idestudiante', '=', $estudiante->idestudiante)->get();
                     $row = [];
                     $row[0] = $numero++;
                     $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
@@ -496,7 +569,7 @@ class ReportesController extends Controller
                     $sheet->appendRow($row);
                 }
 
-                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+                $sheet->setBorder('A4:W'.($numero+3), 'thin');
             });
         })->export('xlsx');
 
@@ -520,37 +593,42 @@ class ReportesController extends Controller
     public function reporte2p(Request $request)
     {
         $periodo = PeriodoAcademico::where('idperiodoacademico', '=', request('periodor1'))->first();
-        $practicas = Practica::where('practica.idperiodoacademico','=',$periodo->idperiodoacademico)->get();
+        $practicas = Practica::where('practica.idperiodoacademico','=',$periodo->idperiodoacademico)
+            ->orderBy('practica.idpractica', 'desc')->get();
         return view('reportes.reporte2p', compact('practicas', 'periodo'));
     }
     public function reporte3p(Request $request)
     {
         $tipopractica = request('tipopractica');
-        $practicas = Practica::where('practica.tipopractica','=',$tipopractica)->get();
+        $practicas = Practica::where('practica.tipopractica','=',$tipopractica)
+            ->orderBy('practica.idpractica', 'desc')->get();
         return view('reportes.reporte3p', compact('practicas', 'tipopractica'));
     }
     public function reporte4p(Request $request)
     {
         $tipoempresa = request('tipoempresa');
-        $practicas = DB::table('practica')
-            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+        $practicas = Practica::
+            join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
             ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-            ->where('empresa.tipoempresa','=',$tipoempresa)->get();
+            ->where('empresa.tipoempresa','=',$tipoempresa)
+            ->orderBy('practica.idpractica', 'desc')->get();
         return view('reportes.reporte4p', compact('practicas', 'tipoempresa'));
     }
     public function reporte5p(Request $request)
     {
         $sectorempresa = request('sector');
-        $practicas = DB::table('practica')
-            ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
+        $practicas = Practica::
+            join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
             ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-            ->where('empresa.sectorempresa','=',$sectorempresa)->get();
+            ->where('empresa.sectorempresa','=',$sectorempresa)
+            ->orderBy('practica.idpractica', 'desc')->get();
         return view('reportes.reporte5p', compact('practicas', 'sectorempresa'));
     }
     public function reporte6p(Request $request)
     {
         $nivel = Nivel::where('idnivel', '=', request('nivel'))->first();
-        $practicas = Practica::where('practica.idnivel','=',$nivel->idnivel)->get();
+        $practicas = Practica::where('practica.idnivel','=',$nivel->idnivel)
+            ->orderBy('practica.idpractica', 'desc')->get();
         return view('reportes.reporte6p', compact('practicas', 'nivel'));
     }
     public function descargaexcelr6(Nivel $nivel)
@@ -568,7 +646,7 @@ class ReportesController extends Controller
                     $cells->setFontWeight('bold');
                     $cells->setFontSize(18);
                 });
-                $sheet->cells('A4:K4', function($cells) {
+                $sheet->cells('A4:W4', function($cells) {
 
                     $cells->setBackground('#B1A0C7');
                     $cells->setFontWeight('bold');
@@ -576,7 +654,7 @@ class ReportesController extends Controller
                 });
                 $sheet->setFontFamily('Calibri');
                 $sheet->setFontSize(9);
-                $titulo = 'REPORTE DE PRACTICAS DE ESTUDIANTES QUE CURSABAN EL NIVEL '.$nivel->nombrenivel;
+                $titulo = 'REPORTE DE PRACTICAS DE ESTUDIANTES EN NIVEL '.$nivel->nombrenivel;
                 //var_dump($periodo->fechainicioperiodoacademico); exit();
 
                 $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
@@ -602,13 +680,26 @@ class ReportesController extends Controller
                 $cabecera[8]= 'Centro de Practicas 1';
                 $cabecera[9]= 'Tipo de Intitucion 1';
                 $cabecera[10]= 'Sector Institucion 1';
+                $cabecera[11]= 'Fecha de Inicio Practica 2';
+                $cabecera[12]= 'Fecha de Finalizacion Practica 2';
+                $cabecera[13]= 'No. de Horas Practica 2';
+                $cabecera[14]= 'Centro de Practicas 2';
+                $cabecera[15]= 'Tipo de Intitucion 2';
+                $cabecera[16]= 'Sector Institucion 2';
+                $cabecera[17]= 'Fecha de Inicio Practica 3';
+                $cabecera[18]= 'Fecha de Finalizacion Practica 3';
+                $cabecera[19]= 'No. de Horas Practica 3';
+                $cabecera[20]= 'Centro de Practicas 3';
+                $cabecera[21]= 'Tipo de Intitucion 3';
+                $cabecera[22]= 'Sector Institucion 3';
 
                 $sheet->appendRow(4, $cabecera);
                 $numero = 1;
                 foreach ($estudiantes as $estudiante){
 
 
-                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)->get();
+                    $practicas = Practica::where('idestudiante', '=', $estudiante->idestudiante)
+                        ->where('practica.idnivel', '=', $nivel->idnivel)->get();
                     $row = [];
                     $row[0] = $numero++;
                     $row[1] = $estudiante->carrera->escuela->facultad->nombrefacultad;
@@ -627,7 +718,7 @@ class ReportesController extends Controller
                     $sheet->appendRow($row);
                 }
 
-                $sheet->setBorder('A4:K'.($numero+3), 'thin');
+                $sheet->setBorder('A4:W'.($numero+3), 'thin');
             });
         })->export('xlsx');
 

@@ -45,15 +45,6 @@
             gettotales:function () {
                 axios.get(window.location.origin+'/api/totalesporperiodo2').then((response)=>{
                     this.totales=(response.data);
-                    for(var i=0; i<Object.keys(this.totales).length; i++){
-                        if(this.totales[i] == null){
-                            console.log(0);
-                            this.totalesarray.push(0);
-                        }else{
-                            console.log(this.totales[i].totalpracticas);
-                            this.totalesarray.push(this.totales[i].totalpracticas);
-                        }
-                    }
                     const data = {
                         type: 'line',
                         data: {
@@ -61,9 +52,9 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: "#a5bee7",
-                                    borderColor: "#80a0d6",
-                                    data: this.totalesarray
+                                    backgroundColor: "#e7eff6",
+                                    borderColor: "#4b86b4",
+                                    data: this.totales
                                 }
                             ]
                         },
@@ -82,13 +73,12 @@
                                     label: function(tooltipItem, data) {
                                         var dataset = data.datasets[tooltipItem.datasetIndex];
                                         var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-                                        var total = meta.total;
+                                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
                                         var currentValue = dataset.data[tooltipItem.index];
-                                        var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                        var percentage = parseFloat((currentValue/total*100).toFixed(0));
                                         return currentValue + ' (' + percentage + '%)';
-                                    },
-                                    title: function(tooltipItem, data) {
-                                        return data.labels[tooltipItem[0].index];
                                     }
                                 }
                             },

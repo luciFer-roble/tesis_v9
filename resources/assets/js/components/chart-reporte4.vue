@@ -140,7 +140,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
                                     data: [this.privadasp, this.publicasp, this.sinlucrop, this.internacionalesp]
                                 }
                             ]
@@ -152,7 +152,7 @@
                             },
                             responsive: true,
                             animation:{
-                                animateRotate: true,
+                                animateRotate: false,
                                 animateScale: true
                             },
                             legend: {
@@ -170,13 +170,12 @@
                                     label: function(tooltipItem, data) {
                                         var dataset = data.datasets[tooltipItem.datasetIndex];
                                         var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-                                        var total = meta.total;
+                                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
                                         var currentValue = dataset.data[tooltipItem.index];
                                         var percentage = parseFloat((currentValue/total*100).toFixed(1));
                                         return currentValue + ' (' + percentage + '%)';
-                                    },
-                                    title: function(tooltipItem, data) {
-                                        return data.labels[tooltipItem[0].index];
                                     }
                                 }
                             }
@@ -189,7 +188,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
                                     data: [this.privadase, this.publicase, this.sinlucroe, this.internacionalese]
                                 }
                             ]
@@ -201,7 +200,7 @@
                             },
                             responsive: true,
                             animation:{
-                                animateRotate: true,
+                                animateRotate: false,
                                 animateScale: true
                             },
                             legend: {
@@ -219,13 +218,12 @@
                                     label: function(tooltipItem, data) {
                                         var dataset = data.datasets[tooltipItem.datasetIndex];
                                         var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-                                        var total = meta.total;
+                                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
                                         var currentValue = dataset.data[tooltipItem.index];
-                                        var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                        var percentage = parseFloat((currentValue/total*100).toFixed(0));
                                         return currentValue + ' (' + percentage + '%)';
-                                    },
-                                    title: function(tooltipItem, data) {
-                                        return data.labels[tooltipItem[0].index];
                                     }
                                 }
                             }

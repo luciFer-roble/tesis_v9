@@ -45,12 +45,15 @@
             gettotales:function () {
                 axios.get(window.location.origin+'/api/totalesporperiodo').then((response)=>{
                     this.totales=(response.data);
-                    for(var i=0; i<Object.keys(this.totales).length; i++){
+                    for(let i=0; i<Object.keys(this.totales).length; i++){
                         if(this.totales[i] == null){
                             console.log(0);
                             this.totalesarray.push(0);
                         }else{
-                            console.log(this.totales[i].totalestudiantes);
+                            //console.log(this.totales[i][0].totalestudiantes);
+                            //this.totales[i].forEach(function (total) {
+                              //  console.log(total);
+                            //});
                             this.totalesarray.push(this.totales[i].totalestudiantes);
                         }
                     }
@@ -61,8 +64,8 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
-                                    data: this.totalesarray
+                                    backgroundColor: ['#2a4d69', '#4b86b4', '#adcbe3', '#e7eff6', '#63ace5'],
+                                    data: this.totales
                                 }
                             ]
                         },
@@ -78,16 +81,15 @@
                             },
                             tooltips: {
                                 callbacks: {
-                                    label: function(tooltipItem, data) {
+                                    label: function(tooltipItem, data, ) {
                                         var dataset = data.datasets[tooltipItem.datasetIndex];
                                         var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-                                        var total = meta.total;
                                         var currentValue = dataset.data[tooltipItem.index];
-                                        var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
+                                        var percentage = parseFloat((currentValue/total*100).toFixed(0));
                                         return currentValue + ' (' + percentage + '%)';
-                                    },
-                                    title: function(tooltipItem, data) {
-                                        return data.labels[tooltipItem[0].index];
                                     }
                                 }
                             },
@@ -95,6 +97,9 @@
                                 yAxes: [{
                                     ticks: {
                                         beginAtZero: true
+                                       /* callback: function(value, index, values) {
+                                            return ((value / 2) * 100) + '%';
+                                        }*/
                                     }
                                 }],
                                 xAxes: [{

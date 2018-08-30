@@ -11,13 +11,13 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <h3>{{ $sector }}</h3></div>
+                        <h3>{{ $sectorempresa }}</h3></div>
 
                     <div class="btn-group mr-2 float-right">
-                        <input type="button" data-toggle="modal" data-target="#modal1"
-                               class="btn btn-sm btn-outline-danger" value="Grafico"/>
-                        <input type="button" onClick="location.href = '/reportes/{{ $sector }}/descarga5'"
-                               class="btn btn-sm btn-outline-success" value="EXCEL"/>
+                        <span  data-toggle="modal" data-target="#modal1"
+                               class="btn btn-sm btn-light" ><i class="fas fa-chart-bar"></i>&nbsp;GRAFICO</span>&nbsp;
+                        <span onClick="location.href = '/reportes/{{ $sectorempresa }}/descarga5'"
+                              class="btn btn-sm btn-outline-success"><i class="fas fa-download"></i>&nbsp;EXCEL</span>
                     </div>
 
                 </div>

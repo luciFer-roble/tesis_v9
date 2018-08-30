@@ -17,7 +17,7 @@
                         <div class="inner">
                             <h3>R1</h3>
 
-                            <p>Estudiantes que finalizaron Practicas</p>
+                            <p>Estudiantes que finalizaron Prácticas</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r1" class="fa fa-baseball-ball"></i>
@@ -27,7 +27,7 @@
                         <div class="inner">
                             <h3>R2</h3>
 
-                            <p>Practicas por periodo academico</p>
+                            <p>Prácticas por Periodo Académico</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r2" class="fa fa-baseball-ball"></i>
@@ -37,7 +37,7 @@
                         <div class="inner">
                             <h3>R3</h3>
 
-                            <p>Estudiantes/practicas por tipo de proyecto</p>
+                            <p>Prácticas por Tipo de Proyecto</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r3" class="fa fa-baseball-ball"></i>
@@ -47,7 +47,7 @@
                         <div class="inner">
                             <h3>R4</h3>
 
-                            <p>Estudiantes/practicas por tipo de empresa</p>
+                            <p>Prácticas por Tipo de Empresa</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r4" class="fa fa-baseball-ball"></i>
@@ -64,7 +64,7 @@
                         <div class="inner">
                             <h3>R5</h3>
 
-                            <p>Practicas por sector de la empresa</p>
+                            <p>Prácticas por Sector de la Empresa</p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r5" class="fa fa-baseball-ball"></i>
@@ -74,13 +74,13 @@
                         <div class="inner">
                             <h3>R6</h3>
 
-                            <p>Practicas por nivel </p>
+                            <p>Prácticas por Nivel </p>
                         </div>
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r6" class="fa fa-baseball-ball"></i>
                         </div>
                     </div>
-                    <div class="small-box bg-white col-md-3">
+                    {{--<div class="small-box bg-white col-md-3">
                         <div class="inner">
                             <h3>R7</h3>
 
@@ -89,7 +89,7 @@
                         <div class="icon">
                             <i  data-toggle="modal" data-target="#r7" class="fa fa-baseball-ball"></i>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
 
             </div>

@@ -14,10 +14,10 @@
                         <h3>{{ $tipoempresa }}</h3></div>
 
                     <div class="btn-group mr-2 float-right">
-                        <input type="button" data-toggle="modal" data-target="#modal1"
-                               class="btn btn-sm btn-outline-danger" value="Grafico"/>
-                        <input type="button" onClick="location.href = '/reportes/{{ $tipoempresa }}/descarga4'"
-                               class="btn btn-sm btn-outline-success" value="EXCEL"/>
+                         <span  data-toggle="modal" data-target="#modal1"
+                                class="btn btn-sm btn-light" ><i class="fas fa-chart-bar"></i>&nbsp;GRAFICO</span>&nbsp;
+                        <span onClick="location.href = '/reportes/{{ $tipoempresa }}/descarga4'"
+                              class="btn btn-sm btn-outline-success" ><i class="fas fa-download"></i>&nbsp;EXCEL</span>
                     </div>
 
                 </div>

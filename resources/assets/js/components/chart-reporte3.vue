@@ -78,7 +78,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#a5bee7", "#8eaee3", "#80a0d6", "#688ece"],
+                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
                                     data: [this.pasantias, this.practicas, this.proyectos, this.ayudantias]
                                 }
                             ]
@@ -98,13 +98,12 @@
                                     label: function(tooltipItem, data) {
                                         var dataset = data.datasets[tooltipItem.datasetIndex];
                                         var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-                                        var total = meta.total;
+                                        var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                                            return previousValue + currentValue;
+                                        });
                                         var currentValue = dataset.data[tooltipItem.index];
-                                        var percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                        var percentage = parseFloat((currentValue/total*100).toFixed(0));
                                         return currentValue + ' (' + percentage + '%)';
-                                    },
-                                    title: function(tooltipItem, data) {
-                                        return data.labels[tooltipItem[0].index];
                                     }
                                 }
                             }

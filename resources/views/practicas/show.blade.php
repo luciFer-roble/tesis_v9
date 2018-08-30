@@ -71,10 +71,10 @@
                     <div class="col-md-3">
                         <span class="text-info btn p-0 m-0 border-0"><label>Nombre:</label></span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->estudiante->nombresestudiante.' '.$practica->estudiante->apellidosestudiante }}</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <span class="text-info btn p-0 m-0 border-0"><label>Nivel:</label></span>
                     </div>
                     <div class="col-md-3">
@@ -85,10 +85,10 @@
                     <div class="col-md-3">
                         <span class="text-info btn p-0 m-0 border-0"><label>Identificacion:</label></span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->estudiante->cedulaestudiante }}</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <span class="text-info btn p-0 m-0 border-0"><label>Tipo:</label></span>
                     </div>
                     <div class="col-md-3">
@@ -99,10 +99,10 @@
                     <div class="col-md-3">
                         <span class="text-info btn p-0 m-0 border-0"><label>Unidad Academica:</label></span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label class="btn p-0 m-0 border-0 text-secondary">{{ $practica->estudiante->carrera->escuela->facultad->nombrefacultad }}</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <span class="text-info btn p-0 m-0 border-0"><label>Celular:</label></span>
                     </div>
                     <div class="col-md-3">
@@ -144,6 +144,9 @@
                 {{Form::open( ['method'=>"PUT", 'url'=>array("/practicas", $practica->idpractica)]) }}
 
                 {{ csrf_field() }}
+                <div class="card-header">
+                    <h5>Detalle de la Práctica</h5>
+                </div>
                 <div class="row card-body p-1 m-1 border-0">
                     <div class="form-group p-0 m-0 col-md-6">
                         <label class="col-sm-12 control-label" for="profesor">Tutor Academico:</label>
@@ -241,13 +244,18 @@
                             <textarea  class="form-control" id="descripcion" name="descripcion" >{{ $practica->descripcionpractica }}</textarea>
                         </div>
                     </div>
+                    <div>
+                        <input type="hidden" id="nivel" name="nivel" value="{{ $practica->idnivel }}" />
+                        <input type="hidden" id="estudiante" name="estudiante" value="{{ $practica->idestudiante }}" />
+                        <input type="hidden" id="tutore" name="tutore" value="{{ $practica->idtutore }}" />
+                    </div>
 
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Actualizar</button>
 
                     @if(!(Auth::user()->hasRole('tut')) or !(Auth::user()->hasRole('prof')) )
-                            <button  data-toggle="modal" data-target="#f1" class="btn btn-danger ">Finalizar</button>
+                            <button  data-toggle="modal" data-target="#f1" class="btn  btn-lg btn-danger float-right">Finalizar</button>
                         @endif
 
 

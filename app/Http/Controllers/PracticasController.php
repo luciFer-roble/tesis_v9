@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DocumentoP;
+use App\Nivel;
 use App\TipoDocumento;
 use Illuminate\Notifications\Notification;
 use App\Convenio;
@@ -192,6 +193,7 @@ class PracticasController extends Controller
         $empresas = Empresa::all();
         $tutores = TutorE::all();
         $periodos = PeriodoAcademico::all();
+        $niveles = Nivel::all();
 
         $totalhoras = DB::table('actividad')
         ->where('idpractica','=',$practica->idpractica)
@@ -199,7 +201,7 @@ class PracticasController extends Controller
         ->sum('horasactividad');
 
         if(Auth::user()->hasRole('admin')){
-            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos'));
+            return view('practicas.edit')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos', 'niveles'));
         }
         else{
             return view('practicas.show')->with(compact('practica', 'estudiantes', 'profesores', 'empresas', 'tutores','periodos','totalhoras',$totalhoras));
@@ -212,17 +214,22 @@ class PracticasController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
+            'estudiante'    => 'required',
+            'profesor'    => 'required',
+            'tutore'    => 'required',
             'inicio'    => 'required',
             'tipo'    => 'required',
-            'salario'    => 'required',
             'horas'    => 'required',
-            'periodo'    => 'required'
+            'periodo'    => 'required',
+            'nivel'    => 'required'
         );
         $this->validate(request(), $rules);
         $activa='TRUE';
 
         // store
         Practica::updateOrCreate(['idpractica'  => $id], [
+            'idtutore'      => request('tutore'),
+            'idestudiante'      => request('estudiante'),
             'idprofesor'      => request('profesor'),
             'descripcionpractica'      => request('descripcion'),
             'fechainiciopractica'      => request('inicio'),
@@ -232,7 +239,8 @@ class PracticasController extends Controller
             'idperiodoacademico'      => request('periodo'),
             'horaspractica'      => request('horas'),
             'activapractica'      => $activa,
-            'horariopractica'    => request('horario')
+            'horariopractica'    => request('horario'),
+            'idnivel'    => request('nivel')
         ]);
 
         Flash::success('Actualizado Correctamente');

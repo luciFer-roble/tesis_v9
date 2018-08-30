@@ -143,7 +143,7 @@
                 this.actualizando = true;
                 this.boton1 = 'Actualizando';
                 axios.put('/estudiantes/'+this.estudiante.idestudiante, {
-                    carrera1: this.carrera1,
+                    carrera: this.carrera1,
                     cedula: this.cedula,
                     nombres: this.nombres,
                     apellidos: this.apellidos,

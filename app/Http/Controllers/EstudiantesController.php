@@ -156,7 +156,8 @@ class EstudiantesController extends Controller
             'tipo'    => 'required',
             'celular'    => 'required',
             'correo'    => 'required',
-            'fechanacimiento'    => 'required'
+            'fechanacimiento'    => 'required',
+            'carrera'    => 'required'
         );
         $this->validate(request(), $rules);
 

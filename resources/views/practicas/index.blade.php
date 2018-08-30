@@ -47,13 +47,13 @@
                                         <th class="p-0 m-0">Horas</th>
                                         <th class="p-0 m-0">Horario</th>
                                         <th class="p-0 m-0">Salario</th>
-                                        <td class="p-0 m-0"></td>
+                                        <td class="p-0 m-0" colspan="2"></td>
 
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($practicas as $practica)
-                                        <tr>
+                                        <tr style="font-size: 12px">
                                             <td class="p-0  m-0">{{ $practica->idpractica }}</td>
                                             <td class="p-0  m-0">{{ $practica->estudiante->nombresestudiante .' '. $practica->estudiante->apellidosestudiante }}</td>
                                             <td class="p-0  m-0">{{ $practica->tutore->empresa->nombreempresa }}</td>
@@ -73,6 +73,7 @@
 
                                                     <i class="fa fa-fw fa-pencil-alt"></i></a>
                                             </td>
+                                            <td class="p-0 m-0" is="boton-borrar-practica" :practica="{{ $practica }}"></td>
 
                                         </tr>
                                     @endforeach

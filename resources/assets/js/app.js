@@ -86,6 +86,7 @@ Vue.component('empresa-nuevo', require('./components/empresa-nuevo.vue'));
 Vue.component('empresas-componente', require('./components/empresas-componente.vue'));
 Vue.component('formato-nuevo', require('./components/formato-nuevo.vue'));
 Vue.component('estudiantes-componente', require('./components/estudiantes-componente.vue'));
+Vue.component('boton-borrar-practica', require('./components/boton-borrar-practica.vue'));
 const app = new Vue({
     el: '#app'
 });

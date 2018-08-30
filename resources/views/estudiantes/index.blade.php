@@ -10,7 +10,7 @@
             <!-- Breadcrumbs-->
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" id="app">
                     <!-- Example DataTables Card-->
                     <div class="card">
                         <div class="card-header">
@@ -128,20 +128,21 @@
                                         <tbody>
                                         <tr>
                                             <th class="p-0 m-0">Cedula</th>
-                                            <th class="p-0 m-0">Nombre</th>
+                                            <th class="p-0 m-0">Nombres</th>
+                                            <th class="p-0 m-0">Tipo</th>
                                             <th class="p-0 m-0">Celular</th>
                                             <th class="p-0 m-0">Correo</th>
-                                            <th class="p-0 m-0">Facultad</th>
                                             <th class="p-0 m-0" >Carrera</th>
                                             <th class="p-0 m-0" >Horas</th>
+                                            <th class="p-0 m-0"></th>
 
 
                                         </tr>
 
 
                                         @foreach($estudiantes as $estudiante)
-                                            <tr>
-                                                <td class="p-0 m-0" >{{ $estudiante->cedulaestudiante }}</td>
+                                            <tr is="estudiantes-componente" :estudiante="{{$estudiante}}" :carrera="{{$estudiante->carrera}}">
+                                                {{--<td class="p-0 m-0" >{{ $estudiante->cedulaestudiante }}</td>
                                                 <td class="p-0 m-0" >{{ $estudiante->nombresestudiante }} {{ $estudiante->apellidosestudiante }} </td>
                                                 <td class="p-0 m-0">{{ $estudiante->celularestudiante }}</td>
                                                 <td  class="p-0 m-0">{{ $estudiante->correoestudiante }}</td>
@@ -149,14 +150,14 @@
                                                 <td style="min-width: 100px" class="p-0 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
                                                 <td  class="p-0 m-0" align="center">
                                                     @if(!empty($estudiante->horasestudiante ))
-                                                        <a href="/practicas/{{ $estudiante->idestudiante .'/list2'}}"  class="btn btn-outline-success " style="width: 100%">{{$estudiante->horasestudiante}}</a>
+                                                        <a title="Ver Practicas" href="/practicas/{{ $estudiante->idestudiante .'/list2'}}"  class="text-success p-0 m-0">{{$estudiante->horasestudiante}}</a>
 
                                                         @else
-                                                        <a href=#  class="btn btn-outline-danger " style="width: 100%">0</a>
+                                                        <a   class="text-danger p-0 m-0 ">0</a>
 
                                                     @endif
 
-                                                </td>
+                                                </td>--}}
 
                                             </tr>
                                         @endforeach

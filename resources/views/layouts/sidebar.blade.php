@@ -34,7 +34,7 @@
                 @if(Auth::user()->hasRole('admin'))
                         <li class="nav-item has-treeview ">
                             <a href="/sedes" class="nav-link ">
-                                <i class="fa fa-university"></i>
+                                <i class="nav-icon fa fa-university"></i>
                                 <p>
                                     Sedes
                                 </p>
@@ -42,7 +42,7 @@
                         </li>
                         <li class="nav-item has-treeview ">
                             <a href="/facultades" class="nav-link ">
-                                <i class="fa fa-archway"></i>
+                                <i class="nav-icon fa fa-archway"></i>
                                 <p>
                                     Facultades
                                 </p>
@@ -50,7 +50,7 @@
                         </li>
                         <li class="nav-item has-treeview ">
                             <a href="/escuelas" class="nav-link ">
-                                <i class="fa fa-school"></i>
+                                <i class="nav-icon fa fa-school"></i>
                                 <p>
                                     Escuelas
                                 </p>
@@ -58,7 +58,7 @@
                         </li>
                         <li class="nav-item has-treeview ">
                             <a href="/carreras" class="nav-link ">
-                                <i class="fa fa-stethoscope"></i>
+                                <i class="nav-icon fa fa-stethoscope"></i>
                                 <p>
                                     Carreras
                                 </p>
@@ -67,7 +67,7 @@
 
                 <li class="nav-item has-treeview">
                     <a href="/coordinadores" class="nav-link">
-                        <i class="fa fa-clipboard"></i>
+                        <i class="nav-icon fa fa-clipboard"></i>
                         <p>
                             Coordinadores
                         </p>
@@ -77,7 +77,7 @@
                 @endif
                 <li class="nav-item has-treeview">
                     <a href="/empresas" class="nav-link">
-                        <i class="fa fa-building"></i>
+                        <i class="nav-icon fa fa-building"></i>
                         <p>
                             Empresas
                         </p>
@@ -87,7 +87,7 @@
                 @if(Auth::user()->hasRole('admin'))
                 <li class="nav-item has-treeview">
                     <a href="/tutores" class="nav-link">
-                        <i class="fa fa-briefcase"></i>
+                        <i class="nav-icon fa fa-briefcase"></i>
                         <p>
                             Tutores Empresariales
                         </p>
@@ -98,7 +98,7 @@
                 @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord') )
                     <li class="nav-item has-treeview">
                         <a href="/profesores" class="nav-link">
-                            <i class="fa fa-chalkboard-teacher"></i>
+                            <i class="nav-icon fa fa-chalkboard-teacher"></i>
                             <p>
                                 Profesores
                             </p>
@@ -109,7 +109,7 @@
                 @if(!(Auth::user()->hasRole('est')))
                 <li class="nav-item has-treeview">
                     <a href="/estudiantes" class="nav-link">
-                        <i class="fa fa-user"></i>
+                        <i class="nav-icon fa fa-user"></i>
                         <p>
                             Estudiantes
                         </p>
@@ -118,7 +118,7 @@
                 @endif
                     <li class="nav-item has-treeview">
                         <a href="/practicas" class="nav-link">
-                            <i class="fa fa-book-open"></i>
+                            <i class="nav-icon fa fa-book-open"></i>
                             <p>
                                 Practicas
                             </p>
@@ -126,7 +126,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="/formatos" class="nav-link">
-                            <i class="fa fa-file"></i>
+                            <i class="nav-icon fa fa-file"></i>
                             <p>
                                 Formatos
                             </p>

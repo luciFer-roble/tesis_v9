@@ -150,15 +150,13 @@ class EstudiantesController extends Controller
     public function update(Request $request, $id)
     {
         $rules = array(
-            'carrera'       => 'required',
             'cedula'       => 'required',
             'nombres'       => 'required',
             'apellidos'    => 'required',
             'tipo'    => 'required',
             'celular'    => 'required',
             'correo'    => 'required',
-            'fechanacimiento'    => 'required',
-            'genero'    => 'required'
+            'fechanacimiento'    => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -179,7 +177,7 @@ class EstudiantesController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('estudiantes');
+        return ['redirect' => route('estudiantes.index')];
     }
 
 

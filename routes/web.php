@@ -137,7 +137,7 @@ Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');
 Route::put('/tutores/{tutore}', 'TutorEsController@update');
 Route::delete('/tutores/{empresa}', 'TutorEsController@destroy');
 
-Route::get('/estudiantes', 'EstudiantesController@index');
+Route::get('/estudiantes', 'EstudiantesController@index')->name('estudiantes.index');
 Route::get('/estudiantes/create', 'EstudiantesController@create');
 Route::get('/estudiantes/{estudiante}', 'EstudiantesController@show');
 Route::post('/estudiantes', 'EstudiantesController@store');

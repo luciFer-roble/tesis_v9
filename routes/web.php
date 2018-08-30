@@ -13,9 +13,7 @@
 
 use App\Sede;
 
-Route::get('/', function () {
-    return view('layouts.master');
-});
+Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

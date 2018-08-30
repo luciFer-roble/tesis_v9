@@ -1,6 +1,6 @@
 <template>
     <!-- DataTable Card-->
-    <div class="card mb-3">
+    <div>
         <div class="card-header ">
             <div class=" row d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                 <div class="col-md-2 btn-toolbar mb-2 mb-md-0"  >
@@ -183,7 +183,6 @@
             </div>
 
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
 </template>
 

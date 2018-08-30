@@ -174,7 +174,10 @@
 
                 @else
                     <div class="col-12" id="app">
+
+                        <div class="card mb-3">
                         <consulta-praticas></consulta-praticas>
+                        </div>
                     </div>
                 @endif
 

@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <canvas id="canvas1">
+            <canvas id="canvas2">
 
             </canvas>
         </div>
@@ -97,7 +97,7 @@
                             }
                         }
                     };
-                    this.createChart('canvas1', data);
+                    this.createChart('canvas2', data);
                 }).catch(function (error) {
                     console.log(error);
                 });

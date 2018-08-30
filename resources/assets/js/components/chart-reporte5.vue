@@ -1,12 +1,12 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <canvas id="estudiantestipopractica">
+            <canvas id="canvas51">
 
             </canvas>
         </div>
         <div class="col-lg-12">
-            <canvas id="practicastipopractica">
+            <canvas id="canvas52">
 
             </canvas>
         </div>
@@ -206,8 +206,8 @@
                             }
                         }
                     };
-                    this.createChart('estudiantestipopractica', data);
-                    this.createChart('practicastipopractica', data2);
+                    this.createChart('canvas51', data);
+                    this.createChart('canvas52', data2);
                 }).catch(function (error) {
                     console.log(error);
                 });

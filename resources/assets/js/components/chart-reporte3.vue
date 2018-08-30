@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <canvas id="estudiantestipopractica">
+            <canvas id="canvas3">
 
             </canvas>
         </div>
@@ -88,7 +88,7 @@
                                 display: true,
                                 text: 'PRACTICAS POR TIPO'
                             },
-                            responsive: true,
+                            responsive: false,
                             legend: {
                                 display: true,
                                 position: 'right',
@@ -109,7 +109,7 @@
                             }
                         }
                     };
-                    this.createChart('estudiantestipopractica', data);
+                    this.createChart('canvas3', data);
                 }).catch(function (error) {
                     console.log(error);
                 });

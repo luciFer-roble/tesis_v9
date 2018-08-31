@@ -14,7 +14,9 @@
 <script>
     export default {
         name: "avatar-nuevo",
-        
+        data:()=>({
+            foto: ''
+        }),
         methods:{
             cambiar:function () {
                 this.foto = this.$refs.file.files[0].name;

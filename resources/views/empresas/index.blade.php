@@ -18,10 +18,11 @@
                             <h1>EMPRESAS</h1></div>
                                 <div class="btn-group mr-2 justify-content-end">
                                 @if(Auth::user()->hasRole('coord'))
-                                        <input type="button" onClick="location.href = 'tutores'" class="btn btn-sm btn-light" value="Administrar Convenios">
-                                        &nbsp; &nbsp;
+                                        <input type="button" onClick="location.href = 'tutores'" class="btn btn-sm btn-light" value="Administrar Convenios">&nbsp; &nbsp;
                                 @endif
+                                    @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord'))
                                     <empresa-nuevo></empresa-nuevo>
+                                        @endif
                                 </div>
                         </div>
                         </div>
@@ -53,7 +54,7 @@
                                 @else
                                         <div class="table-responsive">
                                             @foreach($empresas as $empresa)
-                                                <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}">
+                                                <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :rol="{{ Auth::user()->roles->first() }}">
                                                 </empresa-item>
                                             @endforeach
                                         </div>

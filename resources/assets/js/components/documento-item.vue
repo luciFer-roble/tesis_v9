@@ -7,9 +7,9 @@
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
             <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
             <i v-if="doc" class="far fa-file-word"></i>
-            <span v-bind:class="{ 'text-success': excel, 'text-danger': pdf}">{{ formato.archivoformato }}</span>
+            <span class="text-secondary">{{ formato.archivoformato }}</span>
         </button></td>
-        <td class="p-0 m-0" style="width: 7%">
+        <td class="p-0 m-0" style="width: 7%" v-if="rol.name==='coord' || rol.name==='admin'">
             <div class="row p-0 m-0">
                 <div class="col" align="center">
                     <span   class="btn btn-link p-0 m-0">

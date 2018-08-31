@@ -13,14 +13,15 @@
             <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
             <i v-if="doc" class="far fa-file-word"></i>
         </button></td>
-        <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-else-if="!convenio"><button class="btn btn-link p-0 m-0" @click="agregar_convenio" title="AÑADIR CONVENIO" ><i class="fa fa-plus"></i></button></td>
-        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0"><button class="btn btn-link p-0 m-0" @click="edit" title="EDITAR"><i class="text-info fa fa-pencil-alt"></i></button></td>
-        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0"><button class="btn btn-link p-0 m-0" @click="agregartutor" title="AÑADIR TUTOR"><i class=" text-info fas fa-user-plus"></i></button></td>
-        <td align="center" style="width: 1%; vertical-align: middle" v-if="!tutores" class="p-0 m-0"><i @click="vertutores" class="fa fa-angle-down p-0 m-0 "></i></td>
-        <td align="center" style="width: 1%; vertical-align: middle" v-if="tutores" class="p-0 m-0"><i @click="ocultartutores" class="fa fa-angle-up p-0 m-0 "></i></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="!convenio && (rol.name==='coord')"><button class="btn btn-link p-0 m-0" @click="agregar_convenio" title="AÑADIR CONVENIO" ><i class="fa fa-plus"></i></button></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="!convenio && (rol.name==='est' || rol.name==='prof')"><span class="btn text-secondary p-0 m-0" title="SIN CONVENIO" ><i class="fas fa-times"></i></span></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0" v-if="rol.name==='coord' " ><button class="btn btn-link p-0 m-0" @click="edit" title="EDITAR"><i class="text-info fa fa-pencil-alt"></i></button></td>
+        <td align="center" style="width: 2.2%; vertical-align: middle" class="p-0 m-0" v-if="rol.name==='coord' "><button class="btn btn-link p-0 m-0" @click="agregartutor" title="AÑADIR TUTOR"><i class=" text-info fas fa-user-plus"></i></button></td>
+        <td align="center" style="width: 1%; vertical-align: middle" v-if="!tutores && (rol.name==='coord' || rol.name==='prof')" class="p-0 m-0"><i @click="vertutores" class="fa fa-angle-down p-0 m-0 "></i></td>
+        <td align="center" style="width: 1%; vertical-align: middle" v-if="tutores && (rol.name==='coord' || rol.name==='prof')" class="p-0 m-0"><i @click="ocultartutores" class="fa fa-angle-up p-0 m-0 "></i></td>
     </tr>
     <tr>
-        <td v-if="llena" v-show="tutores" colspan="10" class="p-0 m-0">
+        <td v-if="llena" v-show="tutores" :colspan="colu" class="p-0 m-0">
             <table class="table table-bordered p-0 m-0">
                 <thead>
                 <tr style="background-color: #F2F2F2">
@@ -167,6 +168,9 @@
             convenios: {
                 type: Array
             },
+            rol: {
+                type: Object
+            },
             /*tutores: {
                 type: Array
             },*/
@@ -199,7 +203,8 @@
             apellido: '',
             celular: '',
             correo: '',
-            boton2: 'Guardar'
+            boton2: 'Guardar',
+            colu: '10'
         }),
 
         methods:{
@@ -347,6 +352,9 @@
                        this.doc = true;
                    }
                }
+            }
+            if(this.rol.name ==='prof'){
+                this.colu = '8'
             }
         }
     }

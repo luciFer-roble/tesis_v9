@@ -7,7 +7,7 @@
 
             <div class="donut-inner">
                 <h5 class="btn text-primary porcentaje" >
-                    <button class="btn border-0 btn-link text-primary" @click="actividades">{{ Math.round((suma*100)/practica.horaspractica) }}%</button>
+                    <button class="btn border-0 btn-lg btn-link text-primary text-bold" @click="actividades">{{ Math.round((suma*100)/practica.horaspractica) }}%</button>
                 </h5>
             </div>
         </div>
@@ -15,9 +15,9 @@
             <canvas id="documentoschart">
             </canvas>
 
-            <div class="donut-inner">
+            <div class="donut-inner2">
                 <h5 class="btn text-primary porcentaje" >
-                    <button class="btn border-0 btn-link text-primary" @click="documentos">{{ Math.round((docs*100)/totaldocs) }}%</button>
+                    <button class="btn border-0 btn-lg btn-link text-primary text-bold" @click="documentos">{{ Math.round((docs*100)/totaldocs) }}%</button>
                 </h5>
             </div>
         </div>
@@ -161,16 +161,20 @@
 
 <style scoped>
     .donut-inner {
-        margin-top: -100px;
-        margin-bottom: 100px;
-        padding-top: 22px;
         text-align: center;
+        margin-top: -28%;
+        margin-bottom: 30%;
+    }
+    .donut-inner2 {
+        text-align: center;
+        margin-top: -28%;
+        margin-bottom: 12%;
     }
     .donut-inner h5 {
         margin-bottom: 5px;
         margin-top: 0;
     }
     .donut-inner span {
-        font-size: 12px;
+        font-size: 5px;
     }
 </style>

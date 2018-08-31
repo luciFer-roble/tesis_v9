@@ -1,10 +1,10 @@
 <template>
     <tr v-bind:class="{ 'fondoverde': check }">
         <td style="width:  12%">
-            <input class="form-control border-0" type="date" name="fecha" id="fecha"  v-model="fecha" @blur="insertar" :disabled="check">
+            <input v-bind:class="{ 'fondoverde': check }" class="form-control border-0" type="date" name="fecha" id="fecha"  v-model="fecha" @blur="insertar" :disabled="check || (rol.name === 'tut' || rol.name === 'prof')">
         </td>
         <td class="p-0 m-0">
-            <textarea class="form-control border-0" name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check"></textarea>
+            <textarea v-bind:class="{ 'fondoverde': check }" class="form-control border-0" name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check || (rol.name === 'tut' || rol.name === 'prof')"></textarea>
         </td>
         <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="check && (rol.name === 'tut' || rol.name === 'prof')">
                 <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
@@ -19,7 +19,7 @@
             <span class="btn"><i class=" text-success far fa-circle fa-2x fa-disabled"  ></i></span>
         </td>
         <td class="p-0 m-0">
-            <textarea class="form-control border-0" name="comentario" id="comentario" cols="14" v-model="comentario" @blur="insertar" :disabled="check"></textarea>
+            <textarea v-bind:class="{ 'fondoverde': check }" class="form-control border-0" name="comentario" id="comentario" cols="14" v-model="comentario" @blur="insertar" :disabled="check"></textarea>
         </td>
 
         <!--<td style="width:  6%">
@@ -51,11 +51,11 @@
         methods:{
             ponertrue:function () {
                 this.check = true;
-                //insertar();
+                this.insertar();
             },
             ponerfalse:function () {
                 this.check = false;
-                //insertar();
+                this.insertar();
             },
             insertar:function () {
                 axios.put('/actividades/'+this.actividad.idactividad, {
@@ -89,10 +89,10 @@
 </script>
 <style scoped>
     input[disabled] {
-        background-color: #ccffcc;
+        background-color: white;
     }
     textarea[disabled] {
-         background-color: #ccffcc ;
+         background-color: white ;
      }
     textarea{
         -webkit-border-radius: 0px;
@@ -100,7 +100,7 @@
         border-radius: 0px;
     }
     .fondoverde{
-        background-color: #ccffcc;
+        background-color: #ccffcc !important;
     }
     .fa-disabled {
         opacity: 0.6;

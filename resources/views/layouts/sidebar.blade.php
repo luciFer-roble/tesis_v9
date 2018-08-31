@@ -12,16 +12,16 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             @if(!empty(Auth::user()))
-            <div class="image">
-                <img src="/uploads/avatars/{{Auth::user()->avatar}}"
-                     class="img-circle elevation-2" alt="User Image">
+                <div class="image">
+                    <img src="/uploads/avatars/{{Auth::user()->avatar}}"
+                         class="img-circle elevation-2" alt="User Image">
 
-            </div>
+                </div>
             @endif
             <div class="info">@if(!empty(Auth::user()))
-                <a  href="{{ URL::to('users/' . Auth::user()->id) }}"
-                   class="d-block">{{  Auth::user()->name}}</a>
-                                  @endif
+                    <a href="{{ URL::to('users/' . Auth::user()->id) }}"
+                       class="d-block">{{  Auth::user()->name}}</a>
+                @endif
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 @if(!empty(Auth::user()))
-                @if(Auth::user()->hasRole('admin'))
+                    @if(Auth::user()->hasRole('admin'))
                         <li class="nav-item has-treeview ">
                             <a href="/sedes" class="nav-link ">
                                 <i class="nav-icon fa fa-university"></i>
@@ -65,57 +65,60 @@
                             </a>
                         </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="/coordinadores" class="nav-link">
-                        <i class="nav-icon fa fa-clipboard"></i>
-                        <p>
-                            Coordinadores
-                        </p>
-                    </a>
+                        <li class="nav-item has-treeview">
+                            <a href="/coordinadores" class="nav-link">
+                                <i class="nav-icon fa fa-clipboard"></i>
+                                <p>
+                                    Coordinadores
+                                </p>
+                            </a>
 
-                </li>
-                @endif
-                <li class="nav-item has-treeview">
-                    <a href="/empresas" class="nav-link">
-                        <i class="nav-icon fa fa-building"></i>
-                        <p>
-                            Empresas
-                        </p>
-                    </a>
+                        </li>
+                    @endif
 
-                </li>
-                @if(Auth::user()->hasRole('admin'))
-                <li class="nav-item has-treeview">
-                    <a href="/tutores" class="nav-link">
-                        <i class="nav-icon fa fa-briefcase"></i>
-                        <p>
-                            Tutores Empresariales
-                        </p>
-                    </a>
-                </li>
-                @endif
-
-                @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord') )
+                    @if(!Auth::user()->hasRole('tut'))
                     <li class="nav-item has-treeview">
-                        <a href="/profesores" class="nav-link">
-                            <i class="nav-icon fa fa-chalkboard-teacher"></i>
+                        <a href="/empresas" class="nav-link">
+                            <i class="nav-icon fa fa-building"></i>
                             <p>
-                                Profesores
+                                Empresas
                             </p>
                         </a>
 
                     </li>
+                        @endif
+                    @if(Auth::user()->hasRole('admin'))
+                        <li class="nav-item has-treeview">
+                            <a href="/tutores" class="nav-link">
+                                <i class="nav-icon fa fa-briefcase"></i>
+                                <p>
+                                    Tutores Empresariales
+                                </p>
+                            </a>
+                        </li>
                     @endif
-                @if(!(Auth::user()->hasRole('est')))
-                <li class="nav-item has-treeview">
-                    <a href="/estudiantes" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>
-                            Estudiantes
-                        </p>
-                    </a>
-                </li>
-                @endif
+
+                    @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('coord') )
+                        <li class="nav-item has-treeview">
+                            <a href="/profesores" class="nav-link">
+                                <i class="nav-icon fa fa-chalkboard-teacher"></i>
+                                <p>
+                                    Profesores
+                                </p>
+                            </a>
+
+                        </li>
+                    @endif
+                    @if(!(Auth::user()->hasRole('est')))
+                        <li class="nav-item has-treeview">
+                            <a href="/estudiantes" class="nav-link">
+                                <i class="nav-icon fa fa-user"></i>
+                                <p>
+                                    Estudiantes
+                                </p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item has-treeview">
                         <a href="/practicas" class="nav-link">
                             <i class="nav-icon fa fa-book-open"></i>
@@ -124,24 +127,25 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="/formatos" class="nav-link">
-                            <i class="nav-icon fa fa-file"></i>
-                            <p>
-                                Formatos
-                            </p>
-                        </a>
-                    </li>
-
-                @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
-                <li class="nav-item has-treeview">
-                    <a href="/reportes" class="nav-link">
-                        <i class="nav-icon fa fa-pie-chart"></i>
-                        <p>Reportes
-                        </p>
-                    </a>
-                </li>
-                @endif
+                    @if(!Auth::user()->hasRole('tut'))
+                        <li class="nav-item has-treeview">
+                            <a href="/formatos" class="nav-link">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>
+                                    Formatos
+                                </p>
+                            </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
+                        <li class="nav-item has-treeview">
+                            <a href="/reportes" class="nav-link">
+                                <i class="nav-icon fa fa-pie-chart"></i>
+                                <p>Reportes
+                                </p>
+                            </a>
+                        </li>
+                    @endif
             </ul>
 
             @endif

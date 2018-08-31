@@ -12,38 +12,48 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-6">
+            {{--<div class="col-4"></div>--}}
+            <div class="col-5">
 
 
                 <!-- Example DataTables Card-->
-                <div class="card ">
+                <div class="card " id="app">
                     @if(Auth::user()->hasRole('admin'))
                            {{Form::open( ['method'=>"PUT", 'url'=>array("/users", $user->id), 'files'=>true]) }}
 
                            {{ csrf_field() }}
                            <div class="card-body">
-                               <table class="table table-bordered">
-                                  <th><strong>Nombre:</strong> </th>
-                                   <td>{{ $user->name }}</td>
-                                   <th><strong>Correo:</strong></th>
-                                   <td>{{ $user->email }}</td>
-                                   <td colspan="2">
-                                       <div class="form-group">
-                                           <div class="image">
-                                               <img src="/uploads/avatars/{{$user->avatar}}"
-                                                    alt="User Image">
+                               <table class="table ">
+                                  <tr>
+                                      <th style="width:18%"><strong>Nombre:</strong> </th>
+                                      <td>{{ $user->name }}</td>
+                                  </tr>
+                                   <tr>
+                                       <th style="width:18%"><strong>Correo:</strong></th>
+                                       <td>{{ $user->email }}</td>
+                                   </tr>
+                                   <tr>
+                                       <td colspan="2">
+                                           <div class="form-group">
+                                               <div class="image">
+                                                   <img src="/uploads/avatars/{{$user->avatar}}"
+                                                        alt="User Image">
 
-                                           </div>
-                                           <div class="input-group">
-                                               <div class="custom-file">
-                                                   <input type="file" class="" id="foto" name="foto">
-                                                   <label for="foto"></label>
                                                </div>
+                                               {{--<div class="input-group">
+                                                   <div class="custom-file">
+                                                       <input type="file" class="" id="foto" name="foto">
+                                                       <label for="foto"></label>
+                                                   </div>
+
+                                               </div>--}}
+                                               <avatar-nuevo></avatar-nuevo>
 
                                            </div>
+                                       </td>
 
-                                       </div>
-                                   </td>
+                                   </tr>
+
                                </table>
                            </div>
                     @else
@@ -51,40 +61,42 @@
 
                         {{ csrf_field() }}
                         <div class="card-body">
-                            <div class="formgroup" width="100">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" disabled>
-                            </div>
+                            <table >
+                                <tr>
+                                    <th style="width:18%" for="nombre">Nombre:</th>
+                                    <td><input type="text" class="form-control" id="nombre" name="nombre" value="{{ $usuario->nombre }}" disabled></td>
+                                </tr>
+                                <tr>
+                                    <th style="width:18%" for="apellido">Apellido:</th>
+                                    <td><input type="text" class="form-control" id="apellido" name="apellido" value="{{ $usuario->apellido }}"disabled></td>
+                                </tr>
+                                <tr>
+                                    <th style="width:18%" for="celular">Celular:</th>
+                                    <td><input type="text" class="form-control" id="celular" name="celular" value="{{ $usuario->celular}}"></td>
+                                </tr>
+                                <tr>
+                                    <th style="width:18%" for="correo">Correo:</th>
+                                    <td><input type="text" class="form-control" id="correo" name="correo" value="{{ $usuario->correo }}"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <div class="image">
+                                            <img src="/uploads/avatars/{{$usuario->avatar}}"
+                                                 alt="User Image">
 
-                            <div class="formgroup">
-                                <label for="apellido">Apellido:</label>
-                                <input type="text" class="form-control" id="apellido" name="apellido" value="{{ $usuario->apellido }}"disabled>
-                            </div>
+                                        </div>
+                                        <avatar-nuevo></avatar-nuevo>
+                                        {{--<div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="" id="foto" name="foto">
+                                                <label for="foto"></label>
+                                            </div>
 
-                            <div class="formgroup">
-                                <label for="celular">Celular:</label>
-                                <input type="text" class="form-control" id="celular" name="celular" value="{{ $usuario->celular}}">
-                            </div>
+                                        </div>--}}
+                                    </td>
+                                </tr>
 
-                            <div class="formgroup">
-                                <label for="correo">Correo:</label>
-                                <input type="text" class="form-control" id="correo" name="correo" value="{{ $usuario->correo }}">
-                            </div>
-                            <div class="form-group">
-                                <div class="image">
-                                    <img src="/uploads/avatars/{{$usuario->avatar}}"
-                                         alt="User Image">
-
-                                </div>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="" id="foto" name="foto">
-                                        <label for="foto"></label>
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            </table>
                         </div>
                     @endif
                     <div class="card-footer">
@@ -99,6 +111,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 

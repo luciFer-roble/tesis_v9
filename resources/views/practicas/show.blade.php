@@ -151,7 +151,11 @@
                     <div class="form-group p-0 m-0 col-md-6">
                         <label class="col-sm-12 control-label" for="profesor">Tutor Academico:</label>
                         <div class="col-lg-12">
-                            <select id="profesor" name="profesor" class="form-control">
+                            <select style="background-color: white !important;" id="profesor" name="profesor" class="form-control"
+                            @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                {{ ' disabled ' }}
+                                    @endif
+                            >
                                 @foreach($profesores as $profesor)
                                     <option value="{{ $profesor->idprofesor }}"
                                             @if($profesor->idprofesor == $practica->idprofesor)
@@ -166,7 +170,11 @@
                     <div class="form-group  p-0 m-0 col-md-6">
                         <label class="col-sm-12 control-label" for="periodo">Periodo Academico:</label>
                         <div class="col-lg-12">
-                            <select id="periodo" name="periodo" class="form-control">
+                            <select style="background-color: white !important;" id="periodo" name="periodo" class="form-control"
+                            @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                {{ ' disabled ' }}
+                                    @endif
+                            >
                                 @foreach($periodos as $periodo)
                                     <option value="{{ $periodo->idperiodoacademico }}"
                                             @if($periodo->idperiodoacademico == $practica->idperiodoacademico)
@@ -183,13 +191,21 @@
                     <div class="form-group p-0 m-0 col-md-6">
                         <label class="col-sm-12 control-label" for="inicio">Fecha de Inicio:</label>
                         <div class="col-lg-12">
-                            <input type="date" class="form-control" id="inicio" name="inicio" value="{{ $practica->fechainiciopractica }}">
+                            <input style="background-color: white !important;" type="date" class="form-control" id="inicio" name="inicio"
+                                   @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                   {{ ' disabled ' }}
+                                   @endif
+                                   value="{{ $practica->fechainiciopractica }}">
                         </div>
                     </div>
                     <div class="form-group p-0 m-0 col-md-6">
                         <label class="col-sm-12 control-label" for="fin">Fecha de Finalizacion:</label>
                         <div class="col-lg-12">
-                            <input type="date" class="form-control" id="fin" name="fin" value="{{ $practica->fechafinpractica }}">
+                            <input style="background-color: white !important;"  type="date" class="form-control" id="fin" name="fin"
+                                   @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                   {{ ' disabled ' }}
+                                   @endif
+                                   value="{{ $practica->fechafinpractica }}">
                         </div>
                     </div>
                 </div>
@@ -198,7 +214,11 @@
                     <div class="form-group p-0 m-0 col-md-3">
                         <label class="col-sm-12 control-label" for="tipo">Tipo:</label>
                         <div class="col-lg-12">
-                            <select id="tipo" name="tipo" class="form-control">
+                            <select style="background-color: white !important;"  id="tipo" name="tipo" class="form-control"
+                            @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                {{ ' disabled ' }}
+                                    @endif
+                            >
                                 <option value="Practica"
                                         @if("Practica" == $practica->tipopractica)
                                         selected
@@ -215,7 +235,11 @@
                     <div class="form-group p-0 m-0 col-md-3">
                         <label class="col-sm-12 control-label" for="salario">Sueldo/salario:</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="salario" name="salario" value="{{ $practica->salariopractica }}">
+                            <input style="background-color: white !important;"  type="text" class="form-control" id="salario" name="salario"
+                                   @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                   {{ ' disabled ' }}
+                                   @endif
+                                   value="{{ $practica->salariopractica }}">
 
                         </div>
                     </div>
@@ -224,14 +248,22 @@
                     <div class="form-group p-0 m-0 col-md-1">
                         <label class="col-sm-12 control-label" for="horas">Horas</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="horas" name="horas" value="{{ $practica->horaspractica }}">
+                            <input style="background-color: white !important;"  type="text" class="form-control" id="horas" name="horas"
+                                   @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                   {{ ' disabled ' }}
+                                   @endif
+                                   value="{{ $practica->horaspractica }}">
 
                         </div>
                     </div>
                     <div class="form-group p-0 m-0 col-md-5">
                         <label class="col-sm-12 control-label" for="horario">Horario:</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" id="horario" name="horario" value="{{ $practica->horariopractica }}">
+                            <input style="background-color: white !important;" type="text" class="form-control" id="horario" name="horario"
+                                   @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                   {{ ' disabled ' }}
+                                   @endif
+                                   value="{{ $practica->horariopractica }}">
 
                         </div>
                     </div>
@@ -241,7 +273,11 @@
                     <div class="form-group p-0 m-0 col-md-12">
                         <label class="col-sm-12 control-label" for="descripcion">Descripcion:</label>
                         <div class="col-lg-12">
-                            <textarea  class="form-control" id="descripcion" name="descripcion" >{{ $practica->descripcionpractica }}</textarea>
+                            <textarea  style="background-color: white !important;" class="form-control" id="descripcion" name="descripcion"
+                            @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                {{ ' disabled ' }}
+                                    @endif
+                            >{{ $practica->descripcionpractica }}</textarea>
                         </div>
                     </div>
                     <div>
@@ -252,9 +288,13 @@
 
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-lg btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-lg btn-primary"
+                        @if((Auth::user()->hasRole('tut')) or (Auth::user()->hasRole('prof')) )
+                                {{ ' disabled ' }}
+                                @endif
+                    >Actualizar</button>
 
-                    @if(!(Auth::user()->hasRole('tut')) or !(Auth::user()->hasRole('prof')) )
+                    @if((Auth::user()->hasRole('coord')) or (Auth::user()->hasRole('est')) )
                             <button  data-toggle="modal" data-target="#f1" class="btn  btn-lg btn-danger float-right">Finalizar</button>
                         @endif
 

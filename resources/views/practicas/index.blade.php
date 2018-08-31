@@ -12,17 +12,20 @@
             <div class="col-12" id="app">
                 <!-- Example DataTables Card-->
 
-                @if(Auth::user()->hasRole('admin'))
+                @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('est')or Auth::user()->hasRole('prof')
+                or Auth::user()->hasRole('tut') or  (Auth::user()->hasRole('coord') and (!empty($profesor) or !empty($estudiante))))
+
                     <div class="card mb-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                                 <div class="btn-toolbar mb-2 mb-md-0">
                                     <h1>PRACTICAS</h1></div>
-
+                                @if(Auth::user()->hasRole('admin'))
                                 <div class="btn-group mr-2">
                                     <input type="button" onClick="location.href = 'practicas/create'"
                                            class="btn btn-sm btn-outline-success" value="NUEVA"></input>
                                 </div>
+                                     @endif
 
                             </div>
                             `
@@ -67,6 +70,14 @@
                                             <td class="p-0  m-0">{{ $practica->horaspractica }}</td>
                                             <td class="p-0  m-0">{{ $practica->horariopractica }}</td>
                                             <td class="p-0  m-0">{{ $practica->salariopractica }}</td>
+                                            @if(!Auth::user()->hasRole('admin'))
+                                            <td class="m-0 p-0 " align="center">
+                                                <a title="Ver Practica" class="btn text-info p-0 m-0"
+                                                   href="{{ URL::to('practicas/' . $practica->idpractica).'/edit'}}">
+                                                    <i class="fa fa-external-link-alt"></i>
+                                                </a>
+                                            </td>
+                                            @else
                                             <td class="p-0  m-0">
                                                 <a class="btn btn-link p-0 m-0"
                                                    href="{{ URL::to('practicas/' . $practica->idpractica . '/edit') }}">
@@ -74,6 +85,7 @@
                                                     <i class="fa fa-fw fa-pencil-alt"></i></a>
                                             </td>
                                             <td class="p-0 m-0" is="boton-borrar-practica" :practica="{{ $practica }}"></td>
+                                                @endif
 
                                         </tr>
                                     @endforeach
@@ -85,7 +97,7 @@
                     </div>
 
 
-                @elseif(Auth::user()->hasRole('est')or Auth::user()->hasRole('prof') or Auth::user()->hasRole('tut') or  (Auth::user()->hasRole('coord') and (!empty($profesor) or !empty($estudiante))))
+                {{--@elseif(Auth::user()->hasRole('est')or Auth::user()->hasRole('prof') or Auth::user()->hasRole('tut') or  (Auth::user()->hasRole('coord') and (!empty($profesor) or !empty($estudiante))))
                     <div class="card mb-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
@@ -166,7 +178,7 @@
                         </div>
                         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                     </div>
-
+--}}
 
 
 

@@ -1,5 +1,5 @@
 <template>
-        <div class="input-group">
+        <div class="input-group" style="width:70%">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" ref="file" name="foto" @change="cambiar">
                 <input type="text" class="custom-file-label btn-block" v-model="foto">

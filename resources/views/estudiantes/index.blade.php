@@ -133,32 +133,19 @@
                                             <th class="p-0 m-0">Celular</th>
                                             <th class="p-0 m-0">Correo</th>
                                             <th class="p-0 m-0" >Carrera</th>
+                                            @if(!Auth::user()->hasRole('tut'))
                                             <th class="p-0 m-0" >Horas</th>
+                                            @endif
+                                            @if(Auth::user()->hasRole('coord'))
                                             <th class="p-0 m-0"></th>
+                                                @endif
 
 
                                         </tr>
 
-
                                         @foreach($estudiantes as $estudiante)
-                                            <tr is="estudiantes-componente" :estudiante="{{$estudiante}}" :carrera="{{$estudiante->carrera}}">
-                                                {{--<td class="p-0 m-0" >{{ $estudiante->cedulaestudiante }}</td>
-                                                <td class="p-0 m-0" >{{ $estudiante->nombresestudiante }} {{ $estudiante->apellidosestudiante }} </td>
-                                                <td class="p-0 m-0">{{ $estudiante->celularestudiante }}</td>
-                                                <td  class="p-0 m-0">{{ $estudiante->correoestudiante }}</td>
-                                                <td style="min-width: 90px" class="p-0 m-0">{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}</td>
-                                                <td style="min-width: 100px" class="p-0 m-0">{{ $estudiante->carrera->nombrecarrera }}</td>
-                                                <td  class="p-0 m-0" align="center">
-                                                    @if(!empty($estudiante->horasestudiante ))
-                                                        <a title="Ver Practicas" href="/practicas/{{ $estudiante->idestudiante .'/list2'}}"  class="text-success p-0 m-0">{{$estudiante->horasestudiante}}</a>
-
-                                                        @else
-                                                        <a   class="text-danger p-0 m-0 ">0</a>
-
-                                                    @endif
-
-                                                </td>--}}
-
+                                            <tr is="estudiantes-componente" :estudiante="{{$estudiante}}" :carrera="{{$estudiante->carrera}}"
+                                                :rol="{{ Auth::user()->roles->first()}}">
                                             </tr>
                                         @endforeach
 

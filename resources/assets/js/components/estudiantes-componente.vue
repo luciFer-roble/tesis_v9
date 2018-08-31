@@ -6,11 +6,11 @@
         <td class="p-0 m-0">{{ estudiante.celularestudiante }}</td>
         <td  class="p-0 m-0">{{ estudiante.correoestudiante }}</td>
         <td style="min-width: 100px" class="p-0 m-0">{{ carrera.nombrecarrera }}</td>
-        <td  class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0">
+        <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut'">
             <button title="Ver Practicas" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-success p-0 m-0">{{estudiante.horasestudiante}}</button></td>
-        <td  class="p-0 m-0" align="center" v-else="" >
+        <td  class="p-0 m-0" align="center" v-else-if="estudiante.horasestudiante = 0 && rol.name !== 'tut'" >
             <a   class="text-danger p-0 m-0 ">0</a></td>
-        <td class="p-0 m-0" align="center">
+        <td v-if="rol.name === 'coord' " class="p-0 m-0" align="center">
                     <span   class="btn btn-link p-0 m-0">
                         <i  class="fa fa-fw fa-pencil-alt" @click="edit"></i>
                     </span>        
@@ -93,6 +93,9 @@
             },
 
             carrera: {
+                type: Object
+            },
+            rol: {
                 type: Object
             }
         },

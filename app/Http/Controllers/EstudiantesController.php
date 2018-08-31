@@ -10,6 +10,7 @@ use App\Practica;
 use App\Profesor;
 use App\Role;
 use App\Sede;
+use App\TutorE;
 use App\User;
 use DB;
 use Image;
@@ -35,6 +36,14 @@ class EstudiantesController extends Controller
                 ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
                 ->groupBy('estudiante.idestudiante')
                 ->where('practica.idprofesor','=',$profesor->idprofesor)
+                ->get();
+        }
+        elseif (Auth::user()->hasRole('tut')){
+            $tutore = Tutore::all()->where('iduser','=',Auth::user()->id)->first();
+            $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
+                ->where('practica.idtutore','=',$tutore->idtutore)
                 ->get();
         }
         else{

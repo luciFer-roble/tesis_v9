@@ -81,7 +81,7 @@
                                 <tr>
                                     <td colspan="2" align="center">
                                         <div class="image">
-                                            <img src="/uploads/avatars/{{$usuario->avatar}}"
+                                            <img class="img-thumbnail" width="200" height="200" src="/uploads/avatars/{{$usuario->avatar}}"
                                                  alt="User Image">
 
                                         </div>

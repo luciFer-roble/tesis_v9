@@ -57,12 +57,10 @@ class DocumentosPController extends Controller
 
         $file->storeAs($path, $name);
 
-<<<<<<< HEAD
+
 
         //Flash::success('Ingresado Correctamente');
-=======
->>>>>>> 2ad98cb8c85be35bf488cd0d903a22b4b89e73ac
-        // redirect
+
         return $name;
 
     }

@@ -1,24 +1,27 @@
 <template>
     <tr >
-        <td v-model="descripcion">
+        <td class="pb-0 pt-0 m-0" v-model="descripcion">
             {{ descripcion }}
         </td>
         <td class="p-0 m-0" v-if="!mostrar">
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class=""  ref="file" name="archivo" id="archivo" @change="guardar" >
-                    <label class="" for="archivo"></label>
+                    <input type="file" class="custom-file-input" ref="file" name="archivo" @change="guardar">
+                    <input type="text" class="conesquinas custom-file-label btn-block" v-model="archivo" placeholder="Seleccione...">
+                </div>
+                <div class="input-group-append">
+                    <span class="conesquinas input-group-text bl" >Cargar</span>
                 </div>
             </div>
         </td>
         <td class="p-0 m-0" v-if="mostrar">
             <button class="btn btn-link" @click="descargar" >{{ archivo }}</button>
         </td>
-        <td style="width: 4%; vertical-align: middle" class="align-items-center fa-disabled" v-if="mostrar">
+        <td style="width: 4%; vertical-align: middle" class="align-items-center fa-disabled pb-0 mt-0 pt-0 mt-0" v-if="mostrar">
             <!--<input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">-->
             <span class="btn"><i class=" text-success fas fa-check fa-disabled"  ></i></span>
         </td>
-        <td style="width: 4%; vertical-align: middle" class="align-items-center" v-if="!mostrar">
+        <td style="width: 4%; vertical-align: middle" class="align-items-center pb-0 mt-0 pt-0 mt-0" v-if="!mostrar">
             <!--<input class="form-control custom-checkbox " type="checkbox"   :disabled="mostrar" :checked="mostrar">-->
             <span class="btn"><i class=" text-danger fas fa-times fa-disabled"  ></i></span>
         </td>
@@ -111,5 +114,10 @@
     .fa-disabled {
         opacity: 0.8;
         cursor: default;
+    }
+    .conesquinas{
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
     }
 </style>

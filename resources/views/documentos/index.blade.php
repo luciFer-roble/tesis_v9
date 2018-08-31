@@ -20,7 +20,7 @@
                     <div class="card mb-3">
                         <div class="card-header ">
                             <div class="col-lg-6">
-                                <h5>DOCUMENTOS</h5>
+                                <h4>DOCUMENTOS</h4>
                             </div>
                         </div>
                         <div class="card-body" id="app">
@@ -29,9 +29,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Tipo</th>
-                                        <th>Documento</th>
-                                        <th>Estado</th>
+                                        <th>Descripción del Documento</th>
+                                        <th>Archivo</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>

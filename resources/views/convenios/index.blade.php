@@ -13,30 +13,28 @@
                 <div class="col-12">
 
                     <!-- Example DataTables Card-->
-                    <div class="card mb-3">
+                    <div class="card mb-3" id="app">
                         <div class="card-header">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <h1>CONVENIOS</h1></div>
-                            <div class="btn-group mr-2">
-                                <input type="button" onClick="location.href = 'convenios/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
-                            </div>
+                            <convenio-nuevo :rol="{{ Auth::user()->roles->first() }}"></convenio-nuevo>
                         </div>
                         </div>
-                        <div class="card-body" id="app">
+                        <div class="card-body" >
                             <div class="table-responsive">
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>Código</th>
                                         <th>Sede</th>
                                         <th>Empresa</th>
-                                        <th>Descripcion</th>
-                                        <th>Fecha Inicio</th>
-                                        <th>Fecha Fin</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha de Inicio</th>
+                                        <th>Fecha de Fin</th>
                                         <th>Archivo</th>
-                                        <td></td>
+                                        <td colspan="2"></td>
 
                                     </tr>
                                     </thead>

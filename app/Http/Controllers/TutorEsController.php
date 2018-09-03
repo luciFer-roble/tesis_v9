@@ -78,7 +78,11 @@ class TutorEsController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return ['redirect' => route('tutores.index')];
+        if($request->page === 'empresas'){
+            return ['redirect' => route('empresas.index')];
+        }else{
+            return ['redirect' => route('tutores.index')];
+        }
 
     }
 

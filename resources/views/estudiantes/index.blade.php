@@ -20,7 +20,7 @@
                                     <h1>ESTUDIANTES</h1></div>
                                 @if(Auth::user()->hasRole('admin'))
                                     <div class="btn-group mr-2">
-                                        <input  type="button" onClick="location.href = 'estudiantes/create'" class="btn btn-sm btn-outline-secondary" value="NUEVO"></input>
+                                        <input  type="button" onClick="location.href = 'estudiantes/create'" class="btn btn-sm btn-outline-success" value="NUEVO"></input>
                                     </div>
                                  @endif
                                 </div>

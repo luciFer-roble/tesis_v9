@@ -58,7 +58,7 @@ Route::get('/profesores/{profesor}/edit', 'ProfesoresController@edit');
 Route::put('/profesores/{profesor}', 'ProfesoresController@update');
 Route::delete('/profesores/{profesor}', 'ProfesoresController@destroy');
 
-Route::get('/coordinadores', 'CoordinadoresController@index');
+Route::get('/coordinadores', 'CoordinadoresController@index')->name('coordinadores.index');
 Route::get('/coordinadores/create', 'CoordinadoresController@create');
 Route::get('/coordinadores/{coordinador}', 'CoordinadoresController@show');
 Route::post('/coordinadores', 'CoordinadoresController@store');
@@ -115,7 +115,7 @@ Route::put('/formatos/{tipodocumento}', 'FormatosController@update');
 Route::delete('/formatos/{formato}', 'FormatosController@destroy');
 Route::get('/formatos/{formato}/descargar', 'FormatosController@descargar');
 
-Route::get('/convenios', 'ConveniosController@index');
+Route::get('/convenios', 'ConveniosController@index')->name('convenios.index');
 Route::get('/convenios/create', 'ConveniosController@create');
 Route::get('/convenios/{convenio}', 'ConveniosController@show');
 Route::post('/convenios', 'ConveniosController@store');

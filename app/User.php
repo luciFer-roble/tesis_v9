@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->hasOne('App\Estudiante');
     }
     public function profesor(){
-        return $this->hasOne('App\Profesor');
+        return $this->hasOne('App\Profesor', 'iduser', 'id');
     }
     public function tutore(){
         return $this->hasOne('App\TutorE');

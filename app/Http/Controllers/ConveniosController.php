@@ -82,7 +82,11 @@ class ConveniosController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('convenios');
+        if($request->page === 'empresas'){
+            return ['redirect' => route('empresas.index')];
+        }else{
+            return ['redirect' => route('convenios.index')];
+        }
 
     }
 
@@ -148,7 +152,7 @@ class ConveniosController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('convenios');
+        return ['redirect' => route('convenios.index')];
     }
 
 

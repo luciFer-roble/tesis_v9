@@ -33,10 +33,10 @@
                                     <thead>
                                     <tr>
                                         <th class="p-0 m-0">Nombre</th>
-                                        <th class="p-0 m-0">Direccion</th>
+                                        <th class="p-0 m-0">Direcci&oacute;n</th>
                                         <th class="p-0 m-0">Tipo</th>
                                         <th class="p-0 m-0">Sector</th>
-                                        <th class="p-0 m-0">Telefono</th>
+                                        <th class="p-0 m-0">Tel&eacute;fono</th>
                                         <td class="p-0 m-0"></td>
 
                                     </tr>

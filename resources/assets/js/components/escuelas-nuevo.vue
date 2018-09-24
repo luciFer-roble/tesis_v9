@@ -31,15 +31,15 @@
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripcion:</label>
+                                <label>Descripci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
                             <div class="formgroup">
-                                <label>Mision:</label>
+                                <label>Misi&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="mision" name="mision">
                             </div>
                             <div class="formgroup">
-                                <label>Vision:</label>
+                                <label>Visi&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="vision" name="vision">
                             </div>
                             <div class="formgroup">
@@ -49,11 +49,11 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label >Titulacion:</label>
+                                <label >Titulaci&oacute;n:</label>
                                 <input type="text" class="form-control"  v-model="titulacion" name="titulacion">
                             </div>
                             <div class="formgroup">
-                                <label >Duracion:</label>
+                                <label >Duraci&oacute;n:</label>
                                 <input type="text" class="form-control" name="duracion" v-model="duracion">
                             </div>
                             <div class="formgroup">
@@ -65,7 +65,7 @@
                                 <input type="text" class="form-control" name="campo" v-model="campo">
                             </div>
                             <div class="formgroup">
-                                <label >Titulo:</label>
+                                <label >T&iacute;tulo:</label>
                                 <input type="text" class="form-control"  name="titulo" v-model="titulo">
                             </div>
                         </div>

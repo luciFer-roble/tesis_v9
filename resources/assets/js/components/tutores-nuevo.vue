@@ -32,7 +32,7 @@
                                 <input type="text" class="form-control" v-model="apellido" name="apellido">
                             </div>
                             <div class="formgroup">
-                                <label>Cedula:</label>
+                                <label>C&eacute;dula:</label>
                                 <input type="text" class="form-control" v-model="cedula" name="cedula">
                             </div>
                             <div class="formgroup">

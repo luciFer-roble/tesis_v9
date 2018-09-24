@@ -31,15 +31,15 @@
                                     <tr>
                                         <th  class="p-0 m-0">Codigo</th>
                                         <th  class="p-0 m-0">Nombre</th>
-                                        <th  class="p-0 m-0">Descripcion</th>
+                                        <th  class="p-0 m-0">Descripci&oacute;n</th>
                                         <th  class="p-0 m-0">Facultad</th>
-                                        <th  class="p-0 m-0">Titulacion</th>
-                                        <th  class="p-0 m-0">Mision</th>
-                                        <th  class="p-0 m-0">Vision</th>
-                                        <th  class="p-0 m-0">Duracion</th>
+                                        <th  class="p-0 m-0">Titulaci&oacute;n</th>
+                                        <th  class="p-0 m-0">Misi&oacute;n</th>
+                                        <th  class="p-0 m-0">Visi&oacute;n</th>
+                                        <th  class="p-0 m-0">Duraci&oacute;n</th>
                                         <th  class="p-0 m-0">Modalidad</th>
                                         <th  class="p-0 m-0">Campo</th>
-                                        <th  class="p-0 m-0">Titulo</th>
+                                        <th  class="p-0 m-0">T&iacute;tulo</th>
 
 
                                         <td></td>

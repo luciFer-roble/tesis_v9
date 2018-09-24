@@ -27,7 +27,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <h4 class="modal-title center-block">Se eliminara la Carrera {{ carrera.nombrecarrera }}</h4>
+                        <h4 class="modal-title center-block">Se Eliminar&aacute; la Carrera {{ carrera.nombrecarrera }}</h4>
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-light" data-dismiss="modal" v-bind:class="{ disabled: actualizando}" >Cancelar</a>
@@ -66,7 +66,7 @@
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripcion:</label>
+                                <label>Descripci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
                             

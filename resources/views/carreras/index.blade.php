@@ -32,7 +32,7 @@
                                     <tr>
                                         <th class="p-0 m-0">Codigo</th>
                                         <th class="p-0 m-0">Nombre</th>
-                                        <th class="p-0 m-0">Descripcion</th>
+                                        <th class="p-0 m-0">Descripci&oacute;n</th>
                                         <th class="p-0 m-0">Escuela</th>
                                         <td class="p-0 m-0"></td>
 

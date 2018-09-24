@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="formgroup">
-                                <label>Direccion:</label>
+                                <label>Direcci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="direccion" name="direccion">
                             </div>
                             <div class="form-group">
@@ -90,7 +90,7 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Telefono:</label>
+                                <label>Tel&eacute;fono:</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
                             </div>
                         </div>

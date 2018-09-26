@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label class="col-sm-12 control-label" >Fecha de finalizacion:</label>
+                            <label class="col-sm-12 control-label" >Fecha de Finalizaci&oacute;n:</label>
                             <div class="col-lg-12">
                             <input type="date" class="form-control" v-model="fin" name="fin">
                             </div>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="row">
                         <div class="form-group col-md-3">
-                            <label class="col-sm-12 control-label" >Periodo Academico:</label>
+                            <label class="col-sm-12 control-label" >Periodo Acad&eacute;mico:</label>
                             <div class="col-lg-12">
                                 <select v-model="periodo" name="periodo" class="form-control">
                                     <option value="">-Seleccione-</option>
@@ -117,7 +117,7 @@
                         </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-8 control-label">Descripcion:</label>
+                            <label class="col-sm-8 control-label">Descripci&oacute;n:</label>
                             <div class="col-lg-8">
                                 <textarea  class="form-control" v-model="descripcion" name="descripcion" ></textarea>
                             </div>

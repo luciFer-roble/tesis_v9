@@ -125,7 +125,7 @@
                                 <input type="text" class="form-control" :value="empresa.nombreempresa" name="empresa" disabled>
                             </div>
                             <div class="formgroup" width="100%">
-                                <label>Cedula:</label>
+                                <label>C&eacute;dula:</label>
                                 <input type="text" class="form-control" v-model="cedula" name="cedula">
                             </div>
                             <div class="formgroup" width="100">
@@ -162,7 +162,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel3">Anadir Convenio</h5>
+                        <h5 class="modal-title" id="exampleModalLabel3">Añadir Convenio</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -190,12 +190,12 @@
                                 </select>
                             </div>
                             <div class="formgroup" width="100">
-                                <label >Codigo:</label>
+                                <label >C&oacute;digo:</label>
                                 <input type="text" class="form-control" v-model="codigoconvenio" name="id" >
                             </div>
 
                             <div class="formgroup">
-                                <label >Descripcion:</label>
+                                <label >Descripci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion" >
                             </div>
                             <div class="formgroup">
@@ -203,7 +203,7 @@
                                 <input type="date" class="form-control" v-model="inicio" name="inicio" >
                             </div>
                             <div class="formgroup">
-                                <label >Fecha de Finalización:</label>
+                                <label >Fecha de Finalizaci&oacute;n:</label>
                                 <input type="date" class="form-control" v-model="fin" name="fin" >
                             </div>
                             <div class="form-group">

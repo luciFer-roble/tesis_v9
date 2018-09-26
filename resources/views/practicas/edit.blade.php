@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="col-sm-10 control-label" for="fin">Fecha de Finalizacion:</label>
+                            <label class="col-sm-10 control-label" for="fin">Fecha de Finalizaci&oacute;n:</label>
                             <div class="col-lg-12">
                                 <input type="date" class="form-control" id="fin" name="fin" value="{{ $practica->fechafinpractica }}">
                             </div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="col-sm-10 control-label" for="periodo">Periodo Academico:</label>
+                            <label class="col-sm-10 control-label" for="periodo">Periodo Acad&eacute;mico:</label>
                             <div class="col-lg-12">
                                 <select id="periodo" name="periodo" class="form-control">
                                     @foreach($periodos as $periodo)
@@ -164,7 +164,7 @@
                         </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="descripcion">Descripcion:</label>
+                            <label class="col-sm-10 control-label" for="descripcion">Descripci&oacute;n:</label>
                             <div class="col-md-12">
                             <textarea  class="form-control" id="descripcion" name="descripcion" >{{ $practica->descripcionpractica }}</textarea>
                         </div>

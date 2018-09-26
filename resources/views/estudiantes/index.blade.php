@@ -127,7 +127,7 @@
 
                                         <tbody>
                                         <tr>
-                                            <th class="p-0 m-0">Cedula</th>
+                                            <th class="p-0 m-0">C&eacute;dula</th>
                                             <th class="p-0 m-0">Nombres</th>
                                             <th class="p-0 m-0">Tipo</th>
                                             <th class="p-0 m-0">Celular</th>

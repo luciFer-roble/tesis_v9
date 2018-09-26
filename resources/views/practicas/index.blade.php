@@ -40,10 +40,10 @@
                                         <th class="p-0 m-0">No.</th>
                                         <th class="p-0 m-0">Estudiante</th>
                                         <th class="p-0 m-0">Empresa</th>
-                                        <th class="p-0 m-0">Tutor Academico</th>
+                                        <th class="p-0 m-0">Tutor Acad&eacute;mico</th>
                                         <th class="p-0 m-0">Tutor Empresarial</th>
                                         <th class="p-0 m-0">Tipo</th>
-                                        <th class="p-0 m-0">Descripcion</th>
+                                        <th class="p-0 m-0">Descripci&oacute;n</th>
                                         <th class="p-0 m-0">Periodo</th>
                                         <th class="p-0 m-0">Inicio</th>
                                         <th class="p-0 m-0">Fin</th>

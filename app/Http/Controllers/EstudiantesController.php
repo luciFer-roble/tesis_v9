@@ -30,6 +30,11 @@ class EstudiantesController extends Controller
     }
     public function index()
     {
+
+        $carreras =Carrera::all();
+        $escuelas =Escuela::all();
+        $facultades =Facultad::all();
+        $sedes =Sede::all();
         if(Auth::user()->hasRole('prof')){
             $profesor = Profesor::all()->where('iduser','=',Auth::user()->id)->first();
             $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
@@ -46,20 +51,33 @@ class EstudiantesController extends Controller
                 ->where('practica.idtutore','=',$tutore->idtutore)
                 ->get();
         }
+        elseif (Auth::user()->hasRole('coord')){
+            $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->whereHas('practica', function($query) {
+                    $query->where('practica.activapractica', 'TRUE');
+                        })
+                ->groupBy('estudiante.idestudiante')
+                ->havingRaw('SUM(practica.horaspractica) > 0')
+                ->orderByRaw('SUM(practica.horaspractica)')
+                ->get();
+            $estudiantes2 = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->whereDoesntHave('practica', function($query) {
+                    $query->where('practica.activapractica', 'TRUE');
+                })
+                ->groupBy('estudiante.idestudiante')
+                ->orderByRaw('SUM(practica.horaspractica) ASC')
+                ->get();
+            return view('estudiantes.index', compact('estudiantes', 'estudiantes2', 'carreras', 'escuelas', 'facultades', 'sedes'));
+
+
+        }
         else{
             $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
                 ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
-                ->where('SUM(practica.horaspractica) > 0')
-                ->whereHas('practica', function($query) {
-                    $query->where('practica.', 2);
-                ->groupBy('estudiante.idestudiante')
                 ->get();
-
         }
-        $carreras =Carrera::all();
-        $escuelas =Escuela::all();
-        $facultades =Facultad::all();
-        $sedes =Sede::all();
         return view('estudiantes.index', compact('estudiantes', 'carreras', 'escuelas', 'facultades', 'sedes'));
     }
 

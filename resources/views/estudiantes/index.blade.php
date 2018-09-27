@@ -145,7 +145,12 @@
 
                                         @foreach($estudiantes as $estudiante)
                                             <tr is="estudiantes-componente" :estudiante="{{$estudiante}}" :carrera="{{$estudiante->carrera}}"
-                                                :rol="{{ Auth::user()->roles->first()}}">
+                                                :rol="{{ Auth::user()->roles->first()}}" isactivo="true">
+                                            </tr>
+                                        @endforeach
+                                        @foreach($estudiantes2 as $estudiante)
+                                            <tr is="estudiantes-componente" :estudiante="{{$estudiante}}" :carrera="{{$estudiante->carrera}}"
+                                                :rol="{{ Auth::user()->roles->first()}}" isactivo="false">
                                             </tr>
                                         @endforeach
 

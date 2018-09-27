@@ -183,6 +183,7 @@ Route::post('/reportes/r9', 'ReportesController@reporte9');
 Route::post('/reportes/{profesor}/descarga9', 'ReportesController@descargaexcelr9');
 Route::post('/reportes/r10', 'ReportesController@reporte10');
 Route::post('/reportes/{estudiante}/descarga9', 'ReportesController@descargaexcelr10');
+Route::post('/reportes/r11', 'ReportesController@reporte11');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');

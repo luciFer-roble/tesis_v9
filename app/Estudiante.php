@@ -15,7 +15,7 @@ class Estudiante extends Model
     public $incrementing = false;
 
     public function practica(){
-        return $this->hasMany('App\Practica');
+        return $this->hasMany('App\Practica', 'idestudiante', 'idestudiante');
     }
 
     public function carrera(){

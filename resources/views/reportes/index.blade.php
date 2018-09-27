@@ -89,6 +89,18 @@
                         </div>
                     </div>
                     </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="small-box col-lf-4" style="background-color: #ff4273">
+                            <div class="inner">
+                                <h3>R6</h3>
+
+                                <p>Estudiantes por Tutor Academico</p>
+                            </div>
+                            <div class="icon">
+                                <i  data-toggle="modal" data-target="#r11" class="fa fa-pie-chart"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         @endif
         @if(Auth::user()->hasRole('est'))
@@ -437,7 +449,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Profesor:</label>
                             <div class="col-lg-11">
                                 <select id="profesor" name="profesor" class="form-control">
                                     @foreach($profesores as $profesor)
@@ -476,6 +488,39 @@
                                     @foreach($estudiantes as $estudiante)
                                         <option value="{{ $estudiante->idestudiante }}"
                                         >{{ $estudiante->nombresestudiante .' '.$estudiante->apellidosestudiante  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reporte 9-->
+    <div class="modal fade" id="r11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Docente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r11">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Profesor:</label>
+                            <div class="col-lg-11">
+                                <select id="profesor" name="profesor" class="form-control">
+                                    @foreach($profesores as $profesor)
+                                        <option value="{{ $profesor->idprofesor }}"
+                                        >{{ $profesor->nombresprofesor .' '.$profesor->apellidosprofesor  }}</option>
                                     @endforeach
                                 </select>
                             </div>

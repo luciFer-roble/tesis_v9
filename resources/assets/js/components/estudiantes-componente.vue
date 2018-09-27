@@ -1,15 +1,17 @@
 <template>
-    <tr>
+    <tr v-bind:class="{ 'fondogris': isactivo==='false' }">
         <td class="p-0 m-0" >{{ estudiante.cedulaestudiante }}</td>
         <td class="p-0 m-0" >{{ estudiante.nombresestudiante }} {{ estudiante.apellidosestudiante }} </td>
         <td class="p-0 m-0">{{ estudiante.tipoestudiante }}</td>
         <td class="p-0 m-0">{{ estudiante.celularestudiante }}</td>
         <td  class="p-0 m-0">{{ estudiante.correoestudiante }}</td>
         <td style="min-width: 100px" class="p-0 m-0">{{ carrera.nombrecarrera }}</td>
-        <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut'">
-            <button title="Ver Practicas" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-success p-0 m-0">{{estudiante.horasestudiante}}</button></td>
+        <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut' && isactivo === 'true'">
+            <button title="Inactivo" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-success p-0 m-0">{{estudiante.horasestudiante}}</button></td>
+        <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut' && isactivo === 'false'">
+            <button title="Inactivo" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-warning p-0 m-0">{{estudiante.horasestudiante}}</button></td>
         <td  class="p-0 m-0" align="center" v-if="estudiante.horasestudiante === null && rol.name !== 'tut'" >
-            <span   class="text-danger p-0 m-0 ">0</span></td>
+            <span   title="inactivo" class="text-danger p-0 m-0 ">0</span></td>
         <td v-if="rol.name === 'coord' " class="p-0 m-0" align="center">
                     <span   class="btn btn-link p-0 m-0">
                         <i  class="fa fa-fw fa-pencil-alt" @click="edit"></i>
@@ -97,6 +99,9 @@
             },
             rol: {
                 type: Object
+            },
+            isactivo: {
+                type: String
             }
         },
         data: function () {
@@ -194,4 +199,7 @@
 
 <style scoped>
 
+    .fondogris{
+        background-color: #EDEFF2 !important;
+    }
 </style>

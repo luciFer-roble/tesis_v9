@@ -48,9 +48,12 @@ class EstudiantesController extends Controller
         }
         else{
             $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
-            ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
-            ->groupBy('estudiante.idestudiante')
-            ->get();
+                ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->where('SUM(practica.horaspractica) > 0')
+                ->whereHas('practica', function($query) {
+                    $query->where('practica.', 2);
+                ->groupBy('estudiante.idestudiante')
+                ->get();
 
         }
         $carreras =Carrera::all();

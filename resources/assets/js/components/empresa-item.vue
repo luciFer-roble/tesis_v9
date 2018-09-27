@@ -7,6 +7,9 @@
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.tipoempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
+        <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefono2empresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.responsableempresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.telresponsableempresa  }}</td>
         <td style="width:  7%" class="p-1 m-0">{{ sede }}</td>
         <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="convenio"><button class="btn btn-link p-0 m-0" :title="convenio" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
@@ -90,9 +93,22 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono:</label>
+                                <label>Tel&eacute;fono 1:</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
                             </div>
+                            <div class="formgroup">
+                                <label>Tel&eacute;fono 2:</label>
+                                <input type="text" class="form-control" v-model="telefono2" name="telefono">
+                            </div>
+                            <div class="formgroup">
+                                <label>Responsable:</label>
+                                <input type="text" class="form-control" v-model="responsable" name="telefono">
+                            </div>
+                            <div class="formgroup">
+                                <label>Tel. Responsable:</label>
+                                <input type="text" class="form-control" v-model="telefono3" name="telefono">
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -366,6 +382,9 @@
                 this.tipo = this.empresa.tipoempresa;
                 this.sector = this.empresa.sectorempresa;
                 this.telefono = this.empresa.telefonoempresa;
+                this.telefono2 = this.empresa.telefono2empresa;
+                this.telefono3 = this.empresa.telresponsableempresa ;
+                this.responsable = this.empresa.responsableempresa;
                 $(this.$refs.modaledit).modal('show');
             },
             agregartutor:function () {

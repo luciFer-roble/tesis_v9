@@ -90,7 +90,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                        <form method="POST" action="/estudiantes">
+                                        <form method="POST" action="/estudiantes" >
                                             {{ csrf_field() }}
 
                                             <tr >
@@ -107,8 +107,8 @@
                                                 <td class="p-0 m-0"><input  style="font-size: 10px "type="text" class="form-control" id="correo" name="correo"></td>
                                                 <td class="p-0 m-0"><input style="font-size: 10px; max-width: 100px " type="date" class="form-control" id="fechanacimiento" name="fechanacimiento"></td>
                                                 <td class="p-0 m-0" style="vertical-align: middle;width: 5%"><fieldset class="p-0 m-0" style="font-size: 10px; height: 10% "id="genero" name="genero" class="form-control">
-                                                        <input type="radio" value="0" name="genero">M</input>
-                                                        <input type="radio" value="1" name="genero">F</input>
+                                                        <input type="radio" value="0" name="genero">M
+                                                        <input type="radio" value="1" name="genero">F
                                                     </fieldset></td>
 
                                                 <td class="p-0 m-0"><select  style="font-size: 10px; height: 10% "id="carrera" name="carrera" class="form-control">
@@ -117,7 +117,7 @@
                                                             <option value="{{ (string)$carrera->idcarrera }}">{{ $carrera->nombrecarrera }}</option>
                                                         @endforeach
                                                     </select></td>
-                                                <td colspan="3" style="vertical-align: middle" class="p-0 m-0"><button type="submit"class="btn btn-sm btn-primary btn-block">Insertar</button></td>
+                                                <td colspan="3" style="vertical-align: middle" class="p-0 m-0"><input type="submit" class="btn btn-sm btn-primary btn-block" value="Insertar"></td>
                                             </tr>
                                         </form>
                                 </tbody>

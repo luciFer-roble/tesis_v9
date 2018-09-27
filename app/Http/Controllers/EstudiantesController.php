@@ -108,6 +108,7 @@ class EstudiantesController extends Controller
         else{
             $estudiantes = Estudiante::select(DB::raw('estudiante.*, SUM(practica.horaspractica) as horasestudiante'))
                 ->leftJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+                ->groupBy('estudiante.idestudiante')
                 ->get();
         }
         return view('estudiantes.index', compact('estudiantes', 'carreras', 'escuelas', 'facultades', 'sedes'));

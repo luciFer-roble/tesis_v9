@@ -7,9 +7,7 @@
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.tipoempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefono2empresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.responsableempresa }}</td>
-        <td  style="width:  10%"class="p-1 m-0">{{ empresa.telresponsableempresa  }}</td>
         <td style="width:  7%" class="p-1 m-0">{{ sede }}</td>
         <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="convenio"><button class="btn btn-link p-0 m-0" :title="convenio" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>

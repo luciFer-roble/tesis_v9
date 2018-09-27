@@ -89,17 +89,59 @@
                         </div>
                     </div>
                     </div>
-                    {{--<div class="small-box bg-white col-md-3">
-                        <div class="inner">
-                            <h3>R7</h3>
-
-                            <p>Reporte generico numero 7</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r7" class="fa fa-baseball-ball"></i>
-                        </div>
-                    </div>--}}
                 </div>
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                    <div class="inner">
+                        <h3>R7</h3>
+
+                        <p>Registyro en base de datos</p>
+                    </div>
+                    <div class="icon">
+                        <i  data-toggle="modal" data-target="#r7" class="fa fa-pie-chart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                    <div class="inner">
+                        <h3>R8</h3>
+
+                        <p>Lineas de formacion</p>
+                    </div>
+                    <div class="icon">
+                        <i  data-toggle="modal" data-target="#r8" class="fa fa-pie-chart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                    <div class="inner">
+                        <h3>R8</h3>
+
+                        <p>Actividades del docente</p>
+                    </div>
+                    <div class="icon">
+                        <i  data-toggle="modal" data-target="#r9" class="fa fa-pie-chart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                    <div class="inner">
+                        <h3>R10</h3>
+
+                        <p>Actividades del docente</p>
+                    </div>
+                    <div class="icon">
+                        <i  data-toggle="modal" data-target="#r10" class="fa fa-pie-chart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
             </div>
 
@@ -296,6 +338,138 @@
                                     @foreach($niveles as $nivel)
                                         <option value="{{ $nivel->idnivel }}"
                                         >{{ $nivel->nombrenivel  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reporte 7-->
+    <div class="modal fade" id="r7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro de base de datos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r7">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <div class="col-lg-11">
+                                <select id="estudiante" name="estudiante" class="form-control">
+                                    @foreach($estudiantes as $estudiante)
+                                        <option value="{{ $estudiante->idestudiante }}"
+                                        >{{ $estudiante->nombresestudiante .' '.$estudiante->apellidosestudiante  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reporte 8-->
+    <div class="modal fade" id="r8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lineas de formacion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r8">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <div class="col-lg-11">
+                                <select id="estudiante" name="estudiante" class="form-control">
+                                    @foreach($estudiantes as $estudiante)
+                                        <option value="{{ $estudiante->idestudiante }}"
+                                        >{{ $estudiante->nombresestudiante .' '.$estudiante->apellidosestudiante  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reporte 9-->
+    <div class="modal fade" id="r9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Docente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r9">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <div class="col-lg-11">
+                                <select id="profesor" name="profesor" class="form-control">
+                                    @foreach($profesores as $profesor)
+                                        <option value="{{ $profesor->idprofesor }}"
+                                        >{{ $profesor->nombresprofesor .' '.$profesor->apellidosprofesor  }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Mostrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal reporte 10-->
+    <div class="modal fade" id="r10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Docente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="/reportes/r10">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <div class="col-lg-11">
+                                <select id="estudiante" name="estudiante" class="form-control">
+                                    @foreach($estudiantes as $estudiante)
+                                        <option value="{{ $estudiante->idestudiante }}"
+                                        >{{ $estudiante->nombresestudiante .' '.$estudiante->apellidosestudiante  }}</option>
                                     @endforeach
                                 </select>
                             </div>

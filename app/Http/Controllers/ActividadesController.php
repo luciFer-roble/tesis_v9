@@ -37,8 +37,17 @@ class ActividadesController extends Controller
         return redirect('actividades/'.$practica.'/list?page='.($total+1));
 
     }
+    public function store2($profesor)
+    {
+            $actividad = Actividad::create([
+                'idprofesor'       => $profesor
+            ]);
+        return $actividad;
+
+    }
     public function update(Request $request, $id)
     {
+        //var_dump($request->fecha); exit();
 
 
         // store
@@ -46,12 +55,12 @@ class ActividadesController extends Controller
             'descripcionactividad'       => request('descripcion'),
             'fechaactividad'       => request('fecha'),
             'comentarioactividad'      => request('comentario'),
-            'estadoactividad'      => request('estado')
-            //'horasactividad'      => request('horas')
+            'estadoactividad'      => request('estado'),
+            'horasactividad'      => request('horas')
         ]);
 
         // redirect
-        return true;
+        return 'true';
     }
 
     public function descargar(Request $request)

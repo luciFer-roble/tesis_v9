@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actividad;
 use App\Carrera;
 use App\Coordinador;
 use App\Empresa;
@@ -73,10 +74,11 @@ class ConsultasController extends Controller
             ->join('profesor', 'practica.idprofesor', '=', 'profesor.idprofesor')
             ->join('tutore', 'practica.idtutore', '=', 'tutore.idtutore')
             ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
-            ->where('practica.idestudiante', '=', request('idestudiante'))->get();
+            ->where('practica.idestudiante', '=', request('id'))->get();
         return $practicas;
 
-    } public function consultartutoresporempresa(Request $request)
+    }
+    public function consultartutoresporempresa(Request $request)
 {
     $tutores =DB::table('tutore')
         ->join('empresa', 'empresa.idempresa', '=', 'tutore.idempresa')
@@ -390,6 +392,24 @@ class ConsultasController extends Controller
             ->select('carrera.idcarrera')
             ->where('profesor.iduser', '=',$request->id)
             ->where('coordinador.activocoordinador', '=', 'TRUE')->get();
+    }
+
+    public function estudiantes_profesor(Request $request)
+    {
+        $estudiantes =DB::table('estudiante')
+            ->rightJoin('practica', 'practica.idestudiante', '=', 'estudiante.idestudiante')
+            ->select(DB::raw('distinct(estudiante.idestudiante) , estudiante.*'))
+            ->where('practica.idprofesor', '=', request('id'))->get();
+        return $estudiantes;
+
+    }
+
+    public function actividades_profesor(Request $request)
+    {
+        $actividades =Actividad::
+            where('idprofesor', '=', request('id'))->get();
+        return $actividades;
+
     }
 
 }

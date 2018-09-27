@@ -7,11 +7,9 @@
             <textarea v-bind:class="{ 'fondoverde': check }" class="form-control border-0" name="descripcion" id="descripcion" cols="30"  v-model="descripcion" @blur="insertar" :disabled="check || (rol.name === 'tut' || rol.name === 'prof')"></textarea>
         </td>
         <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="check && (rol.name === 'tut' || rol.name === 'prof')">
-                <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
             <span class="btn"><i class="text-success  fas fa-check-circle fa-2x"  @click="ponerfalse"></i></span>
         </td>
         <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="!check && listo && (rol.name === 'tut' || rol.name === 'prof')">
-            <!--<input class="form-control" type="checkbox"  v-model="check" :disabled="check" @change="insertar">-->
             <span class="btn"><i class=" text-success far fa-circle fa-2x"  @click="ponertrue" ></i></span>
         </td>
         <td style="width:  6%; vertical-align: middle" class="align-items-center" v-if="!check && !listo && (rol.name === 'tut' || rol.name === 'prof')">
@@ -63,7 +61,7 @@
                     descripcion: this.descripcion,
                     comentario: this.comentario,
                     estado: this.check,
-                    //horas: this.horas
+                    horas: 6
                 })
                     .then(function (response) {
                         console.log(response);

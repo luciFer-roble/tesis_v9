@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Estudiante;
 use App\Nivel;
 use App\PeriodoAcademico;
+use App\Profesor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +31,9 @@ class HomeController extends Controller
         if(Auth::user()->hasRole('coord')){
             $periodos = PeriodoAcademico::all();
             $niveles = Nivel::all();
-            return view('reportes.index', compact('periodos', 'niveles'));
+            $estudiantes = Estudiante::all();
+            $profesores = Profesor::all();
+            return view('reportes.index', compact('estudiantes', 'niveles', 'periodos', 'profesores'));
         }else{
             return view('home');
         }

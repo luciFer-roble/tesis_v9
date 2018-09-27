@@ -89,6 +89,10 @@ Vue.component('estudiantes-componente', require('./components/estudiantes-compon
 Vue.component('boton-borrar-practica', require('./components/boton-borrar-practica.vue'));
 Vue.component('avatar-nuevo', require('./components/avatar-nuevo.vue'));
 Vue.component('convenio-nuevo', require('./components/convenio-nuevo.vue'));
+Vue.component('reporte7-item', require('./components/reporte7-item.vue'));
+Vue.component('reporte8-item', require('./components/reporte8-item.vue'));
+Vue.component('reporte9-item', require('./components/reporte9-item.vue'));
+Vue.component('reporte10-item', require('./components/reporte10-item.vue'));
 const app = new Vue({
     el: '#app'
 });

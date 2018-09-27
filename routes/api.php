@@ -57,3 +57,5 @@ Route::get('getempresa','ConsultasController@getempresa');
 Route::get('getprofesor','ConsultasController@getprofesor');
 Route::get('gettutore','ConsultasController@gettutore');
 Route::get('getcarrerauser','ConsultasController@getcarrerauser');
+Route::get('consultar-estudiantes-por-profesor','ConsultasController@estudiantes_profesor');
+Route::get('consultar-actividades-por-profesor','ConsultasController@actividades_profesor');

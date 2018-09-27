@@ -175,10 +175,19 @@ Route::get('/reportes/{sector}/descarga5', 'ReportesController@descargaexcelr5')
 Route::post('/reportes/r6', 'ReportesController@reporte6');
 Route::post('/reportes/r6p', 'ReportesController@reporte6p');
 Route::get('/reportes/{nivel}/descarga6', 'ReportesController@descargaexcelr6');
+Route::post('/reportes/r7', 'ReportesController@reporte7');
+Route::post('/reportes/{estudiante}/descarga7', 'ReportesController@descargaexcelr7');
+Route::post('/reportes/r8', 'ReportesController@reporte8');
+Route::post('/reportes/{estudiante}/descarga8', 'ReportesController@descargaexcelr8');
+Route::post('/reportes/r9', 'ReportesController@reporte9');
+Route::post('/reportes/{profesor}/descarga9', 'ReportesController@descargaexcelr9');
+Route::post('/reportes/r10', 'ReportesController@reporte10');
+Route::post('/reportes/{estudiante}/descarga9', 'ReportesController@descargaexcelr10');
 
 
 Route::get('/actividades/{practica}/list', 'ActividadesController@index');
 Route::get('/actividades/{practica}/{total}', 'ActividadesController@store');
+Route::get('/actividades/{profesor}/create/from', 'ActividadesController@store2');
 Route::put('/actividades/{actividad}', 'ActividadesController@update');
 Route::post('/actividades/descargar', 'ActividadesController@descargar');
 

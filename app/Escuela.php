@@ -23,6 +23,6 @@ class Escuela extends Model
     }
 
     public function carrera(){
-        return $this->hasMany('App\Carrera');
+        return $this->hasMany('App\Carrera', 'idescuela', 'idescuela');
     }
 }

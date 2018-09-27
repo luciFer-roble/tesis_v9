@@ -59,7 +59,7 @@ class EmpresasController extends Controller
                 'tipoempresa' => request('tipo'),
                 'responsableempresa' => request('responsable'),
                 'telefono2empresa' => request('telefono2'),
-                'telresponsableempresa ' => request('telefono3')
+                'telresponsableempresa' => request('telefono3')
             ]);
 
             Flash::success('Ingresado Correctamente');
@@ -105,7 +105,7 @@ class EmpresasController extends Controller
             'tipoempresa' => request('tipo'),
             'responsableempresa' => request('responsable'),
             'telefono2empresa' => request('telefono2'),
-            'telresponsableempresa ' => request('telefono3')
+            'telresponsableempresa' => request('telefono3')
         ]);
 
 

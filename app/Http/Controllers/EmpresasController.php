@@ -44,7 +44,8 @@ class EmpresasController extends Controller
             'direccion'    => 'required',
             'sector'       => 'required',
             'telefono'     => 'required',
-            'tipo'     => 'required'
+            'tipo'     => 'required',
+            'telefono3'     => 'required'
         );
         $this->validate(request(), $rules);
 
@@ -89,7 +90,8 @@ class EmpresasController extends Controller
             'direccion'    => 'required',
             'sector'       => 'required',
             'telefono'     => 'required',
-            'tipo'     => 'required'
+            'tipo'     => 'required',
+            'telefono3'     => 'required'
         );
         $this->validate(request(), $rules);
 

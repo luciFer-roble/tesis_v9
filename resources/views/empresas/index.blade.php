@@ -36,7 +36,10 @@
                                         <th class="p-0 m-0">Direcci&oacute;n</th>
                                         <th class="p-0 m-0">Tipo</th>
                                         <th class="p-0 m-0">Sector</th>
-                                        <th class="p-0 m-0">Tel&eacute;fono</th>
+                                        <th class="p-0 m-0">Tel&eacute;fono 1</th>
+                                        <th class="p-0 m-0">Tel&eacute;fono 2</th>
+                                        <th class="p-0 m-0">Responsable</th>
+                                        <th class="p-0 m-0">Tel. Responsable</th>
                                         <td class="p-0 m-0"></td>
 
                                     </tr>

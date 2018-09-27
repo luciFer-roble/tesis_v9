@@ -98,15 +98,15 @@
                             </div>
                             <div class="formgroup">
                                 <label>Tel&eacute;fono 2:</label>
-                                <input type="text" class="form-control" v-model="telefono2" name="telefono">
+                                <input type="text" class="form-control" v-model="telefono2" name="telefono2">
                             </div>
                             <div class="formgroup">
                                 <label>Responsable:</label>
-                                <input type="text" class="form-control" v-model="responsable" name="telefono">
+                                <input type="text" class="form-control" v-model="responsable" name="responsable">
                             </div>
                             <div class="formgroup">
                                 <label>Tel. Responsable:</label>
-                                <input type="text" class="form-control" v-model="telefono3" name="telefono">
+                                <input type="text" class="form-control" v-model="telefono3" name="telefono3">
                             </div>
 
                         </div>
@@ -288,6 +288,9 @@
             tipo: '',
             sector: '',
             telefono: '',
+            telefono2: '',
+            telefono3: '',
+            responsable: '',
             boton1: 'Actualizar',
             cedula:'',
             nombretutor: '',
@@ -402,7 +405,10 @@
                     direccion: this.direccion,
                     tipo: this.tipo,
                     sector: this.sector,
-                    telefono: this.telefono
+                    telefono: this.telefono,
+                    telefono2: this.telefono2,
+                    responsable: this.responsable,
+                    telefono3: this.telefono3
                 })
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');

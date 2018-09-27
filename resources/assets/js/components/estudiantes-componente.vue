@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Cedula:</label>
+                                <label>C&eacute;dula:</label>
                                 <input type="text" class="form-control" v-model="cedula" name="cedula">
                             </div>
                             <div class="formgroup" width="100">

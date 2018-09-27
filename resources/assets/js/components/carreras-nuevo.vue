@@ -31,7 +31,7 @@
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripcion:</label>
+                                <label>Descripci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
 

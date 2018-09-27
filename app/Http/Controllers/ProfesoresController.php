@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coordinador;
 use App\Escuela;
 use App\Practica;
 use App\Profesor;
@@ -9,6 +10,7 @@ use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 
 class ProfesoresController extends Controller
@@ -20,10 +22,20 @@ class ProfesoresController extends Controller
     }
     public function index()
     {
-        $profesores = Profesor::all();
-        $escuelas = Escuela::all();
-        $practicas = Practica::all();
-        return view('profesores.index', compact('profesores','escuelas','practicas'));
+        if(Auth::user()->hasRole('coord')){
+            $coordinador=Profesor::all()->where('iduser','=',Auth::user()->id)->first();
+            $escuela=$coordinador->idescuela;
+            $profesores = Profesor::all()->where('idescuela','=',$escuela);
+            $practicas = Practica::all();
+            return view('profesores.index', compact('profesores','escuela','practicas'));
+        }
+        else{
+            $profesores = Profesor::all();
+            $escuelas = Escuela::all();
+            $practicas = Practica::all();
+            return view('profesores.index', compact('profesores','escuelas','practicas'));
+        }
+
     }
 
     public function create(Request $request)

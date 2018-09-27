@@ -1,8 +1,13 @@
 <template>
+
+
+
+
+
     <div>
 
         <div class="col"  >
-            <button type="button"  class="btn btn-sm btn-outline-success" @click="create" >NUEVA</button>
+            <button type="button"  class="btn btn-sm btn-outline-success" @click="create" >NUEVO</button>
         </div>
         <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe3" aria-hidden="true" ref="modalconvenio">
             <div class="modal-dialog" role="document">

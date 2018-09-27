@@ -32,9 +32,9 @@
                                     <tr>
                                         <th  class="p-0 m-0">Codigo</th>
                                         <th  class="p-0 m-0">Nombre</th>
-                                        <th  class="p-0 m-0">Descripcion</th>
-                                        <th  class="p-0 m-0">Mision</th>
-                                        <th  class="p-0 m-0">Vision</th>
+                                        <th  class="p-0 m-0">Descripci&oacute;n</th>
+                                        <th  class="p-0 m-0">Misi&oacute;n</th>
+                                        <th  class="p-0 m-0">Visi&oacute;n</th>
                                         <th  class="p-0 m-0">Sede</th>
                                         <th  class="p-0 m-0"></th>
 

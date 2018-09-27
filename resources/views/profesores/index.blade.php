@@ -32,7 +32,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th class="p-0 m-0" style="width: 7%">Codigo</th>
+                                        <th class="p-0 m-0" style="width: 7%">C&oacute;digo</th>
                                         <th class="p-0 m-0">Nombres</th>
                                         <th class="p-0 m-0">Apellidos</th>
                                         <th class="p-0 m-0">Correo</th>

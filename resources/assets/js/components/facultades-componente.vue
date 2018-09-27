@@ -67,15 +67,15 @@
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripcion:</label>
+                                <label>Descripci&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
                             <div class="formgroup">
-                            <label>Mision:</label>
+                            <label>Misi&oacute;n:</label>
                             <input type="text" class="form-control" v-model="mision" name="mision">
                         </div>
                             <div class="formgroup">
-                                <label>Vision:</label>
+                                <label>Visi&oacute;n:</label>
                                 <input type="text" class="form-control" v-model="vision" name="vision">
                             </div>
                             <div class="formgroup">

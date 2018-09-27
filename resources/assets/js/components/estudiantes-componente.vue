@@ -7,7 +7,7 @@
         <td  class="p-0 m-0">{{ estudiante.correoestudiante }}</td>
         <td style="min-width: 100px" class="p-0 m-0">{{ carrera.nombrecarrera }}</td>
         <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut' && isactivo === 'true'">
-            <button title="Inactivo" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-success p-0 m-0">{{estudiante.horasestudiante}}</button></td>
+            <button title="Ver Practicas" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-success p-0 m-0">{{estudiante.horasestudiante}}</button></td>
         <td class="p-0 m-0" align="center" v-if="estudiante.horasestudiante > 0 && rol.name !== 'tut' && isactivo === 'false'">
             <button title="Inactivo" @click="verpracticas(estudiante.idestudiante)"   class="btn btn-link text-warning p-0 m-0">{{estudiante.horasestudiante}}</button></td>
         <td  class="p-0 m-0" align="center" v-if="estudiante.horasestudiante === null && rol.name !== 'tut'" >

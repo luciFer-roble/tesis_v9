@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Actividad;
+use App\Carrera;
+use App\Escuela;
 use App\Estudiante;
+use App\Facultad;
 use App\Nivel;
 use App\PeriodoAcademico;
 use App\Practica;
 use App\Profesor;
+use App\Sede;
 use function Faker\Provider\pt_BR\check_digit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use PHPExcel_Worksheet_Drawing;
@@ -1266,7 +1271,7 @@ class ReportesController extends Controller
                 ->whereHas('practica', function($query) {
                     $query->where('practica.activapractica', 'TRUE');
                 })
-                ->where('practica.idprofesor','=',$profesor->idprofesor)
+                ->where('practica.idprofesor','=',$request->profesor)
                 ->groupBy('estudiante.idestudiante')
                 ->havingRaw('SUM(practica.horaspractica) > 0')
                 ->orderByRaw('SUM(practica.horaspractica)')
@@ -1276,7 +1281,7 @@ class ReportesController extends Controller
                 ->whereDoesntHave('practica', function($query) {
                     $query->where('practica.activapractica', 'TRUE');
                 })
-                ->where('practica.idprofesor','=',$profesor->idprofesor)
+                ->where('practica.idprofesor','=',$request->profesor)
                 ->groupBy('estudiante.idestudiante')
                 ->orderByRaw('SUM(practica.horaspractica) ASC')
                 ->get();

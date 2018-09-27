@@ -7,6 +7,7 @@
 @section('content')
 
     <div class="container-fluid" id="app">
+        <div class="card mb-3">
         <table class="table table-bordered" style="table-layout: inherit"  >
 
             <tbody>
@@ -40,6 +41,7 @@
 
             </tbody>
         </table>
+        </div>
     </div>
 
 

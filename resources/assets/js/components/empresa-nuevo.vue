@@ -48,8 +48,20 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono:</label>
+                                <label>Tel&eacute;fono 1:</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
+                            </div>
+                            <div class="formgroup">
+                                <label>Tel&eacute;fono 2:</label>
+                                <input type="text" class="form-control" v-model="telefono2" name="telefono2">
+                            </div>
+                            <div class="formgroup">
+                                <label>Responsable:</label>
+                                <input type="text" class="form-control" v-model="responsable" name="responsable">
+                            </div>
+                            <div class="formgroup">
+                                <label>Tel. Responsable:</label>
+                                <input type="text" class="form-control" v-model="telefono3" name="telefono3">
                             </div>
                         </div>
                     </div>
@@ -75,6 +87,9 @@
                 tipo: '',
                 sector: '',
                 telefono: '',
+                telefono2: '',
+                telefono3: '',
+                responsable: '',
                 universidades: [],
                 actualizando: false,
                 boton1: 'Guardar',
@@ -97,7 +112,10 @@
                     direccion: this.direccion,
                     tipo: this.tipo,
                     sector: this.sector,
-                    telefono: this.telefono
+                    telefono: this.telefono,
+                    telefono2: this.telefono2,
+                    telefono3: this.telefono3,
+                    responsable: this.responsable
                 })
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');

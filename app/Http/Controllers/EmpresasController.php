@@ -55,7 +55,10 @@ class EmpresasController extends Controller
                 'direccionempresa'      => request('direccion'),
                 'sectorempresa'      => request('sector'),
                 'telefonoempresa' => request('telefono'),
-                'tipoempresa' => request('tipo')
+                'tipoempresa' => request('tipo'),
+                'responsableempresa' => request('responsable'),
+                'telefono2empresa' => request('telefono2'),
+                'telresponsableempresa ' => request('telefono3')
             ]);
 
             Flash::success('Ingresado Correctamente');
@@ -97,7 +100,10 @@ class EmpresasController extends Controller
             'direccionempresa'      => request('direccion'),
             'sectorempresa'      => request('sector'),
             'telefonoempresa' => request('telefono'),
-            'tipoempresa' => request('tipo')
+            'tipoempresa' => request('tipo'),
+            'responsableempresa' => request('responsable'),
+            'telefono2empresa' => request('telefono2'),
+            'telresponsableempresa ' => request('telefono3')
         ]);
 
 

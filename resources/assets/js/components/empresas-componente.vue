@@ -5,7 +5,10 @@
         <td class="p-0 m-0">{{ empresa.direccionempresa }}</td>
         <td class="p-0 m-0" style="width: 20%">{{ empresa.tipoempresa }}</td>
         <td class="p-0 m-0">{{ empresa.sectorempresa }}</td>
-        <td class="p-0 m-0" style="width:10%">{{ empresa.telefonoempresa }}</td>
+        <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
+        <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefono2empresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.responsableempresa }}</td>
+        <td  style="width:  10%"class="p-1 m-0">{{ empresa.telresponsableempresa  }}</td>
         <td class="p-0 m-0" style="width: 7%">
 
             <div class="row p-0 m-0"  >
@@ -85,8 +88,20 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono:</label>
+                                <label>Tel&eacute;fono 1:</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
+                            </div>
+                            <div class="formgroup">
+                                <label>Tel&eacute;fono 2:</label>
+                                <input type="text" class="form-control" v-model="telefono2" name="telefono2">
+                            </div>
+                            <div class="formgroup">
+                                <label>Responsable:</label>
+                                <input type="text" class="form-control" v-model="responsable" name="responsable">
+                            </div>
+                            <div class="formgroup">
+                                <label>Tel. Responsable:</label>
+                                <input type="text" class="form-control" v-model="telefono3" name="telefono3">
                             </div>
 
 
@@ -117,6 +132,9 @@
                 tipo: '',
                 sector: '',
                 telefono: '',
+                telefono2: '',
+                telefono3: '',
+                responsable: '',
                 actualizando: false,
                 boton1: 'Actualizar',
                 boton2: 'Borrar',
@@ -134,6 +152,9 @@
                 this.tipo = this.empresa.tipoempresa;
                 this.sector = this.empresa.sectorempresa;
                 this.telefono = this.empresa.telefonoempresa;
+                this.telefono2 = this.empresa.telefono2empresa;
+                this.telefono3 = this.empresa.telresponsableempresa;
+                this.responsable = this.empresa.responsableempresa;
                 $(this.$refs.modaledit).modal('show');
             },
             confirm:function () {
@@ -148,7 +169,10 @@
                     direccion: this.direccion,
                     tipo: this.tipo,
                     sector: this.sector,
-                    telefono: this.telefono
+                    telefono: this.telefono,
+                    telefono2: this.telefono2,
+                    telefono3: this.telefono3,
+                    responsable: this.responsable
                 })
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');

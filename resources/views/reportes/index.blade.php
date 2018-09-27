@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <!-- Breadcrumbs-->
 
-
+        @if(Auth::user()->hasRole('coord') or Auth::user()->hasRole('prof'))
                 <div class="row">
                     <!-- small card -->
                     <div class="col-xs-12 col-sm-6 col-lg-4">
@@ -90,14 +90,16 @@
                     </div>
                     </div>
                 </div>
+        @endif
+        @if(Auth::user()->hasRole('est'))
         <div class="row">
 
             <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                <div class="small-box col-lf-4" style="background-color: #1fffff">
                     <div class="inner">
-                        <h3>R7</h3>
+                        <h3>R1</h3>
 
-                        <p>Registyro en base de datos</p>
+                        <p>Registro en Base de Datos</p>
                     </div>
                     <div class="icon">
                         <i  data-toggle="modal" data-target="#r7" class="fa fa-pie-chart"></i>
@@ -105,43 +107,47 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                <div class="small-box col-lf-4" style="background-color: #ff9d76">
                     <div class="inner">
-                        <h3>R8</h3>
+                        <h3>R2</h3>
 
-                        <p>Lineas de formacion</p>
+                        <p>L&iacute;neas de Formaci&oacute;n</p>
                     </div>
                     <div class="icon">
                         <i  data-toggle="modal" data-target="#r8" class="fa fa-pie-chart"></i>
                     </div>
                 </div>
             </div>
+        </div>
+            @endif
+        @if(Auth::user()->hasRole('prof'))
+        <div class="row">
             <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="small-box col-lf-4" style="background-color: #ff4273">
+                <div class="small-box col-lf-4" style="background-color: #D3BFF2">
+                    <div class="inner">
+                        <h3>R7</h3>
+
+                        <p>Actividades del docente</p>
+                    </div>
+                    <div class="icon">
+                        <i  data-toggle="modal" data-target="#r9" class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="small-box col-lf-4" style="background-color: #D291D6">
                     <div class="inner">
                         <h3>R8</h3>
 
                         <p>Actividades del docente</p>
                     </div>
                     <div class="icon">
-                        <i  data-toggle="modal" data-target="#r9" class="fa fa-pie-chart"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
-                <div class="small-box col-lf-4" style="background-color: #ff4273">
-                    <div class="inner">
-                        <h3>R10</h3>
-
-                        <p>Actividades del docente</p>
-                    </div>
-                    <div class="icon">
-                        <i  data-toggle="modal" data-target="#r10" class="fa fa-pie-chart"></i>
+                        <i  data-toggle="modal" data-target="#r10" class="fas fa-file-invoice"></i>
                     </div>
                 </div>
             </div>
         </div>
-
+@endif
 
             </div>
 

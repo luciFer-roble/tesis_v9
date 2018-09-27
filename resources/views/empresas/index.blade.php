@@ -54,7 +54,7 @@
                                 @else
                                         <div class="table-responsive">
                                             @foreach($empresas as $empresa)
-                                                <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :rol="{{ Auth::user()->roles->first() }}"
+                                                  <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :rol="{{ Auth::user()->roles->first() }}"
                                                 :sedeuser="{{ Auth::user()->profesor->escuela->facultad->sede }}">
                                                 </empresa-item>
                                             @endforeach

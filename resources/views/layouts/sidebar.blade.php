@@ -137,7 +137,7 @@
                             </a>
                         </li>
                     @endif
-                    @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') )
+                    @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('prof') or Auth::user()->hasRole('est'))
                         <li class="nav-item has-treeview">
                             <a href="/reportes" class="nav-link">
                                 <i class="nav-icon fa fa-pie-chart"></i>

@@ -20,7 +20,7 @@ class EmpresasController extends Controller
     {
         $tutores=TutorE::all();
         $convenios = Convenio::with('sede')->get();
-        $empresas = Empresa::paginate(10);
+        $empresas = Empresa::orderBy('nombreempresa')->paginate(10);
         return view('empresas.index', compact('empresas', 'convenios','tutores'));
     }
    /* public function index2()

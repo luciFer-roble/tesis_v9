@@ -33,6 +33,7 @@
                                     <thead>
                                     <tr>
                                         <th class="p-0 m-0" style="width: 7%">C&oacute;digo</th>
+                                        <th class="p-0 m-0">Cedula</th>
                                         <th class="p-0 m-0">Nombres</th>
                                         <th class="p-0 m-0">Apellidos</th>
                                         <th class="p-0 m-0">Correo</th>
@@ -52,6 +53,7 @@
                                     @foreach($profesores as $profesor)
                                         <tr>
                                             <td class="p-0 m-0" style="width: 7%">{{ $profesor->idprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->cedulaprofesor }}</td>
                                             <td class="p-0 m-0">{{ $profesor->nombresprofesor }}</td>
                                             <td class="p-0 m-0">{{ $profesor->apellidosprofesor }}</td>
                                             <td class="p-0 m-0">{{ $profesor->correoprofesor }}</td>
@@ -111,6 +113,7 @@
                                             {{ csrf_field() }}
                                         <tr>
                                             <td class="p-0 m-0" style="width: 7%"><input type="text" class="form-control" id="id" name="id"></td>
+                                            <td class="p-0 m-0"><input type="text" class="form-control" id="cedula" name="cedula"></td>
                                             <td class="p-0 m-0"><input type="text" class="form-control" id="nombres" name="nombres"></td>
                                             <td class="p-0 m-0"><input type="text" class="form-control" id="apellidos" name="apellidos"></td>
                                             <td class="p-0 m-0"><input type="text" class="form-control" id="correo" name="correo"></td>

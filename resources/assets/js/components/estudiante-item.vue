@@ -76,7 +76,7 @@
         methods:{
             cargardatos:function () {
                 axios.get(window.location.origin+'/api/consultar-practicas-por-estudiante',{
-                    params:{'idestudiante':this.estudiante.idestudiante}
+                    params:{'id':this.estudiante.idestudiante}
                 }).then((response)=>{
                     this.lista=response.data;
                 }).catch(function (error) {

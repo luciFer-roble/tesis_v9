@@ -4,11 +4,10 @@
     <tr style="background-color: white">
         <th  style="width:  14%; background-color:  #007bff ; color: white; text-align: center" class="p-1 m-0">{{ empresa.nombreempresa }}</th>
         <td  style="width:  18%"class="p-1 m-0">{{ empresa.direccionempresa }}</td>
-        <td  style="width:  10%"class="p-1 m-0">{{ empresa.tipoempresa }}</td>
+        <td  style="width:  14%"class="p-1 m-0">{{ empresa.tipoempresa }}</td>
         <td  style="width:  10%"class="p-1 m-0">{{ empresa.sectorempresa }}</td>
         <td  style="width:  10%" class="p-1 m-0">{{ empresa.telefonoempresa }}</td>
-        <td  style="width:  10%"class="p-1 m-0">{{ empresa.responsableempresa }}</td>
-        <td style="width:  7%" class="p-1 m-0">{{ sede }}</td>
+        <td  style="width:  10%; background-color: mintcream"class="p-1 m-0">{{ empresa.responsableempresa }}</td>
         <td align="center" style="width: 2.2%; vertical-align: middle"class="p-0 m-0" v-if="convenio"><button class="btn btn-link p-0 m-0" :title="convenio" @click="descargar">
             <i v-if="excel" class=" text-success far fa-file-excel"></i>
             <i v-if="pdf" class=" text-danger far fa-file-pdf"></i>
@@ -26,18 +25,15 @@
             <table class="table table-bordered p-0 m-0">
                 <thead>
                 <tr style="background-color: #F2F2F2">
-                    <th class="p-1 m-0">Nombre</th>
-                    <th class="p-1 m-0">Apellido</th>
-                    <th class="p-1 m-0">Celular</th>
-                    <th class="p-1 m-0">Correo</th>
+                    <td class="pt-0 mt-0 pb-0 mb-0" align="center" style="height: 2px" colspan="4">Tutores</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="item in lista">
-                    <td class="p-1 m-0">{{item.nombretutore}}</td>
-                    <td class="p-1 m-0">{{item.apellidotutore}}</td>
-                    <td class="p-1 m-0">{{item.celulartutore}}</td>
-                    <td class="p-1 m-0">{{item.correotutore}}</td>
+                <tr v-for="(item, index) in lista">
+                    <td style="width: 2%" class="p-1 m-0" >{{ (index+1)+'. ' }}</td>
+                    <td class="p-1 m-0">{{item.nombretutore+' '+item.apellidotutore}}</td>
+                    <td class="p-1 m-0">Tel: {{item.celulartutore}}</td>
+                    <td class="p-1 m-0">Email: {{item.correotutore}}</td>
                 </tr>
                 </tbody>
             </table>

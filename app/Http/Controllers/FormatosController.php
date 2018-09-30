@@ -177,9 +177,14 @@ class FormatosController extends Controller
 
     public function destroy($formato)
     {
-        Formato::find($formato)
-            ->delete();
 
-        return true;
+        $tipo = Formato::where('idformato', '=', $formato)->first();
+        Formato::find($formato)
+        ->delete();
+        //var_dump($formato.' '.$tipo->idtipodocumento); exit();
+        TipoDocumento::find($tipo->idtipodocumento)
+        ->delete();
+
+        return ['redirect' => route('formatos.index')];
     }
 }

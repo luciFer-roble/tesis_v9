@@ -190,7 +190,7 @@
             borrar:function () {
                 this.actualizando = true;
                 this.boton2 = 'Borrando';
-                axios.delete('/sedes/'+this.sede.idsede)
+                axios.delete('/formatos/'+this.formato.idformato)
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');
                         window.location = response.data.redirect;

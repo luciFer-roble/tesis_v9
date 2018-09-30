@@ -78,6 +78,7 @@ class ProfesoresController extends Controller
             'correoprofesor'      => request('correo'),
             'oficinaprofesor'      => request('oficina'),
             'celularprofesor'      => request('celular'),
+            'cedulaprofesor'      => request('cedula'),
             'iduser'=>$iduser
         ]);
 

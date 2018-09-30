@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('titulo')
-    <h1 class="m-0 text-dark">Nuevo Estudiante</h1>
+    <h1 class="m-0 text-dark">Editar Estudiante</h1>
 @endsection
 @section('nav')
     <li class="breadcrumb-item"><a href="/">Inicio</a></li>

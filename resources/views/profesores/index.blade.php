@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card mb-3">
+                <div class="card mb-3" id="app">
                     <div class="card-header">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                             <div class="btn-toolbar mb-2 mb-md-0">
@@ -19,8 +19,7 @@
                                 <h1>PROFESORES</h1></div>
                             @if(Auth::user()->hasRole('admin'))
                                 <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'profesores/create'"
-                                           class="btn btn-sm btn-outline-success" value="NUEVO">
+                                    <profesores-nuevo></profesores-nuevo>
                                 </div>
                             @endif
                         </div>

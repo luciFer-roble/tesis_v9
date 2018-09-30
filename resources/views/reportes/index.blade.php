@@ -9,15 +9,15 @@
     <div class="container-fluid">
         <!-- Breadcrumbs-->
 
-        @if(Auth::user()->hasRole('coord') or Auth::user()->hasRole('prof'))
+        @if(Auth::user()->hasRole('coord') )
                 <div class="row">
                     <!-- small card -->
                     <div class="col-xs-12 col-sm-6 col-lg-4">
                         <div class="small-box col-lf-4" style="background-color: #ffdd93">
                             <div class="inner">
-                                <h3>R1</h3>
+                                <h3 class="text-secondary">Practicas Finalizadas</h3>
 
-                                <p>Estudiantes que finalizaron Prácticas</p>
+                                <p>Reporte que muestra los estudiantes que finalizaron sus pr&aacute;cticas en un periodo acad&eacute;mico especifico</p>
                             </div>
                             <div class="icon">
                                 <i  data-toggle="modal" data-target="#r1" class="fa fa-chart-bar"></i>

@@ -23,7 +23,7 @@ class Estudiante extends Model
     }
 
     public function user(){
-        return $this->belongsTo('App\User', 'iduser', 'id');
+        return $this->belongsTo('App\User', 'id', 'iduser');
     }
 
 }

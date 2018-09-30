@@ -54,21 +54,11 @@
                                 </table>
 
                                 </div>
-                                @endif
-                            @if(Auth::user()->hasRole('prof'))
+                               @else
                                         <div class="table-responsive">
                                             @foreach($empresas as $empresa)
                                                   <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :rol="{{ Auth::user()->roles->first() }}"
                                                 :sedeuser="{{ Auth::user()->profesor->escuela->facultad->sede }}">
-                                                </empresa-item>
-                                            @endforeach
-                                        </div>
-                                @endif
-                            @if(Auth::user()->hasRole('est'))
-                                        <div class="table-responsive">
-                                            @foreach($empresas as $empresa)
-                                                <empresa-item  :empresa="{{ $empresa }}" :convenios="{{ $convenios }}" :rol="{{ Auth::user()->roles->first() }}"
-                                                               :sedeuser="{{ Auth::user()->estudiante->carrera->escuela->facultad->sede }}">
                                                 </empresa-item>
                                             @endforeach
                                         </div>

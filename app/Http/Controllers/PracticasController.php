@@ -68,6 +68,21 @@ class PracticasController extends Controller
         return view('practicas.index', compact('practicas','estudiante'));
 
     }
+    public function indexfrom3(Estudiante $estudiante, Request $request){
+        $id=$request->user()->id;
+        if(Auth::user()->hasRole('prof')){
+            $profesor = Profesor::all()->where('iduser','=',$id)->first();
+            $practicas = Practica::all()->where('idestudiante','=',$estudiante->idestudiante)->where('idprofesor','=',$profesor->idprofesor);
+            return view('practicas.index', compact('practicas','estudiante','profesor'));
+        }
+        if(Auth::user()->hasRole('tut')){
+            $tutore = Tutore::all()->where('iduser','=',$id)->first();
+            $practicas = Practica::all()->where('idestudiante','=',$estudiante->idestudiante)
+                ->where('idprofesor','=',$tutore->idtutore);
+            return view('practicas.index', compact('practicas','estudiante','profesor'));
+        }
+
+}
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['admin', 'coord', 'est']);

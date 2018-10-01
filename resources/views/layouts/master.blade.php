@@ -7,9 +7,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Practicas Pre-Profesionales</title>
     <link rel="stylesheet" href="{{mix('/css/app.css')}}">
-{{--
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
---}}
+
 <!--
 BODY TAG OPTIONS:
 =================
@@ -54,7 +54,7 @@ to get the desired effect
 <script src="{{mix('js/vendor.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 {{--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 {{--
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}

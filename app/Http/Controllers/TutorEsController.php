@@ -46,11 +46,11 @@ class TutorEsController extends Controller
     {
         $rules = array(
             'empresa'       => 'required',
-            'nombre'       => 'required',
-            'apellido'    => 'required',
-            'celular'       => 'required',
-            'correo'     => 'required',
-            'cedula'    => 'required'
+            'nombre'       => 'required|max:32|string',
+            'apellido'    => 'required|max:32|string',
+            'celular'       => 'nullable|digits_between:7,10',
+            'correo'    => 'required|email|unique:users,email',
+            'cedula'    => 'required|digits:10'
         );
         $this->validate(request(), $rules);
         $foto='user.jpg';
@@ -106,10 +106,9 @@ class TutorEsController extends Controller
     {
         $rules = array(
             'empresa'       => 'required',
-            'nombre'       => 'required',
-            'apellido'    => 'required',
-            'celular'       => 'required',
-            'correo'     => 'required'
+            'nombre'       => 'required|max:32|string',
+            'apellido'    => 'required|max:32|string',
+            'celular'       => 'nullable|digits_between:7,10'
         );
         $this->validate(request(), $rules);
 
@@ -119,8 +118,7 @@ class TutorEsController extends Controller
             'idempresa'       => request('empresa'),
             'nombretutore'       => request('nombre'),
             'apellidotutore'      => request('apellido'),
-            'celulartutore'      => request('celular'),
-            'correotutore' => request('correo')
+            'celulartutore'      => request('celular')
         ]);
 
         Flash::success('Actualizado Correctamente');

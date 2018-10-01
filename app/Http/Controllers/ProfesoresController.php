@@ -114,7 +114,7 @@ class ProfesoresController extends Controller
         $rules = array(
             'escuela'       => 'required',
             'cedula'       =>[
-                'required', Rule::unique('profesor','profesor.cedulaprofesor')->ignore($id, 'profesor.cedulaprofesor'),],
+                'required', Rule::unique('profesor','profesor.cedulaprofesor')->ignore($profesor->cedulaprofesor, 'profesor.cedulaprofesor'),],
             'nombres'       => 'required|string|max:30',
             'apellidos'    => 'required|string|max:30',
             'celular'    => 'required|digits_between:7,10',
@@ -132,7 +132,8 @@ class ProfesoresController extends Controller
             'apellidosprofesor'      => request('apellidos'),
             'correoprofesor'      => request('correo'),
             'oficinaprofesor'      => request('oficina'),
-            'celularprofesor'      => request('celular')
+            'celularprofesor'      => request('celular'),
+            'cedulaprofesor'      => request('cedula')
         ]);
 
 

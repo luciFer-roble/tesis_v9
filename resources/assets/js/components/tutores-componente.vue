@@ -73,7 +73,7 @@
                             </div>
                             <div class="formgroup">
                                 <label>Correo:</label>
-                                <input type="text" class="form-control" v-model="correo" name="correo">
+                                <input type="text" class="form-control" v-model="correo" name="correo" disabled>
                             </div>
                             
                             <div class="formgroup">

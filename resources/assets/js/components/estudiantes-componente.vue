@@ -126,7 +126,7 @@
         },
         methods:{
             verpracticas:function (id) {
-                window.location.href = '/practicas/'+id+'/list2';
+                    window.location.href = '/practicas/'+id+'/list3';
         },
             edit:function () {
                 this.errors = [];

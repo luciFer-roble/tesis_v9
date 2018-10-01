@@ -58,20 +58,20 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Id:</label>
+                                <label>Id</label>
                                 <input type="text" class="form-control" v-model="id" name="id" disabled>
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Nombre:</label>
+                                <label>Nombre <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripci&oacute;n:</label>
+                                <label>Descripci&oacute;n <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
                             
                             <div class="formgroup">
-                                <label>Escuela:</label>
+                                <label>Escuela</label>
                                 <select class="form-control" name="escuela" v-model="escuelaselect">
                                     <option v-for="item in escuelas" :key="item.idescuela" :value="item.idescuela">{{ item.nombreescuela }}</option>
                                 </select>

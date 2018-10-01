@@ -57,19 +57,19 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup">
-                                <label>Carrera:</label>
+                                <label>Carrera</label>
                                 <input type="text" class="form-control" v-model="carre" name="carrera" disabled />
                             </div>
                             <div class="formgroup">
-                                <label>Profesor:</label>
+                                <label>Profesor</label>
                                 <input type="text" class="form-control" v-model="nombre" name="profesor" disabled/>
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Inicio:</label>
+                                <label>Fecha de Inicio</label>
                                 <input type="date" class="form-control" v-model="inicio" name="inicio">
                             </div>
                             <div class="formgroup">
-                                <label>Fin:</label>
+                                <label>Fecha de Fin</label>
                                 <input type="date" class="form-control" v-model="fin" name="fin">
                             </div>
                         </div>

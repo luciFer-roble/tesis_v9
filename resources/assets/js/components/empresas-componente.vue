@@ -63,15 +63,15 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Nombre:</label>
-                                <input type="text" class="form-control" v-model="nombre" name="nombre" disabled>
+                                <label>Nombre <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Direcci&oacute;n:</label>
+                                <label>Direcci&oacute;n</label>
                                 <input type="text" class="form-control" v-model="direccion" name="direccion">
                             </div>
                             <div class="formgroup">
-                                <label>Tipo:</label>
+                                <label>Tipo</label>
                                 <select class="form-control" name="tipo" v-model="tipo">
                                     <option value="Publica">Publica</option>
                                     <option value="Privada">Privada</option>
@@ -80,7 +80,7 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Sector:</label>
+                                <label>Sector</label>
                                 <select class="form-control" name="sector" v-model="sector">
                                     <option value="Primario">PRIMARIO (Agricultura, Ganadería, Pesca, Minería)</option>
                                     <option value="Secundario">SECUNDARIO (Industria, Construcción)</option>
@@ -88,19 +88,19 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono 1:</label>
+                                <label>Tel&eacute;fono 1</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono 2:</label>
+                                <label>Tel&eacute;fono 2 <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="telefono2" name="telefono2">
                             </div>
                             <div class="formgroup">
-                                <label>Responsable:</label>
+                                <label>Responsable <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="responsable" name="responsable">
                             </div>
                             <div class="formgroup">
-                                <label>Tel. Responsable:</label>
+                                <label>Tel. Responsable <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="telefono3" name="telefono3">
                             </div>
 

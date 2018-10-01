@@ -65,49 +65,49 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Id:</label>
+                                <label>Id </label>
                                 <input type="text" class="form-control" v-model="id" name="id" disabled>
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Nombre:</label>
+                                <label>Nombre <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
                             <div class="formgroup">
-                                <label>Descripci&oacute;n:</label>
+                                <label>Descripci&oacute;n <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion">
                             </div>
                             <div class="formgroup">
-                            <label>Misi&oacute;n:</label>
+                            <label>Misi&oacute;n </label>
                             <input type="text" class="form-control" v-model="mision" name="mision">
                             </div>
                             <div class="formgroup">
-                                <label>Visi&oacute;n:</label>
+                                <label>Visi&oacute;n </label>
                                 <input type="text" class="form-control" v-model="vision" name="vision">
                             </div>
                             <div class="formgroup">
-                                <label>Facultad:</label>
+                                <label>Facultad </label>
                                 <select class="form-control" name="facultad" v-model="facultadselect">
                                     <option v-for="item in facultades" :key="item.idfacultad" :value="item.idfacultad">{{ item.nombrefacultad }}</option>
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label >Titulaci&oacute;n:</label>
+                                <label >Titulaci&oacute;n <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control"  v-model="titulacion" name="titulacion">
                             </div>
                             <div class="formgroup">
-                                <label >Duraci&oacute;n:</label>
+                                <label >Duraci&oacute;n </label>
                                 <input type="text" class="form-control" name="duracion" v-model="duracion">
                             </div>
                             <div class="formgroup">
-                                <label>Modalidad:</label>
+                                <label>Modalidad </label>
                                 <input type="text" class="form-control" name="modalidad" v-model="modalidad">
                             </div>
                             <div class="formgroup">
-                                <label >Campo:</label>
+                                <label >Campo <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" name="campo" v-model="campo">
                             </div>
                             <div class="formgroup">
-                                <label >T&iacute;tulo:</label>
+                                <label >T&iacute;tulo <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control"  name="titulo" v-model="titulo">
                             </div>
                         </div>

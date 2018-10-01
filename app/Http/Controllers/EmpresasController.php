@@ -8,6 +8,7 @@ use App\TutorE;
 use Illuminate\Http\Request;
 use App\Empresa;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Laracasts\Flash\Flash;
 
 class EmpresasController extends Controller
@@ -40,12 +41,14 @@ class EmpresasController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'nombre'       => 'required',
-            'direccion'    => 'required',
-            'sector'       => 'required',
-            'telefono'     => 'required',
-            'tipo'     => 'required',
-            'telefono3'     => 'required'
+            'nombre'       => 'required|max:127|string|unique:empresa,nombreempresa',
+            'direccion'    => 'required|max:127|string',
+            'sector'       => 'required|max:64|string',
+            'telefono'     => 'required|digits_between:7,10',
+            'tipo'     => 'required|max:64|string',
+            'telefono3'     => 'nullable|digits_between:7,10',
+            'responsable'     => 'nullable|max:127|string',
+            'telegono2'     => 'nullable|digits_between:7,10'
         );
         $this->validate(request(), $rules);
 
@@ -85,13 +88,21 @@ class EmpresasController extends Controller
 
     public function update(Request $request, $id)
     {
+        $nombre = Empresa::where('idempresa', '=', $id)->first();
         $rules = array(
-            'nombre'       => 'required',
-            'direccion'    => 'required',
-            'sector'       => 'required',
-            'telefono'     => 'required',
-            'tipo'     => 'required',
-            'telefono3'     => 'required'
+            'nombre' => [
+                'required',
+                'max:127',
+                'string',
+                Rule::unique('empresa', 'nombreempresa')->ignore($nombre->nombreempresa, 'nombreempresa'),
+            ],
+            'direccion'    => 'required|max:127|string',
+            'sector'       => 'required|max:64|string',
+            'telefono'     => 'required|digits_between:7,10',
+            'tipo'     => 'required|max:64|string',
+            'telefono3'     => 'nullable|digits_between:7,10',
+            'responsable'     => 'nullable|max:127|string',
+            'telegono2'     => 'nullable|digits_between:7,10'
         );
         $this->validate(request(), $rules);
 

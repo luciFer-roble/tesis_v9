@@ -49,16 +49,17 @@ class EscuelasController extends Controller
     public function store(Request $request)
     {
         $rules = array(
+            'id'           =>'required|max:10|alpha_dash|unique:escuela,idescuela',
             'facultad'       => 'required',
-            'nombre'       => 'required',
-            'descripcion'       => 'required',
-            'titulacion'    => 'required',
-            'mision'    => 'required',
-            'vision'    => 'required',
-            'duracion'    => 'required',
-            'modalidad'    => 'required',
-            'campo'    => 'required',
-            'titulo'    => 'required'
+            'nombre'       => 'required|string|max:30',
+            'descripcion'       => 'nullable|string|max:300',
+            'titulacion'    => 'nullable|string',
+            'mision'    => 'nullable|string',
+            'vision'    => 'nullable|string',
+            'duracion'    => 'required|integer|max:12',
+            'modalidad'    => 'required|string|max:30',
+            'campo'    => 'nullable|string|max:30',
+            'titulo'    => 'nullable|string|max:30'
         );
         $this->validate(request(), $rules);
 
@@ -104,15 +105,15 @@ class EscuelasController extends Controller
     {
         $rules = array(
             'facultad'       => 'required',
-            'nombre'       => 'required',
-            'descripcion'       => 'required',
-            'titulacion'    => 'required',
-            'mision'    => 'required',
-            'vision'    => 'required',
-            'duracion'    => 'required',
-            'modalidad'    => 'required',
-            'campo'    => 'required',
-            'titulo'    => 'required'
+            'nombre'       => 'required|string|max:30',
+            'descripcion'       => 'nullable|string|max:300',
+            'titulacion'    => 'nullable|string',
+            'mision'    => 'nullable|string',
+            'vision'    => 'nullable|string',
+            'duracion'    => 'required|integer|max:12',
+            'modalidad'    => 'required|string|max:30',
+            'campo'    => 'nullable|string|max:30',
+            'titulo'    => 'nullable|string|max:30'
         );
         $this->validate(request(), $rules);
 

@@ -51,9 +51,10 @@ class CarrerasController extends Controller
     public function store(Request $request)
     {
         $rules = array(
+            'id'           =>'required|max:10|alpha_dash|unique:carrera,idcarrera',
             'escuela'       => 'required',
-            'nombre'       => 'required',
-            'descripcion'    => 'required'
+            'nombre'       => 'required|max:100|string',
+            'descripcion'    => 'nullable|max:300|string'
         );
         $this->validate(request(), $rules);
 
@@ -92,8 +93,8 @@ class CarrerasController extends Controller
     {
         $rules = array(
             'escuela'       => 'required',
-            'nombre'       => 'required',
-            'descripcion'    => 'required'
+            'nombre'       => 'required|max:100|string',
+            'descripcion'    => 'nullable|max:300|string'
         );
         $this->validate(request(), $rules);
 

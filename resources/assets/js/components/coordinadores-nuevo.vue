@@ -23,23 +23,23 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup">
-                                <label>Carrera:</label>
+                                <label>Carrera</label>
                                 <select class="form-control" name="profesor" v-model="carreraselect">
                                     <option v-for="item in carreras" :key="item.idcarrera" :value="item.idcarrera"> {{ item.nombrecarrera }}</option>
                                 </select>
                             </div>
                             <div class="formgroup">
-                            <label>Profesor:</label>
+                            <label>Profesor</label>
                             <select class="form-control" name="profesor" v-model="profesorselect">
                                 <option v-for="item in profesores" :key="item.idprofesor" :value="item.idprofesor">{{ item.nombresprofesor }} {{ item.apellidosprofesor }}</option>
                             </select>
                         </div>
                             <div class="formgroup" width="100">
-                                <label>Fecha de Inicio:</label>
+                                <label>Fecha de Inicio</label>
                                 <input type="date" class="form-control" v-model="inicio" name="inicio">
                             </div>
                             <div class="formgroup">
-                                <label>Fecha de Fin:</label>
+                                <label>Fecha de Fin <span class="text-secondary">(Opcional)</span></label>
                                 <input type="date" class="form-control" v-model="fin" name="fin">
                             </div>
 

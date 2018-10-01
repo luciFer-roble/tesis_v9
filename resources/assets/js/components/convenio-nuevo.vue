@@ -29,36 +29,36 @@
 
                         <div class="form-group">
                             <div class="formgroup">
-                                <label>Empresa:</label>
+                                <label>Empresa</label>
                                 <select class="form-control" name="empresa"  v-model="empresaselect">
                                     <option v-for="item in empresas" :key="item.idempresa" :value="item.idempresa">{{ item.nombreempresa }}</option>
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Sede:</label>
+                                <label>Sede</label>
                                 <select class="form-control" name="sede" v-model="sedeselect">
                                     <option v-for="item in sedes" :key="item.idsede" :value="item.idsede">{{ item.descripcionsede }}</option>
                                 </select>
                             </div>
                             <div class="formgroup" width="100">
-                                <label >Codigo:</label>
+                                <label >Codigo <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" v-model="id" name="id" >
                             </div>
 
                             <div class="formgroup">
-                                <label >Descripcion:</label>
+                                <label >Descripcion <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="descripcion" name="descripcion" >
                             </div>
                             <div class="formgroup">
-                                <label >Fecha de Inicio:</label>
+                                <label >Fecha de Inicio</label>
                                 <input type="date" class="form-control" v-model="inicio" name="inicio" >
                             </div>
                             <div class="formgroup">
-                                <label >Fecha de Finalización:</label>
+                                <label >Fecha de Finalización</label>
                                 <input type="date" class="form-control" v-model="fin" name="fin" >
                             </div>
                             <div class="form-group">
-                                <label >Archivo de Formato:</label>
+                                <label >Archivo de Formato</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" ref="file" name="archivo" @change="cambiar">

@@ -43,8 +43,8 @@ class CoordinadoresController extends Controller
         $rules = array(
             'carrera'       => 'required',
             'profesor'       => 'required',
-            'inicio'    => 'required',
-            'fin'    => 'required'
+            'inicio'    => 'required|date',
+            'fin'    => 'date'
         );
         $this->validate(request(), $rules);
         $idprofesor=request('profesor');
@@ -123,8 +123,8 @@ class CoordinadoresController extends Controller
     public function update($id)
     {
         $rules = array(
-            'fin'    => 'required',
-            'inicio'    => 'required'
+            'fin'    => 'required|date',
+            'inicio'    => 'date'
 
         );
         $this->validate(request(), $rules);
@@ -143,8 +143,8 @@ class CoordinadoresController extends Controller
     public function finalize($id)
     {
         $rules = array(
-            'fin'    => 'required',
-            'inicio' => 'required'
+            'fin'    => 'required|date',
+            'inicio' => 'required|date'
 
         );
         $this->validate(request(), $rules);

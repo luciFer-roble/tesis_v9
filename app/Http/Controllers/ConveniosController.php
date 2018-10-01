@@ -52,13 +52,13 @@ class ConveniosController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'id'       => 'required',
+            'id'           =>'required|max:10|alpha_dash|unique:convenio,idconvenio',
             'sede'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required',
-            'inicio'       => 'required',
-            'fin'       => 'required',
-            'archivo'       => 'required'
+            'descripcion'    => 'required|max:255|alpha_dash',
+            'inicio'       => 'required|date',
+            'fin'       => 'required|date',
+            'archivo'       => 'required|file'
         );
         $this->validate(request(), $rules);
 
@@ -115,9 +115,9 @@ class ConveniosController extends Controller
         $rules = array(
             'sede'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required',
-            'inicio'       => 'required',
-            'fin'       => 'required'
+            'descripcion'    => 'required|max:255|alpha_dash',
+            'inicio'       => 'required|date',
+            'fin'       => 'required|date'
         );
         $this->validate(request(), $rules);
         $file  =   $request->file('archivo');

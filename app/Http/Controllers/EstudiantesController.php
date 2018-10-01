@@ -13,6 +13,7 @@ use App\Sede;
 use App\TutorE;
 use App\User;
 use DB;
+use Illuminate\Validation\Rule;
 use Image;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -129,12 +130,12 @@ class EstudiantesController extends Controller
     {
         $rules = array(
             'carrera'       => 'required',
-            'cedula'       => 'required',
-            'nombres'       => 'required',
-            'apellidos'    => 'required',
+            'cedula'       => 'required|string|unique:estudiante,estudiante.cedulaestudiante|max:10',
+            'nombres'       => 'required|string|max:30',
+            'apellidos'    => 'required|string|max:30',
             'tipo'    => 'required',
-            'celular'    => 'required',
-            'correo'    => 'required',
+            'celular'    => 'required|numeric|max:10',
+            'correo'    => 'required|email|unique:users,email',
             'fechanacimiento'    => 'required',
             'genero'    => 'required'
 
@@ -200,15 +201,20 @@ class EstudiantesController extends Controller
 
     public function update(Request $request, $id)
     {
+        $estudiante=Estudiante::all()->where('idestudiante','=',$id)->first();
+        $user=User::all()->where('id','=',$estudiante->iduser)->first();
         $rules = array(
-            'cedula'       => 'required',
-            'nombres'       => 'required',
-            'apellidos'    => 'required',
+            'carrera'       => 'required',
+            'cedula'       =>  [
+                'required', Rule::unique('estudiante','estudiante.cedulaestudiante')->ignore($id, 'estudiante.cedulaestudiante'),],
+            'nombres'       => 'required|string|max:30',
+            'apellidos'    => 'required|string|max:30',
             'tipo'    => 'required',
-            'celular'    => 'required',
-            'correo'    => 'required',
+            'celular'    => 'required|numeric|max:10',
+            'correo'    => ['required','email',
+            Rule::unique('users','email')->ignore($user->id),],
             'fechanacimiento'    => 'required',
-            'carrera'    => 'required'
+            'genero'    => 'required'
         );
         $this->validate(request(), $rules);
 

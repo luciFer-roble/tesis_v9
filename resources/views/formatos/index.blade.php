@@ -36,7 +36,7 @@
                                         @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('prof'))
                                             <th class="p-0 m-0 pl-1">Carrera</th>
                                         @endif
-                                        <th class="p-0 m-0 pl-1">Descripcion</th>
+                                        <th class="p-0 m-0 pl-1">Descripciones</th>
                                         <th class="p-0 m-0 pl-3">Archivos</th>
                                         @if(Auth::user()->hasRole('coord')or Auth::user()->hasRole('admin'))
                                         <th class="p-0 m-0"></th>

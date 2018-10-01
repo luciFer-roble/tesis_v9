@@ -140,19 +140,7 @@ class EstudiantesController extends Controller
 
         );
         $this->validate(request(), $rules);
-        /*//SI SE CARGA UNA IMAGEN SE LA GUARDA EN LA CARPETA PUBLIC Y SU NOMBRE SERA LA CEDULA.JPG
-        if($request->hasFile('foto'))
-        {
-            $image  =   $request->file('foto');
 
-            $nameimage = request('cedula').'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(300,300)->save(public_path('/uploads/avatars/'.$nameimage));
-
-        }
-        //SI NO SE CARGA IMAGEN SE DEBERIA GUARDAR EL NOBRE DEL AVATAR POR DEFECTO: USER.JPG
-        else{
-            $nameimage="user.jpg";
-        }*/
         $nameimage="user.jpg";
         $name= request('nombres').' '.request('apellidos');
         $user = User::create([

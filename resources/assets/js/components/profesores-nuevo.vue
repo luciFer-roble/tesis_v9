@@ -1,7 +1,6 @@
 <template>
     <div>
-
-        <div class="col"  >
+        <div class="col">
             <button type="button"  class="btn btn-outline-success" @click="create" >NUEVO</button>
         </div>
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modaledit">
@@ -23,21 +22,21 @@
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Id:</label>
+                                <label>C&oacute;digo</label>
                                 <input type="text" class="form-control" v-model="id" name="id">
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Cedula:</label>
+                                <label>Cedula</label>
                                 <input type="text" class="form-control" v-model="cedula" name="cedula">
                              </div>
                             <div class="formgroup">
-                                <label>Escuela:</label>
+                                <label>Escuela</label>
                                 <select class="form-control" name="escuela" v-model="escuelaselect">
                                     <option v-for="item in escuelas" :key="item.idescuela" :value="item.idescuela">{{ item.nombreescuela }}</option>
                                 </select>
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Nombres:</label>
+                                <label>Nombres</label>
                                 <input type="text" class="form-control" v-model="nombres" name="nombres">
                             </div>
                             <div class="formgroup">
@@ -113,6 +112,7 @@
                     nombres: this.nombres,
                     apellidos: this.apellidos,
                     celular: this.celular,
+                    oficina: this.oficina,
                     cedula: this.cedula,
                     correo: this.correo
                 })

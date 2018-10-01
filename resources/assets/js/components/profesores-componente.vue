@@ -1,54 +1,56 @@
 <template>
     <tr>
-        <td  class="p-0 m-0">{{ escuela.idescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.nombreescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.descripcionescuela }}</td>
-        <td  class="p-0 m-0">{{ facultad.nombrefacultad }}</td>
-        <td  class="p-0 m-0">{{ escuela.titulacionescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.misionescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.visionescuela }}</td>
-        <td  class="p-0 m-0" >{{ escuela.duracionescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.modalidadescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.campoescuela }}</td>
-        <td  class="p-0 m-0">{{ escuela.tituloescuela }}</td>
-        <td  class="p-0 m-0" style="width: 7%">
+        <td class="p-0 m-0" style="width: 7%">{{ profesor.idprofesor }}</td>
+        <td class="p-0 m-0">{{ profesor.cedulaprofesor }}</td>
+        <td class="p-0 m-0">{{ profesor.nombresprofesor }}</td>
+        <td class="p-0 m-0">{{ profesor.apellidosprofesor }}</td>
+        <td class="p-0 m-0">{{ profesor.correoprofesor }}</td>
+        <td class="p-0 m-0">{{ profesor.celularprofesor }}</td>
+        <td class="p-0 m-0" style="width: 7%">{{ profesor.oficinaprofesor }}</td>
+        <td class="p-0 m-0">{{ escuela.nombreescuela }}</td>
+        <td class="p-0 m-0" style="width: 7%">
 
-            <div class="row p-0 m-0"  >
-                <div class="col"  >
-                    <span   class="btn btn-link p-0 m-0">
-                        <i  class="fa fa-fw fa-pencil-alt" @click="edit"></i>
+            <div class="row p-0 m-0">
+                <div class="col">
+                    <span class="btn btn-link p-0 m-0">
+                        <i class="fa fa-fw fa-pencil-alt" @click="edit"></i>
                     </span>
                 </div>
 
-                <div class="col" >
-                    <span   class="btn text-danger p-0 m-0">
-                        <i  class="fa fa-fw fa-trash-alt" @click="confirm"></i>
+                <div class="col">
+                    <span class="btn text-danger p-0 m-0">
+                        <i class="fa fa-fw fa-trash-alt" @click="confirm"></i>
                     </span>
                 </div>
             </div>
 
         </td>
 
-
-        <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modaldelete">
+        <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" ref="modaldelete">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <h4 class="modal-title center-block">Se eliminara la Escuela {{ escuela.nombreescuela }}</h4>
+                        <h4 class="modal-title center-block">Se eliminar&aacute; el profesor {{ profesor.nombresprofesor }}</h4>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-light" data-dismiss="modal" v-bind:class="{ disabled: actualizando}" >Cancelar</a>
-                        <button type="button"  @click="borrar" v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-danger' : !actualizando }" class="btn">{{ boton2 }}</button>
+                        <a class="btn btn-light" data-dismiss="modal"
+                           v-bind:class="{ disabled: actualizando}">Cancelar</a>
+                        <button type="button" @click="borrar"
+                                v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-danger' : !actualizando }"
+                                class="btn">{{ boton2 }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modaledit">
+        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" ref="modaledit">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Actualizar Escuela
+                        <h5 class="modal-title" id="exampleModalLabel">Actualizar Profesor
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -59,95 +61,85 @@
                         <div class="form-group" v-if="mostrar">
                             <div class="alert alert-danger" style="opacity: 0.7 !important;">
                                 <ul v-for="error in errors">
-                                    <li>{{ error[0]  }}</li>
+                                    <li>{{ error[0] }}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="formgroup" width="100">
-                                <label>Id:</label>
-                                <input type="text" class="form-control" v-model="id" name="id" disabled>
+                                <label>C&oacute;digo</label>
+                                <input type="text" class="form-control" v-model="id" name="id">
                             </div>
                             <div class="formgroup" width="100">
-                                <label>Nombre:</label>
-                                <input type="text" class="form-control" v-model="nombre" name="nombre">
+                                <label>Cedula</label>
+                                <input type="text" class="form-control" v-model="cedula" name="cedula">
                             </div>
                             <div class="formgroup">
-                                <label>Descripci&oacute;n:</label>
-                                <input type="text" class="form-control" v-model="descripcion" name="descripcion">
-                            </div>
-                            <div class="formgroup">
-                            <label>Misi&oacute;n:</label>
-                            <input type="text" class="form-control" v-model="mision" name="mision">
-                            </div>
-                            <div class="formgroup">
-                                <label>Visi&oacute;n:</label>
-                                <input type="text" class="form-control" v-model="vision" name="vision">
-                            </div>
-                            <div class="formgroup">
-                                <label>Facultad:</label>
-                                <select class="form-control" name="facultad" v-model="facultadselect">
-                                    <option v-for="item in facultades" :key="item.idfacultad" :value="item.idfacultad">{{ item.nombrefacultad }}</option>
+                                <label>Escuela</label>
+                                <select class="form-control" name="escuela" v-model="escuelaselect">
+                                    <option v-for="item in escuelas" :key="item.idescuela" :value="item.idescuela">{{ item.nombreescuela }}</option>
                                 </select>
                             </div>
-                            <div class="formgroup">
-                                <label >Titulaci&oacute;n:</label>
-                                <input type="text" class="form-control"  v-model="titulacion" name="titulacion">
+                            <div class="formgroup" width="100">
+                                <label>Nombres</label>
+                                <input type="text" class="form-control" v-model="nombres" name="nombres">
                             </div>
                             <div class="formgroup">
-                                <label >Duraci&oacute;n:</label>
-                                <input type="text" class="form-control" name="duracion" v-model="duracion">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" v-model="apellidos" name="apellidos">
                             </div>
                             <div class="formgroup">
-                                <label>Modalidad:</label>
-                                <input type="text" class="form-control" name="modalidad" v-model="modalidad">
+                                <label>Oficina</label>
+                                <input type="text" class="form-control" v-model="oficina" name="oficina">
                             </div>
                             <div class="formgroup">
-                                <label >Campo:</label>
-                                <input type="text" class="form-control" name="campo" v-model="campo">
+                                <label>Celular</label>
+                                <input type="text" class="form-control" v-model="celular" name="celular">
                             </div>
                             <div class="formgroup">
-                                <label >T&iacute;tulo:</label>
-                                <input type="text" class="form-control"  name="titulo" v-model="titulo">
+                                <label >Correo Electr&oacute;nico</label>
+                                <input type="text" class="form-control"  v-model="correo" name="correo">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-light" data-dismiss="modal" v-bind:class="{ disabled: actualizando }" >Cancelar</a>
-                        <button type="button"  v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-primary' : !actualizando }" @click="update" class="btn " >{{ boton1 }}</button>
+                        <a class="btn btn-light" data-dismiss="modal"
+                           v-bind:class="{ disabled: actualizando }">Cancelar</a>
+                        <button type="button"
+                                v-bind:class="{ disabled: actualizando, 'btn-secondary': actualizando, 'btn-primary' : !actualizando }"
+                                @click="update" class="btn ">{{ boton1 }}
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </tr>
+
 </template>
 
 <script>
     export default {
-        name: "escuelas-componente",
+        name: "profesores-componente",
         props: {
-            facultad: {
+            escuela: {
                 type: Object
             },
 
-            escuela: {
+            profesor: {
                 type: Object
             }
         },
         data: function () {
             return {
                 id: '',
-                nombre: '',
-                descripcion: '',
-                mision: '',
-                vision: '',
-                titulacion: '',
-                duracion: '',
-                modalidad: '',
-                campo: '',
-                titulo: '',
-                facultadselect: '',
-                facultades: [],
+                nombres: '',
+                apellidos: '',
+                cedula: '',
+                correo: '',
+                celular: '',
+                oficina: '',
+                escuelaselect: '',
+                escuelas: [],
                 actualizando: false,
                 boton1: 'Actualizar',
                 boton2: 'Borrar',
@@ -155,48 +147,43 @@
                 mostrar: false
             }
         },
-        methods:{
-            edit:function () {
+        methods: {
+            edit: function () {
                 this.errors = [];
                 this.mostrar = false;
                 this.actualizando = false;
-                axios.get(window.location.origin+'/api/getfacultades'
-                ).then((response)=>{
-                    this.facultades=response.data;
+                axios.get(window.location.origin + '/api/getescuelas'
+                ).then((response) => {
+                    this.escuelas = response.data;
                 }).catch(function (error) {
                     console.log(error);
                 });
-                this.id = this.escuela.idescuela;
-                this.nombre =this.escuela.nombreescuela;
-                this.descripcion = this.escuela.descripcionescuela;
-                this.mision = this.escuela.misionescuela;
-                this.vision = this.escuela.visionescuela;
-                this.titulacion = this.escuela.titulacionescuela;
-                this.duracion = this.escuela.duracionescuela;
-                this.modalidad = this.escuela.modalidadescuela;
-                this.campo = this.escuela.campoescuela;
-                this.titulo = this.escuela.tituloescuela;
-                this.facultadselect = this.escuela.idfacultad;
+                this.id = this.profesor.idprofesor;
+                this.nombres = this.profesor.nombresprofesor;
+                this.apellidos = this.profesor.apellidosprofesor;
+                this.cedula = this.profesor.cedulaprofesor;
+                this.celular = this.profesor.celularprofesor;
+                this.correo = this.profesor.correoprofesor;
+                this.oficina = this.profesor.oficinaprofesor;
+                this.escuelaselect = this.profesor.idescuela;
                 $(this.$refs.modaledit).modal('show');
             },
-            confirm:function () {
+            confirm: function () {
                 this.actualizando = false;
                 $(this.$refs.modaldelete).modal('show');
             },
-            update:function () {
+            update: function () {
                 this.actualizando = true;
                 this.boton1 = 'Actualizando';
-                axios.put('/escuelas/'+this.escuela.idescuela, {
-                    facultad: this.facultadselect,
-                    nombre: this.nombre,
-                    descripcion: this.descripcion,
-                    mision: this.mision,
-                    vision: this.vision,
-                    titulacion: this.titulacion,
-                    duracion: this.duracion,
-                    modalidad: this.modalidad,
-                    campo: this.campo,
-                    titulo: this.titulo
+                axios.put('/profesores/' + this.profesor.idprofesor, {
+                    escuela: this.escuelaselect,
+                    id:this.id,
+                    nombres: this.nombres,
+                    apellidos: this.apellidos,
+                    correo: this.correo,
+                    celular: this.celular,
+                    oficina: this.oficina,
+                    cedula: this.cedula
                 })
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');
@@ -212,10 +199,10 @@
 
 
             },
-            borrar:function () {
+            borrar: function () {
                 this.actualizando = true;
                 this.boton2 = 'Borrando';
-                axios.delete('/escuelas/'+this.escuela.idescuela)
+                axios.delete('/profesores/' + this.profesor.idprofesor)
                     .then(function (response) {
                         //$(this.$refs.modaledit).modal('hide');
                         window.location = response.data.redirect;

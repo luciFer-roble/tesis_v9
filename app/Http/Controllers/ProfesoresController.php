@@ -85,7 +85,7 @@ class ProfesoresController extends Controller
 
         Flash::success('Ingresado Correctamente');
         // redirect
-        return redirect('profesores');
+        return ['redirect' => route('profesores.index')];
 
     }
 
@@ -132,7 +132,7 @@ class ProfesoresController extends Controller
 
         Flash::success('Actualizado Correctamente');
         // redirect
-        return redirect('profesores');
+        return ['redirect' => route('profesores.index')];
     }
 
 

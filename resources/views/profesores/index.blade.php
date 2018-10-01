@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card mb-3" id="app" >
+                <div class="card mb-3"  >
                     <div class="card-header">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                             <div class="btn-toolbar mb-2 mb-md-0">
@@ -46,7 +46,7 @@
 
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="app">
                                 @if(Auth::user()->hasRole('coord'))
                                     @foreach($profesores as $profesor)
                                         <tr>
@@ -95,6 +95,8 @@
                                             :escuela="{{ $profesor->escuela }}"></tr>
 
                                     @endforeach
+                                </tbody>
+                                <tfoot>
                                     <form method="POST" action="/profesores">
 
                                         {{ csrf_field() }}
@@ -129,7 +131,7 @@
                                         </tr>
                                     </form>
                                 @endif
-                                </tbody>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

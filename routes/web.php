@@ -50,7 +50,7 @@ Route::get('/carreras/{escuela}/list', 'CarrerasController@indexfrom');
 Route::get('/carreras/{sede}/list2', 'CarrerasController@indexfromsede');
 
 
-Route::get('/profesores', 'ProfesoresController@index');
+Route::get('/profesores', 'ProfesoresController@index')->name('profesores.index');
 Route::get('/profesores/create', 'ProfesoresController@create');
 Route::get('/profesores/{profesor}', 'ProfesoresController@show');
 Route::post('/profesores', 'ProfesoresController@store');

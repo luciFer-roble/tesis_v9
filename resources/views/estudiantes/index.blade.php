@@ -10,7 +10,7 @@
         <!-- Breadcrumbs-->
 
         <div class="row">
-            <div class="col-12" id="app">
+            <div class="col-12" >
                 <!-- Example DataTables Card-->
                 <div class="card">
                     <div class="card-header">
@@ -150,7 +150,7 @@
                                     </tbody>
                                 </table>
                             @else
-                                <table class="table table-bordered" style="table-layout: inherit">
+                                <table class="table table-bordered" style="table-layout: inherit" id="app">
 
                                     <tbody>
                                     <tr>

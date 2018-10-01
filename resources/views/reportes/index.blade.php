@@ -12,39 +12,45 @@
         @if(Auth::user()->hasRole('coord') )
                 <div class="row">
                     <!-- small card -->
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r1">
                         <div class="small-box col-lf-4" style="background-color: #ffdd93">
-                            <div class="inner">
-                                <h3 class="text-secondary">Practicas Finalizadas</h3>
-
-                                <p>Reporte que muestra los estudiantes que finalizaron sus pr&aacute;cticas en un periodo acad&eacute;mico especifico</p>
-                            </div>
-                            <div class="icon">
-                                <i  data-toggle="modal" data-target="#r1" class="fa fa-chart-bar"></i>
+                            <div class="inner row">
+                                <div class="col-md-12"><h3 class="text-secondary">Practicas Finalizadas</h3></div></div>
+                            <div class="inner row">
+                                <div class="col-md-9">
+                                    <p>Reporte que muestra los estudiantes que finalizaron sus pr&aacute;cticas en un periodo acad&eacute;mico especifico</p>
+                                </div>
+                                <div class="col-md-3 icon" style="vertical-align: middle">
+                                    <i style="padding-top: 80%"  class="fa fa-chart-bar"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r2">
                     <div class="small-box col-lf-4" style="background-color: #58dada">
-                        <div class="inner">
-                            <h3>R2</h3>
-
-                            <p>Prácticas por Periodo Académico</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r2" class="fa fa-chart-line"></i>
+                        <div class="inner row">
+                            <div class="col-md-12"><h3 class="text-secondary">Periodo Acad&eacute;mico</h3></div></div>
+                        <div class="inner row">
+                            <div class="col-md-9">
+                                <p>Reporte que muestra las un listado de prácticas agrupadas por el periodo académico en el estudiante registró la misma</p>
+                            </div>
+                            <div class="col-md-3 icon" style="vertical-align: middle">
+                                <i style="padding-top: 80%"  class="fa fa-chart-line"></i>
+                            </div>
                         </div>
                     </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r3">
                     <div class="small-box  col-lf-4" style="background-color: #1ca2bb">
-                        <div class="inner">
-                            <h3>R3</h3>
-
-                            <p>Prácticas por Tipo de Proyecto</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r3" class="fa fa-bar-chart-o"></i>
+                        <div class="inner row">
+                            <div class="col-md-12"><h3 class="text-secondary">Tipo de Proyecto</h3></div></div>
+                        <div class="inner row">
+                            <div class="col-md-9">
+                                <p>Reporte que muestra las prácticas agrupadas por tipo de proyecto(Pasantías, Prácticas pre Profesionales, Ayudantias y Proyectos)</p>
+                            </div>
+                            <div class="col-md-3 icon" style="vertical-align: middle">
+                                <i style="padding-top: 80%"  class="fa fa-bar-chart-o"></i>
+                            </div>
                         </div>
                     </div>
 
@@ -53,51 +59,59 @@
 
                 <div class="row">
                     <!-- small card -->
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r4">
                     <div class="small-box col-lf-4" style="background-color: #1fffff">
-                        <div class="inner">
-                            <h3>R4</h3>
-
-                            <p>Prácticas por Tipo de Empresa</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r4" class="fa fa-file-contract"></i>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                    <div class="small-box col-lf-4" style="background-color: #ff9d76">
-                        <div class="inner">
-                            <h3>R5</h3>
-
-                            <p>Prácticas por Sector de la Empresa</p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r5" class="fa fa-chart-area"></i>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                    <div class="small-box col-lf-4" style="background-color: #ff4273">
-                        <div class="inner">
-                            <h3>R6</h3>
-
-                            <p>Prácticas por Nivel </p>
-                        </div>
-                        <div class="icon">
-                            <i  data-toggle="modal" data-target="#r6" class="fa fa-pie-chart"></i>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-lg-4">
-                        <div class="small-box col-lf-4" style="background-color: #ff4273">
-                            <div class="inner">
-                                <h3>R6</h3>
-
-                                <p>Estudiantes por Tutor Academico</p>
+                        <div class="inner row">
+                            <div class="col-md-12"><h3 class="text-secondary">Tipo de Empresa</h3></div></div>
+                        <div class="inner row">
+                            <div class="col-md-9">
+                                <p>Reporte que muestra las prácticas agrupadas por tipo de empresa en el que realizan(Pública, Privada, Organismo Internacional, etcétera)</p>
                             </div>
-                            <div class="icon">
-                                <i  data-toggle="modal" data-target="#r11" class="fa fa-pie-chart"></i>
+                            <div class="col-md-3 icon" style="vertical-align: middle">
+                                <i style="padding-top: 80%"  class="fa fa-file-contract"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r5">
+                    <div class="small-box col-lf-4" style="background-color: #ff9d76">
+                        <div class="inner row">
+                            <div class="col-md-12"><h3 class="text-secondary">Sector Empresarial</h3></div></div>
+                        <div class="inner row">
+                            <div class="col-md-9">
+                                <p>Reporte que muestra las prácticas agrupadas por el sector de la empresa en el que realizan(Primario, Secundario, Terciario)</p>
+                            </div>
+                            <div class="col-md-3 icon" style="vertical-align: middle">
+                                <i style="padding-top: 80%"  class="fa fa-chart-area"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r6">
+                    <div class="small-box col-lf-4" style="background-color: #ff4273">
+                        <div class="inner row">
+                            <div class="col-md-12"><h3 class="text-secondary">Nivel Académico</h3></div></div>
+                        <div class="inner row">
+                            <div class="col-md-9">
+                                <p>Reporte que muestra las prácticas por el nivel en el que se encontraba el estudiante mientras realizó la misma</p>
+                            </div>
+                            <div class="col-md-3 icon" style="vertical-align: middle">
+                                <i style="padding-top: 80%"  class="fa fa-pie-chart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r11">
+                        <div class="small-box col-lf-4" style="background-color: #80bdff">
+                            <div class="inner row">
+                                <div class="col-md-12"><h3 class="text-secondary">Tutor Académico</h3></div></div>
+                            <div class="inner row">
+                                <div class="col-md-9">
+                                    <p>Reporte que muestra los estudiantes que estan bajo la tutoria académica de un profesor seleccionado</p>
+                                </div>
+                                <div class="col-md-3 icon" style="vertical-align: middle">
+                                    <i style="padding-top: 80%"  class="fa fa-pie-chart"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -106,27 +120,31 @@
         @if(Auth::user()->hasRole('est'))
         <div class="row">
 
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r7">
                 <div class="small-box col-lf-4" style="background-color: #1fffff">
-                    <div class="inner">
-                        <h3>R1</h3>
-
-                        <p>Registro en Base de Datos</p>
-                    </div>
-                    <div class="icon">
-                        <i  data-toggle="modal" data-target="#r7" class="fa fa-pie-chart"></i>
+                    <div class="inner row">
+                        <div class="col-md-12"><h3 class="text-secondary">Registro Base de Datos</h3></div></div>
+                    <div class="inner row">
+                        <div class="col-md-9">
+                            <p>Documento de registro de base de Datos de cada estudiante</p>
+                        </div>
+                        <div class="col-md-3 icon" style="vertical-align: middle">
+                            <i style="padding-top: 70%"  class="fa fa-pie-chart"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r8">
                 <div class="small-box col-lf-4" style="background-color: #ff9d76">
-                    <div class="inner">
-                        <h3>R2</h3>
-
-                        <p>L&iacute;neas de Formaci&oacute;n</p>
-                    </div>
-                    <div class="icon">
-                        <i  data-toggle="modal" data-target="#r8" class="fa fa-pie-chart"></i>
+                    <div class="inner row">
+                        <div class="col-md-12"><h3 class="text-secondary">Lineas de Formación</h3></div></div>
+                    <div class="inner row">
+                        <div class="col-md-9">
+                            <p>Documento de ingreso de las lineas de Formación</p>
+                        </div>
+                        <div class="col-md-3 icon" style="vertical-align: middle">
+                            <i style="padding-top: 70%"  class="fa fa-pie-chart"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,27 +152,31 @@
             @endif
         @if(Auth::user()->hasRole('prof'))
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r9">
                 <div class="small-box col-lf-4" style="background-color: #D3BFF2">
-                    <div class="inner">
-                        <h3>R7</h3>
-
-                        <p>Actividades del docente</p>
+                    <div class="inner row">
+                        <div class="col-md-12"><h3 class="text-secondary">Actividades del Docente</h3></div></div>
+                    <div class="inner row">
+                        <div class="col-md-9">
+                            <p>Reporte que muestra los estudiantes que estan bajo la tutoria académica de un profesor seleccionado y las actividades de ese profesor</p>
                     </div>
-                    <div class="icon">
-                        <i  data-toggle="modal" data-target="#r9" class="fa fa-paperclip"></i>
+                        <div class="col-md-3 icon" style="vertical-align: middle">
+                            <i style="padding-top: 80%"  class="fa fa-pie-chart"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-lg-4" data-toggle="modal" data-target="#r10">
                 <div class="small-box col-lf-4" style="background-color: #D291D6">
-                    <div class="inner">
-                        <h3>R8</h3>
-
-                        <p>Actividades del docente</p>
-                    </div>
-                    <div class="icon">
-                        <i  data-toggle="modal" data-target="#r10" class="fas fa-file-invoice"></i>
+                    <div class="inner row">
+                        <div class="col-md-12"><h3 class="text-secondary">Reporte de Seguimiento</h3></div></div>
+                    <div class="inner row">
+                        <div class="col-md-9">
+                            <p>Reporte que muestra las practicas de un estudiante seleccionado y el formulario para su seguimiento</p>
+                        </div>
+                        <div class="col-md-3 icon" style="vertical-align: middle">
+                            <i style="padding-top: 80%"  class="fa fa-pie-chart"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,7 +190,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Estudiantes que culminaron</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Prácticas Finalizadas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -177,7 +199,7 @@
                     {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="col-sm-10 control-label" for="inicio">Fecha de Inicio:</label>
+                        <label class="col-sm-10 control-label" for="inicio">Periodo Académico</label>
                         <div class="col-lg-11">
                             <select id="periodor1" name="periodor1" class="form-control">
                                 @foreach($periodos as $periodo)
@@ -189,7 +211,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                    <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Mostrar</button>
                 </div>
                 </form>
@@ -202,7 +224,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Practicas por Periodo</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Periodo Académico</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -211,7 +233,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Fecha de Inicio:</label>
+                            <label class="col-sm-10 control-label" for="inicio" style="color: white;">Periodo de Inicio</label>
                             <div class="col-lg-11">
                                 <select id="periodor1" name="periodor1" class="form-control">
                                     @foreach($periodos as $periodo)
@@ -223,7 +245,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -238,7 +260,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Listar por tipo de proyecto</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tipo de Proyecto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -247,19 +269,19 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Tipo:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Tipo</label>
                             <div class="col-lg-11">
                                 <select id="tipopractica" name="tipopractica" class="form-control">
-                                    <option value="Pasantia">Pasantia</option>
-                                    <option value="Practica">Practica Pre Profesional</option>
+                                    <option value="Pasantia">Pasantía</option>
+                                    <option value="Practica">Práctica Pre Profesional</option>
                                     <option value="Proyecto">Proyecto</option>
-                                    <option value="Ayudantia">Ayudantia</option>
+                                    <option value="Ayudantia">Ayudantía</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -272,7 +294,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Listar por tipo de Empresa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tipo de Empresa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -281,10 +303,10 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Tipo:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Tipo</label>
                             <div class="col-lg-11">
                                 <select id="tipoempresa" name="tipoempresa" class="form-control">
-                                    <option value="Publica">Publica</option>
+                                    <option value="Publica">Pública</option>
                                     <option value="Privada">Privada</option>
                                     <option value="Sin Fines de Lucro">Empresa Sin Fines de Lucro</option>
                                     <option value="Organismo Internacional">Organismo Internacional</option>
@@ -293,7 +315,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -307,7 +329,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Listar por sector de la Empresa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Sector de la Empresa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -316,7 +338,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Sector:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Sector</label>
                             <div class="col-lg-11">
                                 <select id="sector" name="sector" class="form-control">
                                     <option value="Primario">Primario</option>
@@ -327,7 +349,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -341,7 +363,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Listar practicas por nivel</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nivel Académico</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -350,7 +372,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Nivel:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Nivel</label>
                             <div class="col-lg-11">
                                 <select id="nivel" name="nivel" class="form-control">
                                     @foreach($niveles as $nivel)
@@ -362,7 +384,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -383,7 +405,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante</label>
                             <div class="col-lg-11">
                                 <select id="estudiante" name="estudiante" class="form-control">
                                     @foreach($estudiantes as $estudiante)
@@ -395,7 +417,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -407,7 +429,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Lineas de formacion</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Líneas de Formación</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -416,7 +438,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante</label>
                             <div class="col-lg-11">
                                 <select id="estudiante" name="estudiante" class="form-control">
                                     @foreach($estudiantes as $estudiante)
@@ -428,7 +450,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -449,7 +471,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Profesor:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Profesor</label>
                             <div class="col-lg-11">
                                 <select id="profesor" name="profesor" class="form-control">
                                     @foreach($profesores as $profesor)
@@ -461,7 +483,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -473,7 +495,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Docente</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Estudiante</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -482,7 +504,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Estudiante:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Estudiante</label>
                             <div class="col-lg-11">
                                 <select id="estudiante" name="estudiante" class="form-control">
                                     @foreach($estudiantes as $estudiante)
@@ -494,7 +516,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>
@@ -506,7 +528,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actividades del Docente</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Estudiantes por Tutor Academico</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -515,7 +537,7 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <label class="col-sm-10 control-label" for="inicio">Profesor:</label>
+                            <label class="col-sm-10 control-label" for="inicio">Profesor</label>
                             <div class="col-lg-11">
                                 <select id="profesor" name="profesor" class="form-control">
                                     @foreach($profesores as $profesor)
@@ -527,7 +549,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
+                        <a class="btn btn-secondary" data-dismiss="modal" style="color: white;">Cancelar</a>
                         <button type="submit" class="btn btn-primary">Mostrar</button>
                     </div>
                 </form>

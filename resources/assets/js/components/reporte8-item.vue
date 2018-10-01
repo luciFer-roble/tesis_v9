@@ -3,7 +3,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th colspan="5"><span class="text-xl">LÍNEAS DE PRÁCTICAS PRE PROFESIONALES EN FUNCIÓN DEL PERFIL PROFESIONAL Y LAS AREAS DE FORMACIÓN</span>
+                <th colspan="5"><span class="text">LÍNEAS DE PRÁCTICAS PRE PROFESIONALES EN FUNCIÓN DEL PERFIL PROFESIONAL Y LAS AREAS DE FORMACIÓN</span>
                     <span class="float-right btn btn-light"><i class="fa fa-download text-info" @click="descargar">&nbsp;Descargar</i></span></th>
             </tr>
             </thead>

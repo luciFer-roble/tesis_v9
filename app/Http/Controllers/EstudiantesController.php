@@ -134,7 +134,7 @@ class EstudiantesController extends Controller
             'nombres'       => 'required|string|max:30',
             'apellidos'    => 'required|string|max:30',
             'tipo'    => 'required',
-            'celular'    => 'required|numeric|max:10',
+            'celular'    => 'required|digits_between:7,10',
             'correo'    => 'required|email|unique:users,email',
             'fechanacimiento'    => 'required',
             'genero'    => 'required'
@@ -210,14 +210,13 @@ class EstudiantesController extends Controller
             'nombres'       => 'required|string|max:30',
             'apellidos'    => 'required|string|max:30',
             'tipo'    => 'required',
-            'celular'    => 'required|numeric|max:10',
-            'correo'    => ['required','email',
-            Rule::unique('users','email')->ignore($user->id),],
+            'celular'    => 'required|max:10',
+            'correo'    => [
+                'required','email',Rule::unique('users','email')->ignore($user->email,'email'),],
             'fechanacimiento'    => 'required',
             'genero'    => 'required'
         );
         $this->validate(request(), $rules);
-
 
         // store
         Estudiante::updateOrCreate(['idestudiante'  => $id], [
@@ -234,8 +233,7 @@ class EstudiantesController extends Controller
 
 
         Flash::success('Actualizado Correctamente');
-        // redirect
-        return ['redirect' => route('estudiantes.index')];
+        return redirect('estudiantes');
     }
 
 

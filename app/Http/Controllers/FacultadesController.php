@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facultad;
 use App\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Laracasts\Flash\Flash;
 
 class FacultadesController extends Controller
@@ -39,10 +40,10 @@ class FacultadesController extends Controller
     {
         $rules = array(
             'sede'       => 'required',
-            'nombre'       => 'required',
+            'nombre'       => 'required|string|max:30|unique:facultad,facultad.nombrefacultad',
             'mision'       => 'required',
             'vision'    => 'required',
-            'descripcion'    => 'required'
+            'descripcion'    => 'required|string|max:300'
         );
         $this->validate(request(), $rules);
 
@@ -79,14 +80,16 @@ class FacultadesController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
+        $facultad=Facultad::where('idfacultad','=',$id)->first();
         $rules = array(
             'sede'       => 'required',
-            'nombre'       => 'required',
+            'nombre'       => [
+                'required','string','max:30', Rule::unique('facultad','facultad.nombrefacultad')->ignore($facultad->nombrefacultad, 'nombrefacultad'),],
             'mision'       => 'required',
             'vision'    => 'required',
-            'descripcion'    => 'required'
+            'descripcion'    => 'required|string|max:300'
         );
         $this->validate(request(), $rules);
 
@@ -102,7 +105,6 @@ class FacultadesController extends Controller
 
         Flash::success('Actualizado Correctamente');
 
-        // redirect
         return ['redirect' => route('facultades.index')];
     }
 

@@ -20,7 +20,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="cedula">Cedula:</label>
-                                    <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $estudiante->cedulaestudiante }}">
+                                    <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $estudiante->cedulaestudiante }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="nombres">Nombres:</label>
@@ -65,42 +65,6 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="sede">Sede:</label>
-                                    <select id="sede" name="sede" class="form-control">
-                                        @foreach($sedes as $sede)
-                                            <option value="{{ $sede->idsede }}"
-                                                    @if($sede->idsede == $estudiante->carrera->escuela->facultad->sede->idsede)
-                                                    selected
-                                                    @endif
-                                            >{{ $sede->nombresede }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="facultad">Facultad:</label>
-                                    <select id="facultad" name="facultad" class="form-control">
-                                        @foreach($facultades as $facultad)
-                                            <option value="{{ $facultad->idfacultad }}"
-                                                    @if($facultad->idfacultad == $estudiante->carrera->escuela->facultad->idfacultad)
-                                                    selected
-                                                    @endif
-                                            >{{ $facultad->nombrefacultad }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="escuela">Escuela:</label>
-                                    <select id="escuela" name="escuela" class="form-control">
-                                        @foreach($escuelas as $escuela)
-                                            <option value="{{ $escuela->idescuela }}"
-                                                    @if($escuela->idescuela == $estudiante->carrera->escuela->idescuela)
-                                                    selected
-                                                    @endif
-                                            >{{ $escuela->nombreescuela }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="form-group">
                                     <label for="carrera">Carrera:</label>
                                     <select id="carrera" name="carrera" class="form-control">

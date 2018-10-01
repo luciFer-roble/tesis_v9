@@ -8,12 +8,13 @@
     <li class="breadcrumb-item active">Asignaturas</li>
 @endsection
 @section('content')
-    <div id="app" >
-        <div class="col-lg-12">
+    <div class="container-fluid" id="app" >
+        <div class="row">
+            <div class="col-md-2"></div>
 
-            <div class="row">
+            <div class="col-md-8">
                     <div class="card">
-                    <div class="col-lg-12 card-body">
+                    <div class="card-body">
 
                             <listarasignatura codigo="{{ $idcarrera }} " estudiante="{{ $estudiante->idestudiante }}" :asignaturas="{{ $asignaturas }}">
 
@@ -21,11 +22,13 @@
                     </div>
                     <hr>
 
-                    <div class="col-lg-12 -align-right m-lg-4">
-                        <a href="#" onclick="history.go(-1)" class="btn btn-primary float-left">OK</a>
+                    <div class="card-footer">
+                        <a href="#" onclick="history.go(-1)" class="btn btn-primary float-right">OK</a>
                     </div>
                     </div>
             </div>
+
+            <div class="col-md-2"></div>
 
 
         </div>

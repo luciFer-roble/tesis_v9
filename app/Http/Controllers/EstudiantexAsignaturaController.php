@@ -29,7 +29,11 @@ class EstudiantexAsignaturaController extends Controller
      */
     public function create(Carrera $carrera, Estudiante $estudiante)
     {
-        $asignaturas = EstudiantexAsignatura::with('asignatura')->where('idestudiante', $estudiante->idestudiante)->get();
+        $asignaturas = EstudiantexAsignatura::with('asignatura')
+            ->join('asignatura', 'estudiantexasignatura.idasignatura', '=', 'asignatura.idasignatura')
+            ->join('nivel', 'nivel.idnivel', '=', 'asignatura.idnivel')
+            ->where('idestudiante', $estudiante->idestudiante)
+            ->orderBy('nivel.idnivel')->get();
         return view('estasignaturas.create',['idcarrera'=>$carrera->idcarrera, 'estudiante'=>$estudiante, 'asignaturas'=> $asignaturas]);
     }
 
@@ -90,9 +94,15 @@ class EstudiantexAsignaturaController extends Controller
      * @param  \App\EstudiantexAsignatura  $estudiantexAsignatura
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EstudiantexAsignatura $estudiantexAsignatura)
+    public function update(Request $request, $id)
     {
-        //
+
+
+        // store
+        EstudiantexAsignatura::updateOrCreate(['idestudiantexasignatura'  => $id], [
+            'cursandosino'       => request('estado')
+        ]);
+
     }
 
     /**

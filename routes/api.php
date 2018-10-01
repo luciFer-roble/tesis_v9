@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('lista_asignaturas','ConsultasController@listarasignaturas');
+Route::get('asignaturas-nivel','ConsultasController@listarasignaturas');
 Route::get('consultar-practicas','ConsultasController@consultarpracticas');
 Route::get('listar-select1','ConsultasController@listarselect1');
 Route::get('consultar2-practicas','ConsultasController@consultarpracticas2');
@@ -41,10 +41,12 @@ Route::get('totalpracticasportipoempresa','ConsultasController@totalpracticaspor
 Route::get('totalestudiantesporsectorempresa','ConsultasController@totalestudiantesporsectorempresa');
 Route::get('totalpracticasporsectorempresa','ConsultasController@totalpracticasporsectorempresa');
 Route::get('getprofesores','ConsultasController@getprofesores');
+Route::get('getniveles','ConsultasController@getniveles');
 Route::get('getempresas','ConsultasController@getempresas');
 Route::get('getperiodos','ConsultasController@getperiodos');
 Route::get('gettutores','ConsultasController@gettutores');
 Route::get('getuniversidades','ConsultasController@getuniversidades');
+Route::get('getasignaturas','ConsultasController@getasignaturas');
 Route::get('getsedes','ConsultasController@getsedes');
 Route::get('getfacultades','ConsultasController@getfacultades');
 Route::get('getescuelas','ConsultasController@getescuelas');

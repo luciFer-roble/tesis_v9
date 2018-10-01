@@ -145,7 +145,9 @@ class PracticasController extends Controller
             'inicio'    => 'required',
             'tipo'    => 'required',
             'periodo'    => 'required',
-           'tutore'  => 'required'
+           'tutore'  => 'required',
+           'salario'=>'numeric',
+           'descripcion'=>'string|max255'
         );
         $this->validate(request(), $rules);
         $activa='TRUE';
@@ -236,7 +238,9 @@ class PracticasController extends Controller
             'tipo'    => 'required',
             'horas'    => 'required',
             'periodo'    => 'required',
-            'nivel'    => 'required'
+            'nivel'    => 'required',
+            'salario'=>'numeric',
+            'descripcion'=>'string|max255'
         );
         $this->validate(request(), $rules);
         $activa='TRUE';

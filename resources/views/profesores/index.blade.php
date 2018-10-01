@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12">
 
-                <div class="card mb-3">
+                <div class="card mb-3" id="app" >
                     <div class="card-header">
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                             <div class="btn-toolbar mb-2 mb-md-0">
@@ -19,8 +19,7 @@
                                 <h1>PROFESORES</h1></div>
                             @if(Auth::user()->hasRole('admin'))
                                 <div class="btn-group mr-2">
-                                    <input type="button" onClick="location.href = 'profesores/create'"
-                                           class="btn btn-sm btn-outline-success" value="NUEVO">
+                                    <profesores-nuevo></profesores-nuevo>
                                 </div>
                             @endif
                         </div>
@@ -48,17 +47,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($profesores as $profesor)
-                                    <tr>
-                                        <td class="p-0 m-0" style="width: 7%">{{ $profesor->idprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->cedulaprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->nombresprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->apellidosprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->correoprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->celularprofesor }}</td>
-                                        <td class="p-0 m-0" style="width: 7%">{{ $profesor->oficinaprofesor }}</td>
-                                        <td class="p-0 m-0">{{ $profesor->escuela->nombreescuela }}</td>
-                                        @if(Auth::user()->hasRole('coord'))
+                                @if(Auth::user()->hasRole('coord'))
+                                    @foreach($profesores as $profesor)
+                                        <tr>
+                                            <td class="p-0 m-0" style="width: 7%">{{ $profesor->idprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->cedulaprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->nombresprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->apellidosprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->correoprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->celularprofesor }}</td>
+                                            <td class="p-0 m-0" style="width: 7%">{{ $profesor->oficinaprofesor }}</td>
+                                            <td class="p-0 m-0">{{ $profesor->escuela->nombreescuela }}</td>
                                             <td class="p-0 m-0">
                                                 <?php $haspracticas = false; ?>
                                                 @foreach($practicas as $practica)
@@ -83,37 +82,23 @@
                                                 @endif
 
                                             </td>
-                                        @endif
-                                        @if(Auth::user()->hasRole('admin'))
-                                            <td class="p-0 m-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col" align="center">
-                                                        <a class="btn btn-link p-0 m-0"
-                                                           href="{{ URL::to('profesores/' . $profesor->idprofesor . '/edit') }}">
 
-                                                            <i class="fa fa-fw fa-pencil-alt"></i></a>
-                                                    </div>
-                                                    <div class="col" align="center">
-                                                        {{ Form::open(array('url' => 'profesores/' . $profesor->idprofesor, 'class' => '')) }}
-                                                        {{ Form::hidden('_method', 'DELETE') }}
-                                                        <button type="submit"
-                                                                class="btn text-danger btn-link text-danger p-0 m-0"><i
-                                                                    class="fa fa-fw fa-trash-alt"></i></button>
-                                                        {{ Form::close() }}
-                                                    </div>
 
-                                                </div>
-                                            </td>
-                                        @endif
-
-                                    </tr>
-                                @endforeach
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                                 @if(Auth::user()->hasRole('admin'))
+
+                                    @foreach($profesores as $profesor)
+                                        <tr is="profesores-componente" :profesor="{{ $profesor }}"
+                                            :escuela="{{ $profesor->escuela }}"></tr>
+
+                                    @endforeach
                                     <form method="POST" action="/profesores">
 
                                         {{ csrf_field() }}
-                                        <tr>
+                                        <tr >
                                             <td class="p-0 m-0" style="width: 7%"><input type="text"
                                                                                          class="form-control" id="id"
                                                                                          name="id"></td>
@@ -148,7 +133,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <div class="card-footer small text-muted"></div>
                 </div>
 
             </div>

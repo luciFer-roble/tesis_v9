@@ -78,8 +78,8 @@ class FormatosController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'id'       => 'required',
-            'descripcion'       => 'required',
+            'id'       => 'required|unique:formato,formato.idformato|max:10',
+            'descripcion'       => 'required|string|max:128',
             'archivo'       => 'required',
             'carrera'      => 'required'
         );
@@ -137,7 +137,7 @@ class FormatosController extends Controller
     {
         $rules = array(
             'id'       => 'required',
-            'descripcion'       => 'required'
+            'descripcion'       => 'required|string|max:128'
         );
         $this->validate(request(), $rules);
         //var_dump($request->descripcion); exit();

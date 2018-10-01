@@ -53,42 +53,9 @@
                                         <label for="correo">Correo electronico:</label>
                                         <input type="email" class="form-control" id="correo" name="correo">
                                     </div>
-                                   {{-- <div class="form-group">
-                                        <label for="foto">Foto:</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="" id="foto" name="foto">
-                                                <label for="foto"></label>
-                                            </div>
-                                        </div>
-                                    </div>--}}
 
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="sede">Sede:</label>
-                                        <select id="sede" name="sede" class="form-control">
-                                            @foreach($sedes as $sede)
-                                                <option value="{{ $sede->idsede }}">{{ $sede->nombresede }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="facultad">Facultad:</label>
-                                        <select id="facultad" name="facultad" class="form-control">
-                                            @foreach($facultades as $facultad)
-                                                <option value="{{ $facultad->idfacultad }}">{{ $facultad->nombrefacultad }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="escuela">Escuela:</label>
-                                        <select id="escuela" name="escuela" class="form-control">
-                                            @foreach($escuelas as $escuela)
-                                                <option value="{{ $escuela->idescuela }}">{{ $escuela->nombreescuela }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
                                     <div class="form-group">
                                         <label for="carrera">Carrera:</label>
                                         <select id="carrera" name="carrera" class="form-control">

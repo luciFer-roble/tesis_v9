@@ -200,3 +200,4 @@ Route::get('/documentos/{documentop}/descargar', 'DocumentosPController@descarga
 Route::post('/documentos', 'DocumentosPController@store');
 
 Route::get('/notifications/{id}','NotificationController@delete');
+Route::get('/pulear','sshController@pull');

@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Laracasts\Flash\Flash;
 
 class ProfesoresController extends Controller
@@ -49,12 +50,12 @@ class ProfesoresController extends Controller
     {
         $rules = array(
             'escuela'       => 'required',
-            'nombres'       => 'required',
-            'apellidos'    => 'required',
-            'correo'    => 'required',
-            'oficina'    => 'required',
-            'celular'    => 'required',
-            'cedula'    => 'required'
+            'cedula'       => 'required|string|unique:profesor,profesor.cedulaprofesor|max:10',
+            'nombres'       => 'required|string|max:30',
+            'apellidos'    => 'required|string|max:30',
+            'celular'    => 'required|digits_between:7,10',
+            'correo'    => 'required|email|unique:users,email',
+            'oficina'    => 'required|string|max:10'
         );
         $this->validate(request(), $rules);
         $foto='user.jpg';
@@ -108,13 +109,18 @@ class ProfesoresController extends Controller
 
     public function update(Request $request, $id)
     {
+        $profesor=Profesor::where('idprofesor','=',$id)->first();
+        $user=User::all()->where('id','=',$profesor->iduser)->first();
         $rules = array(
             'escuela'       => 'required',
-            'nombres'       => 'required',
-            'apellidos'    => 'required',
-            'correo'    => 'required',
-            'oficina'    => 'required',
-            'celular'    => 'required'
+            'cedula'       =>[
+                'required', Rule::unique('profesor','profesor.cedulaprofesor')->ignore($id, 'profesor.cedulaprofesor'),],
+            'nombres'       => 'required|string|max:30',
+            'apellidos'    => 'required|string|max:30',
+            'celular'    => 'required|digits_between:7,10',
+            'correo'    =>  [
+                'required','email',Rule::unique('users','email')->ignore($user->email,'email'),],
+            'oficina'    => 'required|string|max:10'
         );
         $this->validate(request(), $rules);
 

@@ -8,6 +8,7 @@ use App\Coordinador;
 use App\Empresa;
 use App\Escuela;
 use App\Estudiante;
+use App\EstudiantexAsignatura;
 use App\Facultad;
 use App\Nivel;
 use App\PeriodoAcademico;
@@ -23,14 +24,14 @@ use Illuminate\Support\Facades\DB;
 class ConsultasController extends Controller
 {
 
-    public function listarasignaturas(Request $carrera)
+    public function listarasignaturas(Request $request)
     {
         $asignaturas = DB::table('carrera')
             ->join('mallascurricular', 'carrera.idcarrera', '=', 'mallascurricular.idcarrera')
             ->join('nivel', 'mallascurricular.idmalla', '=', 'nivel.idmalla')
             ->join('asignatura', 'nivel.idnivel', '=', 'asignatura.idnivel')
-            ->select('asignatura.idasignatura',  'asignatura.nombreasignatura')
-            ->where('carrera.idcarrera', '=', $carrera->idcarrera)
+            ->where('carrera.idcarrera', '=', $request->idcarrera)
+            ->where('nivel.idnivel', '=', $request->idnivel)
             ->get();
         return $asignaturas;
 
@@ -335,11 +336,23 @@ class ConsultasController extends Controller
     public function getempresas(){
         return Empresa::all();
     }
+    public function getniveles(){
+        return Nivel::all();
+    }
     public function getperiodos(){
         return PeriodoAcademico::all();
     }
     public function getuniversidades(){
         return Universidad::all();
+    }
+    public function getasignaturas(Request $request){
+        $asignaturas = EstudiantexAsignatura::with('asignatura')
+            ->join('asignatura', 'estudiantexasignatura.idasignatura', '=', 'asignatura.idasignatura')
+            ->join('nivel', 'nivel.idnivel', '=', 'asignatura.idnivel')
+            ->where('idestudiante', $request->idestudiante)
+            ->orderBy('nivel.idnivel')
+            ->orderBy('asignatura.idasignatura')->get();
+        return $asignaturas;
     }
     public function getsedes(){
         return Sede::all();

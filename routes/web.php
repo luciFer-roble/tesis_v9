@@ -129,6 +129,7 @@ Route::get('/convenios/{sede}/list', 'ConveniosController@indexfrom');
 
 Route::get('/estasignaturas/{carrera}/create/{estudiante}', 'EstudiantexAsignaturaController@create');
 Route::post('/estasignaturas', 'EstudiantexAsignaturaController@store');
+Route::put('/estasignaturas/{estudiantexAsignatura}', 'EstudiantexAsignaturaController@update');
 
 Route::get('/tutores/{empresa}/create', 'TutorEsController@createfrom');
 Route::get('/tutores/{empresa}/list', 'TutorEsController@indexfrom');

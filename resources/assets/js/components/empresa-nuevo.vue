@@ -22,12 +22,12 @@
 
                         <div class="form-group">
                             <div class="formgroup">
-                                <label>Nombre <span class="text-danger">*</span></label>
+                                <label>Nombre</label>
                                 <input type="text" class="form-control" v-model="nombre" name="nombre">
                             </div>
 
                             <div class="formgroup">
-                                <label>Direcci&oacute;n <span class="text-secondary">(Opcional)</span></label>
+                                <label>Direcci&oacute;n </label>
                                 <input type="text" class="form-control" v-model="direccion" name="direccion">
                             </div>
                             <div class="form-group">
@@ -48,19 +48,19 @@
                                 </select>
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono 1 </label>
+                                <label>Tel&eacute;fono 1</label>
                                 <input type="text" class="form-control" v-model="telefono" name="telefono">
                             </div>
                             <div class="formgroup">
-                                <label>Tel&eacute;fono 2 </label>
+                                <label>Tel&eacute;fono 2 <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="telefono2" name="telefono2">
                             </div>
                             <div class="formgroup">
-                                <label>Responsable </label>
+                                <label>Responsable <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="responsable" name="responsable">
                             </div>
                             <div class="formgroup">
-                                <label>Tel. Responsable </label>
+                                <label>Tel. Responsable <span class="text-secondary">(Opcional)</span></label>
                                 <input type="text" class="form-control" v-model="telefono3" name="telefono3">
                             </div>
                         </div>

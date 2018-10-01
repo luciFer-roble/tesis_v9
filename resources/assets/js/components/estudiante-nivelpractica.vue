@@ -50,6 +50,7 @@
 
 <script>
     export default {
+        name: 'reporte1',
         props: {
             estudiante: {
                 type: Object

@@ -286,7 +286,7 @@
                                 <select id="tipoempresa" name="tipoempresa" class="form-control">
                                     <option value="Publica">Publica</option>
                                     <option value="Privada">Privada</option>
-                                    <option value="Empresa Sin Fines de Lucro">Empresa Sin Fines de Lucro</option>
+                                    <option value="Sin Fines de Lucro">Empresa Sin Fines de Lucro</option>
                                     <option value="Organismo Internacional">Organismo Internacional</option>
                                 </select>
                             </div>

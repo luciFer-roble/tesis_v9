@@ -41,8 +41,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="item in lista">
-                        <td class="p-1 m-0">P{{item.idpractica}}</td>
+                    <tr v-for="(item, index) in lista">
+                        <td class="p-1 m-0">P{{index+1}}</td>
                         <td class="p-1 m-0">{{item.fechainiciopractica}}</td>
                         <td class="p-1 m-0">{{item.fechafinpractica}}</td>
                         <td class="p-1 m-0">{{item.tipopractica}}</td>
@@ -62,6 +62,7 @@
 
 <script>
     export default {
+        name: 'estudiante-item',
         props: {
             estudiante: {
                 type: Object

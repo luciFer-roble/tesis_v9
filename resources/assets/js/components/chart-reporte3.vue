@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-lg-12">
-            <canvas id="canvas3">
+            <canvas id="canvas3" style="width: 95%; height: 100%" class="canvas">
 
             </canvas>
         </div>
@@ -78,7 +78,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
+                                    backgroundColor: ["#687f91", "#397aac", "#cfdce6", "#092940"],
                                     data: [this.pasantias, this.practicas, this.proyectos, this.ayudantias]
                                 }
                             ]

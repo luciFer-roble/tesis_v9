@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-5">
             <canvas id="canvas41">
 
             </canvas>
@@ -53,10 +53,10 @@
                 axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.privadase=(0)+4;
+                    if(response.data === ''){
+                        this.privadase=(0);
                     }else{
-                        this.privadase=(response.data.totalestudiantes)+4;
+                        this.privadase=parseInt(response.data.totalestudiantes);
                     }
                 }).catch(function (error) {
                     console.log(error);
@@ -66,7 +66,7 @@
                 axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.privadasp=(response.data)+8;
+                    this.privadasp=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -75,10 +75,10 @@
                 axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.publicase=(0)+4;
+                    if(response.data === ''){
+                        this.publicase=(0);
                     }else{
-                        this.publicase=(response.data.totalestudiantes)+4;
+                        this.publicase=parseInt(response.data.totalestudiantes);
                     }
                 }).catch(function (error) {
                     console.log(error);
@@ -88,7 +88,7 @@
                 axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.publicasp=(response.data)+9;
+                    this.publicasp=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -97,10 +97,10 @@
                 axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.sinlucroe=(0)+2;
+                    if(response.data === ''){
+                        this.sinlucroe=(0);
                     }else{
-                        this.sinlucroe=(response.data.totalestudiantes)+2;
+                        this.sinlucroe=parseInt(response.data.totalestudiantes);
                     }
                 }).catch(function (error) {
                     console.log(error);
@@ -110,7 +110,7 @@
                 axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.sinlucrop=(response.data)+2;
+                    this.sinlucrop=(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -119,10 +119,10 @@
                 axios.get(window.location.origin+'/api/totalestudiantesportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    if(this.data==null){
-                        this.internacionalese=(0)+4;
+                    if(response.data === ''){
+                        this.internacionalese=(0);
                     }else{
-                        this.internacionalese=(response.data.totalestudiantes)+4;
+                        this.internacionalese=parseInt(response.data.totalestudiantes);
                     }
                 }).catch(function (error) {
                     console.log(error);
@@ -132,7 +132,7 @@
                 axios.get(window.location.origin+'/api/totalpracticasportipoempresa',{
                     params:{'tipo':tipo}
                 }).then((response)=>{
-                    this.internacionalesp=(response.data)+5;
+                    this.internacionalesp=(response.data);
                     const data = {
                         type: 'polarArea',
                         data: {
@@ -140,7 +140,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
+                                    backgroundColor: ["#687f91", "#397aac", "#cfdce6", "#092940"],
                                     data: [this.privadasp, this.publicasp, this.sinlucrop, this.internacionalesp]
                                 }
                             ]
@@ -188,7 +188,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#fff6da", "#84f2d6", "#fc6b3f", "#262525"],
+                                    backgroundColor: ["#687f91", "#397aac", "#cfdce6", "#092940"],
                                     data: [this.privadase, this.publicase, this.sinlucroe, this.internacionalese]
                                 }
                             ]
@@ -243,11 +243,11 @@
             this.getaall();
             this.getprivadae('Privada');
             this.getpublicae('Publica');
-            this.getsinlucroe('Empresa Sin Fines De Lucro');
+            this.getsinlucroe('Sin Fines de Lucro');
             this.getinternacionalese('Organismo Internacional');
             this.getprivadap('Privada');
             this.getpublicap('Publica');
-            this.getsinlucrop('Empresa Sin Fines De Lucro');
+            this.getsinlucrop('Sin Fines de Lucro');
             this.getinternacionalesp('Organismo Internacional');
 
 

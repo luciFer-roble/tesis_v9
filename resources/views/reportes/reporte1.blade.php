@@ -11,7 +11,7 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  ">
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <h3>{{ $periodo->descripcionperiodoacademico }}</h3></div>
+                        <h4 class="text-secondary">Estudiantes que Culminaron sus Prácticas  en el Periodo {{ $periodo->descripcionperiodoacademico }}</h4></div>
 
                     <div class="btn-group mr-2 float-right">
                         <span  data-toggle="modal" data-target="#modal1"
@@ -26,20 +26,11 @@
             <div class="card-body p-0 m-0" id="app">
 
                 <div class="table-responsive">
-
-                    {{--<table class="table table-bordered p-0 m-0 border-0" id="dataTable" width="100%" style="table-layout: fixed;  display: table;">
-                        <thead>
-                            <tr>
-                                <th  style="width:  12%" class="p-1 m-0">Identificacion</th>
-                                <th  style="width:  16%" class="p-1 m-0">Apellidos y Nombres</th>
-                                <th  style="width:  13%" class="p-1 m-0">Unidad Academica</th>
-                                <th  style="width:  25%" class="p-1 m-0">Carrera</th>
-                                <th  style="width:  13%" class="p-1 m-0">Celular</th>
-                                <th  style="width:  14%" class="p-1 m-0">Correo</th>
-                                <th  colspan="2"  style="width:  7.318912295584146%;" class="p-1 m-0">Horas</th>
-                            </tr>
-                        </thead>
-                    </table>--}}
+                    @if(count($estudiantes) === 0)
+                        <table class="table table-bordered">
+                            <tr><td align="center"><h6 class="text-secondary">NO HAY DATOS</h6></td></tr>
+                        </table>
+                        @endif
                         @foreach($estudiantes as $estudiante)
                             <estudiante-item  :estudiante="{{ $estudiante }}" carrera="{{ $estudiante->carrera->nombrecarrera }}"
                                 facultad="{{ $estudiante->carrera->escuela->facultad->nombrefacultad }}"
@@ -51,12 +42,13 @@
             <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="modal-body">
                             <chart-reporte1 ></chart-reporte1>
-                        </div>
-                        <div class="modal-footer">
-                            <a class="btn btn-secondary" data-dismiss="modal">Cancelar</a>
-                            <button type="submit" class="btn btn-primary">Imprimir</button>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-5" >
             <canvas id="canvas51">
 
             </canvas>
@@ -53,7 +53,7 @@
                 }).then((response)=>{
                     console.log(response.data);
                     if(response.data != 'vacio'){
-                        this.primarioe=(response.data.totalestudiantes);
+                        this.primarioe=parseInt(response.data.totalestudiantes);
                     }else{
                         this.primarioe=0;
                     }
@@ -75,7 +75,7 @@
                     params:{'sector':sector}
                 }).then((response)=>{
                     if(response.data != 'vacio'){
-                        this.secundarioe=(response.data.totalestudiantes);
+                        this.secundarioe=parseInt(response.data.totalestudiantes);
                     }else{
                         this.secundarioe=0;
                     }
@@ -97,7 +97,7 @@
                     params:{'sector':sector}
                 }).then((response)=>{
                     if(response.data != 'vacio'){
-                        this.terciarioe=(response.data.totalestudiantes);
+                        this.terciarioe=parseInt(response.data.totalestudiantes);
                     }else{
                         this.terciarioe=0;
                     }
@@ -117,7 +117,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#fff6da", "#262525", "#fc6b3f"],
+                                    backgroundColor: ["#687f91", "#397aac", "#cfdce6", "#092940"],
                                     data: [this.primariop, this.secundariop, this.terciariop]
                                 }
                             ]
@@ -165,7 +165,7 @@
                             datasets: [
                                 {
                                     label: "%Proyecto",
-                                    backgroundColor: ["#fff6da", "#262525", "#fc6b3f"],
+                                    backgroundColor: ["#687f91", "#397aac", "#cfdce6", "#092940"],
                                     data: [this.primarioe, this.secundarioe, this.terciarioe]
                                 }
                             ]

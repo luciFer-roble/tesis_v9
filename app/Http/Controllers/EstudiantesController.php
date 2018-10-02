@@ -206,7 +206,7 @@ class EstudiantesController extends Controller
         $rules = array(
             'carrera'       => 'required',
             'cedula'       =>  [
-                'required', Rule::unique('estudiante','estudiante.cedulaestudiante')->ignore($id, 'estudiante.cedulaestudiante'),],
+                'nullable', Rule::unique('estudiante','estudiante.cedulaestudiante')->ignore($id, 'estudiante.cedulaestudiante'),],
             'nombres'       => 'required|string|max:30',
             'apellidos'    => 'required|string|max:30',
             'tipo'    => 'required',

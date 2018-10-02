@@ -30,9 +30,10 @@ class ConsultasController extends Controller
             ->join('mallascurricular', 'carrera.idcarrera', '=', 'mallascurricular.idcarrera')
             ->join('nivel', 'mallascurricular.idmalla', '=', 'nivel.idmalla')
             ->join('asignatura', 'nivel.idnivel', '=', 'asignatura.idnivel')
-            ->where('carrera.idcarrera', '=', $request->idcarrera)
+            ->where('carrera.idcarrera', 'like', $request->idcarrera)
             ->where('nivel.idnivel', '=', $request->idnivel)
             ->get();
+        //var_dump($request->idcarrera.' '.$request->idnivel); exit();
         return $asignaturas;
 
     }

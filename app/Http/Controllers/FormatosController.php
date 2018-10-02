@@ -78,7 +78,7 @@ class FormatosController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'id'       => 'required|unique:formato,formato.idformato|max:10',
+            'id'       => 'required|unique:tipodocumento,tipodocumento.idtipodocumento|max:10|alpha_dash',
             'descripcion'       => 'required|string|max:128',
             'archivo'       => 'required',
             'carrera'      => 'required'

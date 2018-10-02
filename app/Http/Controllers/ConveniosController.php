@@ -55,7 +55,7 @@ class ConveniosController extends Controller
             'id'           =>'required|max:10|alpha_dash|unique:convenio,idconvenio',
             'sede'       => 'required',
             'empresa'       => 'required',
-            'descripcion'    => 'required|max:255|alpha_dash',
+            'descripcion'    => 'required|max:255|string',
             'inicio'       => 'required|date',
             'fin'       => 'required|date',
             'archivo'       => 'required|file'

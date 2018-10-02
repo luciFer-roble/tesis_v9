@@ -20,7 +20,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="cedula">Cedula:</label>
-                                    <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $estudiante->cedulaestudiante }}" disabled>
+                                    <input type="text" class="form-control" id="cedula" name="cedula" value="{{ $estudiante->cedulaestudiante }}" >
                                 </div>
                                 <div class="form-group">
                                     <label for="nombres">Nombres:</label>

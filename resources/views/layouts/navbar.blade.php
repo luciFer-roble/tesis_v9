@@ -9,7 +9,7 @@
             <a href="/" class="nav-link">Inicio</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Ayuda</a>
+            <a href="/ayuda" class="nav-link">Ayuda</a>
         </li>
     </ul>
 

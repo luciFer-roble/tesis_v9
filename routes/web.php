@@ -201,3 +201,4 @@ Route::post('/documentos', 'DocumentosPController@store');
 
 Route::get('/notifications/{id}','NotificationController@delete');
 Route::get('/pulear','sshController@pull');
+Route::get('/ayuda','manualController@descargar');
